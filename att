@@ -1,0 +1,64 @@
+
+Contact:
+
+Meetings
+
+Concerns
+~~~~~~~~
+Security, Credibility
+Testing, security of data, protection against unintended
+or unauthorized used.
+
+Key Takeaways
+~~~~~~~~~~~~~
+
+Increase 100% saturation
+________________________
+Everyone already has a cell phone.  "500% Saturation."
+
+
+Increase revenue
+________________
+
+Specifically through applications and interoperability.
+
+
+Decrease health costs
+________________
+
+They spent $6B on internal health costs, with revenue of
+$12B.  Looking to decrease by *any* measurable amount.
+
+
+Response
+--------
+Their main objectives are fairly well aligned, but may
+need a little engagement to make it clear.
+
+On 100% saturation, we are completely in agreement.
+Access to ubiquitous network connectivity has some serious
+advantages.
+
+We foresee adapting a good portion of all existing meters
+in active use.  I'm not sure how many, but 50% seems like
+a reasonable random guess.
+
+We also foresee re-using this technique on all sorts of
+other devices.  Ranging from blood pressure monitors to
+pedometers.
+
+The application here consists of a network of
+cloud-controllers, delegating access to resources,
+updating resources, and managing internal data structures.
+On the edge of the cloud are UI channels, including social
+integration with facebook, twitter, tudiabetes, technical
+channels for integration with google, indivo, etc.
+channels including applications like glucosurfer.  On a
+different hemisphere of the cloud there are channels for
+data and control messages between the data warehouses in
+the cloud with the logic that controls them and the
+devices and *other legitimate cloud controllers*.
+
+
+
+
