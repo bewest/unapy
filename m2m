@@ -1,0 +1,39 @@
+
+Nathan
+Bewest
+
+M2M - 
+  tons of modules
+  serial ports: speak AT
+  built in tcp/ip
+  built in microprocessor
+  high level language interpreter
+    * lua
+    * python
+    * ruby
+
+  DEV boards ~ $500
+
+Simpler Approach: SMS
+  cheaper boards
+  simpler interface
+
+
+
+http://www.sparkfun.com/products/9342
+
+Develop python script
+http://www.telit.com/en/products/gsm-gprs.php?p_id=12&p_ac=show&p=47
+
+Put script in.
+uart -> usb
+
+  * 
+
+Buy 3
+
+Need sim card: 
+  * add a cheap line to someone's account
+  * tmobile cheap line
+  * 
+

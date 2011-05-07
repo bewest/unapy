@@ -68,31 +68,97 @@ Follow Up
 ---------
 Howdy Ryan,
 
-Thanks for chatting with us.  We 
+Thanks for chatting with us.  We received the confirmation
+code, but became a little confused when it asked us for
+our credit card.  The UI is a little ambiguous... the
+screens before the credit card aren't clear about how much
+will be charged and when before asking for the credit
+card.
 
-  * timeline / deliverables
-    6 months, next 6 weeks critical.  Need equipment ASAP.
-    Resources next 2 months we have 1.6 people with unique
-    experience in this field.
-    Targeting "hello world" prototype to demonstrate the
-    application of cloud computing with mobile
-    saturation/realtime web.
+https://att.m2m.com/devkit/ Advertises something for $199
+https://att.m2m.com/cinterion/ is advertising for $999.
 
-  * shopping list: exact list
+We've done some shopping, I believe we are settled on
+something like http://www.sparkfun.com/products/9342 which
+only costs $150.  I'm prepared to buy several of these,
+which would exhaust most of our near term budget.
+
+Unfortunately I suspect $1,000 is outside of our budget.
+The credit card screen is ambiguous enough that I don't
+feel comfortable continuing without a little clarification
+on what charges will be incurred and when.
+
+We believe our goals are well aligned with the three
+objectives you laid out in our chat.  I imagine
+equipping a sizeable percentage of existing glucose
+meters with a cell module, and managing them through a
+cloud-based controller.  An online dashboard presence
+empowering users to share and interact with the data that
+composes their daily narrative will build a very sticky
+audience.  There are numerous business opportunities from
+selling the devices, to selling advertising space in front
+of an unusually fanatic audience.  While there are many
+possibilities to explore, the most pressing matter at the
+moment is developing a basic working prototype.
+
+We have a unique moment this summer where we have several
+people who can dedicate an unusually focused effort over
+the next 6 weeks or so to develop a working prototype.
+As it is, we'll probably end up ripping out our own SIM
+cards to test with.
+
+The initial version will be a basic proof of concept
+showing successful adaptation of an existing meter
+communicating with a cloud-based management dashboard.
+This is the kind of software I do daily for work, and the
+model can be enriched, extended, and repeated with other
+kinds of devices: asthma medication, blood pressure cuffs,
+to countless other devices.  At the heart of the idea is
+that users of a medical device require a side-by-side
+software simulation in order to correctly evaluate and the
+real world experience using the device.  As wonderful as
+many of these medical devices are, when a user visits the
+doctor, the first question is "is the device working?"  It
+turns out it's actually difficult to answer this question
+without a rich narrative over time of the simulated and
+expected operation of the device compared with
+observations and analysis of the device's logs.  In order
+for any application to provide low-maintenance auditing of
+therapy, the system will need to aggregate the data
+without user intervention.  Using SMS to transmit
+cryptographically sealed messages verified for intent will
+allow our system to provide a real time comparison of
+expected medical device behavior to what the user actually
+experiences.  This will lead to better decision making, and
+lower the barrier to communicating therapy data to
+doctors.  We're targeting diabetic blood glucose meters
+because of my overwhelming experience with them, and their
+availability.  From there we'll expand to modeling both
+the entire metabolic system, which will be useful to
+anyone trying to manage their weight, to collecting data
+from many kinds of devices including scales.  We believe
+our approach will allow us to forego any FDA testing,
+since we are merely aggregating logs from devices that are
+already in the wild, having been tested.
+
+We are eager to join a development program, especially one
+that would equip us with activated SIM cards for testing.
+Interoperability and data ubiquity are important guiding
+principles for us.  It is an embarrassment to the
+established industry players that they have chosen to
+ignore the opportunities for innovation in this area.
+We've heard that projects that line up well with ATT's
+goals often get some help, especially when it comes to
+budget issues.  Regardless, I'd love to hear back with
+some clarification about the structure of the program.
+
+Sincerely,
+-bewest
 
 
-  * address
-    Ship To:
-
-    Nathan?
-    32 Georgian Bay Dr.
-    Morganville, NJ 07751
-
-    4521 17th St. Apt 5
-    San Francisco, CA 94114
-
-  * overview
-    goals well aligned
+  Ben West
+  4521 17th St. Apt 5
+  San Francisco, CA 94114
 
 
 #####
