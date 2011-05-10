@@ -4,6 +4,7 @@ Parts
 
 Sparkfun will be providing most of our initial hardware.
 https://www.sparkfun.com/orders/365136
+They also offer ondemand PCG printing for very cheap.
 
 SIMS
 ~~~~
@@ -25,4 +26,14 @@ Subtotal  : 325.7000
 Shipping/Handling  : 21.3500
 Grand Total  : 347.0500
 
+
+Missing
+~~~~~~~
+Power.  We're thinking of using a battery, but there is an
+issue with charging and dealing with voltage.
+
+
+PS
+There is
+also some tricky stuff with the antenna.
 
