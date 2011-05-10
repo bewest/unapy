@@ -1,0 +1,82 @@
+
+
+
+---------- Forwarded message ----------
+From: SparkFun Customer Service <customerservice@sparkfun.com>
+Date: Mon, May 9, 2011 at 11:21 PM
+Subject: SFE Order Confirmation (365136)
+To: Ben West <bewest@gmail.com>
+
+
+Dear Ben West,
+
+Thank you for your recent SparkFun Electronics purchase!
+
+Order number : 365136
+Order date   : Tuesday, May 10, 2011
+
+You can review your full order at:
+
+https://www.sparkfun.com/orders/365136
+
+To check the status of your order at any time click "Order
+History" at the top of the right column on the www.sparkfun.com
+home page. You will need to log in. There you will see the
+status of your order and any tracking information that is
+available.
+
+This link will take you there directly:
+
+https://www.sparkfun.com/orders
+
+
+ORDER SUMMARY:
+
+2 - 15.9 - CEL-00675 - Quad-band Cellular Duck Antenna SMA  (7.9500 ea.)
+2 - 299.9 - CEL-09342 - GE865 Evaluation Board  (149.9500 ea.)
+2 - 9.9 - WRL-09145 - Interface Cable SMA to U.FL  (4.9500 ea.)
+
+Subtotal  : 325.7000
+Shipping/Handling  : 21.3500
+Grand Total  : 347.0500
+
+
+BILLING INFORMATION:
+
+Payment method: Credit Card
+Ben West
+4521 17th St. Apt 5
+San Francisco California 94114
+United States
+
+DELIVERY INFORMATION:
+
+Shipping method: UPS Next Day Air
+
+Ben West
+4521 17th St. Apt 5
+San Francisco California 94114
+United States
+
+Due to normal variations in order volume, it may take up to 3
+business days to get your order out. If you've got a pressing
+project, please call us at 303-284-0979 to see if it's
+possible to expedite your order.
+
+
+
+
+That's it! Once your order is shipped, you will receive an
+email with tracking information if available. Thank you again
+for shopping at SparkFun Electronics. Build something cool and
+let us know! We'd love to hear about your project.
+
+P.S.: Did you know SparkFun offers a custom PCB fabrication
+service at www.batchpcb.com? Have a look - we think you might
+like it.
+
+--
+SparkFun Electronics
+www.sparkfun.com
+
+
