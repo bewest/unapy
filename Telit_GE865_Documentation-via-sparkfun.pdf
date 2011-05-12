@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<title>GSM/GPRS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="content-language" content="en">
+<meta name="resource-type" content="document">
+<meta name="language" content="en">
+<meta http-equiv="expires" content="0">
+<meta name="revisit-after" content="1 days">
+<meta name="robots" content="index,follow">
+<meta name="googlebot" content="index,follow">
+<meta name="robots" content="NOODP">
+<meta name="rating" content="general">
+<meta name="keywords" content="telit, wireless, wireless solutions, m2m, gsm, gprs, edge, umts, hsdpa, cdma, hsupa">
+<meta name="DC.Subject" content="telit, wireless, wireless solutions, m2m, gsm, gprs, edge, umts, hsdpa, cdma, hsupa">
+<meta name="description" content="Leading global wireless communications technology company. Telit develops, produces and sells GSM/GPRS, UMTS/HSDPA and CDMA/EVDO modules for machine-to-machine communication (M2M).">
+<meta name="publisher" content="LARISSA by SIMOVATIVE" />
+<meta name="dc.publisher" content="LARISSA by SIMOVATIVE" />
+<meta name="date" content="WED, 11 MAY 2011 18:32:59 GMT" />
+<meta name="dc.date" content="WED, 11 MAY 2011 18:32:59 GMT" />
+<link rel="stylesheet" href="/styles/content.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/styles/forms.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/styles/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/styles/select.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/styles/telit.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/styles/forum.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<script src="/js/ufo.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/prototype.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+<script type="text/javascript" src="/js/niftycube.js"></script>
+<script type="text/javascript">
+NiftyLoad=function(){
+Nifty("div.form","big");
+}
+</script>
+
+</head>
+<body>
+<div id="page">
+<div id="header">
+<div id="logo_home"><a href="/en/"><img src="/img/telit.jpg" width="210" height="126" border="0"></a></div>
+
+<div style="float:left; width:500px;">
+<a href="http://www.telit.com/files/en/discover/press/1104_ENG_Telit_FactSheet_FINAL.pdf" target="_blank" style="padding-left:200px"><img src="/img/TEL_10084_FactSheetButton_101125.jpg" border="0" /></a>
+<a href="/en/about/contact/global-offices.php" style="padding-left:0px"><img src="/img/button_contact_us.jpg" border="0" /></a>
+</div>
+
+<div id="region"><img src="/img/en/iso_neu.jpg" width="51" height="66" style="float:left" />
+<div style="float:right">
+<script language="javascript" type="text/javascript">
+var ie4=document.all&&navigator.userAgent.indexOf("Opera")==-1;
+var ns6=document.getElementById&&!document.all;
+var ns4=document.layers;
+var hlo=false;
+function contains_ns6(a, b){ if(!b){return false;} while(b.parentNode){if((b=b.parentNode)==a){return true;}}return false;}
+function __hm(){if(window.menuobj){menuobj.thestyle.visibility=(ie4||ns6)? "hidden" : "hide";}}
+function __dh(e){if(ie4&&hlo&&!menuobj.contains(e.toElement)){__hm();}else if(ns6&&e.currentTarget!=e.relatedTarget&&hlo&&!contains_ns6(e.currentTarget,e.relatedTarget)){__hm();}}
+function __hlOL(e,state){
+if(state=="on") hlo=true;
+if(document.all){source_el=event.srcElement;}else if(document.getElementById){source_el=e.target;}
+if (source_el.className=="menuitems"){source_el.id=(state=="on")? "mouseoverstyle" : "";}else{while(source_el.id!="select_options"){
+source_el=document.getElementById? source_el.parentNode : source_el.parentElement;
+if (source_el.className=="menuitems"){source_el.id=(state=="on")? "mouseoverstyle" : "";}}
+}
+}
+function __l(l) {var l_x = 0;while (l!=null) {l_x += l.offsetLeft;l = l.offsetParent;}return l_x;}
+function __t(l) {var l_y = 0;while (l!=null) {l_y += l.offsetTop;l = l.offsetParent;}return l_y;}
+function __showOL(o,which){
+if (!document.all&&!document.getElementById&&!document.layers){return;}
+var options=new Array();
+// Regions
+options[0]='<div class="menuitems"><a href="/en/products/gsm-gprs.php?region=1">GLOBAL</a></div>';
+options[0]+='<div class="menuitems"><a href="/en/products/gsm-gprs.php?region=2">NORTH AMERICA</a></div>';
+// Languages
+	options[1]='<div class="menuitems"><a class="img" href="/en/products/gsm-gprs.php" style="background-image:url(/img/en.gif);">English</a></div>';
+	options[1]+='<div class="menuitems"><a class="img" href="/cn/products/gsm-gprs.php" style="background-image:url(/img/cn.gif);">Chinese</a></div>';
+	options[1]+='<div class="menuitems"><a class="img" href="/ko/products/gsm-gprs.php" style="background-image:url(/img/ko.gif);">Korean</a></div>';
+//options[1]+='<div class="menuitems"><a class="img" href="#" style="background-image:url(img/de.gif);">Deutsch</a></div>';
+menuobj=ie4? document.all.select_options : ns6? document.getElementById("select_options") : ns4? document.select_options : "";
+menuobj.thestyle=(ie4||ns6)? menuobj.style : menuobj;
+if (ie4||ns6) {menuobj.innerHTML=options[which];}else{menuobj.document.write('<layer name=gui bgColor=#FFFFFF width=150 onmouseout="__hm()">'+options[which]+'</layer>');menuobj.document.close();}
+menuobj.contentwidth=(ie4||ns6)? menuobj.offsetWidth : menuobj.document.gui.document.width;
+menuobj.contentheight=(ie4||ns6)? menuobj.offsetHeight : menuobj.document.gui.document.height;
+menuobj.thestyle.left=__l(o)+'px';
+menuobj.thestyle.top=(__t(o)+17)+'px';
+menuobj.thestyle.visibility="visible";return false;
+}
+</script>
+<div id="select_options" class="select_options" onMouseover="__hlOL(event,'on')" onMouseout="__hlOL(event,'off');__dh(event)"></div>
+<div id="select_region" onClick="__showOL(this, 0);">
+<div>GLOBAL</div>
+</div>
+<div id="select_language" onClick="__showOL(this, 1);">
+<img src="/img/en.gif" border="0">
+<div>English</div>
+</div>
+<div id="input_search">
+<form action="/en/search.php" name="search" method="post">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tbody>
+<tr>
+<td><input type="text" class="txt" name="search" value="Search..." onClick="this.value='';"></td>
+<td><input type="image" class="img" src="/img/submit.gif" width="15" height="12" border="0"></td>
+</tr>
+</tbody>
+</table>
+</form>
+</div>
+</div></div>
+</div>
+<div id="navigation_sub" style="background:url(/img/nav_blue.gif) 0 0 no-repeat;">
+<ul>
+<li><a href="/en/products.php" class="active" style="color:#17234B;" id="mainmenu_products"><img src="/img/en/Navi_Products_kl.gif" border="0" alt="Products" /></a>
+<ul class="products" id="submenu_products">
+<li><a href="/en/products/gsm-gprs.php" class="active">GSM/GPRS</a></li>
+<li><a href="/en/products/edge.php">EDGE</a></li>
+<li><a href="/en/products/umts-hsdpa.php">UMTS</a></li>
+<li><a href="/en/products/cdma.php">CDMA</a></li>
+<li><a href="/en/products/satellite.php">Satellite</a></li>
+<li><a href="/en/products/short-range-rf.php">Short Range RF</a></li>
+<li><a href="/en/products/where-to-buy.php">Where to Buy</a></li>
+<li><a href="/en/products/programming.php">Programming</a></li>
+<li><a href="/en/products/quality.php">Quality</a></li>
+<li><a href="/en/products/technical-support-center.php">Support</a></li>
+<li class="last"><a href="/en/products/download-zone.php">Download Zone</a></li>
+</ul>
+</li>
+<li><a href="/en/services.php" style="color:#0176ac;" id="mainmenu_services"><img src="/img/en/Navi_Services_kl.gif" border="0" alt="Services" /></a>
+<ul class="services" id="submenu_services">
+<li><a href="/en/services/infinita-services.php">Infinita Services</a></li>
+<li><a href="/en/services/fota.php">FOTA</a></li>
+<li><a href="/en/services/hardware-plus.php">Hardware Plus</a></li>
+<li><a href="/en/services/competence-c.php">Competence Centers</a></li>
+<li class="last"><a href="/en/services/technical-forum.php">Technical Forum</a></li>
+</ul>
+</li>
+<li><a href="/en/discover.php" style="color:#8A0022;" id="mainmenu_discover"><img src="/img/en/Navi_Discover_kl.gif" border="0" alt="Discover" /></a>
+<ul class="discover" id="submenu_discover">
+<li><a href="/en/discover/what-is-m2m.php">What is m2m?</a></li>
+<li><a href="/en/discover/customer-applications.php">Customer Applications</a></li>
+<li><a href="/en/discover/market-intelligence.php">Market Intelligence</a></li>
+<li><a href="/en/discover/telit-magazine.php">Telit Magazine</a></li>
+<li><a href="/en/discover/telit-media-center.php">Media Center</a></li>
+<li><a href="/en/discover/whitepapers.php">Whitepapers</a></li>
+<li class="last"><a href="/en/discover/events.php">Events</a></li>
+</ul>
+</li>
+<li class="last"><a href="/en/about.php" style="color:#DE8800;" id="mainmenu_about"><img src="/img/en/Navi_About_kl.gif" border="0" alt="About" /></a>
+<ul class="about" id="submenu_about">
+<li><a href="/en/about/company.php">Company</a></li>
+<li><a href="/en/about/management.php">Management</a></li>
+<li><a href="/en/about/bod.php">BoD</a></li>
+<li><a href="/en/about/investor-relations.php">Investor Relations</a></li>
+<li><a href="/en/about/partners.php">Partners</a></li>
+<li><a href="/en/about/careers.php">Careers</a></li>
+<li class="last"><a href="/en/about/contact.php">Contact</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<script type="text/javascript">
+	Menu.init('products');
+</script>
+
+<div id="content_sub">
+
+<div id="banner_sub" style="padding-top:10px">
+
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="962" height="235">
+	<param name="movie" value="/img/en/products/product-materials/flash-animations/prod_ge865-quad_5.swf" />
+	<param name="quality" value="high" />
+	<param name="menu" value="false" />
+	<param name="wmode" value="" />
+	<embed src="/img/en/products/product-materials/flash-animations/prod_ge865-quad_5.swf" wmode="" quality="high" menu="false" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="962" height="235"></embed>
+</object>
+
+
+</div>
+<div id="teaser_sub">
+<div id="navigation_left"><ul><li><a href="#">GSM/GPRS</a><ul><li><a href="?p_id=12&p_ac=show&p=17">Evaluation Kit</a></li><li><a href="?p_id=12&p_ac=show&p=2">GT863 Family</a></li><li><a href="?p_id=12&p_ac=show&p=3">GT864 Family</a></li><li><a href="?p_id=12&p_ac=show&p=7">GM862 Family</a></li><li><a href="?p_id=12&p_ac=show&p=8">GE863 Family</a></li><li><a href="?p_id=12&p_ac=show&p=89">GE864 Family</a></li><li><a class="active" href="?p_id=12&p_ac=show&p=47">GE865 Family</a><ul><li><a class="active" href="?p_id=12&p_ac=show&p=47">GE865-QUAD</a></li></ul></li><li><a href="?p_id=12&p_ac=show&p=93">GL865 Family</a></li><li><a href="?p_id=12&p_ac=show&p=91">GC864 Family</a></li><li><a href="/en/about/contact.php">Contact</a></li></ul></li></ul></div>
+</div>
+<div id="main_sub">
+	<div id="history"><a href="/index.php">Home</a> > <a href="/en/products/gsm-gprs.php">Products</a> > <a href="/en/products/gsm-gprs.php">GSM/GPRS</a> > <a href="/en/products/gsm-gprs.php?p_id=12&p_ac=show&p=47">GE865-QUAD</a></div>
+	<p><p>The new GE865 product family introduces the smallest GSM/GPRS Ball-Grid-Array (BGA) modules in the market.</p><p>The low profile and small size of the unique BGA package for the GE865-QUAD enable the design of extremely compact applications. Since connectors are eliminated, the solution cost is significantly reduced compared to conventional mounting. </p><p>With its ultra-compact design and extended temperature range, the Telit GE865 product line is the perfect platform for high-volume m2m applications and mobile data devices. Additional features such as integrated TCP/IP protocol stack and serial multiplexer extend functionality of the application at no additional cost.</p><p>The GE865 makes it possible to run the customer's application inside the module using Python Script Interpreter, thus making it the smallest, complete platform for m2m solutions.</p><p>All Telit modules, support Over-the-Air firmware update by means Premium FOTA Management. By embedding RedBend&rsquo;s vCurrent&reg; agent, a proven and battle-tested technology powering hundreds of millions of cellular handsets world-wide Telit is able to update its products by transmitting only a delta file, which represents the difference between one firmware version and another.</p><p>As a part of Telit&rsquo;s corporate policy of environmental protection, all products comply to the RoHS (Restriction of Hazardous Substances) directive of the European Union (EU Directive 2002/95/EG).</p></p>
+	<br /><br />
+	<a id="downloads" name="downloads" title="downloads"></a>
+	<h1>Downloads</h1>
+	
+	<h2 class="strich">User Guides</h2>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody>
+	
+	<tr>
+		<td width="85%">Telit_GE865-QUAD_Hardware_User_Guide_r12</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=1666">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_Modules_Software_User_Guide_r6</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=522">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_AT_Commands_Reference_Guide_r10</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=542">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_IP_Easy_User_ Guide_r10</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=573">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_Easy_Script_Python_r13</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=617">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_CMUX_User_Guide_r5</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=616">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_SIM_Access_Profile_User_Guide_r3</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=576">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	</tbody>
+	</table>
+	
+	
+	
+	
+	<br /><br />
+	<h2 class="strich">Application Notes</h2>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody>
+	
+	<tr>
+		<td width="85%">Telit_Audio_Settings_Application_Note_ r4</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=900">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_Battery_Charger_Design_Application_Note_r1</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=2648">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_Event_Monitor_Application_Note_r2</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=2025">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_Run_AT_Remotely_Application_Note_r4</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=2026">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=2787">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_SIM/USIM_Toolkit_Application_Note_r1</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=2086">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_PFM_Application_Note_r10</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=1472">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_PFM_Certification_Program_Application _Note_r2</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=1473">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	</tbody>
+	</table>
+	
+	
+	
+	<br /><br />
+	<h2 class="strich">Data Sheets</h2>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody>
+	
+	<tr>
+		<td width="85%">Telit_GE865-QUAD_Datasheet</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=1484">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">Telit_Product_Range_Cellular</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=724">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	<tr>
+		<td width="85%">telit2market_05_10</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=1665">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	</tbody>
+	</table>
+	
+	
+	
+	<br /><br />
+	<a name="certifications" title="certifications"></a>
+	<h1>Certifications and Product Description</h1>
+	<h2 class="strich" style="font-size:11px;">Certifications are included in the product description</h2>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody>
+	
+	<tr>
+		<td width="85%">Telit_GE865-QUAD_Product_Description_r4</td>
+		<td width="15%"><a class="pdf" href="/module/infopool/download.php?id=1591">PDF &gt;&gt;</a> </td>
+	</tr>
+	
+	</tbody>
+	</table>
+	
+</div>
+<div id="right_sub">
+	<p><strong>
+	<a class="right" href="#downloads">&gt; Downloads</a><br />
+	<a class="right" href="#certifications">&gt; Certifications</a><br />
+	<a class="right" href="/en/products/technical-support-center/faqs.php?p=47">&gt; FAQs</a></strong><br />
+	<a class="right" href="/en/services/technical-forum.php">&gt; Technical Forum</a></strong><br /><br />
+	<br /><br /><br /><br />
+	<img src='/img/en/products/product-materials/icons/telit_ge865-quad.gif' width='149' />
+
+	</p>
+</div>	<br />
+	<div id="footer">
+	<div style="padding-bottom:8px;">
+<a href="/en/about/contact/global-offices.php">Contact</a> |
+<a href="/en/discover/telit-media-center/newsletter.php">Newsletter</a> |
+<a href="/en/privacy-policy.php">Privacy Policy</a> |
+<a href="/en/rss-feeds.php"><img alt="RSS Feed" border="0" height="9" src="http://www.telit.com/img/feed-icon-9x9.gif" title="RSS Feed" width="9" /> RSS feeds</a> |
+<a href="/en/recommend-this-page.php">Recommend this page</a> |
+<a href="/en/site-feedback.php">Site Feedback</a> |
+<a href="/en/sitemap.php">Site Map</a> |
+<a href="/en/terms-of-use.php">Terms of Use</a> | Telit &copy; 2011 - All rights reserved</div>
+<div id="social_bookmarks">
+<img src="http://www.telit.com/img/bookmarks/footer_follow_us.jpg" border="0" /><a href="http://www.facebook.com/home.php?#/pages/Rome-Italy/Telit-Wireless-Solutions/136885348490?ref=ts" target="_blank"><img src="http://www.telit.com/img/bookmarks/footer_facebook.jpg" border="0" /></a>
+<a href="http://twitter.com/Telit_WS" target="_blank"><img src="http://www.telit.com/img/bookmarks/footer_twitter.jpg" border="0" /></a>
+<a href="http://www.youtube.com/telitcommunications" target="_blank"><img src="http://www.telit.com/img/bookmarks/footer_youtube.jpg" border="0" /></a>
+<a href="http://www.telit.com/en/rss-feeds.php"><img src="http://www.telit.com/img/bookmarks/footer_rss.jpg" border="0" /></a>
+<img src="http://www.telit.com/img/bookmarks/footer_trennen.jpg" border="0" />
+<a rel="nofollow" style="text-decoration:none;" href="http://www.mister-wong.de/" onclick="window.open('http://www.mister-wong.de/index.php?action=addurl&bm_url='+encodeURIComponent(location.href)+'&bm_notice=&bm_description='+encodeURIComponent(document.title)+'&bm_tags=');return false;" title="Bookmark: Mr. Wong"> <img id="Wong" src="http://www.telit.com/img/bookmarks/wong.gif" alt="Bookmark: Mr. Wong" name="wong" border="0"> </a>
+<a rel="nofollow" style="text-decoration:none;" href="http://digg.com/" onclick="window.open('http://digg.com/submit?phase=2&url='+encodeURIComponent(location.href)+'&bodytext=&tags=&title='+encodeURIComponent(document.title));return false;" title="Bookmark: Digg"> <img id="Digg" src="http://www.telit.com/img/bookmarks/digg.gif" alt="Bookmark: Digg" name="Digg" border="0"> </a>
+<a rel="nofollow" style="text-decoration:none;" href="http://del.icio.us/" onclick="window.open('http://del.icio.us/post?v=2&url='+encodeURIComponent(location.href)+'&notes=&tags=&title='+encodeURIComponent(document.title));return false;" title="Bookmark: Del.icio.us"> <img id="Delicious" src="http://www.telit.com/img/bookmarks/del.gif" alt="Bookmark: Del.icio.us" name="Delicious" border="0"> </a>
+<a rel="nofollow" style="text-decoration:none;" href="http://www.facebook.com/" onclick="window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(location.href)+'&t='+encodeURIComponent(document.title));return false;" title="Bookmark: Facebook"> <img id="Facebook" src="http://www.telit.com/img/bookmarks/facebook.gif" alt="Bookmark: Facebook" name="Facebook" border="0"> </a>
+<a rel="nofollow" style="text-decoration:none;" href="http://www.spurl.net/" onclick="window.open('http://www.spurl.net/spurl.php?v=3&tags=&title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(document.location.href));return false;" title="Bookmark: Spurl"> <img id="Spurl" src="http://www.telit.com/img/bookmarks/spurl.gif" alt="Bookmark: Spurl" name="Spurl" border="0"> </a>
+<a rel="nofollow" style="text-decoration:none;" href="http://www.google.com/" onclick="window.open('http://www.google.com/bookmarks/mark?op=add&bkmk='+encodeURIComponent(location.href)+'&annotation=&labels=&title='+encodeURIComponent(document.title));return false;" title="Bookmark: Google"> <img id="Google" src="http://www.telit.com/img/bookmarks/google.gif" alt="Bookmark: Google" name="Google" border="0"> </a>
+</div>
+	</div>
+</div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5076084-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>
