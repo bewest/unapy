@@ -1,0 +1,515 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+<A name=1></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-1_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-1_2.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-1_3.jpg"><br>
+&nbsp;<br>
+<b>SIM Access Profile User Guide&nbsp;<br></b>80000ST10029a Rev. 3 -&nbsp;2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=2></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-2_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-2_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+APPLICABILITY&nbsp;TABLE&nbsp;<br>
+&nbsp;<br>
+PRODUCT<br>
+GT863-PY<br>
+GT864-QUAD<br>
+GT864-PY<br>
+GM862-GPS<br>
+GC864-QUAD<br>
+GC864-DUAL<br>
+GC864-QUAD V2<br>
+GC864-DUAL&nbsp;V2<br>
+GE863-QUAD<br>
+GE863-GPS<br>
+GE863-SIM<br>
+GE863-PRO3<br>
+GE864-QUAD<br>
+GE864-QUAD V2<br>
+GE864-DUAL&nbsp;V2<br>
+GE864-QUAD Automotive&nbsp;V2<br>
+GE864-QUAD Atex<br>
+GE865-QUAD<br>
+GL865-DUAL<br>
+GL865-QUAD<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;2 of&nbsp;14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=3></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-3_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-3_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Contents&nbsp;<br>&nbsp;<br>
+1. &nbsp;Introduction ................................................................................................................&nbsp;&nbsp;5 <br>
+1.1. <br>
+Scope ................................................................................................................................ 5 <br>
+1.2. <br>
+Contact Information, Support&nbsp;...........................................................................................&nbsp;5 <br>
+1.3. <br>
+Text Conventions ..............................................................................................................&nbsp;6 <br>
+1.4. <br>
+Related Documents&nbsp;.......................................................................................................... 6 <br>
+1.5. <br>
+Document&nbsp;History&nbsp;.............................................................................................................&nbsp;6 <br>
+2. &nbsp;Technical characteristics ...........................................................................................&nbsp;7 <br>
+2.1. <br>
+Using a remote&nbsp;SIM card&nbsp;..................................................................................................&nbsp;7 <br>
+2.2. <br>
+Product architecture&nbsp;........................................................................................................&nbsp;7 <br>
+2.3. <br>
+Implementation&nbsp;feature ....................................................................................................&nbsp;8 <br>
+3. &nbsp;AT Command Description ...........................................................................................&nbsp;&nbsp;9 <br>
+3.1. <br>
+Remote SIM Enable - #RSEN............................................................................................&nbsp;9 <br>
+4. &nbsp;Remote SIM Message Command&nbsp;Description ............................................................11 <br>
+5. &nbsp;Remote SIM Typical Activation Scenario ....................................................................14 <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;3 of&nbsp;14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=4></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-4_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-4_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+DISCLAIMER&nbsp;<br>&nbsp;<br>The information contained in this document&nbsp;is the proprietary information of Telit&nbsp;<br>Communications S.p.A.&nbsp;and its&nbsp;affiliates (“TELIT”). &nbsp;<br>The contents are confidential and any disclosure to persons other than the officers,&nbsp;<br>employees, agents or subcontractors of the owner or licensee of this document,&nbsp;<br>without the prior written consent of Telit,&nbsp;is strictly prohibited.&nbsp;<br>Telit makes&nbsp;every effort&nbsp;to ensure&nbsp;the quality of the information it makes available.&nbsp;<br>Notwithstanding the foregoing,&nbsp;Telit&nbsp;does not make any&nbsp;warranty as to the information&nbsp;<br>contained herein,&nbsp;and does not accept any liability for any&nbsp;injury, loss or&nbsp;damage of&nbsp;any&nbsp;<br>kind incurred by use of or&nbsp;reliance upon the information.&nbsp;<br>Telit disclaims any and&nbsp;all&nbsp;responsibility&nbsp;for&nbsp;the&nbsp;application&nbsp;of the devices characterized&nbsp;<br>in this document, and notes that the application of the device must comply with the&nbsp;<br>safety standards of the&nbsp;applicable&nbsp;country, and where&nbsp;applicable,&nbsp;with&nbsp;the relevant&nbsp;<br>wiring rules.&nbsp;<br>Telit reserves the right&nbsp;to make modifications,&nbsp;additions and deletions to this document&nbsp;<br>due to typographical errors, inaccurate information, or improvements to programs&nbsp;<br>and/or equipment at any time and without notice. &nbsp;<br>Such changes will, nevertheless be incorporated&nbsp;into new editions of this document.&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>Copyright: Transmittal,&nbsp;reproduction, dissemination and/or editing of this document as&nbsp;<br>well as utilization of its&nbsp;contents and communication thereof to others without express&nbsp;<br>authorization are prohibited. Offenders will be held liable for payment of damages. All&nbsp;<br>rights are reserved. &nbsp;<br>&nbsp;<br>Copyright © Telit Communications S.p.A. 2011.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;4 of&nbsp;14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=5></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-5_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-5_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>1.</b>&nbsp;<br>
+<b>Introduction&nbsp;</b><br>
+The information presented in this document is believed to be&nbsp;accurate and reliable.&nbsp;<br>However, no responsibility is assumed by&nbsp;Telit Communications S.p.A. for its use, nor&nbsp;<br>any infringement of patents or other&nbsp;rights&nbsp;of third parties which may result from its&nbsp;<br>use. No license is granted by implication or otherwise under any patent rights of Telit&nbsp;<br>Communications S.p.A.&nbsp;other than for circuitry embodied in&nbsp;Telit products. This&nbsp;<br>document is subject to change&nbsp;without notice.&nbsp;<br>&nbsp;<br>
+1.1.<b>&nbsp;</b><br>
+Scope&nbsp;<br>
+The scope of&nbsp;the present document is to describe the Telit implementation of SAP (SIM&nbsp;<br>Access Profile).&nbsp;<br>
+1.2.<b>&nbsp;</b><br>
+Contact Information, Support&nbsp;<br>
+For general contact, technical support, to report documentation errors and to order&nbsp;<br>manuals, contact Telit’s&nbsp;Technical Support Center (TTSC) at:&nbsp;<br>
+&nbsp;<br>
+TS-EMEA@telit.com&nbsp;<br>TS-NORTHAMERICA@telit.com&nbsp;<br>TS-LATINAMERICA@telit.com&nbsp;<br>TS-APAC@telit.com&nbsp;<br>
+&nbsp;<br>
+Alternatively, use: &nbsp;<br>http://www.telit.com/en/products/technical-support-center/contact.php&nbsp;<br>
+3<br>T<br>U<br>
+U<br>3<br>T<br>
+For detailed information about where you can buy the Telit&nbsp;modules or for&nbsp;<br>recommendations on accessories and components visit: &nbsp;<br>http://www.telit.com&nbsp;<br>
+3<br>T<br>U<br>
+To register&nbsp;for product&nbsp;news and&nbsp;announcements or for&nbsp;product questions contact&nbsp;<br>Telit's Technical Support&nbsp;Center (TTSC).&nbsp;<br>Our aim is&nbsp;to make this guide as helpful as possible. Keep us informed of your&nbsp;<br>comments and suggestions for improvements.&nbsp;<br>Telit appreciates feedback from the users of our&nbsp;information.&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;5 of&nbsp;14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=6></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-6_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-6_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+1.3.<b>&nbsp;</b><br>
+Text Conventions&nbsp;<br>
+&nbsp;<br>
+Danger – This information MUST be followed&nbsp;or catastrophic equipment failure or&nbsp;<br>
+U<br>
+bodily injury may occur.&nbsp;<br>&nbsp;<br>Caution or Warning –&nbsp;Alerts the user to&nbsp;important points about integrating the&nbsp;<br>module, if these points are not followed, the module and end user equipment may&nbsp;<br>fail or malfunction.&nbsp;<br>&nbsp;<br>Tip or Information –&nbsp;Provides advice and suggestions&nbsp;that may&nbsp;be useful when&nbsp;<br>integrating the module.&nbsp;<br>&nbsp;<br>All dates are in ISO 8601 format, i.e.&nbsp;YYYY-MM-DD.&nbsp;<br>
+1.4.<b>&nbsp;</b><br>
+Related Documents&nbsp;<br>
+The following is a list of&nbsp;applicable documents downloadable from the Download Zone&nbsp;<br>section of Telit’s website&nbsp;http://www.telit.com&nbsp;<br>
+&nbsp;<br>
+[1]&nbsp;<br>
+Digital Cellular Telecommunications&nbsp;Systems (Phase 2+); AT&nbsp;Command&nbsp;set for&nbsp;<br>GSM Mobile Equipment (ME); GSM 07.07&nbsp;Version xxxx, Release xxxx&nbsp;&nbsp;<br>
+[2]&nbsp;<br>
+Digital Cellular Telecommunications&nbsp;Systems (Phase 2+); Terminal Equipment&nbsp;<br>to Mobile Station (TE-MS) &quot;Multiplexer&nbsp;Protocol&quot;; ETSI TS 101 369&nbsp;V7.1.0 (1999-<br>11), GSM 07.10 Version 7.1.0, Release 1999&nbsp;&nbsp;<br>
+[3]&nbsp;<br>
+Digital Cellular Telecommunications&nbsp;Systems&nbsp;(Phase 2+); &nbsp;Specification&nbsp;of the&nbsp;<br>Subscriber Identity Module - Mobile Equipment (SIM - ME) interface; GSM 11.11&nbsp;<br>Version xxxx, Release xxxx&nbsp;<br>
+[4]&nbsp;<br>
+CMUX Product Specification,&nbsp;Telit Communication&nbsp;SpA Document Id.&nbsp;<br>30268ST10299A&nbsp;<br>
+[5]&nbsp;<br>
+Bluetooth SIG Specification: SIM Access Profile,&nbsp;Interoperability Specification&nbsp;;&nbsp;<br>Version 10, Release 00&nbsp;<br>
+1.5.<b>&nbsp;</b><br>
+Document History&nbsp;<br>
+&nbsp;<br>
+Revision&nbsp;<br>
+Date&nbsp;<br>
+Changes&nbsp;<br>
+ISSUE#0&nbsp;<br>
+2007-03-23&nbsp;<br>
+Initial Release &nbsp;<br>
+ISSUE#1&nbsp;<br>
+2007-09-04&nbsp;<br>
+updated applicability table &nbsp;<br>
+ISSUE#2&nbsp;<br>
+2008-11-25&nbsp;<br>
+Updated applicability table with new P/Ns &nbsp;<br>added GE863-SIM, GE863-PRO3 and GE864-QUAD Automotive&nbsp;<br>
+ISSUE#3&nbsp;<br>
+2011-03-01&nbsp;<br>
+New Layout&nbsp;(Added chapter 1)&nbsp;<br>Updated Applicability table&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;6 of&nbsp;14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=7></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-7_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-7_2.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-7_3.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>2.</b>&nbsp;<br>
+<b>Technical characteristics&nbsp;</b><br>
+2.1.<b>&nbsp;</b><br>
+Using a remote SIM card&nbsp;<br>
+&nbsp;<br>
+The SIM Access Profile&nbsp;(SAP) defines a protocol and related procedures that allow&nbsp;<br>access to a remote SIM card through the serial&nbsp;port or, through an additional hardware,&nbsp;<br>using Bluetooth. For instance, this feature allows the user to access&nbsp;the&nbsp;SIM of&nbsp;its&nbsp;<br>handheld mobile phone, while using&nbsp;the car phone.&nbsp;<br>The basic system configuration includes a SAP Client implemented in the module,&nbsp;and&nbsp;<br>SAP Server, implemented in the&nbsp;handheld phone. The SAP Server has the&nbsp;electrical&nbsp;<br>access to the SIM and therefore it acts as a SIM&nbsp;card reader. It supports&nbsp;the SAP Client&nbsp;<br>in accessing and controlling the SIM.&nbsp;<br>The SAP Client accesses the information and services contained in the&nbsp;SIM as if&nbsp;it&nbsp;was&nbsp;<br>directly connected to SAP Client, in&nbsp;this case the GSM module. Therefore, this feature&nbsp;<br>allows the registration&nbsp;of the module in&nbsp;the GSM network using all the subscription&nbsp;<br>information&nbsp;stored in the SIM. It&nbsp;is&nbsp;also possible to access&nbsp;the phonebook and making a&nbsp;<br>call from the SAP Client using the information held in the SIM.&nbsp;<br>This feature&nbsp;is available&nbsp;enabling&nbsp;a&nbsp;special AT Command on&nbsp;a virtual port of the CMUX&nbsp;<br>interface.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Application&nbsp;<br>
+&nbsp;<br>
+including a&nbsp;GSM&nbsp;<br>
+module with SAP&nbsp;<br>
+&nbsp;<br>
+GSM&nbsp;phone with&nbsp;SAP&nbsp;<br>
+Client&nbsp;<br>
+Bluetooth link<br>
+Server&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+GSM&nbsp;network&nbsp;<br>
+&nbsp;<br>
+2.2.<b>&nbsp;</b><br>
+Product architecture&nbsp;<br>
+&nbsp;<br>
+The SAP feature allows&nbsp;the module to use the SIM of a remote SIM Server. This&nbsp;feature&nbsp;<br>is implemented using special AT Command on&nbsp;a Virtual circuit of the CMUX interface.&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;7 of&nbsp;14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=8></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-8_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-8_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+2.3.<b>&nbsp;</b><br>
+Implementation feature &nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;SAP is based on 7.10&nbsp;CMUX Basic Option used&nbsp;<br>&nbsp;&nbsp;SAP command are supported only on one User Selected virtual interface&nbsp;<br>&nbsp;&nbsp;Only SAP Client features&nbsp;(defined as mandatory in Bluetooth specification) are&nbsp;<br>
+supported &nbsp;<br>
+&nbsp;&nbsp;Logic hardware flow control shall be used on the Virtual instance selected for&nbsp;<br>
+the SAP command.&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;8 of&nbsp;14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=9></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-9_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-9_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>3.</b>&nbsp;<br>
+<b>AT&nbsp;Command Description&nbsp;</b><br>
+3.1.<b>&nbsp;</b><br>
+Remote SIM Enable - #RSEN&nbsp;<br>
+#RSEN –&nbsp;Remote SIM&nbsp;Enable&nbsp;<br>AT#RSEN=&lt;mode&gt;,&nbsp;<br>
+Set command is used to&nbsp;enable/disable the Remote SIM feature. The&nbsp;<br>
+[&lt;sapformat&gt;],&nbsp;<br>
+command returns&nbsp;ERROR&nbsp;if requested on a non multiplexed&nbsp;interface&nbsp;<br>
+[&lt;role&gt;],&nbsp;<br>
+&nbsp;<br>
+[&lt;muxch&gt;],&nbsp;<br>
+Parameter: &nbsp;<br>
+[&lt;beacon&gt;]&nbsp;<br>
+&lt;mode&gt;&nbsp;<br>&nbsp; 0 -&nbsp;disable&nbsp;<br>&nbsp; 1 -&nbsp;enable&nbsp;<br>&lt;sapformat&gt;&nbsp;<br>&nbsp; 0 -&nbsp;X-SAP (unsupported)&nbsp;<br>&nbsp; 1 -&nbsp;binary SAP (default)&nbsp;<br>&lt;role&gt;&nbsp;<br>&nbsp; 0 -&nbsp;remote SIM Client (default)&nbsp;<br>&nbsp; 1 -&nbsp;remote SIM Server (unsupported)&nbsp;<br>&lt;muxch&gt;&nbsp;- MUX Channel Number;&nbsp;mandatory if&nbsp;&lt;mode&gt;=1&nbsp;<br>
+and&nbsp;&lt;sapformat&gt;=1&nbsp;<br>
+&nbsp; 1..3&nbsp;<br>&lt;beacon&gt;&nbsp;-&nbsp;retransmition timer of SAP Connection Request&nbsp;<br>&nbsp; 0 -&nbsp;only one transmition (default)&nbsp;<br>&nbsp; 1..100 -&nbsp;timer interval in seconds.&nbsp;<br>&nbsp;<br>NOTES:&nbsp;<br>If the module has a SIM inserted, when it receives&nbsp;the enable&nbsp;<br>Command:&nbsp;<br>- de-register from the actual network&nbsp;<br>- de-initialize the current SIM.&nbsp;<br>&nbsp;<br>NOTE for&nbsp;&lt;sapformat&gt;=1&nbsp;(binary SAP): while RSEN is activate&nbsp;SAP&nbsp;<br>connection status is signalled with following URC:&nbsp;<br>&nbsp;<br>#RSEN: &lt;conn&gt;&nbsp;<br>where&nbsp;<br>&lt;conn&gt;&nbsp;- connection status&nbsp;<br>&nbsp; 0 -&nbsp;disconnected&nbsp;<br>&nbsp; 1 -&nbsp;connected&nbsp;<br>
+AT#RSEN?&nbsp;<br>
+Read command returns the connection status of Remote SIM feature&nbsp;<br>
+AT#RSEN=?&nbsp;<br>
+Test command returns all supported&nbsp;values of Remote SIM Enable&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;9 of&nbsp;14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=10></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-10_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-10_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+#RSEN –&nbsp;Remote SIM&nbsp;Enable&nbsp;<br>
+command&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;10 of 14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=11></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-11_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-11_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>4.</b>&nbsp;<br>
+<b>Remote SIM Message Command Description&nbsp;</b><br>
+&nbsp;<br>
+The module sends request commands to the client application through a binary&nbsp;<br>message that is crowned in the CMUX message. The client&nbsp;application&nbsp;shall extract&nbsp;the&nbsp;<br>message&nbsp;and send it to the SAP server, through the appropriate protocols (e.g.&nbsp;by&nbsp;<br>RFCOMM, that is the Bluetooth serial port emulation entity).&nbsp;<br>The client application shall extract all the messages sent by SAP server and put&nbsp;them&nbsp;<br>in the CMUX message, to&nbsp;send to the module.&nbsp;<br>&nbsp;<br>The module&nbsp;satisfies the following feature requirements:&nbsp;<br>
+&nbsp;&nbsp;Connection management&nbsp;<br>&nbsp;&nbsp;Transfer APDU&nbsp;<br>&nbsp;&nbsp;Transfer ATR&nbsp;<br>&nbsp;&nbsp;Power SIM on&nbsp;<br>&nbsp;&nbsp;Report Status&nbsp;<br>&nbsp;&nbsp;Error Handling&nbsp;<br>
+&nbsp;<br>
+Every feature needs some procedures support:&nbsp;<br>
+&nbsp;<br>
+Feature&nbsp;<br>
+Procedure&nbsp;<br>
+Connection Management&nbsp;<br>
+Connect&nbsp;<br>Report Status&nbsp;<br>Transfer ATR&nbsp;<br>Disconnection Initiated by the Client&nbsp;<br>Disconnection Initiated by the Server&nbsp;<br>
+Transfer APDU&nbsp;<br>
+Transfer APDU&nbsp;<br>
+Transfer ATR&nbsp;<br>
+Transfer ATR&nbsp;<br>
+Power SIM on&nbsp;<br>
+Power SIM on&nbsp;<br>Transfer ATR&nbsp;<br>
+Report Status&nbsp;<br>
+Report Status&nbsp;<br>
+Error Handling&nbsp;<br>
+Error Response&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Report Status, Disconnection Initiated by the Server&nbsp;and Error&nbsp;Response&nbsp;are&nbsp;<br>independent&nbsp;messages&nbsp;sent by server. The other procedures consist of couples of&nbsp;<br>messages,&nbsp;started by client.&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;11 of 14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=12></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-12_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-12_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+The format of the message is:&nbsp;<br>
+&nbsp;<br>
+Header&nbsp;<br>
+Number of&nbsp;<br>
+MsgId&nbsp;<br>
+Reserved<br>
+Payload&nbsp;<br>
+Parameters<br>
+Bytes&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+2<br>
+varies&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+The message header consists of three fields. The number of parameters gives the&nbsp;<br>parameters&nbsp;presented in the payload of the message. Each parameter is formatted&nbsp;as&nbsp;<br>shown in the following figure:&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Parameter 1&nbsp;<br>
+Parameter 2&nbsp;<br>
+Parameter&nbsp;<br>
+Padding&nbsp;<br>
+Par&nbsp;Id&nbsp;<br>
+Reserved<br>
+Parameter Value&nbsp;<br>
+Par Id&nbsp;<br>
+Reserved<br>
+Length&nbsp;<br>
+Bytes&nbsp;<br>
+Bytes&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+2&nbsp;<br>
+varies&nbsp;<br>
+0 - 3&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+The length of each parameter shall&nbsp;be a multiple of 4 bytes: some bytes are added after&nbsp;<br>Parameter value, if needed.&nbsp;<br>&nbsp;<br>&nbsp;<br>Next table describes the messages sent by the Client (module).&nbsp;<br>
+&nbsp;<br>
+Message Id&nbsp;<br>
+Message Description&nbsp;<br>
+Parameters Number&nbsp;<br>
+Parameter Value&nbsp;<br>
+0x00&nbsp;<br>
+Connection Request&nbsp;<br>
+1&nbsp;<br>
+Max Message&nbsp;Size&nbsp;<br>
+0x02&nbsp;<br>
+Disconnection Request&nbsp;<br>
+0&nbsp;<br>
+&nbsp;<br>
+0x05&nbsp;<br>
+Transfer APDU Request&nbsp;<br>
+1&nbsp;<br>
+APDU command&nbsp;<br>
+0x07&nbsp;<br>
+Transfer ATR Request&nbsp;<br>
+0&nbsp;<br>
+&nbsp;<br>
+0x0B&nbsp;<br>
+Power SIM on Request&nbsp;<br>
+0&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;12 of 14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=13></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-13_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-13_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+The server shall sent a response&nbsp;message after receiving a command&nbsp;message from&nbsp;<br>the client.&nbsp;Moreover, it&nbsp;can send&nbsp;messages to&nbsp;indicate the SIM status, the will of&nbsp;<br>disconnection and the presence of am invalid message from&nbsp;the Client. &nbsp;<br>&nbsp;<br>&nbsp;<br>Next table describes the message sent by the Server.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Message Id&nbsp;<br>
+Message Description&nbsp;<br>
+Parameters&nbsp;<br>
+Parameter Value&nbsp;<br>
+Number&nbsp;<br>
+0x01&nbsp;<br>
+Connection Response&nbsp;<br>
+1 or 2&nbsp;<br>
+First Parameter is the&nbsp;<br>connection status. The&nbsp;<br>optional second parameter is&nbsp;<br>the max message size&nbsp;<br>supported by Server&nbsp;<br>
+0x03&nbsp;<br>
+Disconnection Response&nbsp;<br>
+0&nbsp;<br>
+&nbsp;<br>
+0x04&nbsp;<br>
+Disconnection Indication&nbsp;<br>
+1&nbsp;<br>
+Disconnection Type&nbsp;<br>(Immediate type is the only&nbsp;<br>supported)&nbsp;<br>
+0x06&nbsp;<br>
+Transfer APDU Response&nbsp;<br>
+1 or 2&nbsp;<br>
+First Parameter is the Result&nbsp;<br>Code. Second parameter is&nbsp;<br>the APDU message (present&nbsp;<br>only if Result Code is OK)&nbsp;<br>
+0x08&nbsp;<br>
+Transfer ATR Response&nbsp;<br>
+1 or 2&nbsp;<br>
+First Parameter is the Result&nbsp;<br>Code. Second parameter is&nbsp;<br>the ATR message (present&nbsp;<br>only if Result Code is OK)&nbsp;<br>
+0x0C&nbsp;<br>
+Power SIM on Response&nbsp;<br>
+1&nbsp;<br>
+Result Code&nbsp;<br>
+0x11&nbsp;<br>
+Status Indication&nbsp;<br>
+1&nbsp;<br>
+Remote Card Status&nbsp;<br>
+0x12&nbsp;<br>
+Error Response&nbsp;<br>
+0&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+More details&nbsp;are available on&nbsp;Error! Reference&nbsp;source not&nbsp;found..&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;13 of 14&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=14></a><IMG src="Telit_SIM_Access_Profile_User_Guide_r3-14_1.jpg"><br>
+<IMG src="Telit_SIM_Access_Profile_User_Guide_r3-14_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;SAP User&nbsp;Guide&nbsp;<br>
+&nbsp;80000ST10029a&nbsp;Rev.&nbsp;3&nbsp;- 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>5.</b>&nbsp;<br>
+<b>Remote SIM Typical Activation Scenario&nbsp;</b><br>
+&nbsp;<br>
+The AT command that is used to&nbsp;enable/disable the Remote SIM feature is AT#RSEN.&nbsp;<br>Before issuing this command a multiplexed interface (CMUX) should&nbsp;be activated. In&nbsp;<br>order to get more detailed information about CMUX please&nbsp;refer to the CMUX User&nbsp;<br>Guide.&nbsp;<br>
+&nbsp;<br>
+AT#RSEN=1,1,0,2,0&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;// Activate SAP&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+//&nbsp;SAP&nbsp;Connected&nbsp;<br>
+&nbsp;<br>// On virtual&nbsp;COM 2&nbsp;<br>//&nbsp;&nbsp;Connection Request with Max Message Size&nbsp;= 300&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+0x00&nbsp;<br>
+0x01&nbsp;<br>
+0x00&nbsp;<br>
+0x00&nbsp;<br>
+0x00&nbsp;<br>
+0x00&nbsp;<br>
+0x00&nbsp;<br>
+0x02&nbsp;<br>
+0x01&nbsp;<br>
+0x2C&nbsp;<br>
+0x00&nbsp;<br>
+0x00&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>//&nbsp;&nbsp;Connection Response: OK&nbsp;<br>&nbsp;<br>&nbsp;<br>
+0x01&nbsp;<br>
+0x01&nbsp;<br>
+0x00&nbsp;<br>
+0x00&nbsp;<br>
+0x01&nbsp;<br>
+0x00&nbsp;<br>
+0x00&nbsp;<br>
+0x01&nbsp;<br>
+0x00&nbsp;<br>
+0x00&nbsp;<br>
+0x00&nbsp;<br>
+0x00&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>…&nbsp;<br>…&nbsp;<br>&nbsp;<br>
+#QSS: 1&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+// SIM is inserted&nbsp;<br>
+&nbsp;<br>AT+CPIN?&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+// Local SIM is Deactivated and Remote needs &nbsp;<br>
++CPIN: SIM PIN&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+// PIN&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT+CPIN=1234&nbsp;<br>OK&nbsp;<br>#QSS:&nbsp;<br>
+2&nbsp;<br>
+&nbsp; &nbsp;//&nbsp;<br>
+PIN&nbsp;<br>
+Unlocked&nbsp;<br>
+...&nbsp;<br>...&nbsp;<br>&nbsp;<br>&nbsp;<br>#QSS: 3 &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; // SIM READY &nbsp;( SMS and Phonebook access is possible)&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;14 of 14&nbsp;<br>
+&nbsp;<br>
+<hr>
+</BODY>
+</HTML>

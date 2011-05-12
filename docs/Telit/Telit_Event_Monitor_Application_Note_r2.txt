@@ -1,0 +1,617 @@
+Event Monitor Application Note
+80000ST10028a Rev.2 – 2010-10-04
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+APPLICABILITY TABLE
+PRODUCT
+GT863-PY
+GT864-QUAD
+GT864-PY
+GM862-QUAD-PY
+GM862-QUAD
+GM862-GPS
+GC864-PY
+GC864-QUAD
+GC864-PY w/ SIM holder
+GC864-DUAL
+GE863-PY
+GE863-QUAD
+GE863-GPS
+GE863-SIM
+GE863-PRO3
+GE864-PY
+GE864-QUAD
+GE864-QUAD V2
+GE864-DUAL V2
+GE864-QUAD AUTOMOTIVE
+GE864-QUAD AUTOMOTIVE V2
+GE864-QUAD ATEX
+GE865-QUAD
+GL865-DUAL
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 2 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+SW Version
+7.03.02 / 7.02.07
+10.0x.xx2
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 3 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+Contents
+1.
+
+INTRODUCTION .................................................................................................................................... 6
+1.1.
+1.2.
+1.3.
+1.4.
+
+2.
+
+CONTACT INFORMATION, SUPPORT ....................................................................................................................... 6
+TEXT CONVENTIONS............................................................................................................................................. 7
+RELATED DOCUMENTS ......................................................................................................................................... 7
+DOCUMENT HISTORY ........................................................................................................................................... 7
+
+EVENT MONITOR .................................................................................................................................. 8
+2.1.
+
+DESCRIPTION ...................................................................................................................................................... 8
+
+2.2.
+
+REQUIREMENTS ................................................................................................................................................ 14
+
+2.1.1.
+2.1.2.
+2.1.3.
+2.1.4.
+2.1.5.
+2.1.6.
+2.1.7.
+2.1.8.
+2.1.9.
+2.1.10.
+
+Battery voltage drop ............................................................................................................................... 9
+DTR signal status.................................................................................................................................... 9
+Network roaming state ........................................................................................................................ 10
+GPRS context deactivation ................................................................................................................... 10
+Call rings number ................................................................................................................................. 11
+Module start-up .................................................................................................................................... 11
+Network registration ............................................................................................................................ 12
+GPIO pin status monitoring .................................................................................................................. 12
+ADC pin voltage threshold exceeding .................................................................................................. 13
+ADC pin voltage threshold drop ........................................................................................................... 13
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 4 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+DISCLAIMER
+The information contained in this document is the proprietary information of Telit
+Communications S.p.A. and its affiliates (“TELIT”). The contents are confidential and
+any disclosure to persons other than the officers, employees, agents or subcontractors
+of the owner or licensee of this document, without the prior written consent of Telit, is
+strictly prohibited.
+Telit makes every effort to ensure the quality of the information it makes available.
+Notwithstanding the foregoing, Telit does not make any warranty as to the information
+contained herein, and does not accept any liability for any injury, loss or damage of any
+kind incurred by use of or reliance upon the information.
+Telit disclaims any and all responsibility for the application of the devices characterized
+in this document, and notes that the application of the device must comply with the
+safety standards of the applicable country, and where applicable, with the relevant
+wiring rules.
+Telit reserves the right to make modifications, additions and deletions to this document
+due to typographical errors, inaccurate information, or improvements to programs
+and/or equipment at any time and without notice. Such changes will, nevertheless be
+incorporated into new editions of this application note.
+Copyright: Transmittal, reproduction, dissemination and/or editing of this document as
+well as utilization of its contents and communication thereof to others without express
+authorization are prohibited. Offenders will be held liable for payment of damages. All
+rights are reserved.
+Copyright © Telit Communications SpA 2010.
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 5 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+1.
+
+Introduction
+The information presented in this document is believed to be accurate and reliable.
+However, no responsibility is assumed by Telit Communications S.p.A. for its use, nor
+any infringement of patents or other rights of third parties which may result from its
+use. No license is granted by implication or otherwise under any patent rights of Telit
+Communications S.p.A. other than for circuitry embodied in Telit products. This
+document is subject to change without notice.
+
+1.1.
+
+Contact Information, Support
+For general contact, technical support, to report documentation errors and to order
+manuals, contact Telit Technical Support Center (TTSC) at:
+TS-EMEA@telit.com
+TS-NORTHAMERICA@telit.com
+TS-LATINAMERICA@telit.com
+TS-APAC@telit.com
+Alternatively, use:
+http://www.telit.com/en/products/technical-support-center/contact.php
+For detailed information about where you can buy the Telit modules or for
+recommendations on accessories and components visit:
+http://www.telit.com
+To register for product news and announcements or for product questions contact Telit
+Technical Support Center (TTSC).
+Our aim is to make this guide as helpful as possible. Keep us informed of your
+comments and suggestions for improvements.
+Telit appreciates feedback from the users of our information.
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 6 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+1.2.
+
+Text Conventions
+Danger – This information MUST be followed or catastrophic equipment failure or
+bodily injury may occur.
+Caution or Warning – Alerts the user to important points about integrating the
+module, if these points are not followed, the module and end user equipment may
+fail or malfunction.
+Tip or Information – Provides advice and suggestions that may be useful when
+integrating the module.
+All dates are in ISO 8601 format, i.e. YYYY-MM-DD.
+
+1.3.
+
+Related Documents
+•
+
+1.4.
+
+AT Commands Reference guide, 80000ST10025a
+
+Document History
+ISSUE#0
+ISSUE #1
+
+R e v i si o n
+
+Date
+Changes
+2009-08-28 Release First ISSUE# 0
+2010-05-07 Added note on alerts section
+
+ISSUE#2
+
+2010-10-04 Added GL865-DUAL to the applicability table
+
+Added note regarding STARTUP event on alerts section
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 7 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+2.
+
+EVENT MONITOR
+
+2.1.
+
+Description
+This service allows an user to associate an AT command to a specified event monitored
+from the module.
+The EVENT MONITOR service is configured and enabled by the following commands:
+AT#ENAEVMONICFG=3,1,2
+
+AT#ENAEVMONI=1
+
+// the service is configured to run on the third
+// instance, the unsolicited is enabled and the
+// timeout for the response to the AT commands
+// is set to 2 minutes
+// the service is enabled
+
+At this point one or more events can be configured and enabled. The available events
+are the following:
+VBATT
+DTR
+ROAM
+CONTDEACT
+RING
+STARTUP
+REGISTERED
+GPIOx (with x = 1,2,3,4,5)
+ADCH1
+ADCL1
+
+Battery voltage threshold drop
+Data Terminal Ready signal status monitoring
+Network roaming state
+GPRS context deactivation
+Call rings number
+Module start-up (with or without SIM)
+Network registration (to home network or in roaming)
+after the start-up and the SMS ordering
+GPIO pin status monitoring
+ADC pin voltage threshold exceeding
+ADC pin voltage threshold drop
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 8 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+2.1.1.
+
+Battery voltage drop
+If the event to monitor is the battery voltage drop, then the parameters to configure
+are:
+• Voltage threshold
+AT#EVMONI=”VBATT”,0,1,400
+
+//the threshold of 4 is set
+
+Time interval (in seconds) after that, if the voltage keeps being below the
+threshold, the AT command is issued
+AT#EVMONI=”VBATT”,0,2,10
+//the interval of 10 seconds is set
+•
+
+• AT command to issue when the threshold drop is permanent
+AT#EVMONI=”VBATT”,0,0,”AT#CMGS=+39346XXXXX,\22Battery low\22”
+// an SM will be sent to the number +39346XXXXX containing
+// the text Battery low
+The voltage battery monitoring is enabled issuing the following command:
+AT#EVMONI=”VBATT”,1
+(The enabling can be set also setting to 1 the second AT command parameter during
+one of the above 3 configurations)
+
+2.1.2.
+
+DTR signal status
+If the event to monitor is the DTR signal status, then the parameters to configure are:
+•
+
+Signal status: “high” or “low”
+AT#EVMONI=”DTR”,0,1,1
+
+//the status to monitor is the “high” one
+
+•
+
+Time interval (in seconds) after that, if the DTR signal status keeps being, the AT
+command is issued
+AT#EVMONI=”DTR”,0,2,50
+//the interval of 50 seconds is set
+
+•
+
+AT command to issue when the DTR signal status drop is permanent
+AT#EVMONI=”DTR”,0,0,”AT#CMGS=+39346XXXXX,\22DTR high\22”
+//an SM will be sent to the number +39346XXXXX containing the text DTR high
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 9 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+The DTR signal status monitoring is enabled issuing the following command:
+AT#EVMONI=”DTR”,1
+(The enabling can be set also setting to 1 the second AT command parameter during
+one of the above 3 configurations)
+
+2.1.3.
+
+Network roaming state
+If the event to monitor is the network roaming state, then the parameter to configure is:
+•
+
+AT command to issue when the network roaming state is happened
+AT#EVMONI=”ROAM”,0,0,”AT#CMGS=+39346XXXXX,\22Roaming\22”
+//an SM will be sent to the number +39346XXXXX containing the text Roaming
+
+The network roaming state monitoring is enabled issuing the following command:
+AT#EVMONI=”ROAM”,1
+(The enabling can be set also setting to 1 the second AT command parameter during
+the above configuration)
+
+2.1.4.
+
+GPRS context deactivation
+If the event to monitor is the GPRS context deactivation, then the parameter to
+configure is:
+
+• AT command to issue when the GPRS context is deactivated
+AT#EVMONI=”CONTDEACT”,0,0,”AT#CMGS=+39346XXXXX,\22Context deactivation\22”
+//an SM will be sent to the number +39346XXXXX containing the text Context deactivation
+The GPRS context deactivation monitoring is enabled issuing the following command:
+AT#EVMONI=”CONTDEACT”,1
+(The enabling can be set also setting to 1 the second AT command parameter during
+the above configuration)
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 10 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+2.1.5.
+
+Call rings number
+If the event to monitor is the call rings number, then the parameters to configure are:
+•
+
+•
+
+Call rings number
+AT#EVMONI=”RING”,0,1,5
+
+//the call rings to count are 5
+
+AT command to issue when the set call rings number is reached
+AT#EVMONI=”RING”,0,0,”AT#CMGS=+39346XXXXX,\22call rings\22”
+//an SM will be sent to the number +39346XXXXX containing the text call
+
+rings
+
+The call rings number monitoring is enabled issuing the following command:
+AT#EVMONI=”RING”,1
+(The enabling can be set also setting to 1 the second AT command parameter during
+one of the above 2 configurations)
+
+2.1.6.
+
+Module start-up
+If the event to monitor is the module start-up, then the parameter to configure is:
+AT command to issue when the module start-up (with or without SIM) is
+happened
+AT#EVMONI=”STARTUP”,0,0,”AT#CMGW=+39346XXXXX,\22module start-up\22”
+//an SM will be stored containing the text module start-up
+•
+
+The module start-up monitoring is enabled issuing the following command:
+AT#EVMONI=”STARTUP”,1
+(The enabling can be set also setting to 1 the second AT command parameter during
+the above configuration)
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 11 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+2.1.7.
+
+Network registration
+If the event to monitor is the network registration, then the parameter to configure is:
+AT command to issue when the module has been registered to home network or
+in roaming after the start-up
+AT#EVMONI=”REGISTERED”,0,0,”AT#CMGS=+39346XXXXX,\22module registered\22”
+//an SM will be sent to the number +39346XXXXX containing the text module registered
+•
+
+The network registration monitoring is enabled issuing the following command:
+AT#EVMONI=”REGISTERED”,1
+(The enabling can be set also setting to 1 the second AT command parameter during
+the above configuration)
+
+2.1.8.
+
+GPIO pin status monitoring
+There is the possibility to monitor the status of up till 5 different GPIO pins: the 5
+different events are selected using the 5 labels GPIO1, GPIO2, GPIO3, GPIO4 and GPIO5
+as first parameter of #EVMONI command. The parameters to configure are:
+•
+
+GPIO pin to monitor
+AT#EVMONI=”GPIO1”,0,1,4
+
+//the GPIO pin 4 is set for the event “GPIO1"
+
+•
+
+GPIO pin status: “high” or “low”
+AT#EVMONI=”GPIO1”,0,2,1 //the GPIO pin status to monitor is the “high” one
+
+•
+
+Time interval (in seconds) after that, if the GPIO pin status keeps being, the AT
+command is issued
+AT#EVMONI=”GPIO1”,0,3,5 //the interval of 5 seconds is set
+
+•
+
+AT command to issue when the threshold drop is permanent
+AT#EVMONI=”GPIO1”,0,0,”AT#CMGS=+39346XXXXX,\22GPIO 4 high\22”
+//an SM will be sent to the number +39346XXXXX containing the text GPIO 4 high
+
+The GPIO pin status monitoring is enabled issuing the following command:
+AT#EVMONI=”GPIO1”,1
+(The enabling can be set also setting to 1 the second AT command parameter during
+one of the above 4 configurations)
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 12 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+2.1.9.
+
+ADC pin voltage threshold exceeding
+If the event to monitor is the ADC pin voltage threshold exceeding, then the parameters
+to configure are:
+•
+
+ADC pin to monitor
+AT#EVMONI=”ADCH1”,0,1,2 //the ADC pin 2 is set
+
+•
+
+Voltage threshold
+AT#EVMONI=”ADCH1”,0,2,1500
+
+•
+
+//the threshold of 1500 mV is set
+
+Time interval (in seconds) after that, if the voltage keeps being above the
+threshold, the AT command is issued
+AT#EVMONI=”ADCH1”,0,3,10 //the interval of 10 seconds is set
+
+AT command to issue when the threshold exceeding is permanent
+AT#EVMONI=”ADCH1”,0,0,”AT#CMGS=+39346XXXXX,\22ADC pin 2 high\22”
+//an SM will be sent to the number +39346XXXXX containing the text ADC pin 2 high
+•
+
+The ADC pin voltage threshold exceeding monitoring is enabled issuing the following
+command:
+AT#EVMONI=”ADCH1”,1
+(The enabling can be set also setting to 1 the second AT command parameter during
+one of the above 4 configurations)
+
+2.1.10.
+
+ADC pin voltage threshold drop
+If the event to monitor is the ADC pin voltage threshold DROP, then the parameters to
+configure are:
+•
+
+•
+
+•
+
+ADC pin to monitor
+AT#EVMONI=”ADCL1”,0,1,2
+
+//the ADC pin 2 is set
+
+Voltage threshold
+AT#EVMONI=”ADCL1”,0,2,500
+
+//the threshold of 500 mV is set
+
+Time interval (in seconds) after that, if the voltage keeps being below the
+threshold, the AT command is issued
+AT#EVMONI=”ADCL1”,0,3,10 //the interval of 10 seconds is set
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 13 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+AT command to issue when the threshold drop is permanent
+AT#EVMONI=”ADCL1”,0,0,”AT#CMGS=+39346XXXXX,\22ADC pin 2 low\22”
+//an SM will be sent to the number +39346XXXXX containing the text ADC pin 2 low
+•
+
+The ADC pin voltage threshold drop monitoring is enabled issuing the following
+command:
+AT#EVMONI=”ADCL1”,1
+(The enabling can be set also setting to 1 the second AT command parameter during
+one of the above 4 configurations)
+
+2.2.
+
+Requirements
+•
+
+When the EVENT MONITOR service is enabled setting to 1 the parameter <mod>
+of the AT command #ENAEVMONI, then the AT instance specified by the
+parameter <muxInstance> of the AT command #ENAEVMONICFG is reserved to
+run the AT commands associated to the monitored event
+
+•
+
+If the EVENT MONITOR service is disabled setting to 0 the parameter <mod> of
+the AT command #ENAEVMONI, then the used AT instance is returned to the
+previous user, if there is
+
+•
+
+The <mod> of the AT command #ENAEVMONI and <muxInstance> parameter of
+the AT command #ENAEVMONICFG are stored in the NVM. At boot, if the <mod>
+parameter is set to 1, then the AT instance specified in the <muxInstance> is
+automatically reserved to run the AT commands associated to the monitored
+event
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 14 of 15
+
+Event Monitor Application Note
+
+80000ST10028a Rev. 0 – 2009-05-07
+
+ALERTS:
+When an AT instance is reserved for the EVENT MONITOR service, then every other
+request to use it, coming from other services, is refused: only the OTA service can
+subtract the AT instance reserved to EVENT MONITOR service.
+The AT command to issue when an event has been happened, has to be set with a string
+starting with the 2 characters AT (or at). After the “AT” string there are the commands
+(for example: AT+CGMR;+CGSN). The maximum length of AT command string is 96
+characters. If the string contains the character ”, then it has to be replaced with the 3
+characters \22.
+If the AT command +CFUN=0 is associated to the DTR event, it has effect only if the
+corresponding URC (see command #ENAEVMONICFG) is disabled
+If the GPIO pin direction is set to 2, i.e. “Alternate Functions”, (see command #GPIO),
+the GPIO pin status cannot be monitored, because it has no meaning.
+The commands that enter in online mode connection (like #SD, #FTPGET, #FTPPUT,
+and so on) have to be avoided because they cause a block of the EVMONI mechanism
+until the module reboots after timeout set with AT#ENAEVMONICFG command expires.
+When the module powers on in alarm mode, the STARTUP event is not triggered. The
+AT command AT#WAKE has to be issued to enter the normal operating mode and to
+trigger the STARTUP event.
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Page 15 of 15
+
+

@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+<A name=1></a><IMG src="Telit_Battery_Charger_Design_Application_Note_r1-1_1.jpg"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-1_2.png"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-1_3.jpg"><br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<b>Battery&nbsp;Charger Design&nbsp;<br>Application&nbsp;Note&nbsp;<br></b>80000nt10042a&nbsp;Rev.1&nbsp;‚Äì&nbsp;2010-10-04&nbsp;&nbsp;&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=2></a><IMG src="Telit_Battery_Charger_Design_Application_Note_r1-2_1.jpg"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-2_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;Battery&nbsp;Charger&nbsp;Design&nbsp;Application&nbsp;Note&nbsp;<br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#1">80000nt10042a&nbsp;Rev.1&nbsp;‚Äì&nbsp;2010-10-04</a>&nbsp;<br>
+&nbsp;<br>
+APPLICABILITY&nbsp;TABLE&nbsp;<br>
+&nbsp;<br>
+PRODUCT&nbsp;<br>
+&nbsp;<br>GC864-QUAD&nbsp;V2&nbsp;<br>
+GC864-DUAL&nbsp;V2&nbsp;<br>
+GE864-QUAD&nbsp;V2&nbsp;<br>
+GE864-DUAL&nbsp;V2&nbsp;<br>
+GE864-QUAD&nbsp;AUTOMOTIVE&nbsp;V2&nbsp;<br>
+GE865-QUAD&nbsp;<br>
+GL865-DUAL&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;written&nbsp;authorization&nbsp;from Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved.&nbsp;&nbsp;&nbsp;<br>
+Page&nbsp;2&nbsp;of&nbsp;9&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=3></a><IMG src="Telit_Battery_Charger_Design_Application_Note_r1-3_1.jpg"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-3_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;Battery&nbsp;Charger&nbsp;Design&nbsp;Application&nbsp;Note&nbsp;<br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#1">80000nt10042a&nbsp;Rev.1&nbsp;‚Äì&nbsp;2010-10-04</a>&nbsp;<br>
+&nbsp;<br>
+<b>Disclaimer&nbsp;<br></b>&nbsp;<br>The information contained&nbsp;in this&nbsp;document&nbsp;is&nbsp;the&nbsp;proprietary&nbsp;information&nbsp;of&nbsp;Telit&nbsp;<br>
+Communications&nbsp;S.p.A.&nbsp;and&nbsp;its&nbsp;affiliates&nbsp;(‚ÄúTELIT‚Äù).&nbsp;<br>The contents&nbsp;are confidential&nbsp;and&nbsp;any&nbsp;disclosure&nbsp;to persons&nbsp;other&nbsp;than&nbsp;the&nbsp;officers,&nbsp;<br>
+employees,&nbsp;agents&nbsp;or&nbsp;subcontractors&nbsp;of&nbsp;the&nbsp;owner or&nbsp;licensee&nbsp;of&nbsp;this&nbsp;document,&nbsp;<br>
+without&nbsp;the prior&nbsp;written&nbsp;consent&nbsp;of&nbsp;Telit,&nbsp;is&nbsp;strictly&nbsp;prohibited.&nbsp;<br>Telit&nbsp;makes&nbsp;every&nbsp;effort&nbsp;to ensure&nbsp;the quality&nbsp;of&nbsp;the information&nbsp;it&nbsp;makes&nbsp;available.&nbsp;<br>
+Notwithstanding&nbsp;the&nbsp;foregoing,&nbsp;Telit&nbsp;does&nbsp;not&nbsp;make any&nbsp;warranty&nbsp;as&nbsp;to&nbsp;the&nbsp;<br>
+information contained&nbsp;herein,&nbsp;and&nbsp;does&nbsp;not&nbsp;accept&nbsp;any&nbsp;liability&nbsp;for any&nbsp;injury,&nbsp;loss&nbsp;or&nbsp;<br>
+damage of&nbsp;any&nbsp;kind&nbsp;incurred&nbsp;by&nbsp;use of&nbsp;or&nbsp;reliance&nbsp;upon&nbsp;the information.&nbsp;<br>Telit&nbsp;disclaims&nbsp;any&nbsp;and&nbsp;all&nbsp;responsibility&nbsp;for&nbsp;the&nbsp;application&nbsp;of&nbsp;the&nbsp;devices&nbsp;<br>
+characterized&nbsp;in this&nbsp;document,&nbsp;and&nbsp;notes&nbsp;that&nbsp;the application&nbsp;of&nbsp;the device must&nbsp;<br>
+comply&nbsp;with&nbsp;the&nbsp;safety standards&nbsp;of&nbsp;the&nbsp;applicable&nbsp;country,&nbsp;and&nbsp;where&nbsp;applicable,&nbsp;<br>
+with&nbsp;the relevant&nbsp;wiring&nbsp;rules.&nbsp;<br>Telit&nbsp;reserves&nbsp;the right&nbsp;to&nbsp;make modifications, additions&nbsp;and&nbsp;deletions&nbsp;to&nbsp;this&nbsp;<br>
+document&nbsp;due&nbsp;to&nbsp;typographical&nbsp;errors,&nbsp;inaccurate&nbsp;information,&nbsp;or improvements&nbsp;to&nbsp;<br>
+programs&nbsp;and/or&nbsp;equipment&nbsp;at&nbsp;any&nbsp;time&nbsp;and&nbsp;without&nbsp;notice.&nbsp;<br>Such changes&nbsp;will,&nbsp;nevertheless&nbsp;be&nbsp;incorporated&nbsp;into&nbsp;new&nbsp;editions&nbsp;of&nbsp;this&nbsp;document.&nbsp;<br>&nbsp;<br>&nbsp;<br>Copyright:&nbsp;Transmittal,&nbsp;reproduction,&nbsp;dissemination and/or editing&nbsp;of&nbsp;this&nbsp;document&nbsp;<br>
+as&nbsp;well&nbsp;as&nbsp;utilization&nbsp;of&nbsp;its&nbsp;contents&nbsp;and&nbsp;communication&nbsp;thereof&nbsp;to&nbsp;others&nbsp;without&nbsp;<br>
+express&nbsp;authorization are prohibited.&nbsp;Offenders&nbsp;will&nbsp;be held&nbsp;liable for payment&nbsp;of&nbsp;<br>
+damages.&nbsp;All&nbsp;rights&nbsp;are&nbsp;reserved.&nbsp;<br>&nbsp;<br>Copyright&nbsp;¬©&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;2010.&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;written&nbsp;authorization&nbsp;from Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved.&nbsp;&nbsp;&nbsp;<br>
+Page&nbsp;3&nbsp;of&nbsp;9&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=4></a><IMG src="Telit_Battery_Charger_Design_Application_Note_r1-4_1.jpg"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-4_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;Battery&nbsp;Charger&nbsp;Design&nbsp;Application&nbsp;Note&nbsp;<br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#1">80000nt10042a&nbsp;Rev.1&nbsp;‚Äì&nbsp;2010-10-04</a>&nbsp;<br>
+&nbsp;<br>
+<b>Contents&nbsp;</b><br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#5">1.&nbsp;&nbsp;Introduction&nbsp;...........................................................................................................&nbsp;5&nbsp;</a><br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#5">1.1.&nbsp;&nbsp;Scope&nbsp;............................................................................................................................&nbsp;5&nbsp;<br>1.2.&nbsp;&nbsp;Audience&nbsp;.......................................................................................................................&nbsp;5&nbsp;<br>1.3.&nbsp;&nbsp;Contact Information,&nbsp;Support&nbsp;......................................................................................&nbsp;5&nbsp;<br></a><a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#6">1.4.&nbsp;&nbsp;Document&nbsp;Organization&nbsp;...............................................................................................&nbsp;6&nbsp;<br>1.5.&nbsp;&nbsp;Text Conventions&nbsp;..........................................................................................................&nbsp;6&nbsp;<br>1.6.&nbsp;&nbsp;Related&nbsp;Documents&nbsp;.....................................................................................................&nbsp;6&nbsp;<br>1.7.&nbsp;&nbsp;Document History&nbsp;........................................................................................................&nbsp;6&nbsp;</a><br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#7">2.&nbsp;&nbsp;Battery&nbsp;charger&nbsp;design&nbsp;..........................................................................................&nbsp;7&nbsp;</a><br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#7">2.1.&nbsp;&nbsp;Example&nbsp;of&nbsp;battery&nbsp;chargers&nbsp;.......................................................................................&nbsp;7&nbsp;</a><br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#7">2.1.1.&nbsp;</a><br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#7">Battery&nbsp;Charger&nbsp;with 5V&nbsp;input&nbsp;..........................................................................................&nbsp;7&nbsp;</a><br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#8">2.1.2.&nbsp;</a><br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#8">Battery&nbsp;Charger&nbsp;with up&nbsp;to 76V&nbsp;input&nbsp;...............................................................................&nbsp;8&nbsp;</a><br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;written&nbsp;authorization&nbsp;from Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved.&nbsp;&nbsp;&nbsp;<br>
+Page&nbsp;4&nbsp;of&nbsp;9&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=5></a><IMG src="Telit_Battery_Charger_Design_Application_Note_r1-5_1.jpg"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-5_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;Battery&nbsp;Charger&nbsp;Design&nbsp;Application&nbsp;Note&nbsp;<br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#1">80000nt10042a&nbsp;Rev.1&nbsp;‚Äì&nbsp;2010-10-04</a>&nbsp;<br>
+&nbsp;<br>
+1.<b>&nbsp;</b><br>
+Introduction&nbsp;<br>
+1.1.<b>&nbsp;</b><br>
+Scope&nbsp;<br>Scope of&nbsp;this&nbsp;document&nbsp;is&nbsp;to&nbsp;provide the guidelines&nbsp;to design a&nbsp;battery&nbsp;charger for&nbsp;<br>
+the&nbsp;Telit&nbsp;modules&nbsp;that&nbsp;are not&nbsp;provided&nbsp;with.&nbsp;The&nbsp;battery&nbsp;charger&nbsp;is&nbsp;needed&nbsp;whenever&nbsp;<br>
+a&nbsp;battery&nbsp;powered&nbsp;application&nbsp;requires&nbsp;an&nbsp;embedded&nbsp;battery&nbsp;charger.&nbsp;<br>
+1.2.<b>&nbsp;</b><br>
+Audience&nbsp;<br>This&nbsp;&nbsp;document&nbsp;&nbsp;is&nbsp;intended&nbsp;for&nbsp;Telit customers&nbsp;who need&nbsp;to implement&nbsp;a&nbsp;battery&nbsp;<br>
+charger in&nbsp;their application.&nbsp;<br>
+1.3.<b>&nbsp;</b><br>
+Contact&nbsp;Information,&nbsp;Support&nbsp;<br>For general&nbsp;contact,&nbsp;technical&nbsp;support,&nbsp;to&nbsp;report&nbsp;documentation&nbsp;errors&nbsp;and&nbsp;to&nbsp;order&nbsp;<br>
+manuals,&nbsp;contact&nbsp;Telit&nbsp;Technical&nbsp;Support&nbsp;Center (TTSC)&nbsp;at:&nbsp;<br>&nbsp;<br>
+<a href="mailto:TS-EMEA@telit.com">TS-EMEA@telit.com&nbsp;</a><br>
+<a href="mailto:TS-NORTHAMERICA@telit.com">TS-NORTHAMERICA@telit.com&nbsp;</a><br>
+<a href="mailto:TS-LATINAMERICA@telit.com">TS-LATINAMERICA@telit.com&nbsp;</a><br>
+<a href="mailto:TS-APAC@telit.com">TS-APAC@telit.com&nbsp;</a><br>
+&nbsp;<br>Alternatively,&nbsp;use:&nbsp;<br><a href="http://www.telit.com/en/products/technical-support-center/contact.php">http://www.telit.com/en/products/technical-support-center/contact.php&nbsp;<br></a>For detailed&nbsp;information about&nbsp;where you can buy&nbsp;the Telit&nbsp;modules&nbsp;or&nbsp;for&nbsp;<br>
+recommendations&nbsp;on accessories&nbsp;and&nbsp;components&nbsp;visit:&nbsp;<br><a href="http://www.telit.com/">http://www.telit.com&nbsp;<br></a>To register for product&nbsp;news&nbsp;and&nbsp;announcements&nbsp;or for product&nbsp;questions&nbsp;contact&nbsp;<br>
+Telit&nbsp;Technical&nbsp;Support&nbsp;Center (TTSC).&nbsp;<br>Our&nbsp;aim&nbsp;is&nbsp;to&nbsp;make this&nbsp;guide as&nbsp;helpful&nbsp;as&nbsp;possible.&nbsp;Keep&nbsp;us&nbsp;informed&nbsp;of&nbsp;your&nbsp;<br>
+comments&nbsp;and&nbsp;suggestions&nbsp;for improvements.&nbsp;<br>Telit&nbsp;appreciates&nbsp;feedback&nbsp;from&nbsp;the&nbsp;users&nbsp;of&nbsp;our information.&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;written&nbsp;authorization&nbsp;from Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved.&nbsp;&nbsp;&nbsp;<br>
+Page&nbsp;5&nbsp;of&nbsp;9&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=6></a><IMG src="Telit_Battery_Charger_Design_Application_Note_r1-6_1.jpg"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-6_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;Battery&nbsp;Charger&nbsp;Design&nbsp;Application&nbsp;Note&nbsp;<br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#1">80000nt10042a&nbsp;Rev.1&nbsp;‚Äì&nbsp;2010-10-04</a>&nbsp;<br>
+&nbsp;<br>
+1.4.<b>&nbsp;</b><br>
+Document&nbsp;Organization&nbsp;<br>This&nbsp;document&nbsp;contains&nbsp;the following&nbsp;chapters&nbsp;(sample):&nbsp;<br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#4">‚ÄúChapter 1:&nbsp;‚ÄúIntroduction‚Äù&nbsp;&nbsp;</a>provides&nbsp;a&nbsp;scope for this&nbsp;document,&nbsp;target&nbsp;audience,&nbsp;<br>
+contact&nbsp;and&nbsp;support&nbsp;information,&nbsp;and&nbsp;text&nbsp;conventions.&nbsp;<br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#6">‚ÄúChapter 2:&nbsp;‚ÄúChapter&nbsp;two‚Äù&nbsp;</a>gives&nbsp;guideline about&nbsp;how&nbsp;to design a&nbsp;battery&nbsp;charger.&nbsp;<br>
+&nbsp;<br>
+1.5.<b>&nbsp;</b><br>
+Text&nbsp;Conventions&nbsp;<br>&nbsp;<br>Danger&nbsp;&nbsp;<i><b>‚Äì</b></i>&nbsp;This&nbsp;information MUST&nbsp;be&nbsp;followed&nbsp;or catastrophic&nbsp;equipment&nbsp;failure&nbsp;<br>
+or bodily&nbsp;injury&nbsp;may&nbsp;occur.&nbsp;<br>&nbsp;<br>Caution or Warning&nbsp;<i><b>‚Äì</b></i>&nbsp;Alerts&nbsp;the&nbsp;user&nbsp;to&nbsp;important&nbsp;points&nbsp;about&nbsp;integrating&nbsp;the&nbsp;<br>
+module,&nbsp;if&nbsp;these points&nbsp;are not&nbsp;followed,&nbsp;the module and&nbsp;end&nbsp;user&nbsp;equipment&nbsp;<br>
+may&nbsp;fail&nbsp;or&nbsp;malfunction.&nbsp;<br>&nbsp;<br>Tip&nbsp;or Information&nbsp;<b>‚Äì</b>&nbsp;&nbsp;Provides&nbsp;advice and&nbsp;suggestions&nbsp;that&nbsp;may&nbsp;be useful&nbsp;when&nbsp;<br>
+integrating&nbsp;the&nbsp;module.&nbsp;<br>&nbsp;<br>All&nbsp;dates&nbsp;are&nbsp;in&nbsp;ISO&nbsp;8601&nbsp;format, i.e.&nbsp;YYYY-MM-DD.&nbsp;<br>&nbsp;<br>
+1.6.<b>&nbsp;</b><br>
+Related Documents&nbsp;<br>
+‚Ä¢&nbsp;&nbsp;Hardware User&nbsp;Guide of&nbsp;the&nbsp;relevant&nbsp;Telit&nbsp;module&nbsp;<br>‚Ä¢&nbsp;&nbsp;AT&nbsp;Command&nbsp;User Guide,&nbsp;80000ST10025a&nbsp;<br>‚Ä¢&nbsp;&nbsp;Telit&nbsp;modules&nbsp;SW&nbsp;User&nbsp;Guide,&nbsp;1vv0300784&nbsp;<br>
+&nbsp;<br>
+1.7.<b>&nbsp;</b><br>
+Document&nbsp;History&nbsp;<br>&nbsp;<br>Revision&nbsp;<br>
+Date&nbsp;<br>
+Changes&nbsp;<br>
+0&nbsp;<br>
+2010-08-27&nbsp;<br>
+First&nbsp;issue&nbsp;&nbsp;<br>
+1&nbsp;<br>
+2010-10-04&nbsp;<br>
+Added&nbsp;GL865-DUAL&nbsp;to&nbsp;the&nbsp;applicability&nbsp;table&nbsp;<br>
+&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;written&nbsp;authorization&nbsp;from Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved.&nbsp;&nbsp;&nbsp;<br>
+Page&nbsp;6&nbsp;of&nbsp;9&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=7></a><IMG src="Telit_Battery_Charger_Design_Application_Note_r1-7_1.jpg"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-7_2.jpg"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-7_3.png"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;Battery&nbsp;Charger&nbsp;Design&nbsp;Application&nbsp;Note&nbsp;<br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#1">80000nt10042a&nbsp;Rev.1&nbsp;‚Äì&nbsp;2010-10-04</a>&nbsp;<br>
+&nbsp;<br>
+2.<b>&nbsp;</b><br>
+Battery&nbsp;charger&nbsp;design&nbsp;<br>
+The products&nbsp;listed&nbsp;in&nbsp;the applicability&nbsp;table are&nbsp;not&nbsp;equipped&nbsp;with a&nbsp;battery&nbsp;charger.&nbsp;<br>
+Aim&nbsp;of&nbsp;this&nbsp;application&nbsp;note&nbsp;therefore,&nbsp;is&nbsp;to help&nbsp;the customers&nbsp;to design a&nbsp;battery&nbsp;<br>
+charger&nbsp;that&nbsp;goes&nbsp;along&nbsp;with&nbsp;a&nbsp;Telit&nbsp;module,&nbsp;suitable for&nbsp;applications&nbsp;that&nbsp;are battery&nbsp;<br>
+powered&nbsp;with&nbsp;a&nbsp;Li-Ion&nbsp;(or&nbsp;Li-Polymer)&nbsp;cell.&nbsp;<br>
+2.1.<b>&nbsp;</b><br>
+Example of&nbsp;battery&nbsp;chargers&nbsp;<br>
+2.1.1.<b>&nbsp;</b><br>
+Battery&nbsp;Charger&nbsp;with&nbsp;5V&nbsp;input&nbsp;<br>
+&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Fig&nbsp;1:&nbsp;Battery&nbsp;Charger&nbsp;with 5V&nbsp;input&nbsp;power&nbsp;supply.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+The MAX1555&nbsp;charges&nbsp;the Li-Ion&nbsp;Cell&nbsp;by&nbsp;CCCV&nbsp;technique (Constant&nbsp;Current&nbsp;Constant&nbsp;<br>
+Voltage).&nbsp;<br>
+If&nbsp;VBATT&nbsp;is&nbsp;less&nbsp;than 3&nbsp;V,&nbsp;the device&nbsp;enters&nbsp;in&nbsp;pre-charge&nbsp;mode,&nbsp;where recharging&nbsp;<br>
+current&nbsp;is&nbsp;limited&nbsp;to 40&nbsp;mA.&nbsp;That&nbsp;low&nbsp;recharge&nbsp;current&nbsp;is&nbsp;suitable&nbsp;to&nbsp;‚Äúrecover‚Äù&nbsp;an&nbsp;<br>
+over-discharged&nbsp;cell.&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;written&nbsp;authorization&nbsp;from Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved.&nbsp;&nbsp;&nbsp;<br>
+Page&nbsp;7&nbsp;of&nbsp;9&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=8></a><IMG src="Telit_Battery_Charger_Design_Application_Note_r1-8_1.jpg"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-8_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;Battery&nbsp;Charger&nbsp;Design&nbsp;Application&nbsp;Note&nbsp;<br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#1">80000nt10042a&nbsp;Rev.1&nbsp;‚Äì&nbsp;2010-10-04</a>&nbsp;<br>
+&nbsp;<br>
+With VBATT&nbsp;voltage between 3&nbsp;V&nbsp;and&nbsp;4.2&nbsp;V,&nbsp;the recharge current&nbsp;is&nbsp;90&nbsp;mA&nbsp;Typ&nbsp;<br>
+(Constant&nbsp;Current).&nbsp;<br>
+With&nbsp;4.2&nbsp;V&nbsp;VBATT,&nbsp;the&nbsp;recharge&nbsp;continues&nbsp;in&nbsp;Constant&nbsp;Voltage.&nbsp;In&nbsp;Constant&nbsp;Voltage&nbsp;<br>
+mode,&nbsp;the&nbsp;recharge current&nbsp;is&nbsp;reduced&nbsp;with&nbsp;the recharge&nbsp;progress.&nbsp;When the&nbsp;<br>
+recharge current&nbsp;falls&nbsp;to&nbsp;50&nbsp;mA&nbsp;Typ,&nbsp;the CHGF&nbsp;pin goes&nbsp;high to&nbsp;indicate&nbsp;the recharge&nbsp;<br>
+of&nbsp;the&nbsp;battery&nbsp;has&nbsp;been&nbsp;completed.&nbsp;A&nbsp;GPI/O&nbsp;of&nbsp;the M2M&nbsp;can&nbsp;be used&nbsp;to&nbsp;monitor the&nbsp;<br>
+state of&nbsp;recharge.&nbsp;<br>
+&nbsp;<br>NOTE:&nbsp;<br>&nbsp;<br>the&nbsp;CHGF&nbsp;pin is&nbsp;high also&nbsp;without&nbsp;power&nbsp;supply&nbsp;on&nbsp;the MAX&nbsp;1555.&nbsp;<br>&nbsp;<br>With power&nbsp;supply&nbsp;on&nbsp;USB&nbsp;input&nbsp;(5V0&nbsp;in&nbsp;figure ‚ÄúLi-Ion&nbsp;BATTERY&nbsp;CHARGER‚Äù),&nbsp;the&nbsp;<br>Constant&nbsp;Current&nbsp;recharge is&nbsp;90&nbsp;mA&nbsp;typ.&nbsp;<br>
+With power supply&nbsp;on DC&nbsp;input,&nbsp;the&nbsp;Constant&nbsp;Current&nbsp;recharge is&nbsp;280&nbsp;mA&nbsp;typ.&nbsp;<br>
+&nbsp;<br>If&nbsp;it&nbsp;is&nbsp;necessary&nbsp;a&nbsp;higher Constant&nbsp;Current&nbsp;recharge,&nbsp;it&nbsp;is&nbsp;necessary&nbsp;to&nbsp;make use of&nbsp;<br>
+the&nbsp;MAX&nbsp;1811:&nbsp;Constant&nbsp;Current&nbsp;450&nbsp;mA&nbsp;typ.&nbsp;<br>
+&nbsp;<br>The 450&nbsp;mA&nbsp;recharge current&nbsp;is&nbsp;suitable&nbsp;for a&nbsp;cell&nbsp;capacity&nbsp;up&nbsp;to 2000&nbsp;mAh.&nbsp;<br>
+The Li-Ion battery&nbsp;will&nbsp;be&nbsp;charged&nbsp;over&nbsp;the current&nbsp;range&nbsp;of&nbsp;0.1&nbsp;CmA&nbsp;to 1.5&nbsp;CmA.&nbsp;<br>
+450 mA&nbsp;are&nbsp;0.4 CmA&nbsp;for&nbsp;the&nbsp;2000 mAh&nbsp;battery.&nbsp;<br>
+450 mA&nbsp;are&nbsp;1.1 CmA&nbsp;for&nbsp;the&nbsp;500 mAh&nbsp;battery.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>For&nbsp;the Li-Ion&nbsp;BATTERY&nbsp;CHARGER,&nbsp;the&nbsp;BATT&nbsp;leakage&nbsp;current&nbsp;(without&nbsp;input&nbsp;power&nbsp;<br>
+supply)&nbsp;is&nbsp;limited:&nbsp;1&nbsp;ŒºA&nbsp;typ.&nbsp;<br>
+&nbsp;<br>It&nbsp;is&nbsp;not&nbsp;provided&nbsp;a&nbsp;battery&nbsp;temperature&nbsp;gauging&nbsp;to&nbsp;manage&nbsp;the&nbsp;recharge current&nbsp;<br>
+regarding&nbsp;temperature&nbsp;battery.&nbsp;<br>
+&nbsp;<br>
+2.1.2.<b>&nbsp;</b><br>
+Battery&nbsp;Charger&nbsp;with&nbsp;up to&nbsp;76V&nbsp;input&nbsp;<br>If&nbsp;it&nbsp;is&nbsp;necessary&nbsp;a&nbsp;wider&nbsp;power&nbsp;supply&nbsp;voltage,&nbsp;it&nbsp;is&nbsp;possible&nbsp;to&nbsp;make&nbsp;use of&nbsp;the&nbsp;<br>
+MAX5033B&nbsp;to&nbsp;obtain&nbsp;a&nbsp;power&nbsp;supply&nbsp;voltage&nbsp;up&nbsp;to&nbsp;76&nbsp;V&nbsp;DC&nbsp;input&nbsp;voltage.&nbsp;<br>The MAX 5033B&nbsp;is&nbsp;a&nbsp;step&nbsp;down DC-DC&nbsp;converter&nbsp;with&nbsp;5&nbsp;V&nbsp;output&nbsp;voltage.&nbsp;The&nbsp;500&nbsp;mA&nbsp;<br>
+output&nbsp;current&nbsp;is&nbsp;enough&nbsp;to power&nbsp;supply&nbsp;the MAX&nbsp;1555&nbsp;or MAX 1811.&nbsp;<br>The BJT&nbsp;is&nbsp;optional:&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;necessary&nbsp;the ON&nbsp;/OFF&nbsp;function for&nbsp;the voltage&nbsp;<br>
+regulator,&nbsp;the BJT&nbsp;can be left&nbsp;out.&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;written&nbsp;authorization&nbsp;from Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved.&nbsp;&nbsp;&nbsp;<br>
+Page&nbsp;8&nbsp;of&nbsp;9&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=9></a><IMG src="Telit_Battery_Charger_Design_Application_Note_r1-9_1.jpg"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-9_2.jpg"><br>
+<IMG src="Telit_Battery_Charger_Design_Application_Note_r1-9_3.png"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;Battery&nbsp;Charger&nbsp;Design&nbsp;Application&nbsp;Note&nbsp;<br>
+<a href="Telit_Battery_Charger_Design_Application_Note_r1s.html#1">80000nt10042a&nbsp;Rev.1&nbsp;‚Äì&nbsp;2010-10-04</a>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Fig.2:&nbsp;Wider input&nbsp;power&nbsp;supply&nbsp;voltage (up&nbsp;to 76&nbsp;V&nbsp;DC&nbsp;input&nbsp;voltage).&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;written&nbsp;authorization&nbsp;from Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved.&nbsp;&nbsp;&nbsp;<br>
+Page&nbsp;9&nbsp;of&nbsp;9&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name="outline"></a><h1>Document Outline</h1>
+<ul><li>˛ˇ
+<ul><li>˛ˇ
+<li>˛ˇ
+<li>˛ˇ
+<li>˛ˇ
+<li>˛ˇ
+<li>˛ˇ
+<li>˛ˇ
+</ul><li>˛ˇ
+<ul><li>˛ˇ
+<ul><li>˛ˇ
+<li>˛ˇ
+</ul></ul></ul><hr>
+</BODY>
+</HTML>

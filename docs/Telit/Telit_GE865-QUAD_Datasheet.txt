@@ -1,0 +1,501 @@
+wireless
+solutions
+
+GSM | GPRS
+
+wireless
+solutions
+
+GE865-QUAD
+Embedded
+
+QUALITY
+
+INVESTMENT
+PROTECTION
+
+The new GE865 product family introduces the smallest GSM/GPRS Ball-Grid-Array (BGA)
+modules in the market.
+
+BUSINESS
+SCALABLE
+
+The low profile and small size of the unique BGA package for the GE865-QUAD enable the
+design of extremely compact applications. Since connectors are eliminated, the solution
+cost is significantly reduced compared to conventional mounting.
+
+EASE OF
+INTEGRATION
+
+Pfade
+
+RUN AT Commands
+Remotely
+
+Edit
+
+5c
+
+With its ultra-compact design and extended temperature range, the Telit GE865 product
+line is the perfect platform for high-volume m2m applications and mobile data devices.
+Additional features such as integrated TCP/IP protocol stack and serial multiplexer extend
+functionality of the application at no additional cost.
+The GE865 makes it possible to run the customer's application inside the module using
+Python Script Interpreter, thus making it the smallest, complete platform for m2m
+solutions.
+All Telit modules, support Over-the-Air firmware update by means Premium FOTA
+Management. By embedding RedBend’s vCurrent® agent, a proven and battle-tested
+technology powering hundreds of millions of cellular handsets world-wide Telit is able
+to update its products by transmitting only a delta file, which represents the difference
+between one firmware version and another.
+As a part of Telit’s corporate policy of environmental protection, all products comply to the
+RoHS (Restriction of Hazardous Substances) directive of the European Union (EU Directive
+2002/95/EG).
+Product features
+■	 Quad-band
+
+■	 GSM/GPRS
+
+
+EGSM 850 / 900 / 1800 / 1900 MHz
+
+■	 SIM
+
+
+protocol stack 3GPP Release 4
+
+■	 Extended
+
+
+supply voltage range: 3.22    .5 V DC
+–4
+(3.8 V DC nominal)
+
+compliant
+■	 Output
+
+
+Pfade
+
+■	 Control
+
+
+10mm Versatz
+
+Serial Port Multiplexer (3GPP 27.010)
+
+power
+- Class 4 (2W) @ 850 / 900 MHz
+- Class 1 (1W) @ 1800 / 1900 MHz
+
+Edit
+
+via AT commands according to
+3GPP TS 27.005, 27.007 and Telit custom
+AT commands
+
+■	 Control
+
+
+5c
+
+via Remote AT commands
+
+■	 Power
+
+
+Pfade
+10mm Versatz
+
+Premium FOTA
+FOTA Management
+5c
+
+Edit
+
+consumption (typical values)
+- Power off: ‹ 62 uA
+- Idle (registered, power saving):
+		 1.5 mA @ DRX=9
+- Dedicated mode: ‹ 240 mA @ max power level
+- GPRS cl.10: ‹ 420 mA @ max power level
+
+■	 Serial
+
+■	 SIM
+
+
+port multiplexer 3GPP TS 27.010
+
+access profile
+
+application toolkit 3GPP TS 51.014
+
+■	
+
+TCP/IP stack access via AT commands
+
+■	 Sensitivity:
+
+
+‹ -107 dBm @ 850 / 900 MHz
+‹ -106 dBm @ 1800 / 1900 MHz
+
+■	 Dimensions:
+
+■	 Weight:
+
+
+22 x 22 x 3 mm
+
+3.2 grams
+
+■	 Extended
+
+
+temperature range
+-40°C to +85°C (operational)
+-40°C to +85°C (storage temperature)
+
+■	 DARP/SAIC
+
+■	 Enhanced
+
+■	 RoHS
+
+
+support
+
+Measurement Report support
+
+compliant
+
+Making machines talk.
+
+®
+
+GSM | GPRS
+
+GE865-QUAD
+Embedded
+
+is in it.
+Interfaces
+■	 10
+
+
+GSM supplementary
+
+I/O ports maximum
+
+■	 Call
+
+
+forwarding
+
+■	 Analog
+
+
+audio (balanced)
+
+■	 Call
+
+
+barring
+
+■	 Digital
+
+
+Voice Interface
+
+■	 Call
+
+
+waiting & call hold
+
+■	 2
+
+
+A/D plus 1 D/A converter
+­
+
+■	 Buzzer
+
+
+output
+
+■	 Advice
+
+
+of charge
+
+■	 Calling
+
+
+line identification presentation (CLIP)
+
+V.24 serial link through CMOS UART:
+- Baud rate from 300 to 115.200 bps
+- Autobauding up to 115.200 bps
+
+■	 Calling
+
+
+line identification restriction (CLIR)
+
+Audio
+
+■	 Closed
+
+
+■	 ITU-T
+
+
+■	 Telephony,
+
+
+emergency call
+
+■	 Half
+
+
+rate, full rate, enhanced full rate
+and adaptive multi rate voice codecs
+(HR, FR, EFR, AMR)
+
+■	 Superior
+
+
+echo cancellation & noise
+reduction
+
+■	 Multiple
+
+
+audio profiles pre-programmed
+and fully configurable by mean AT commands
+
+actual size
+
+■	 Fully
+
+
+type approved conforming with
+R&TTE directive
+
+Telit Communications S.p.A.
+Via Stazione di Prosecco, 5/B
+I-34010 Sgonico (Trieste), Italy
+Tel	 +39 040 4192 200
+Fax	 +39 040 4192 289
+E-Mail: EMEA@telit.com
+
+CE, GCF, FCC, PTCRB, IC
+
+SMS
+■	 Point-to-point
+
+
+mobile originated and
+mobile terminated SMS
+
+■	 Concatenated
+
+
+SMS supported
+
+■	 SMS
+
+
+cell broadcast
+
+■	 Text
+
+
+and PDU mode
+
+wireless
+Telit Wireless Solutions Inc.
+3131 RDU Center Drive, Suite 135
+solutions
+Morrisville, NC 27560, USA
+Tel +1 888 846 9773 or +1 919 439 7977
+Fax +1 888 846 9774 or +1 919 840 0337
+E-Mail: NORTHAMERICA@telit.com
+
+■	 SMS
+
+
+over GPRS
+
+Telit Wireless Solutions Inc.
+Rua Cunha Gago, 700 - cj 81, Pinheiros
+São Paulo - SP, 05421001, Brazil
+Tel	 +55 11 2679 4654
+wireless
+Fax	 +55 11 2679 4654
+E-Mail: LATINAMERICA@telit.com
+solutions
+
+■	 V.110
+
+
+Telit Wireless Solutions Co., Ltd.
+12th Fl., Shinyoung Securities Bld.
+34-12, Yeouido-dong, Yeongdeungpo-gu
+Seoul, 150-884, Korea
+Tel. +82 2 368 4600
+Fax +82 2 368 4606
+E-Mail: APAC@telit.com
+
+user group
+
+Additional features
+■	 SIM
+
+
+phonebook
+
+■	 Fixed
+
+■	 Real
+
+
+dialing number (FDN)
+
+Time Clock
+
+■	 Alarm
+
+
+management
+
+■	 Network
+
+■	 IRA
+
+
+LED support
+
+, GSM, 8859-1 and UCS2 character sets
+detection
+
+■	 Embedded
+
+
+Approvals
+
+wireless
+solutions
+
+supplementary services mobile
+originated data (USSD)
+
+■	 Jamming
+
+
+■	 DTMF
+
+
+■	
+
+■	 Unstructured
+
+
+Circuit switched data transmission
+■	 Asynchronous
+
+
+TCP/IP stack, including TCP,
+IP, UDP, SMTP, ICMP and FTP protocols
+
+■	 Remote
+
+■	 Event
+
+
+AT commands
+
+monitor
+
+■	 PFM
+
+
+(Premium FOTA Management)
+Over-The-Air Update service
+
+Python* application resources
+■	 Python*
+
+
+script interpreter (module
+takes the application code directly in the
+Python* language)
+
+■	 Memory:
+
+
+1.9 MB of NV memory for
+the user scripts and 1 MB RAM for the
+Python* engine usage
+
+non-transparent CSD
+
+up to 9.6 kbps
+
+Telit’s EASY features
+
+GPRS data
+■	 GPRS
+
+
+class 10
+
+■	 Mobile
+
+
+station class B
+
+■	 Coding
+
+
+scheme 1 to 4
+
+■	 PBCCH
+
+
+support
+
+SCAN ® automatic scan over GSM
+f
+­ requencies (also without SIM card)
+
+■	 EASY
+
+
+Order-No.
+	 Please contact your Telit representative
+	 for order codes and all further information
+
+■	 GERAN
+
+
+Feature Package 1 support (NACC,
+Extended TBF)
+
+www.telit.com
+www.telit.com/techforum
+www.facebook.com/telitwireless
+www.twitter.com/telit_ws
+Distributed by:
+
+*	Copyright © 1991–1995 by Stichting Mathematisch Centrum, Amsterdam, The Netherlands; All Rights Reserved.
+	 Copyright © 1995–2001 Corporation for National Research Initiatives; All Rights Reserved.
+	 Copyright © 2001–2010 Python Software Foundation; All Rights Reserved.
+	 All Rights Reserved are retained in Python.
+
+[10.2010]
+
+Copyright © 2010, Telit · Subject to changes in technology, design and availability
+
+

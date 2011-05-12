@@ -1,0 +1,2988 @@
+80000nt10043a SMS AT RUN and TCP AT RUN
+Application Note
+80000nt10043a Rev.0 – 2010-10-13
+
+SMS AT Run and TCP AT Run Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+APPLICABILITY TABLE
+PRODUCT
+GC864-QUAD
+GC864-QUAD V2
+GC864-PY
+GT863-PY
+GT864-QUAD
+GT864-PY
+
+GE863-GPS
+GE863-SIM
+GE863-PRO
+
+3
+
+GE864-PY
+GE864-QUAD
+GE864-QUAD V2
+GE864-QUAD Atex
+GE864-QUAD
+Automotive V2
+GE865-QUAD
+GL865-DUAL
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 2 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Disclaimer
+The information contained in this document is the proprietary information of Telit
+Communications S.p.A. and its affiliates (“TELIT”).
+The contents are confidential and any disclosure to persons other than the officers,
+employees, agents or subcontractors of the owner or licensee of this document,
+without the prior written consent of Telit, is strictly prohibited.
+Telit makes every effort to ensure the quality of the information it makes available.
+Notwithstanding the foregoing, Telit does not make any warranty as to the
+information contained herein, and does not accept any liability for any injury, loss or
+damage of any kind incurred by use of or reliance upon the information.
+Telit disclaims any and all responsibility for the application of the devices
+characterized in this document, and notes that the application of the device must
+comply with the safety standards of the applicable country, and where applicable,
+with the relevant wiring rules.
+Telit reserves the right to make modifications, additions and deletions to this
+document due to typographical errors, inaccurate information, or improvements to
+programs and/or equipment at any time and without notice.
+Such changes will, nevertheless be incorporated into new editions of this document.
+
+Copyright: Transmittal, reproduction, dissemination and/or editing of this document
+as well as utilization of its contents and communication thereof to others without
+express authorization are prohibited. Offenders will be held liable for payment of
+damages. All rights are reserved.
+
+Copyright © Telit Communications S.p.A. 2010.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 3 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Contents
+1.
+
+Introduction .............................................................................................................6
+1.1.
+
+Scope............................................................................................................................ 6
+
+1.2.
+
+Audience....................................................................................................................... 6
+
+1.3.
+
+Contact Information, Support ...................................................................................... 6
+
+1.4.
+
+Related Documents ..................................................................................................... 7
+
+1.5.
+
+Document History ........................................................................................................ 7
+
+1.6.
+
+Abbreviations and acronyms ....................................................................................... 7
+
+2.
+
+AT Run and Event Monitor Services Introduction .....................................................8
+
+3.
+
+SMS AT Run Services ...............................................................................................9
+
+4.
+
+TCP AT Run Service................................................................................................12
+
+5.
+
+Event Monitor Service ............................................................................................16
+
+6.
+
+Remote Room Temperature Control Application ...................................................17
+6.1.
+6.2.
+
+Event Monitor Service ................................................................................................ 30
+
+6.3.
+
+TCP AT Run Service ................................................................................................... 33
+
+6.4.
+7.
+
+SMS AT Run Service................................................................................................... 20
+
+TCP AT Run & Event Monitor Services ...................................................................... 42
+
+Appendix: RRTC Application ...................................................................................49
+7.1.
+
+First Demo Hardware Configuration ......................................................................... 50
+
+7.2.
+
+Second Demo Hardware Configuration..................................................................... 58
+
+7.3.
+
+RDTSB board Pictures ............................................................................................... 60
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 4 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Figures
+fig. 1: Basic Configuration ..............................................................................................................................8
+fig. 2: Remote Station without PC.................................................................................................................10
+fig. 3: Remote Station with PC ......................................................................................................................11
+fig. 4: Local Control Station connected to Local Network...........................................................................13
+fig. 5: Local Control Station using ISP..........................................................................................................14
+fig. 6: Local Control Station with module.....................................................................................................15
+fig. 7: Remote Room Temperature Control architecture ............................................................................19
+fig. 8: RDTSB board & SMS AT Run Service.................................................................................................21
+fig. 9: Remote Module running SMS AT Run Service...................................................................................24
+fig. 10: Local Module doesn’t run AT Run and Event Monitor Services ......................................................26
+fig. 11: Remote Module running Event Monitor Service ..............................................................................31
+fig. 12: Heater State (GPIO9).........................................................................................................................32
+fig. 13: RDTSB board & TCP AT Run Service ...............................................................................................34
+fig. 14: Remote Module running TCP AT Run Service .................................................................................35
+fig. 15: Combined Services on Remote Module ...........................................................................................44
+fig. 16: Telit Serial Port MUX on Local Module. ...........................................................................................45
+fig. 17: Remote Digital Temperature Sensor Board ....................................................................................49
+fig. 18: First Configuration Details ...............................................................................................................51
+fig. 19: Second Configuration Details ...........................................................................................................59
+
+Tables
+Tab. 1: Default instance for SMS AT Run Service ........................................................................................23
+Tab. 2: Instances vs. Event Monitor Service.................................................................................................31
+Tab. 3: Instances vs. TCP AT Run Service ....................................................................................................35
+Tab. 4: Combined Services & Instances.......................................................................................................43
+
+Photos
+photo 1: RDTSB board & Remote Module....................................................................................................60
+photo 2: RDTSB board details.......................................................................................................................61
+photo 3: RDTSB/Module Connection details ................................................................................................62
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 5 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+1.
+
+Introduction
+
+1.1.
+
+Scope
+The present document provides the reader with information concerning the use of
+the SMS AT Run, TCP AT Run and Event Monitor Services. Several local-remote
+modules configurations are illustrated and some examples are described. In fact, the
+document objective is to guide the reader throughout the selection of the suitable
+local and remote station configuration, how to carry out the hardware interface
+between the remote module and the generic user-equipment and how to develop a
+simple software application based on the mentioned services.
+
+1.2.
+
+Audience
+This document is intended for who needs to remotely control or monitor some
+variables using suitable sensor connected to a remote Telit module.
+
+1.3.
+
+Contact Information, Support
+For general contact, technical support, to report documentation errors and to order
+manuals, contact Telit’s Technical Support Center (TTSC) at:
+
+TS-EMEA@telit.com
+TS-NORTHAMERICA@telit.com
+TS-LATINAMERICA@telit.com
+TS-APAC@telit.com
+
+Alternatively, use:
+http://www.telit.com/en/products/technical-support-center/contact.php
+For detailed information about where you can buy the Telit modules or for
+recommendations on accessories and components visit:
+http://www.telit.com
+To register for product news and announcements or for product questions contact
+Telit's Technical Support Center (TTSC).
+Our aim is to make this guide as helpful as possible. Keep us informed of your
+comments and suggestions for improvements.
+Telit appreciates feedback from the users of our information.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 6 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+1.4.
+
+Related Documents
+[1]
+[2]
+[3]
+[4]
+
+1.5.
+
+Running AT Commands Remotely Application Note
+Event Monitor Application Note
+Telit EVK2 User Guide
+AT Commands Reference Guide
+
+Document History
+Revision
+0
+
+1.6.
+
+Date
+2010/10/13
+
+Changes
+First issue
+
+Abbreviations and acronyms
+BTS
+DTE
+GGSN
+GPIO
+GPRS
+I2CBUS
+PAP
+PDP
+PLMN
+RDTSB
+RRTC
+SGSN
+
+Base Transceiver Station
+Data Terminal Equipment
+Gateway GPRS Support Node
+General Purpose Input/Output
+General Packet Radio Services
+I-squared-C Bus
+Password authentication protocol
+Packet Data Protocol
+Public Land Mobile Network
+Remote Digital Temperature Sensor Board
+Remote Room Temperature Control
+Serving GPRS Support Node
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 7 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+2.
+
+AT Run and Event Monitor Services Introduction
+The AT Run Services [1] allow the user to run AT Commands on a remote module by
+means of the support of a communication protocol used to connect the local module
+operated by the user and the remote module located on a remote site, fig. 1. Telit
+modules provide the following types of AT Run Services:
+•
+
+SMS AT Run Service:
+- Simple SMS AT Run Service;
+- Digest SMS AT Run Service.
+1
+In general, SMS AT Run Service can be used in GSM mode or in GPRS mode
+•
+
+TCP AT Run Service
+- in Client mode;
+- in Server (Listen) mode.
+
+Network
+
+Telit Module
+RS 232 Serial Line
+HyperTerminal
+or
+Customer Application
+
+GPIO interface
+
+Local Control
+Station PC
+
+Telit Module
+
+Customer Equipment
+
+Remote Site
+
+Local Site
+
+fig. 1: Basic Configuration
+The Event Monitor Service [2] provided by the Telit modules allows the user to
+associate an AT Command to a specified event monitored by the module itself. When
+the module recognizes the event occurring, it executes the associated AT Command.
+This service can be used jointly with the AT Run Services as will be shown on the
+following pages.
+
+1
+
+The Network Operator must support the SMS in GPRS mode.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 8 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+3.
+
+SMS AT Run Services
+The SMS AT Run Service, running on remote module, is supported by the SMS
+protocol to receive the AT Commands from the local station and send back the
+results of the relative running.
+The fig. 2 shows a remote station configuration without remote PC, the fig. 3 shows a
+remote station with remote PC running a customer application. Both remote station
+configurations run SMS AT Run Service and could be without operator.
+The hereafter described example shows how to run remotely an AT Command, let’s
+suppose that the user needs to know the signal strength received by the remote
+module. On local station the AT Commands are entered by the user and the received
+responses are still manually read by the user using an HyperTerminal session.
+Basic steps:
+1. the user on the local control station writes and sends an SMS message holding
+the AT Command: AT#MONI;
+2. the remote stand-alone module receives the SMS message, executes the AT
+Command transported by the SMS and sends to the local module, by means of an
+SMS message, the result of the just ran AT Command;
+3. the local module receives the SMS holding the result and alerts the user that a
+new SMS has been received;
+4. the user reads the received SMS holding the desired information.
+
+In applications where the customer equipment is not requiring specific control
+actions, the remote PC or the module Python facility could be substituted by the
+Event Monitor Service provided by the module. Consequently, the remote module will
+run at the same time: SMS AT Run and Event Monitor Services.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 9 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+PLMN B
+
+Interconnection Networks
+
+PLMN A
+
+BTS
+
+AT Commands sent by
+the local module and
+relative responses sent
+by the remote module
+are transported by SMS
+
+BTS
+AT Commands received
+from the local module
+and relative responses
+sent by the remote
+module are transported
+by SMS
+
+GSM Module
+RS 232 Serial Line
+HyperTerminal
+or
+Customer Application
+
+GPIO interface
+GSM Module
+
+Local Control
+Station PC
+
+Remote Site
+Local Site
+
+fig. 2: Remote Station without PC
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 10 of 62
+
+Customer Equipment
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+PLMN A
+
+BTS
+
+Interconnection Networks
+
+PLMN B
+
+AT Commands sent by
+the local module and
+relative responses sent
+by the remote module
+are transported by SMS
+
+AT Commands received
+from the local module
+and relative responses
+sent by the remote
+module are transported
+by SMS
+
+GSM Module
+RS 232 Serial Line
+HyperTerminal
+or
+Customer Application
+
+BTS
+
+Local Control
+Station PC
+
+Local Site
+
+GPIO interface
+
+RS 232 Serial Line
+Customer Application
+
+Remote Site
+
+fig. 3: Remote Station with PC
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Customer Equipment
+
+GSM Module
+
+Page 11 of 62
+
+Remote PC
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+4.
+
+TCP AT Run Service
+The TCP AT Run Service, running on remote module, is supported by the TCP
+protocol to receive the AT Commands sent by the local station, refer to fig. 4, fig. 5,
+fig. 6. The remote module executes the received AT Commands and sends back to
+the local station the results. In the following example it is assumed that the user
+needs to know the signal strength received by the remote module, and the TCP
+connection procedure is successfully completed:
+1. the user on local control station enters the AT Command: AT#MONI<CR>;
+2. the remote stand-alone module receives the AT Command, executes it and sends
+to the local control station the Command result holding the required signal
+strength.
+The above described activity can be accomplished using several hardware/software
+configurations, in accordance with the user requirements. Follow a short description
+of the showed configurations.
+The fig. 4 and fig. 5 show two configurations in which the local control station doesn’t
+use a module. The control station PC runs the TCP/IP protocol stack and it is
+connected to the local network or uses an Internet Service Provider.
+The fig. 6 shows a configuration in which the local control station uses a module. In
+this solution, the TCP/IP protocol stack runs on module (EASY GPRS). The control
+station PC is connected to the module through a serial line. In addition, in
+applications where the customer equipment is not requiring specific control actions,
+the remote PC could be substituted by the Event Monitor Service provided by the
+module itself. Consequently, the remote module will run at the same time: TCP AT
+Run and Event Monitor Services.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 12 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+External Internet Networks
+
+GGSN
+
+SGSN
+
+BTC
+
+IP address location
+
+Local Network
+
+GPRS Radio Channels
+IP Remote Server Address
+dynamically assigned by the
+Network must be known by
+the Client Application
+running on the Local
+Control Station PC
+
+GPIO interface
+Telit Module
+in Server Mode
+
+TCP/IP
+Customer Application
+( Client Mode )
+
+RS 232 Serial Line
+
+Local Control Station PC
+
+Customer Application
+Remote PC
+
+Local Site
+Remote Site
+
+fig. 4: Local Control Station connected to Local Network
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 13 of 62
+
+Customer Equipment
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Internet Network
+
+GGSN
+
+SGSN
+
+BTC
+
+Internet
+Service Provider
+
+GPRS Radio Channels
+
+wiring pair
+
+IP Remote Server Address
+dynamically assigned by the
+Network must be known by
+the Client Application
+running on the Local
+Control Station PC
+
+GPIO interface
+Telit Module
+in Server Mode
+
+TCP/IP
+Customer Application
+( Client Mode )
+
+RS 232 Serial Line
+
+Local Control Station PC
+
+Customer Application
+Remote PC
+
+Local Site
+
+fig. 5: Local Control Station using ISP
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 14 of 62
+
+Customer Equipment
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+PLMN A
+
+BTS
+
+SGSN
+
+GGSN
+
+External Internet Network
+
+PLMN B
+
+GPRS Radio channels
+
+IP Remote Server Address
+dynamically assigned by the
+Network must be known by
+the Client Application
+running on the Local
+Control Station PC
+
+Telit Module
+EASY GPRS
+TCP/IP stack
+on module
+in Client Mode
+
+BTS
+
+Local Control Station PC
+
+GPIO interface
+Telit Module
+in Server Mode
+RS 232 Serial Line
+Customer Application
+Remote PC
+
+Local Site
+Remote Site
+
+fig. 6: Local Control Station with module
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+GGSN
+
+GPRS Radio channels
+
+RS 232 Serial Line
+HyperTerminal
+or
+Customer Application
+
+SGSN
+
+Page 15 of 62
+
+Customer Equipment
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+5.
+
+Event Monitor Service
+The Event Monitor Service [2] provided by the Telit modules allows the user to
+associate an AT Command to a specified event monitored by the module itself. To
+perform the monitoring events actions no program or script must be developed by
+the user. When the module recognizes the event occurring, it executes the
+associated AT Command.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 16 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+6.
+
+Remote Room Temperature Control Application
+Aim of this chapter is to introduce a simple AT Run Services application example.
+Let‘s suppose that someone needs to control the temperature of a room located in a
+remote site. To accomplish the remote room temperature control the following items
+must be got ready:
+Local Site:
+• the local module is installed on an EVK board [3] to simplify the interface
+between the module and the DTE;
+•
+
+the DTE runs one or more HyperTerminal sessions to enter manually the AT
+Commands and in the meanwhile monitor the room temperature behavior.
+
+Remote Site:
+• the remote room temperature control is based on a Digital Temperature
+Sensor which can be configured writing its registers by means of the I2CBUS.
+The temperature is read from the temperature register. The RDTSB board
+using a solid state relay turns on/off the heater in accordance with the Digital
+Temperature Sensor set up;
+•
+
+the remote module is installed on an EVK board [3] to simplify the interface
+between the module and the RDTSB board. In addition, this configuration
+permits to use a unique AC/DC Power Supply for remote module and RDTSB
+board;
+
+•
+
+the length of the wiring between the Telit module and the RDTSB board must
+2
+be compliant with the electrical requirements of the I2CBUS and GPIO;
+
+•
+
+the DTE runs a HyperTerminal session to enter manually the AT Commands
+to configure the remote module.
+
+Remote room temperature control is accomplished by the Digital Temperature
+Sensor used as a thermostat in accordance with the programmed high and low
+temperature limits. On the Local Control Station are available the following functions
+accomplished by means of the AT Commands executed by the remote module
+running the selected AT Run Service:
+•
+•
+•
+2
+
+Digital Temperature Sensor set up (I2C BUS);
+Start conversion and Power Down Mode set up (GPIO in output direction);
+Heating State monitoring (GPIO in input direction).
+
+standard mode: 100 Kbps or fast mode: 400 Kbps, depends on module type.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 17 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+The fig. 7 shows a configuration where on remote side is not used a DTE and no
+operator is super visioning the equipments: the figure depicts an operative
+configuration.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 18 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Network
+
+Room temperature
+under control
+
+cable length
+
+Telit Module
++ EVK
+RS 232 Serial Line
+HyperTerminal
+or
+Customer Application
+
+Room Temperature
+Control Board
+
+Telit Module
++ EVK
+GPIO
+interface
+
+Local Control
+Station PC
+
+AC/DC
+Adapter
+~ 220 Volt
+
+●
+
+●
+
+heater
+~ 220 Volt
+
+Remote Site
+
+Local Site
+
+fig. 7: Remote Room Temperature Control architecture
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 19 of 62
+
+●
+
+●
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+Appendix 7 describes in detail the software and hardware items of the Remote Room
+Temperature Control application. Before going trough the mentioned Appendix it is
+strongly recommended to examine carefully the following subparagraphs.
+To get more information about the AT Commands used hereafter refer to [4].
+
+6.1.
+
+SMS AT Run Service
+This chapter focuses the attention on the RDTSB board control carried out by means
+of the SMS AT Run Service running on the remote module and based on the GSM
+3
+radio channels , see fig. 8.
+Despite the configuration showed by the fig. 8, in the following example it is assumed
+that the two modules are located close to each other on the same site (LAB) and the
+user can easily enter the AT Commands on both modules. Anyway, one module will
+be called “remote” and the second one will be called “local”. This approach permits
+to clearly show the procedure that must be followed to accomplish the remote room
+temperature control.
+
+3
+
+As alternative: GPRS radio channels.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 20 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+PLMN A
+
+BTS
+
+Interconnection Networks
+
+PLMN B
+
+BTS
+Room temperature
+under control
+
+cable length
+
+Telit Module
++ EVK
+RS 232 Serial Line
+HyperTerminal
+or
+Customer Application
+
+Room Temperature
+Control Board
+
+Telit Module
++ EVK
+GPIO
+interface
+
+Local Control
+Station PC
+
+AC/DC
+Adapter
+~ 220 Volt
+
+●
+
+●
+
+heater
+~ 220 Volt
+
+Remote Site
+
+Local Site
+
+fig. 8: RDTSB board & SMS AT Run Service
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 21 of 62
+
+●
+
+●
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Preliminary DTE/REMOTE MODULE connection set up
+Remote module runs the SMS AT Run Service to execute the AT Commands sent by
+the local module, see fig. 9. To set up the DTE/REMOTE MODULE connection follow
+these steps:
+•
+•
+
+connect COM1 to ASC0 using an RS 232 straight cable (pins are connected
+one on one);
+start an HyperTerminal session on DTE.
+
+The HyperTerminal COM1 session will be used to configure the SMS AT Run Service
+and Digital Temperature Sensor installed on the RDTSB board.
+
+Preliminary REMOTE MODULE set up
+AT#SELINT=2<CR>
+OK
+AT#SMSMODE=1<CR>
+OK
+AT#REGMODE=1<CR>
+OK
+AT+CMEE=2<CR>
+OK
+Services vs. Instances
+Before going on the remote module set up it is advisable to recall the concept of the
+instances and their relationships with the Services. With the term “instance” is
+intended an AT Commands Parser: Telit module provides three independent AT
+Commands Parsers as showed on fig. 9. Tab. 1 shows all the possible connection (☺)
+between instances and services.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 22 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+In this example, the remote module runs SMS AT Run Service. On Tab. 1 the default
+connection between the service and instance number is showed by the shadowed
+area.
+Services
+SMS AT Run
+TCP AT Run
+Event Monitor
+
+Instances available for Services
+#1
+#2
+#3
+☺
+☺
+/
+☺
+☺
+/
+☺
+☺
+/
+
+Tab. 1: Default instance for SMS AT Run Service
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 23 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Radio Link
+
+RADIO
+
+MODULE
+SW ENGINE
+
+AT0 Parser
+instance # 1
+
+SMS AT RUN
+SERVICE
+
+AT1 Parser
+instance # 2
+
+AT2 Parser
+instance # 3
+
+ASC0
+
+TRACE
+Access Point
+
+ASC1
+
+RS232 Serial Line
+COM1
+
+HyperTerminal
+Session connected
+to AT0 Parser
+
+DTE
+
+At module power on:
+- the ASC0 serial port is connected to AT0 Parser,
+- the ASC1 serial port is connected to the TRACE.
+
+fig. 9: Remote Module running SMS AT Run Service
+
+Make sure that all Services are disabled
+AT#SMSATRUN=0<CR>
+OK
+AT#TCPATRUNL=0<CR>
+OK
+AT#TCPATRUND=0<CR>
+OK
+AT#ENAEVMONI=0<CR>
+OK
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 24 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Set up the Digital Sensor Temperature
+Warning: the AT#I2CWR Command, due its structure, is not supported by the SMS
+AT Run service, consequently Digital Temperature Sensor registers must be set up
+using the DTE connected to the remote module. It is worth remind that AT#I2CWR
+Command is supported by the TCP AT Run Service as will be described on the next
+chapters.
+AT#I2CWR=11,12,50,02,02<CR>
+>1700CtrlZ
+OK
+
+set up low temperature limit (Thyst)
+0x1700 = 23°C
+
+AT#I2CWR=11,12,50,03,02<CR>
+>1B00CtrlZ
+OK
+
+set up high temperature limit (Toti)
+0x1B00 = 27°C
+
+Set up the SMS AT Run Service on remote module
+AT+CMGF=1<CR>
+OK
+
+SMS in text mode.
+
+AT#SMSATRUNCFG=3,1,5
+is
+OK
+
+set up SMS AT Run Service, instance # 3
+assigned to the service, fig. 9.
+
+AT#SMSATWL=0,1,0,”+39*”
+OK
+
+add an element to the WhiteList.
+
+AT#SMSATRUN=1
+OK
+
+enable SMS AT Run Service.
+
+Yet, the remote module when receives an SMS message holding an AT Command,
+executes the received AT Command and the relative result is sent back to the local
+module using the transport protocol provided by the SMS message Service.
+Preliminary DTE/LOCAL MODULE connection set up
+Local module doesn’t run AT Run or Event Monitor Services, see fig. 10. To set up the
+DTE/LOCAL MODULE connection follow these steps:
+•
+•
+
+connect COM1 to ASC0 using an RS 232 straight cable (pins are connected
+one on one);
+start an HyperTerminal session on DTE.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 25 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+The HyperTerminal COM1 session will be used to read the registers of the Digital
+Temperature Sensor installed on the RDTSB board or read/write the remote GPIOs.
+
+Preliminary LOCAL MODULE set up
+local module is not using the Services.
+AT#SELINT=2<CR>
+OK
+AT#SMSMODE=1<CR>
+OK
+AT#REGMODE=1<CR>
+OK
+AT+CMEE=2<CR>
+OK
+
+AT#SMSATRUN=0<CR>
+OK
+AT#TCPATRUNL=0<CR>
+OK
+AT#TCPATRUND=0<CR>
+OK
+AT#ENAEVMONI=0<CR>
+OK
+
+Radio Link
+
+RADIO
+
+MODULE
+SW ENGINE
+
+AT0 Parser
+instance # 1
+
+The local module doesn’t run AT Run or
+Event Monitor Services.
+
+AT1 Parser
+instance # 2
+
+AT2 Parser
+instance # 3
+
+TRACE
+Access Point
+
+ASC0
+
+ASC1
+
+RS232 Serial Line
+COM1
+
+HyperTerminal
+Session connected
+to AT0 Parser
+
+DTE
+
+At module power on:
+- the ASC0 serial port is connected to AT0 Parser,
+- the ASC1 serial port is connected to the TRACE.
+
+fig. 10: Local Module doesn’t run AT Run and Event Monitor Services
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 26 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Hereafter is reported an example showing how the user, by means of the LOCAL
+MODULE, can get information from the REMOTE MODULE:
+AT+CMGF=1<CR>
+OK
+
+SMS in text mode
+
+AT+CNMI=2,1,0,0,0
+OK
+
+set up New Message Indication on DTE.
+
+//-----------------------------------------------------------------------------------AT+CMGS=”+393290569XYZ”<CR>
+get the remote module signal strength.
+>AT#MONI CtrlZ
++CMGS: 243
+OK
+The local module operator waits for the response from the remote module.
++CMTI: “SM”,1
+
+unsolicited code indicates that an SMS is received.
+
+AT+CMGR=1<CR>
+display the remote module signal strength.
++CMGR: "REC UNREAD" …………………………..
+#MONI: I TIM BSIC:21 RxQual:0 LAC:D5BD Id:5265 ARFCN:9 PWR:-89dbm TA: 1
+OK
+OK
+//-----------------------------------------------------------------------------------AT+CMGS=”+393290569XYZ”<CR>
+>AT#GPIO=9,2,0 CtrlZ
+set up the remote GPIO9 in input mode.
++CMGS: 244
+OK
+The local module operator waits for the response from the remote module.
++CMTI: “SM”,2
+AT+CMGR=2<CR>
+display the remote GPIO9 state.
++CMGR: "REC UNREAD" …………………………..
+#GPIO: 0,1
+OK
+OK
+//-----------------------------------------------------------------------------------AT+CMGS=”+393290569XYZ”<CR>
+>AT#I2CRD=11,12,50,00,02CtrlZ
+get the remote room temperature value.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 27 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
++CMGS: 245
+OK
+The local module operator waits for the response from the remote module.
++CMTI: “SM”,3
+
+unsolicited code indicates that an SMS is received.
+
+AT+CMGR=3<CR>
+display the remote room temperature value.
++CMGR: "REC UNREAD" …………………………..
+#I2CR: 17C0
+OK
+OK
+//-----------------------------------------------------------------------------------AT+CMGS=”+393290569XYZ”<CR>
+get Config Register content
+>AT#I2CRD=11,12,50,01,01CtrlZ
++CMGS: 246
+OK
+The local module operator waits for the response from the remote module.
++CMTI: “SM”,4
+
+unsolicited code indicates that an SMS is received
+
+AT+CMGR=4<CR>
+
+display Config Register value.
+
++CMGR: "REC UNREAD", …………………………..
+#I2CR: 00
+OK
+OK
+//-----------------------------------------------------------------------------------AT+CMGS=”+393290569XYZ”<CR>
+get low temperature limit (Thyst).
+>AT#I2CRD=11,12,50,02,02CtrlZ
++CMGS: 247
+OK
+The local module operator waits for the response from the remote module.
++CMTI: “SM”,5
+
+unsolicited code indicates that an SMS is received.
+
+AT+CMGR=5<CR>
+display low temperature limit (Thyst).
++CMGR: "REC UNREAD", …………………………..
+#I2CR: 1700
+OK
+OK
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 28 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+//-----------------------------------------------------------------------------------AT+CMGS=”+393290569XYZ”<CR>
+get high temperature limit (Toti).
+>AT#I2CRD=11,12,50,03,02CtrlZ
++CMGS: 248
+OK
+The local module operator waits for the response from the remote module.
++CMTI: “SM”,6
+unsolicited code indicates that an SMS is received.
+AT+CMGR=6<CR>
+display high temperature limit (Toti).
++CMGR: "REC UNREAD", …………………………..
+#I2CR: 1B00
+OK
+OK
+//-----------------------------------------------------------------------------------AT+CMGS=”+393290569XYZ”<CR>
+get heating state (input GPIO9).
+>AT#GPIO=9,02CtrlZ
++CMGS: 249
+OK
+The local module operator waits for the response from the remote module.
++CMTI: “SM”,7
+unsolicited code indicates that an SMS is received.
+AT+CMGR=7<CR>
+display heating state (input GPIO).
++CMGR: "REC UNREAD", …………………………..
+#GPIO: 0,1
+OK
+OK
+//-----------------------------------------------------------------------------------This introductory example gives the basic information to:
+•
+•
+•
+
+develop a suitable software application running on the Local Control Station
+PC to automatically control the remote room temperature and store its
+behavior;
+set up the remote module to obtain a stand-alone remote station without DTE
+and install it in the remote site;
+select the suitable AT Run Service in accordance with the application
+requirements and AT Run Service capability.
+
+Note: in this configuration all the actions are initiated by the local module, the
+remote module doesn’t take own initiative.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 29 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+6.2.
+
+Event Monitor Service
+The example described on the chapter 6.1 shows that all the actions are initiated by
+the local module. The remote module executes the AT Command received from the
+local module and sends back the SMS holding the relative result. Using the Event
+Monitor feature the remote module can send on its initiative the heater state to the
+local module every time the state goes high (refer to the example on chapter 6.1,
+GPIO9). In this case the local module doesn’t need to send an AT Command to the
+remote module to read the GPIO associated to the remote heater activity.
+This chapter illustrates the set up of the remote module running only the Event
+Monitor Service, the local module is set up as described on chapter 6.1.
+
+Preliminary DTE/REMOTE MODULE connection set up
+Remote module runs the Event Monitor Service, see fig. 11. To set up the
+DTE/REMOTE MODULE connection follow these steps:
+•
+•
+
+connect COM1 to ASC0 using an RS 232 straight cable (pins are connected
+one on one);
+start an HyperTerminal session on DTE.
+
+The HyperTerminal COM1 session will be used to configure the Event Monitor Service
+and the Digital Temperature Sensor installed on the RDTSB board.
+
+Preliminary REMOTE MODULE set up
+AT#SELINT=2<CR>
+OK
+AT#SMSMODE=1<CR>
+OK
+AT#REGMODE=1<CR>
+OK
+AT+CMEE=2<CR>
+OK
+
+Make sure that all Services are
+disabled
+AT#SMSATRUN=0<CR>
+OK
+AT#TCPATRUNL=0<CR>
+OK
+AT#TCPATRUND=0<CR>
+OK
+AT#ENAEVMONI=0<CR>
+OK
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 30 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Services vs. Instances
+In this configuration, the remote module only runs the Event Monitor Service. On Tab.
+2 the default relationship between the service and the instance is showed by the
+shadowed area.
+Services
+SMS AT Run
+TCP AT Run
+Event Monitor
+
+Instances available for Services
+#1
+#2
+#3
+☺
+☺
+/
+☺
+☺
+/
+☺
+☺
+/
+
+Tab. 2: Instances vs. Event Monitor Service
+
+Radio Link
+
+RADIO
+
+MODULE
+SW ENGINE
+
+AT0 Parser
+instance # 1
+
+EVENT MONITOR
+SERVICE
+
+AT1 Parser
+instance # 2
+
+AT2 Parser
+instance # 3
+
+TRACE
+Access Point
+
+ASC1
+
+ASC0
+RS232 Serial Line
+COM1
+
+HyperTerminal
+Session connected
+to AT0 Parser
+
+DTE
+
+At module power on:
+- the ASC0 serial port is connected to AT0 Parser,
+- the ASC1 serial port is connected to the TRACE.
+
+fig. 11: Remote Module running Event Monitor Service
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 31 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Event Monitor Service configuration
+AT#ENAEVMONICFG=3,1,5<CR>
+OK
+
+set up Event Monitor Service, instance # 3 is
+is assigned to Event Monitor Service, fig. 11.
+
+AT#EVMONI=”GPIO1”,0,1,9<CR>
+OK
+
+GPIO9 is connected to GPIO1 label.
+
+AT#EVMONI=”GPIO1”,0,2,1<CR>
+OK
+
+GPIO9 = HIGH starts the action.
+
+AT#EVMONI=”GPIO1”,0,3,5<CR>
+OK
+
+time interval (sec) after GPIO9 is gone HIGH
+the AT Command is sent.
+
+Connect “GPIO1” label with the dispatch of an SMS message and force in SMS text
+mode the instance #3, fig. 11. The AT Commands managed by the Event Monitor
+Service are analyzed by the AT2 Parser (instance # 3), in accordance with the
+analyses results the AT Commands are executed by the remote module:
+AT#EVMONI=”GPIO1”,0,0,”AT+CMGF=1;#CMGS=+393468686XYZ,\22HEATER ON\22”
+OK
+AT#EVMONI=”GPIO1”,1
+OK
+
+enable the single “GPIO1” Event.
+
+AT#ENAEVMONI=1
+OK
+
+enable the Event Monitor Service.
+
+Yet, if the GPIO9 is high or when it goes high, the remote module sends to the local module the
+configured SMS message.
+
+heather is ON
+SMS is sent to local module
+
+heather is ON
+SMS is sent to local module
+time
+
+GPIO9
+heather is OFF
+
+fig. 12: Heater State (GPIO9)
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 32 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+6.3.
+
+TCP AT Run Service
+This paragraph focuses the attention on the RDTSB board control performed by
+means of the TCP AT Run Service running on remote module. The fig. 13 shows the
+configuration target that must be reached to accomplish a remote control. This
+introductory example assumes that the local module and the remote module are
+located on the same site (LAB) and the AT Commands are entered by the user
+through two DTE equipments.
+It is assumed that the user enters the AT Commands and waits for the responses
+from the remote module. This approach permits to clearly show the procedure used
+to accomplish the remote temperature control.
+Preliminary DTE/REMOTE MODULE connection set up
+The remote module runs the TCP AT Run Service to execute the AT Commands sent
+by the local module, see fig. 14. To set up the DTE/REMOTE MODULE connection
+follow these steps:
+•
+•
+
+connect COM1 to ASC0 using an RS 232 straight cable (pins are connected
+one on one);
+start an HyperTerminal session on DTE.
+
+The HyperTerminal COM1 session will be used to configure the TCP AT Run.
+
+Preliminary REMOTE MODULE set up
+AT#SELINT=2<CR>
+OK
+AT#SMSMODE=1<CR>
+OK
+AT#REGMODE=1<CR>
+OK
+AT+CMEE=2<CR>
+OK
+
+Make sure that all Services are
+disabled
+AT#SMSATRUN=0<CR>
+OK
+AT#TCPATRUNL=0<CR>
+OK
+AT#TCPATRUND=0<CR>
+OK
+AT#ENAEVMONI=0<CR>
+OK
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 33 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+PLMN A
+
+BTS
+
+GGSN
+
+SGSN
+
+External Internet Network
+
+PLMN B
+
+GPRS
+
+SGSN
+
+BTS
+
+Local module
+
+IP Remote Server Address
+dynamically assigned by the
+Network must be known by
+the Client Application
+running on the Local
+Control Station PC
+
+Telit Module
+EASY GPRS
+TCP/IP stack
+on module
++ EVK
+RS 232 Serial Line
+HyperTerminal
+or
+Customer Application
+
+Local Control
+Station PC
+
+Room Temperature
+Control Board
+
+Telit Module
++ EVK
+GPIO
+interface
+AC/DC
+Adapter
+
+~ 220 Volt
+
+Room temperature
+under control
+
+cable length
+
+GPRS
+
+Remote module
+in Server Mode
+
+GGSN
+
+●
+
+●
+
+heater
+~ 220 Volt
+
+●
+
+●
+
+Remote Site
+
+Local Site
+
+fig. 13: RDTSB board & TCP AT Run Service
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 34 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Services vs. Instances
+In this configuration the remote module only runs TCP AT Run Service. On Tab. 3 the
+default relationship between service and instance is showed by the shadowed area.
+Services
+SMS AT Run
+TCP AT Run
+Event Monitor
+
+Instances available for Services
+#1
+#2
+#3
+☺
+☺
+/
+☺
+☺
+/
+☺
+☺
+/
+
+Tab. 3: Instances vs. TCP AT Run Service
+
+Radio Link
+
+RADIO
+
+MODULE
+SW ENGINE
+
+AT0 Parser
+instance # 1
+
+TCP AT RUN
+SERVICE
+
+AT1 Parser
+instance # 2
+
+AT2 Parser
+instance # 3
+
+TRACE
+Access Point
+
+ASC0
+
+ASC1
+
+RS232 Serial Line
+COM1
+
+HyperTerminal
+Session connected
+to AT0 Parser
+
+DTE
+
+At module power on:
+- the ASC0 serial port is connected to AT0 Parser,
+- the ASC1 serial port is connected to the TRACE.
+
+fig. 14: Remote Module running TCP AT Run Service
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 35 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+TCP AT Run Service in Server Mode configuration
+AT+CGATT?<CR>
++CGATT:1
+OK
+
+check if the remote module is GPRS attached,
+it is attached.
+
+AT+CGDCONT=1,”IP”,”IBOX.TIM.IT”<CR>
+OK
+
+set up PDP Context definition.
+
+Warning: the IP Remote Server Address is dynamically assigned by the Network
+Operator and it must be known by the local module.
+AT#SGACT=1,1<CR>
+#SGACT: 217.203.146.115
+OK
+
+PDP activation,
+IP address assigned by the Network.
+
+AT#SCFG=1,1,300,0,600,1<CR>
+OK
+
+socket configuration
+
+Warning: the remote TCP port must be known by the local module.
+The AT Command sent by the local module is received by the remote module, fig. 14.
+The AT1 Parser (instance # 2) analyzes it and in accordance with the analyses result
+the AT Command is executed by the remote module, the result is sent back to the
+local module.
+AT#TCPATRUNCFG=1,2,1024,12345,””,1,5,1,5,2<CR>
+TCP AT Run Service configuration,
+OK
+instance # 2 is assigned to TCP AT Run Service.
+AT#TCPATRUNFRWL=2<CR>
+OK
+
+drop the old firewall configuration.
+
+AT#TCPATRUNFRWL=1,”000.000.000.000”,”000.000.000.000”<CR>
+OK
+AT#TCPATRUNAUTH=2<CR>
+OK
+
+set up new firewall
+configuration.
+
+drop old authentication parameters.
+
+AT#TCPATRUNAUTH=1, “TESTUSER”,”TESTPASSW”<CR> set up new authentication parameters.
+OK
+AT#TCPATRUNL=1<CR>
+OK
+
+enable TCP AT Run service in Server mode.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 36 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+AT#SS<CR>
+#SS: 1,4, 217.203.146.115,1024
+#SS: 2,0
+#SS: 3,0
+#SS: 4,0
+#SS: 5,0
+#SS: 6,0
+OK
+
+check the Socket Status
+
+Yet, the remote module is running the TCP AT Run Service in Server (Listen) mode, it
+is waiting for AT Commands from the local module in order to execute them and
+send back the relative results.
+
+Preliminary DTE/LOCAL MODULE connection set up
+Refer to fig. 10: the local module doesn’t run AT Run or Event Monitor Services. To
+set up the DTE/LOCAL MODULE connection follow these steps:
+•
+•
+
+connect COM1 to ASC0 using an RS 232 straight cable (pins are connected
+one on one);
+start an HyperTerminal session on DTE.
+
+The HyperTerminal COM1 session will be used to read/write the registers of the
+Digital Temperature Sensor installed on the RDTSB board or read/write the remote
+GPIOs.
+
+Preliminary local module set up
+
+local module is not using the Services.
+
+AT#SELINT=2<CR>
+OK
+AT#SMSMODE=1<CR>
+OK
+AT#REGMODE=1<CR>
+OK
+AT+CMEE=2<CR>
+OK
+
+AT#SMSATRUN=0<CR>
+OK
+AT#TCPATRUNL=0<CR>
+OK
+AT#TCPATRUND=0<CR>
+OK
+AT#ENAEVMONI=0<CR>
+OK
+
+Open a TCP connection
+AT+CGATT?<CR>
+
+check if the Remote module is attached,
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 37 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
++CGATT:1
+OK
+
+it is attached.
+
+AT+CGDCONT=1,”IP”,”WEB.OMNITEL.IT”<CR>
+OK
+
+PDP Context definition.
+
+AT#SGACTAUTH?<CR>
+#SGACTAUTH: 1
+OK
+
+check authentication,
+PAP authentication (factory default)
+
+AT#SCFG=1,1,300,0,600,1<CR>
+OK
+
+socket configuration.
+
+AT#SCFGEXT=1,2,0,0,0,0<CR>
+OK
+
+extended socket configuration.
+
+AT#SGACT=1,1<CR>
+#SGACT: 109.113.46.58
+OK
+
+PDP activation,
+IP address assigned by the Network.
+
+Yet, the local module is able to open the connection by means of the configured
+socket:
+Warning: the IP Remote Server Address and remote TCP port must be known.
+AT#SD=1,0,1024,217.203.146.115,255,1,0<CR>
+
+open the connection
+
+yet, on the DTE is displayed:
+CONNECT
+Username:
+TESTUSER<CR>
+Password:
+TESTPASSW<CR>
+Login successful.
+
+unsolicited massage
+message from remote module
+entered by the user, characters are not echoed
+message from remote module
+entered by the user, characters are not echoed
+message from remote module
+
+Yet, the local module is in ON Line Mode, it is connected to the remote module
+running the TCP AT Run Service in Server (Listen) mode, fig. 14. The AT Commands
+characters entered by the user are echoed on the local DTE by the remote module
+(instance # 2). The AT Commands are executed by the remote module and their
+results are sent back to the local module.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 38 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+ATE1<CR>
+OK
+
+enable echo on the instance # 2 of the remote module,
+fig. 14.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 39 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Remote Digital Temperature Sensor configuration
+
+AT#I2CWR=11,12,50,02,02<CR>
+>1700CtrlZ
+OK
+
+set up low temperature limit (Thyst)
+0x1700 = 23°C
+
+AT#I2CWR=11,12,50,03,02<CR>
+>1B00CtrlZ
+OK
+
+set up high temperature limit (Toti)
+0x1B00 = 27°C
+
+AT#GPIO=9,2,0<CR>
+#GPIO: 0,1
+OK
+
+set up the remote GPIO 9 in input mode
+and display heating state.
+
+Remote room temperature monitoring
+get the remote temperature and display it.
+AT#I2CRD=11,12,50,00,02<CR>
+#I2CR: 1700
+OK
+
+get heating state (input GPIO9) and display it.
+AT#GPIO=9,02<CR>
+#GPIO: 0,1
+OK
+
+Exit ON Line Mode
+When the user needs to send AT Commands to the local module, the module must
+exit ON Line Mode and enter Command Mode. To accomplish this action the user
+must enter the following escape sequence:
++++
+OK
+
+4
+
+escape sequence without <CR>
+
+Yet, the local module is in Command Mode, the TCP connection with the remote
+module is still active, but the DTE is not more connected to the used TCP/IP socket.
+DTE can be used to enter AT Commands addressed to the local module.
+Exit Command Mode
+If the user needs to modify the configuration of the remote RDTSB board or read the
+remote temperature room, the ON Line Mode must be entered again.
+AT#SO=1<CR>
+CONNECT
+4
+
+The remote connection must be open with the AT#SD Command using the <closureType> = 255, [4]
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 40 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Yet, the operator can read/write registers of the remote RDTSB board.
+Disconnect
+Let’s suppose that the module is in Command Mode, to disconnect the connection
+with the remote module the user must enter the following Command:
+AT#SH=1
+OK
+
+disconnect the connection with the remote module.
+
+Note: in this example all the actions are initiated by the user from the local site, the
+remote module sends the result to the local module only after a previous “query”. No
+actions are autonomously initiated by the remote module.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 41 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+6.4.
+
+TCP AT Run & Event Monitor Services
+In the last paragraph an introductory example illustrating the use of the TCP AT Run
+Service was considered. In this paragraph the description is extended to the jointed
+5
+use of two services on the remote module: TCP AT Run (in Server mode) and Event
+Monitor Services.
+The combined use of the two services on the remote module, allows the user to
+read/write the Digital Temperature Sensor registers installed on the RDTSB board
+and in addition, when the user doesn’t need to read the remote room temperature
+value, the local module can be forced to exit the ON Line Mode, enter the Command
+Mode and check if some SMS messages are arrived from the remote module to
+detect if some configured events are happened. In fact, the remote module can send
+an SMS message in order to communicate that an event is occurred, e.g.: the heater
+is on.
+6
+
+With the support of the Telit Serial Port MUX application installed on the DTE
+connected to the local module it is possible to dedicate an HyperTerminal session to
+the ON Line Mode, a second HyperTerminal session to the Command Mode and a
+third HyperTerminal session to the reception of the SMS messages sent by the
+remote module.
+Hereafter is following the set up procedure of the REMOTE and LOCAL MODULES.
+
+Preliminary DTE/REMOTE MODULE connection set up
+Remote module must run, at the same time, two services: the TCP AT Run Service to
+execute the AT Commands sent by the local module and the Event Monitor Service to
+send an SMS message when a configured event is occurred, see fig. 15. To set up the
+DTE/REMOTE MODULE connection follow these steps:
+•
+•
+
+connect COM1 to ASC0 using an RS 232 straight cable (pins are connected
+one on one);
+start an HyperTerminal session on DTE.
+
+The HyperTerminal COM1 session will be used to configure the TCP AT Run and
+Event Monitor services.
+
+5
+6
+
+Server mode or Listen mode.
+PC running Windows.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 42 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Preliminary remote module set up
+
+Make sure that all Services are disabled
+
+AT#SELINT=2<CR>
+OK
+AT#SMSMODE=1<CR>
+OK
+AT#REGMODE=1<CR>
+OK
+AT+CMEE=2<CR>
+OK
+
+AT#SMSATRUN=0<CR>
+OK
+AT#TCPATRUNL=0<CR>
+OK
+AT#TCPATRUND=0<CR>
+OK
+AT#ENAEVMONI=0<CR>
+OK
+
+Services vs. Instances
+In this configuration the remote module runs two services at the same time: TCP AT
+Run and Event Monitor, see fig. 15. On Tab. 4 the relationships between services and
+instances are showed by the shadowed areas.
+Services
+SMS AT Run
+TCP AT Run
+Event Monitor
+
+Instances available for Services
+#1
+#2
+#3
+☺
+☺
+/
+☺
+☺
+/
+☺
+☺
+/
+
+Tab. 4: Combined Services & Instances
+
+Event Monitor Service configuration
+Refer to chapter 6.2.
+TCP AT Run Service in Server Mode configuration
+Refer to chapter 6.3.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 43 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Radio Link
+
+RADIO
+
+MODULE
+SW ENGINE
+
+AT0 Parser
+instance # 1
+
+TCP AT RUN
+SERVICE
+
+EVENT MONITOR
+SERVICE
+
+AT2 Parser
+instance # 3
+
+AT1 Parser
+instance # 2
+
+TRACE
+Access Point
+
+ASC0
+
+ASC1
+
+RS232 Serial Line
+COM1
+
+HyperTerminal
+Session connected
+to AT0 Parser
+
+At module power on:
+- the ASC0 serial port is connected to AT0 Parser,
+- the ASC1 serial port is connected to the TRACE.
+
+DTE
+
+fig. 15: Combined Services on Remote Module
+Preliminary DTE/LOCAL MODULE connection set up
+At the same time, the local module must manage: the TCP connection to the remote
+module in order to write/read the remote Digital Temperature Sensor registers and
+display on DTE the received SMS messages indicating the remote heater status. The
+SMSs are sent by the remote module using the Event Monitor Service. Follow these
+steps, see fig. 16:
+•
+•
+•
+
+7
+
+7
+
+load and run on DTE the Telit Serial Port MUX application;
+connect COM1 to ASC0 using an RS 232 straight cable (pins are connected
+one on one);
+8
+ran three HyperTerminal sessions: the first one connected to COM7 , the
+second one connected to COM8, the last one connected to COM9.
+
+PC running Windows.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 44 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Radio Link
+
+RADIO
+
+MODULE
+SW ENGINE
+
+The local module doesn’t run AT Run or
+Event Monitor Services.
+
+AT0 Parser
+instance # 1
+
+AT1 Parser
+instance # 2
+
+VC1 = COM7
+
+AT2 Parser
+instance #3
+
+VC2 = COM8
+
+VC3 = COM9
+
+TRACE
+Access Point
+VC4 = COM10
+
+MUX
+
+ASC0
+
+ASC1
+
+RS232 Serial Line
+COM1
+
+Telit Serial Port MUX
+COM7
+
+COM8
+
+HyperTerminal
+Session connected
+through VC1 to AT0
+Access Point
+
+HyperTerminal
+Session connected
+through VC2 to AT1
+Access Point
+
+COM9
+
+HyperTerminal
+Session connected
+through VC3 to AT2
+Access Point
+
+COM10
+
+DTE
+
+At module power on, when the Telit Serial Port MUX application is running on the connected
+DTE, the internal module control establish the following connection:
+VC1/COM7/AT0 (instance#1); VC2/COM8/AT1 (instance#2); VC3/COM9/AT2 (instance#3);
+VC4/COM10/TRACE.
+
+fig. 16: Telit Serial Port MUX on Local Module.
+8
+
+COM number is function of the DTE configuration.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 45 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+The HyperTerminal COM7 (hereafter called HTC7) will be used to manage the TCP
+remote connection.
+The HyperTerminal COM8 (HTC8) will be used to enter AT Commands to the local
+module.
+The HyperTerminal COM9 (HTC9) will be used to display the SMSs sent by the remote
+module.
+Preliminary LOCAL MODULE set up, use HTC7 session
+
+AT#SELINT=2<CR>
+OK
+AT#SMSMODE=1<CR>
+OK
+AT#REGMODE=1<CR>
+OK
+active only on instance #1/HTC7 session.
+AT+CMEE=2<CR>
+OK
+
+local module is not using the Services.
+AT#SMSATRUN=0<CR>
+OK
+AT#TCPATRUNL=0<CR>
+OK
+AT#TCPATRUND=0<CR>
+OK
+AT#ENAEVMONI=0<CR>
+OK
+
+Open a TCP connection, use HTC7 session
+Refer to chapter 6.3.
+Yet, the local module is in ON Line Mode, it is connected to the remote module. The
+AT Commands characters entered by the user are echoed on the local HTC7 session
+by the remote module (instance # 2) then, the AT Commands are executed by the
+remote module and their results are sent back to the local module on HTC7 session.
+ATE1<CR>
+OK
+
+enable echo on the instance # 2 of the remote module.
+
+Remote Digital Temperature Sensor configuration, use HTC7 session
+Refer to chapter 6.3.
+Remote room temperature monitoring, use HTC7 session
+Refer to chapter 6.3.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 46 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Enter AT Commands addressed to local module (Command Mode), use HTC8 session
+AT+CNMI=0,0,0,0,0
+OK
+
+disable New Message Indications on HTC8
+session.
+
+When the remote module sends an SMS, its unsolicited code will not be displayed on
+HTC8 session, it will be displayed on HTC9. In the meanwhile the user, by means of
+the HTC7 session (in ON Line Mode), can use the TCP AT Run Service features
+running on the remote module.
+AT#MONI<CR>
+#MONI: vodafone IT BSIC:60 RxQual:0 LAC:4E54 Id:6A1A ARFCN:90 PWR:-80dbm TA:1
+OK
+Enable the notification of the unsolicited code , use HTC9 session
+AT+CMGF=1<CR>
+OK
+
+SMS in text mode.
+
+AT+CNMI=2,1,0,0,0
+OK
+
+set up New Message Indications on HTC9
+session.
+
+When the remote module sends an SMS, its unsolicited code will be displayed on
+HTC9 session.
++CMTI: "SM",21
+
+unsolicited CODE on HTC9 session.
+
+AT+CMGR=21<CR>
+read SMS number 21
++CMGR: "REC UNREAD", ………………………………………..
+HEATER ON
+OK
+Hereafter are listed some AT Commands that should be useful when only one
+HyperTerminal session (e.g.: HTC7) is available on DTE.
+Exit ON Line Mode, use HTC7 session
+When the user needs to send AT Commands to the local module, the module must
+exit ON Line Mode and enter Command Mode. To accomplish this action the user
+must enter the following escape sequence:
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 47 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
++++
+OK
+
+9
+
+escape sequence without <CR>
+
+Yet, the local module is in Command Mode, the TCP connection with the remote
+module is still active, but the HTC7 session is not more connected to the used socket,
+it can be used to enter AT Commands for the local module.
+Exit Command Mode, use HTC7 session
+If the user needs to modify the configuration of the remote RDTSB board or read the
+remote temperature room, the ON Line Mode must be entered again.
+AT#SO=1<CR>
+CONNECT
+Yet, the operator can read/write registers of the remote RDTSB board.
+Disconnect, use HTC7 session
+Let’s suppose that the module is in Command Mode, to disconnect the connection
+with the remote module the user must enter the following command:
+AT#SH=1
+OK
+
+9
+
+disconnect the connection with the remote module.
+
+The remote connection must be open with the AT#SD Command using the <closureType> = 255, [4]
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 48 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+7.
+
+Appendix: RRTC Application
+The objective of this chapter is to provide the reader with the description of a simple
+demo application of the TCP AT Run and Event Monitor services. The simple
+application is the Remote Room Temperature Control introduced by chapter 6. To
+accomplish it a Remote Digital Temperature Sensor Board is needed. Refer to Telit
+Download Zone to download the DEMO software package and the schematic of the
+RDTSB board.
+
+PL103
+
+GM862
+
+3,8 V
+POWER SUPPLY
+
+GPIO8
+
+Voltage Regulator
+
+CONVST
+WRITE
+
+GPIO11
+GPIO12
+
+I2CBUS
+I2BUS
+
+GPIO9
+
+Digital Temperature Sensor
+AD 7417
+
+OTI
+READ
+
+Opto TRIAC
+
+CONNECTION TABLE
+PL103 connector
+AD7417
+Pin Name
+Pin #
+Pin Name
+Pin #
+GPIO11
+27
+SDA
+2
+GPIO12
+28
+SCL
+3
+GPIO8 out
+5
+CONVST
+15
+GPIO9 inp
+6
+OTI
+4
+
+HEATER
+
+EVK board
+
+230 V ~
+
+fig. 17: Remote Digital Temperature Sensor Board
+
+For demo purposes the heater is substituted by a light bulb just to create some thing
+like to the room temperature changes. When the light bulb is on the temperature
+value goes high, the digital temperature sensor - when the high temperature limit is
+reached - turns the light bulb off. When the temperature reaches the low limit value,
+the digital temperature sensor turn the light bulb on … and so on. The temperature
+behavior and the light bulb state are monitored and stored by the local module. Refer
+to paragraph 7.3 to glance at some RDTSB board photos.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 49 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+7.1.
+
+First Demo Hardware Configuration
+The “First Demo Hardware Configuration” is showed in detail on fig. 18, it can be
+used to carry out the architecture showed on fig. 13. For practical arrangement in
+the LAB, only one PC is used to manage both local and remote Telit modules.
+
+On the LAB PC run the following applications, refer to fig. 18:
+TelitSerialPortMUX: creates four virtual ports (e.g. : COM7 ÷ COM10), consequently
+four application can use at the same time the physical port COM1.
+TelitActiveObj:
+the generic VBScript can access by means of the TelitActiveObj
+the virtual or physical serial ports and also the TCP/IP stack.
+RTMCOM.VBS:
+opens the connection towards the remote module, sets up the
+Remote Digital Temperature Sensor Board and monitor the remote room
+temperature. It is connected to TelitActiveObj instance # 1, virtual port COM7, AT0
+Parser instance # 1.
+EVMONRX.VBS:
+receives the SMS messages sent by the Event Monitor Service
+running on the remote module. It is connected to TelitActiveObj instance # 3, virtual
+port COM9, AT2 Parser instance # 3.
+REMOTE.VBS:
+enables on the remote module TCP AT Run and Event Monitor
+Services. It is connected to TelitActiveObj instance # 2, physical port COM2, AT0
+Parser instance # 1.
+
+The following pages show how the above mentioned applications announces
+themselves; the user, before starting the applications, can change the configuration
+parameters. In addition, are also showed the applications windows during the
+running.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 50 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Radio Link
+
+Radio Link
+
+MODULE EGINE
+
+AT0 Parser
+instance # 1
+
+AT1 Parser
+instance # 2
+
+VC1 = COM7
+
+AT2 Parser
+instance #3
+
+TRACE
+Access Point
+
+VC3 = COM9
+
+VC2 = COM8
+
+MODULE
+ENGINE
+
+REMOTE MODULE
+AT0 Parser
+instance # 1
+
+LOCAL MODULE
+RS232 Serial Line
+COM1
+
+COM2
+
+Telit Serial Port MUX
+
+#1
+
+RTMCOM.VBS
+
+Remote Digital
+Temperature Sensor
+Board
+
+ASC1
+
+RS232 Serial Line
+
+COM7
+
+EVENT MONITOR
+SERVICE
+
+VC4 = COM10
+
+MUX
+
+ASC0
+
+TCP AT RUN
+SERVICE
+
+COM8
+
+LAB PC
+
+COM9
+
+#3
+
+TelitActiveObj.dll
+
+EVMONRX.VBS
+
+#2
+
+REMOTE.VBS
+
+fig. 18: First Configuration Details
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 51 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+RTMCOM window. Push OK button if the configuration
+parameters are accepted. Otherwise change them following
+the indications.
+
+TelitSerialPortMux Window
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 52 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+EVMONRX window. Push OK button if the configuration
+parameters are accepted. Otherwise change them following
+the indications.
+
+REMOTE window. Push OK button if the configuration
+parameters are accepted. Otherwise change them following
+the indications.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 53 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+From the above window it is possible to evict that the RTMCOM application reads periodically the remote room temperature, when
+the light bulb is on the heater state is marked on. In addition, the collected remote information is stored on a log file.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 54 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+The above window shows that the EVMONRX application receives the Event Monitor SMS’s when the light bulb is turned on. In
+addition, the received SMS’s are stored on a log file.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 55 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+The above window shows that the REMOTE application displays on the screen the remote IP address assigned by the network.
+When the local module accomplishes successfully the connection, on the screen is displayed the local IP address. In addition,
+when a Event Monitor SMS is sent, its contents is showed on the screen.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 56 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+48
+46
+T M E A U E [ °C
+E P RT R
+]
+
+44
+42
+40
+38
+36
+34
+32
+30
+16
+.2
+4.
+57
+16
+.2
+6.
+18
+16
+.2
+7.
+38
+16
+.2
+9.
+05
+16
+.3
+0.
+25
+16
+.3
+1.
+47
+16
+.3
+3.
+06
+16
+.3
+4.
+30
+16
+.3
+5.
+55
+16
+.3
+7.
+20
+16
+.3
+8.
+47
+16
+.4
+0.
+05
+16
+.4
+2.
+38
+16
+.4
+3.
+59
+16
+.4
+6.
+06
+16
+.4
+7.
+38
+16
+.4
+9.
+13
+16
+.5
+0.
+33
+16
+.5
+2.
+08
+16
+.5
+3.
+31
+16
+.5
+4.
+50
+
+28
+
+TIME [ H.MIN.SEC]
+
+Temperature values collected by the RTMCOM application and stored into a log file, it is possible arrange them into the above
+graph.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 57 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+7.2.
+
+Second Demo Hardware Configuration
+The “Second Demo Hardware Configuration” is showed in detail on fig. 19, it can be
+used to carry out the architecture showed on fig. 4. For practical arrangement in the
+LAB, only one PC is used to manage the TCP/IP connection to the Internet Network
+and the remote Telit module.
+On the LAB PC run the following applications, refer to fig. 19:
+the generic VBScript can access by means of the TelitActiveObj
+TelitActiveObj:
+the virtual or physical serial ports and also the TCP/IP stack.
+RTMNET.VBS:
+opens the connection towards the remote module, sets up the
+Remote Digital Temperature Sensor Board and monitor the remote room
+temperature. It is connected to TelitActiveObj instance # 4, ETH port.
+REMOTE.VBS:
+enables on the remote module TCP AT Run and Event Monitor
+Services. It is connected to TelitActiveObj instance # 2, physical port COM2, AT0
+Parser instance # 1.
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 58 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+Radio Link
+
+External Internet Networks
+MODULE
+ENGINE
+
+TCP AT RUN
+SERVICE
+
+IP address location
+
+AT0 Parser
+instance # 1
+
+Local Network
+
+Remote Digital
+Temperature Sensor
+Board
+
+ASC0
+RS232 Serial Line
+COM2
+
+ETH PORT
+
+LAB PC
+#4
+
+#2
+
+TelitActiveObj ActiveX Server
+
+REMOTE.VBS
+
+RTMNET.VBS
+
+fig. 19: Second Configuration Details
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 59 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+7.3.
+
+RDTSB board Pictures
+
+photo 1: RDTSB board & Remote Module
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 60 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+photo 2: RDTSB board details
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 61 of 62
+
+AT Run and Event Monitor Services Remote Room Temperature Control Application Note
+
+80000nt10043a Rev.0 – 2010-10-13
+
+photo 3: RDTSB/Module Connection details
+
+Reproduction forbidden without Telit Communications S.p.A’s. written authorization - All Rights Reserved.
+
+Page 62 of 62
+
+

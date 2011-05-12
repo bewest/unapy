@@ -1,0 +1,2867 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+<A name=1></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-1_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-1_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-1_3.jpg"><br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<b>80000nt10043a SMS AT RUN and TCP AT RUN&nbsp;<br>Application Note&nbsp;</b><br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=2></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-2_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-2_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+SMS AT&nbsp;Run and&nbsp;TCP&nbsp;AT&nbsp;Run Application Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+APPLICABILITY&nbsp;TABLE&nbsp;<br>
+&nbsp;<br>
+PRODUCT&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+GC864-QUAD&nbsp;<br>
+&nbsp;<br>
+GC864-QUAD&nbsp;V2&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+GC864-PY&nbsp;<br>
+&nbsp;<br>
+GT863-PY&nbsp;<br>
+&nbsp;<br>
+GT864-QUAD&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+GT864-PY&nbsp;<br>
+&nbsp;<br>
+GE863-GPS&nbsp;<br>
+&nbsp;<br>
+GE863-SIM&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+GE863-PRO3&nbsp;<br>
+&nbsp;<br>
+GE864-PY&nbsp;<br>
+GE864-QUAD&nbsp;<br>
+GE864-QUAD&nbsp;V2&nbsp;<br>
+GE864-QUAD&nbsp;Atex&nbsp;<br>
+GE864-QUAD&nbsp;<br>Automotive V2&nbsp;<br>
+GE865-QUAD&nbsp;<br>
+GL865-DUAL&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;- All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;2&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=3></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-3_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-3_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+<b>Disclaimer&nbsp;</b><br>
+&nbsp;<br>
+The information contained in this document is&nbsp;the proprietary information of Telit&nbsp;<br>Communications S.p.A.&nbsp;and its&nbsp;affiliates (“TELIT”). &nbsp;<br>
+The contents&nbsp;are confidential&nbsp;and any disclosure to persons other than&nbsp;the officers,&nbsp;<br>employees,&nbsp;agents or subcontractors of the owner or licensee of this document,&nbsp;<br>without the prior written consent of Telit,&nbsp;is strictly prohibited.&nbsp;<br>
+Telit makes&nbsp;every effort to&nbsp;ensure the quality of the information it makes available.&nbsp;<br>Notwithstanding the foregoing, Telit does not make any warranty as to&nbsp;the&nbsp;<br>information&nbsp;contained herein, and does not accept any liability for any injury, loss or&nbsp;<br>damage of any kind incurred by use&nbsp;of or reliance upon the information.&nbsp;<br>
+Telit disclaims any and all responsibility for the application of the devices&nbsp;<br>characterized in this document, and notes that the application of the device must&nbsp;<br>comply with the safety standards of the&nbsp;applicable country, and where applicable,&nbsp;<br>with the relevant wiring rules.&nbsp;<br>
+Telit reserves the right to make modifications, additions&nbsp;and deletions to this&nbsp;<br>document due to typographical errors, inaccurate information, or improvements to&nbsp;<br>programs and/or equipment at any time and without notice. &nbsp;<br>
+Such changes will, nevertheless be incorporated&nbsp;into new editions of this document.&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Copyright: Transmittal,&nbsp;reproduction, dissemination and/or&nbsp;editing of this document&nbsp;<br>as well as&nbsp;utilization of its contents and communication&nbsp;thereof to others without&nbsp;<br>express authorization are prohibited. Offenders will be held liable for&nbsp;payment of&nbsp;<br>damages. All rights are reserved. &nbsp;<br>
+&nbsp;<br>
+Copyright © Telit Communications S.p.A. 2010.&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;- All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;3&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=4></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-4_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-4_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+<b>Contents&nbsp;<br></b>&nbsp;<br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#6">1.&nbsp;&nbsp;Introduction&nbsp;.............................................................................................................6&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#6">1.1.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#6">Scope............................................................................................................................&nbsp;6&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#6">1.2.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#6">Audience.......................................................................................................................&nbsp;6&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#6">1.3.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#6">Contact Information, Support&nbsp;......................................................................................&nbsp;6&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#7">1.4.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#7">Related Documents&nbsp;.....................................................................................................&nbsp;7&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#7">1.5.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#7">Document History&nbsp;........................................................................................................&nbsp;7&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#7">1.6.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#7">Abbreviations and acronyms&nbsp;.......................................................................................&nbsp;7&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#8">2.&nbsp;&nbsp;AT Run and Event Monitor&nbsp;Services Introduction&nbsp;.....................................................8&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#9">3.&nbsp;&nbsp;SMS AT Run&nbsp;Services&nbsp;...............................................................................................9&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#12">4.&nbsp;&nbsp;TCP AT Run&nbsp;Service................................................................................................12&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#16">5.&nbsp;&nbsp;Event Monitor&nbsp;Service&nbsp;............................................................................................16&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#17">6.&nbsp;&nbsp;Remote Room Temperature&nbsp;Control Application&nbsp;...................................................17&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#20">6.1.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#20">SMS AT Run Service...................................................................................................&nbsp;20&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#30">6.2.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#30">Event Monitor Service&nbsp;................................................................................................&nbsp;30&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#33">6.3.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#33">TCP AT Run Service&nbsp;...................................................................................................&nbsp;33&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#42">6.4.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#42">TCP AT Run &amp; Event Monitor Services&nbsp;......................................................................&nbsp;42&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#49">7.&nbsp;&nbsp;Appendix: RRTC Application&nbsp;...................................................................................49&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#50">7.1.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#50">First Demo Hardware Configuration&nbsp;.........................................................................&nbsp;50&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#58">7.2.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#58">Second Demo Hardware Configuration.....................................................................&nbsp;58&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#60">7.3.&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#60">RDTSB board Pictures&nbsp;...............................................................................................&nbsp;60&nbsp;</a><br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;- All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;4&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=5></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-5_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-5_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br><b>Figures&nbsp;</b><br>
+&nbsp;<br><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#8">fig. 1: Basic Configuration&nbsp;..............................................................................................................................8&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#10">fig. 2: Remote Station without PC.................................................................................................................10&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#11">fig. 3: Remote Station with PC&nbsp;......................................................................................................................11&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#13">fig. 4: Local&nbsp;Control Station connected to Local Network...........................................................................13&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#14">fig. 5: Local&nbsp;Control Station using ISP..........................................................................................................14&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#15">fig. 6: Local&nbsp;Control Station with module.....................................................................................................15&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#19">fig. 7: Remote Room Temperature&nbsp;Control architecture&nbsp;............................................................................19&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#21">fig. 8: RDTSB board &amp; SMS AT Run Service.................................................................................................21&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#24">fig. 9: Remote Module running SMS AT Run Service...................................................................................24&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#26">fig. 10: Local Module doesn’t run AT Run and Event Monitor&nbsp;Services&nbsp;......................................................26&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#31">fig. 11: Remote Module&nbsp;running Event Monitor Service&nbsp;..............................................................................31&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#32">fig. 12: Heater State (GPIO9).........................................................................................................................32&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#34">fig. 13: RDTSB board &amp; TCP AT Run Service&nbsp;...............................................................................................34&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#35">fig. 14: Remote Module&nbsp;running TCP AT Run Service&nbsp;.................................................................................35&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#44">fig. 15: Combined Services on Remote Module&nbsp;...........................................................................................44&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#45">fig. 16: Telit Serial&nbsp;Port MUX on Local Module.&nbsp;...........................................................................................45&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#49">fig. 17: Remote Digital Temperature&nbsp;Sensor Board&nbsp;....................................................................................49&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#51">fig. 18: First Configuration Details&nbsp;...............................................................................................................51&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#59">fig. 19: Second Configuration Details&nbsp;...........................................................................................................59&nbsp;<br></a>&nbsp;<br>
+&nbsp;<br><b>Tables&nbsp;<br></b>&nbsp;<br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#23">Tab. 1: Default instance for SMS AT Run Service&nbsp;........................................................................................23&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#31">Tab. 2: Instances vs. Event Monitor Service.................................................................................................31&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#35">Tab. 3: Instances vs. TCP AT Run Service&nbsp;....................................................................................................35&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#43">Tab. 4: Combined Services &amp; Instances.......................................................................................................43&nbsp;</a><br>
+&nbsp;<br>&nbsp;<br><b>Photos&nbsp;<br></b>&nbsp;<br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#60">photo 1: RDTSB board&nbsp;&amp; Remote Module....................................................................................................60&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#61">photo 2: RDTSB board details.......................................................................................................................61&nbsp;<br></a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#62">photo 3: RDTSB/Module Connection details&nbsp;................................................................................................62&nbsp;</a><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;- All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;5&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=6></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-6_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-6_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+<b>1.</b>&nbsp;<br>
+<b>Introduction&nbsp;</b><br>
+1.1.<b>&nbsp;</b><br>
+Scope&nbsp;<br>
+The present document&nbsp;provides the reader with&nbsp;information concerning the use of&nbsp;<br>the SMS AT Run, TCP&nbsp;AT Run and&nbsp;Event&nbsp;Monitor Services. Several local-remote&nbsp;<br>modules configurations&nbsp;are illustrated and some examples&nbsp;are described. In fact, the&nbsp;<br>document objective is to guide the reader throughout the selection of the suitable&nbsp;<br>local and remote station configuration,&nbsp;how to carry out the hardware interface&nbsp;<br>between the remote module and the generic user-equipment and how to&nbsp;develop a&nbsp;<br>simple software&nbsp;application based on the mentioned services.&nbsp;<br>
+1.2.<b>&nbsp;</b><br>
+Audience&nbsp;<br>
+This document is intended for who needs to&nbsp;remotely control or monitor some&nbsp;<br>variables using suitable sensor connected to a remote Telit&nbsp;module.&nbsp;<br>
+1.3.<b>&nbsp;</b><br>
+Contact Information, Support&nbsp;<br>
+For general&nbsp;contact, technical support, to report documentation errors and to order&nbsp;<br>manuals, contact Telit’s Technical Support Center (TTSC) at:&nbsp;<br>
+&nbsp;<br>
+<a href="mailto:TS-EMEA@telit.com">TS-EMEA@telit.com&nbsp;<br></a><a href="mailto:TS-NORTHAMERICA@telit.com">TS-NORTHAMERICA@telit.com&nbsp;<br></a><a href="mailto:TS-LATINAMERICA@telit.com">TS-LATINAMERICA@telit.com&nbsp;<br></a><a href="mailto:TS-APAC@telit.com">TS-APAC@telit.com&nbsp;</a><br>
+&nbsp;<br>
+Alternatively, use: &nbsp;<br>
+<a href="http://www.telit.com/en/products/technical-support-center/contact.php">http://www.telit.com/en/products/technical-support-center/contact.php&nbsp;</a><br>
+For detailed&nbsp;information about&nbsp;where you&nbsp;can buy&nbsp;the Telit modules or for&nbsp;<br>recommendations on accessories and components visit: &nbsp;<br>
+<a href="http://www.telit.com/">http://www.telit.com&nbsp;</a><br>
+To register&nbsp;for product&nbsp;news and&nbsp;announcements or for product questions contact&nbsp;<br>Telit's Technical Support&nbsp;Center (TTSC).&nbsp;<br>
+Our aim is&nbsp;to make this guide as&nbsp;helpful as&nbsp;possible. Keep us informed of your&nbsp;<br>comments and suggestions for improvements.&nbsp;<br>
+Telit appreciates feedback from the users of our&nbsp;information.&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;- All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;6&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=7></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-7_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-7_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+1.4.<b>&nbsp;</b><br>
+Related Documents&nbsp;<br>
+&nbsp;<br>
+[1]&nbsp;<br>
+Running AT&nbsp;Commands Remotely Application Note&nbsp;<br>
+[2]&nbsp;<br>
+Event Monitor Application Note&nbsp;<br>
+[3]&nbsp;<br>
+Telit EVK2 User Guide&nbsp;<br>
+[4]&nbsp;<br>
+AT Commands Reference Guide &nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+1.5.<b>&nbsp;</b><br>
+Document History&nbsp;<br>
+&nbsp;<br>
+Revision&nbsp;<br>
+Date&nbsp;<br>
+Changes&nbsp;<br>
+0&nbsp;<br>
+&nbsp;2010/10/13&nbsp;<br>
+First issue&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+1.6.<b>&nbsp;</b><br>
+Abbreviations and acronyms&nbsp;<br>
+&nbsp;<br>
+BTS&nbsp;<br>
+&nbsp;<br>
+Base Transceiver Station&nbsp;<br>
+DTE&nbsp;<br>
+&nbsp;<br>
+Data Terminal Equipment&nbsp;<br>
+GGSN&nbsp;&nbsp;&nbsp;<br>
+Gateway GPRS Support&nbsp;Node&nbsp;<br>
+GPIO&nbsp;&nbsp;&nbsp;<br>
+General Purpose Input/Output&nbsp;<br>
+GPRS&nbsp;&nbsp;&nbsp;<br>
+General Packet Radio Services&nbsp;<br>
+I2CBUS I-squared-C&nbsp;<br>
+Bus&nbsp;<br>
+PAP&nbsp;<br>
+&nbsp;<br>
+Password authentication protocol&nbsp;<br>
+PDP&nbsp;<br>
+&nbsp;<br>
+Packet Data&nbsp;Protocol&nbsp;<br>
+PLMN&nbsp;&nbsp;&nbsp;<br>
+Public Land&nbsp;Mobile Network&nbsp;<br>
+RDTSB&nbsp;&nbsp;<br>
+Remote Digital Temperature Sensor Board&nbsp;<br>
+RRTC&nbsp;&nbsp;&nbsp;<br>
+Remote Room Temperature Control&nbsp;<br>
+SGSN&nbsp;&nbsp;&nbsp;<br>
+Serving GPRS Support Node&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;- All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;7&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=8></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-8_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-8_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+<b>2.</b>&nbsp;<br>
+<b>AT&nbsp;Run and Event Monitor Services Introduction&nbsp;</b><br>
+&nbsp;<br>
+The AT Run Services [1] allow the user to run AT Commands on a remote module by&nbsp;<br>means of the support of a communication protocol used to&nbsp;connect the&nbsp;local module&nbsp;<br>operated by the user and the&nbsp;remote module located on&nbsp;a remote site,&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#8">fig. 1. Telit&nbsp;<br></a>modules provide the following types&nbsp;of AT Run Services:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;SMS AT Run Service:&nbsp;<br>
+&nbsp;<br>
+&nbsp; &nbsp;-&nbsp;Simple SMS AT Run Service;&nbsp;<br>
+&nbsp;<br>
+&nbsp; &nbsp;- Digest SMS AT Run Service.&nbsp;<br>
+&nbsp;<br>
+In general, SMS AT Run Service can be used in&nbsp;GSM mode or in GPRS<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#8">1</a>&nbsp;mode&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;TCP AT Run Service&nbsp;<br>
+-&nbsp;&nbsp;in Client mode;&nbsp;<br>-&nbsp;&nbsp;in Server (Listen) mode.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Network&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Telit Module&nbsp;<br>
+&nbsp;<br>
+RS&nbsp;232 Serial&nbsp;Line&nbsp;&nbsp;<br>
+&nbsp;<br>
+GPIO interface &nbsp;<br>
+HyperTerminal&nbsp;<br>
+&nbsp;<br>
+Local&nbsp;Control&nbsp;<br>
+or&nbsp;<br>
+Telit&nbsp;Module<br>
+Customer Equipment<br>
+&nbsp;<br>
+Station&nbsp;PC<br>
+Customer Application&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Remote Site&nbsp;<br>
+&nbsp;<br>
+Local Site&nbsp;<br>
+&nbsp;<br>
+<b>fig. 1: Basic Configuration&nbsp;</b><br>
+&nbsp;<br>
+The Event&nbsp;Monitor Service [2] provided by&nbsp;the Telit modules allows&nbsp;the user to&nbsp;<br>associate an&nbsp;AT Command to a specified event monitored by the&nbsp;module itself. When&nbsp;<br>the module recognizes the event occurring, it executes the associated AT Command.&nbsp;<br>This service&nbsp;can be used jointly with&nbsp;the AT Run Services&nbsp;as will&nbsp;be shown on the&nbsp;<br>following pages.&nbsp;<br>
+&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>1&nbsp;The&nbsp;Network&nbsp;Operator must&nbsp;support&nbsp;the SMS&nbsp;in&nbsp;GPRS&nbsp;mode. &nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;- All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;8&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=9></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-9_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-9_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+<b>3.</b>&nbsp;<br>
+<b>SMS AT&nbsp;Run Services&nbsp;</b><br>
+&nbsp;<br>
+The SMS AT Run Service, running on remote module, is supported&nbsp;by the SMS&nbsp;<br>protocol to receive the&nbsp;AT Commands from&nbsp;the local station and send back the&nbsp;<br>results of the relative running.&nbsp;<br>The&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#10">fig. 2&nbsp;shows a remot</a>e station configuration without remote PC, the&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#11">fig. 3&nbsp;shows&nbsp;</a>a&nbsp;<br>remote station with remote PC running a customer application. Both remote station&nbsp;<br>configurations run SMS&nbsp;AT Run Service and could be without operator.&nbsp;<br>&nbsp;<br>The hereafter described example shows how to run remotely an AT Command, let’s&nbsp;<br>suppose that the user needs to know the&nbsp;signal strength received by&nbsp;the remote&nbsp;<br>module.&nbsp;On&nbsp;local station&nbsp;the AT Commands are&nbsp;entered by the user and&nbsp;the received&nbsp;<br>responses are still manually read by the user using an HyperTerminal session.&nbsp;<br>&nbsp;<br>Basic steps:&nbsp;<br>
+&nbsp;<br>
+1.&nbsp;&nbsp;the user on the local control station writes and&nbsp;sends an SMS message holding&nbsp;<br>
+the AT Command: AT#MONI;&nbsp;<br>&nbsp;<br>
+2.&nbsp;&nbsp;the remote stand-alone module receives the&nbsp;SMS message, executes the AT&nbsp;<br>
+Command transported by the SMS and sends to&nbsp;the local module, by means of an&nbsp;<br>SMS message, the result of the just&nbsp;ran AT Command;&nbsp;<br>&nbsp;<br>
+3.&nbsp;&nbsp;the local&nbsp;module receives the SMS holding the&nbsp;result and alerts the user that a&nbsp;<br>
+new SMS has been received;&nbsp;<br>&nbsp;<br>
+4.&nbsp;&nbsp;the user reads the received SMS holding the desired information.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+In applications where&nbsp;the customer equipment is not requiring specific control&nbsp;<br>actions, the remote PC&nbsp;or the module Python facility could be substituted by the&nbsp;<br>Event Monitor Service provided by the module. Consequently, the remote module will&nbsp;<br>run at the same time: SMS AT Run and Event Monitor Services. &nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;- All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;9&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=10></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-10_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-10_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+BTS&nbsp;<br>
+PLMN A&nbsp;<br>
+Interconnection Networks<br>
+PLMN B<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+AT Commands sent&nbsp;by&nbsp;<br>
+&nbsp;<br>
+the local module&nbsp;and&nbsp;<br>
+&nbsp;<br>
+relative&nbsp;responses&nbsp;sent&nbsp;<br>
+&nbsp;<br>
+by&nbsp;the remote&nbsp;module&nbsp;<br>
+are&nbsp;transported by SMS&nbsp;&nbsp;<br>
+BTS<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+AT Commands received&nbsp;<br>
+&nbsp;<br>
+from the local&nbsp;module&nbsp;<br>
+and relative responses&nbsp;<br>
+&nbsp;<br>
+GSM&nbsp;Module&nbsp;<br>
+sent&nbsp;by&nbsp;the remote&nbsp;<br>
+&nbsp;<br>
+module are transported&nbsp;<br>
+GPIO&nbsp;interface&nbsp;<br>
+&nbsp;<br>
+RS&nbsp;232 Serial&nbsp;Line&nbsp;<br>
+by SMS&nbsp;&nbsp;<br>
+&nbsp;<br>
+GSM&nbsp;Module<br>
+Customer Equipment<br>
+HyperTerminal&nbsp;<br>
+Local Control&nbsp;<br>
+&nbsp;<br>
+or&nbsp;<br>
+Station&nbsp;PC<br>
+Customer Application&nbsp;<br>
+&nbsp;<br>
+Remote Site<br>
+&nbsp;<br>
+Local Site&nbsp;<br>
+&nbsp;<br>
+<b>fig. 2: Remote Station without PC&nbsp;</b><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;10&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=11></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-11_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-11_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+BTS&nbsp;<br>
+PLMN A&nbsp;<br>
+Interconnection Networks<br>
+PLMN B<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+AT Commands sent&nbsp;by&nbsp;<br>
+the&nbsp;local module&nbsp;and&nbsp;<br>
+&nbsp;<br>
+relative&nbsp;responses&nbsp;sent&nbsp;<br>
+&nbsp;<br>
+by&nbsp;the remote&nbsp;module&nbsp;<br>
+BTS<br>
+&nbsp;<br>
+are&nbsp;transported by SMS&nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Commands received&nbsp;<br>
+&nbsp;<br>
+from the local&nbsp;module&nbsp;<br>
+and relative responses&nbsp;<br>
+&nbsp;<br>
+GSM&nbsp;Module&nbsp;<br>
+sent&nbsp;by&nbsp;the remote&nbsp;<br>
+GPIO&nbsp;interface&nbsp;<br>
+&nbsp;<br>
+module&nbsp;are transported&nbsp;<br>
+&nbsp;<br>
+RS&nbsp;232 Serial&nbsp;Line&nbsp;<br>
+GSM&nbsp;Module<br>
+Customer Equipment<br>
+by SMS&nbsp;&nbsp;<br>
+&nbsp;<br>
+HyperTerminal&nbsp;<br>
+Local&nbsp;Control&nbsp;<br>
+RS&nbsp;232 Serial&nbsp;Line&nbsp;<br>
+&nbsp;<br>
+or&nbsp;<br>
+Station&nbsp;PC<br>
+Customer Application&nbsp;<br>
+Customer Application<br>
+Remote&nbsp;PC<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Local Site&nbsp;<br>
+Remote Site<br>
+&nbsp;<br>
+<b>fig. 3: Remote Station with PC&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;11&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=12></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-12_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-12_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+<b>4.</b>&nbsp;<br>
+<b>TCP AT&nbsp;Run Service&nbsp;</b><br>
+&nbsp;<br>
+The TCP AT Run Service, running on remote module, is supported&nbsp;by the TCP&nbsp;<br>protocol to receive the AT Commands sent by the local station, refer to<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#13">&nbsp;fig. 4</a>,&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#14">fig. 5</a>,&nbsp;<br><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#15">fig. 6</a>. The remote module executes the&nbsp;received AT Commands and&nbsp;sends back&nbsp;to&nbsp;<br>the local station the results. In the&nbsp;following example it is assumed that the user&nbsp;<br>needs to know the signal strength&nbsp;received by the remote module,&nbsp;and the TCP&nbsp;<br>connection procedure is successfully completed:&nbsp;<br>
+&nbsp;&nbsp;<br>
+1.&nbsp;&nbsp;the user on local control&nbsp;station enters the AT Command: AT#MONI&lt;CR&gt;;&nbsp;<br>
+&nbsp;<br>
+2.&nbsp;&nbsp;the remote stand-alone module receives the AT Command, executes it and sends&nbsp;<br>
+to the local control station the Command result holding&nbsp;the required signal&nbsp;<br>strength.&nbsp;<br>
+&nbsp;<br>
+The above described activity can be accomplished using several hardware/software&nbsp;<br>configurations, in accordance with the user&nbsp;requirements.&nbsp;Follow&nbsp;a short description&nbsp;<br>of the showed configurations.&nbsp;<br>&nbsp;&nbsp;<br>The&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#13">fig. 4&nbsp;and&nbsp;</a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#14">fig. 5</a>&nbsp;show two configurations in&nbsp;which the local control station doesn’t&nbsp;<br>use a module. The control station&nbsp;PC runs&nbsp;the TCP/IP protocol stack and it is&nbsp;<br>connected to the local network or uses an Internet Service Provider.&nbsp;<br>&nbsp;<br>The&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#15">fig. 6&nbsp;shows a configuration in which the local control station uses a module. In&nbsp;<br></a>this solution, the TCP/IP protocol&nbsp;stack runs on module (EASY GPRS). The control&nbsp;<br>station PC&nbsp;is connected to the module&nbsp;through a serial&nbsp;line. In addition,&nbsp;in&nbsp;<br>applications&nbsp;where the customer equipment is not requiring&nbsp;specific control actions,&nbsp;<br>the remote&nbsp;PC could be&nbsp;substituted by&nbsp;the Event Monitor Service provided by the&nbsp;<br>module itself. Consequently, the remote module will run at the same&nbsp;time: TCP AT&nbsp;<br>Run and Event Monitor Services.&nbsp;<br>
+&nbsp;<br>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;12&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=13></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-13_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-13_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+External Internet Networks<br>
+GGSN<br>
+SGSN<br>
+BTC<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+IP&nbsp;address location<br>
+&nbsp;<br>&nbsp;<br>
+GPRS Radio Channels&nbsp;<br>
+&nbsp;<br>
+Local Network&nbsp;<br>
+IP Remote Server Address&nbsp;<br>
+&nbsp;<br>
+dynamically&nbsp;assigned&nbsp;by&nbsp;the&nbsp;<br>
+&nbsp;<br>
+Network&nbsp;must&nbsp;be&nbsp;known&nbsp;by&nbsp;<br>
+the&nbsp;Client&nbsp;Application&nbsp;<br>
+GPIO&nbsp;interface&nbsp;<br>
+&nbsp;<br>
+running on&nbsp;the&nbsp;Local&nbsp;<br>
+Telit Module&nbsp;<br>
+&nbsp;<br>
+Control Station PC&nbsp; &nbsp;<br>
+Customer Equipment<br>
+in Server&nbsp;Mode&nbsp;<br>
+&nbsp;<br>
+TCP/IP&nbsp;<br>
+&nbsp;<br>
+RS&nbsp;232 Serial&nbsp;Line&nbsp;<br>
+Customer Application&nbsp;<br>
+Local Control Station PC<br>
+&nbsp;<br>
+( Client Mode&nbsp;)&nbsp;<br>
+Customer Application&nbsp;<br>
+&nbsp;<br>
+Remote&nbsp;PC&nbsp;<br>
+&nbsp;<br>
+Local Site&nbsp;<br>
+&nbsp;<br>
+Remote Site<br>
+<b>fig. 4: Local Control Station connected to Local Network&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;13&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=14></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-14_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-14_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Internet Network<br>
+GGSN<br>
+SGSN<br>
+BTC<br>
+&nbsp;<br>&nbsp;<br>
+Internet&nbsp;&nbsp;<br>
+&nbsp;<br>
+Service&nbsp;Provider&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+GPRS&nbsp;Radio Channels&nbsp;<br>
+&nbsp;<br>
+IP Remote Server Address&nbsp;<br>
+&nbsp;<br>
+dynamically&nbsp;assigned&nbsp;by the&nbsp;<br>
+Network&nbsp;must&nbsp;be&nbsp;known&nbsp;by&nbsp;<br>
+&nbsp;<br>
+the&nbsp;Client&nbsp;Application&nbsp;<br>
+GPIO&nbsp;interface&nbsp;<br>
+&nbsp;<br>
+wiring pair&nbsp;<br>
+running on&nbsp;the&nbsp;Local&nbsp;<br>
+Telit Module&nbsp;<br>
+&nbsp;<br>
+Control Station PC&nbsp; &nbsp;<br>
+Customer Equipment<br>
+in Server&nbsp;Mode&nbsp;<br>
+&nbsp;<br>
+TCP/IP&nbsp;<br>
+RS&nbsp;232 Serial&nbsp;Line&nbsp;<br>
+&nbsp;<br>
+Customer Application&nbsp;<br>
+Local Control Station PC<br>
+&nbsp;<br>
+( Client Mode&nbsp;)<br>
+Customer Application&nbsp;<br>
+&nbsp;<br>
+Remote&nbsp;PC&nbsp;<br>
+&nbsp;<br>
+Local Site<br>
+&nbsp;<br>
+<b>fig. 5: Local Control Station using ISP&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;14&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=15></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-15_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-15_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+PLMN A&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+External Internet Network<br>
+&nbsp;<br>
+BTS&nbsp;<br>
+SGSN<br>
+GGSN<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+PLMN B<br>
+GPRS&nbsp;Radio channels&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+BTS<br>
+SGSN<br>
+GGSN<br>
+IP Remote Server Address&nbsp;<br>
+&nbsp;<br>
+dynamically&nbsp;assigned&nbsp;by the&nbsp;<br>
+&nbsp;<br>
+Telit Module&nbsp;<br>
+Network&nbsp;must&nbsp;be&nbsp;known&nbsp;by&nbsp;<br>
+GPRS&nbsp;Radio channels<br>
+EASY GPRS&nbsp;<br>
+&nbsp;<br>
+the&nbsp;Client&nbsp;Application&nbsp;<br>
+TCP/IP stack&nbsp;<br>
+running on&nbsp;the&nbsp;Local&nbsp;<br>
+&nbsp;<br>
+on&nbsp;module&nbsp;<br>
+Control Station PC&nbsp; &nbsp;<br>
+GPIO&nbsp;interface&nbsp;<br>
+&nbsp;<br>
+in&nbsp;Client Mode&nbsp;<br>
+&nbsp;<br>
+RS&nbsp;232 Serial&nbsp;Line&nbsp;<br>
+Telit Module&nbsp;<br>
+Customer Equipment<br>
+&nbsp;<br>
+in Server&nbsp;Mode&nbsp;<br>
+HyperTerminal&nbsp;<br>
+&nbsp;<br>
+or&nbsp;<br>
+Local Control Station PC<br>
+RS&nbsp;232 Serial&nbsp;Line&nbsp;<br>
+&nbsp;<br>
+Customer Application<br>
+Customer Application&nbsp;<br>
+&nbsp;<br>
+Remote&nbsp;PC&nbsp;<br>
+&nbsp;<br>
+Local Site&nbsp;<br>
+&nbsp;<br>
+Remote Site<br>
+&nbsp;<br>
+<b>fig. 6: Local Control Station with module&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;15&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=16></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-16_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-16_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+<b>5.</b>&nbsp;<br>
+<b>Event Monitor Service&nbsp;</b><br>
+&nbsp;<br>
+The Event&nbsp;Monitor Service [2] provided by&nbsp;the Telit modules allows&nbsp;the user to&nbsp;<br>associate an AT Command to a specified event monitored by&nbsp;the module itself. To&nbsp;<br>perform the monitoring events actions no&nbsp;program or script must&nbsp;be&nbsp;developed by&nbsp;<br>the user. When the module recognizes the&nbsp;event occurring, it executes the&nbsp;<br>associated&nbsp;AT Command. &nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;16&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=17></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-17_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-17_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+<b>6.</b>&nbsp;<br>
+<b>Remote Room Temperature Control Application &nbsp;</b><br>
+Aim of this&nbsp;chapter is to introduce a simple AT Run Services application example.&nbsp;<br>Let‘s suppose that someone needs to control the temperature of a room located in a&nbsp;<br>remote site. To accomplish the remote room temperature control the following items&nbsp;<br>must be got ready: &nbsp;<br>&nbsp;<br>Local Site:&nbsp;<br>
+•&nbsp;&nbsp;the local module is installed on an&nbsp;EVK board [3] to simplify the interface&nbsp;<br>
+between the module and&nbsp;the DTE;&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;the DTE runs&nbsp;one or more HyperTerminal sessions to enter manually the AT&nbsp;<br>
+Commands and in the meanwhile monitor the room temperature behavior. &nbsp;&nbsp;<br>
+&nbsp;<br>
+Remote Site:&nbsp;<br>
+•&nbsp;&nbsp;the remote&nbsp;room temperature control is based on a Digital Temperature&nbsp;<br>
+Sensor which can be configured&nbsp;writing&nbsp;its registers by means of the I2CBUS.&nbsp;<br>The temperature is read from the&nbsp;temperature register.&nbsp;The RDTSB board&nbsp;<br>using a solid state relay&nbsp;turns on/off the heater in accordance with the Digital&nbsp;<br>Temperature Sensor set up; &nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;the remote module is installed on an EVK board [3] to simplify the interface&nbsp;<br>
+between the module and the RDTSB board. In addition,&nbsp;this configuration&nbsp;<br>permits to use a unique&nbsp;AC/DC Power Supply for remote module and RDTSB&nbsp;<br>board;&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;the length of the wiring between the Telit module and the RDTSB board&nbsp;must&nbsp;<br>
+be compliant with the electrical requirements of&nbsp;the I2CBUS<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#17">2</a>&nbsp; and GPIO;&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;the DTE runs a HyperTerminal session to enter&nbsp;manually the AT Commands&nbsp;<br>
+to configure the remote module. &nbsp;&nbsp;<br>
+&nbsp;<br>Remote room temperature control is accomplished by the Digital Temperature&nbsp;<br>Sensor used as a thermostat in accordance with the programmed high and low&nbsp;<br>temperature limits. On the Local Control Station are available the following functions&nbsp;<br>accomplished by means of the&nbsp;AT Commands executed by the remote module&nbsp;<br>running the&nbsp;selected AT Run Service:&nbsp;<br>&nbsp;<br>
+•&nbsp;&nbsp;Digital&nbsp;Temperature Sensor set up (I2C BUS);&nbsp;<br>
+•&nbsp;&nbsp;Start conversion and Power Down Mode set up (GPIO in output direction); &nbsp;<br>
+•&nbsp;&nbsp;Heating State monitoring&nbsp;(GPIO in input direction).&nbsp;<br>
+&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+2&nbsp;standard mode: 100 Kbps&nbsp;or fast mode:&nbsp;400 Kbps, depends on&nbsp;module type. &nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;17&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=18></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-18_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-18_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+The&nbsp;&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#19">fig.&nbsp;7</a>&nbsp;shows a configuration&nbsp;where on remote side is not used a DTE&nbsp;and&nbsp;no&nbsp;<br>operator is&nbsp;super visioning the equipments: the figure&nbsp;depicts an&nbsp;operative&nbsp;<br>configuration.&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;18&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=19></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-19_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-19_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Network&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Room temperature&nbsp;<br>
+cable length<br>
+under&nbsp;control&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Telit Module&nbsp;<br>
++ EVK<br>
+&nbsp;<br>
+Room Temperature &nbsp;<br>
+&nbsp;<br>
+RS&nbsp;232 Serial&nbsp;Line&nbsp;&nbsp;<br>
+Telit Module&nbsp;<br>
+Control Board&nbsp;<br>
++ EVK<br>
+&nbsp;<br>
+GPIO&nbsp;&nbsp;<br>
+HyperTerminal&nbsp;<br>
+Local Control&nbsp;<br>
+&nbsp;<br>
+interface&nbsp;&nbsp;<br>
+or&nbsp;<br>
+Station&nbsp;PC<br>
+AC/DC&nbsp;<br>
+Customer Application&nbsp;<br>
+&nbsp;<br>
+Adapter<br>
+heater<br>
+&nbsp;<br>
+●<br>
+●<br>
+~&nbsp;220 Volt&nbsp;<br>
+~&nbsp;220&nbsp;Volt<br>
+&nbsp;<br>
+●<br>
+●<br>
+&nbsp;<br>&nbsp;<br>
+Remote Site<br>
+&nbsp;<br>
+Local Site&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+<b>fig. 7: Remote Room Temperature Control architecture&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;19&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=20></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-20_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-20_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+Appendix&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#49">7</a>&nbsp;describes in detail the software and hardware items of the&nbsp;Remote Room&nbsp;<br>Temperature Control application.&nbsp;Before going trough the mentioned Appendix &nbsp;it is&nbsp;<br>strongly recommended to examine carefully the&nbsp;following subparagraphs. &nbsp;&nbsp;<br>&nbsp;<br>To get more&nbsp;information&nbsp;about the AT Commands used hereafter refer to [4]. &nbsp;<br>
+&nbsp;<br>
+6.1.<b>&nbsp;</b><br>
+SMS AT Run Service &nbsp;<br>
+&nbsp;<br>
+This chapter focuses the attention on the RDTSB board control carried&nbsp;out by means&nbsp;<br>of the SMS&nbsp;AT Run Service running on the&nbsp;remote module and based&nbsp;on the GSM&nbsp;<br>radio channels<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#20">3</a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#21">, see&nbsp;fig. 8</a>. &nbsp;<br>&nbsp;<br>Despite the configuration showed by the&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#21">fig. 8</a>, in the following&nbsp;example it is assumed&nbsp;<br>that the two modules are located close to each other on the same site (LAB) and the&nbsp;<br>user can easily enter the AT Commands on both modules.&nbsp;Anyway, one&nbsp;module&nbsp;will&nbsp;<br>be called “remote” and&nbsp;the second&nbsp;one will be called “local”. This approach permits&nbsp;<br>to clearly show the procedure that must be&nbsp;followed to accomplish the remote room&nbsp;<br>temperature control.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>3&nbsp;As&nbsp;alternative: GPRS&nbsp;radio channels. &nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;20&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=21></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-21_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-21_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+BTS&nbsp;<br>
+PLMN A&nbsp;<br>
+Interconnection Networks<br>
+PLMN B<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+BTS<br>
+&nbsp;<br>
+Room temperature&nbsp;<br>
+&nbsp;<br>
+cable&nbsp;length<br>
+under&nbsp;control&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Telit Module&nbsp;<br>
+&nbsp;<br>
++ EVK&nbsp;<br>
+Room Temperature &nbsp;<br>
+&nbsp;<br>
+RS&nbsp;232 Serial&nbsp;Line&nbsp;<br>
+Telit Module&nbsp;<br>
+Control Board&nbsp;<br>
++ EVK<br>
+&nbsp;<br>
+HyperTerminal&nbsp;<br>
+GPIO&nbsp;&nbsp;<br>
+&nbsp;<br>
+Local Control&nbsp;<br>
+or&nbsp;<br>
+interface&nbsp;&nbsp;<br>
+Station&nbsp;PC<br>
+&nbsp;<br>
+Customer Application&nbsp;<br>
+AC/DC&nbsp;<br>
+Adapter<br>
+heater<br>
+&nbsp;<br>
+●<br>
+●<br>
+~<br>
+&nbsp;<br>
+220 Volt&nbsp;&nbsp;<br>
+~&nbsp;220&nbsp;Volt<br>
+●<br>
+●<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Remote Site<br>
+Local Site&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+<b>fig. 8: RDTSB board &amp; SMS AT Run Service&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;21&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=22></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-22_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-22_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Preliminary DTE/REMOTE MODULE connection set up&nbsp;<br>&nbsp;<br>Remote module runs the SMS AT Run Service to execute the AT Commands sent by&nbsp;<br>the local&nbsp;module, see&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#24">fig. 9</a>.&nbsp;To set&nbsp;up the DTE/REMOTE&nbsp;MODULE connection follow&nbsp;<br>these steps:&nbsp;<br>&nbsp;<br>
+•&nbsp;&nbsp;connect COM1 to ASC0 using&nbsp;an RS 232 straight cable (pins are connected&nbsp;<br>
+one on one);&nbsp;<br>
+•&nbsp;&nbsp;start an HyperTerminal session on DTE.&nbsp;<br>
+&nbsp;<br>The HyperTerminal COM1 session will be used&nbsp;to configure the SMS AT Run Service&nbsp;<br>and Digital&nbsp;Temperature&nbsp;Sensor installed on the RDTSB board.&nbsp;<br>&nbsp;<br>&nbsp;<br>Preliminary REMOTE&nbsp;MODULE set up&nbsp;&nbsp;<br>&nbsp;<br>AT#SELINT=2&lt;CR&gt;&nbsp;<br>OK&nbsp;<br>AT#SMSMODE=1&lt;CR&gt;&nbsp;<br>OK&nbsp;<br>AT#REGMODE=1&lt;CR&gt;&nbsp;<br>OK&nbsp;<br>AT+CMEE=2&lt;CR&gt;&nbsp;<br>OK&nbsp;<br>&nbsp;<br>Services vs. Instances&nbsp;<br>&nbsp;<br>Before going on the remote module set up it is advisable to&nbsp;recall the concept of the&nbsp;<br>instances and their relationships with the&nbsp;Services. With the&nbsp;term “instance” is&nbsp;<br>intended an&nbsp;AT Commands Parser: Telit module provides three independent AT&nbsp;<br><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#24">Commands Parsers as showed on&nbsp;fig. 9.&nbsp;</a><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#23">Tab. 1&nbsp;s</a>hows all the possible connection (☺)&nbsp;<br>between instances and services.&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;22&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=23></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-23_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-23_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+In this example, the remote module&nbsp;runs SMS AT&nbsp;Run Service. On&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#23">Tab.&nbsp;1&nbsp;the default</a>&nbsp;<br>connection between the service and instance number is&nbsp;showed by the shadowed&nbsp;<br>area. &nbsp;<br>
+&nbsp;<br>
+Instances available for Services&nbsp;<br>
+Services&nbsp;<br>
+#1&nbsp;#2&nbsp;#3&nbsp;<br>
+SMS AT Run&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+TCP AT Run&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+Event Monitor&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+&nbsp;<br>
+<b>Tab. 1: Default instance for SMS AT Run Service&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;23&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=24></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-24_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-24_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-24_3.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-24_4.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-24_5.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-24_6.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-24_7.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-24_8.png"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Radio Link&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+RADIO<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+MODULE&nbsp;<br>
+SMS AT RUN&nbsp;<br>
+&nbsp;<br>
+SW ENGINE&nbsp;<br>
+SERVICE&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+AT0 Parser&nbsp;<br>
+AT1 Parser&nbsp;<br>
+AT2 Parser&nbsp;<br>
+TRACE&nbsp;<br>
+&nbsp;<br>
+instance #&nbsp;1&nbsp;<br>
+instance #&nbsp;2&nbsp;<br>
+instance #&nbsp;3&nbsp;<br>
+Access Point&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+ASC0&nbsp;<br>
+ASC1&nbsp;<br>
+RS232&nbsp;&nbsp;<br>
+&nbsp;Serial Line&nbsp;<br>
+&nbsp;<br>
+COM1&nbsp;<br>
+At module power on:&nbsp;<br>
+&nbsp;<br>
+DTE<br>
+- the ASC0&nbsp;serial port is connected to&nbsp;AT0 Parser,&nbsp;<br>
+&nbsp;<br>
+HyperTerminal&nbsp;<br>Session&nbsp;connected&nbsp;<br>
+- the ASC1&nbsp;serial port is connected to&nbsp;the TRACE. &nbsp;<br>
+&nbsp;<br>
+to AT0&nbsp;Parser&nbsp;<br>
+&nbsp;<br>&nbsp;<br><b>&nbsp;</b><br>
+<b>fig. 9: Remote Module running SMS AT Run Service&nbsp;</b><br>
+<b>&nbsp;<br></b>&nbsp;<br>
+Make sure that all Services are disabled&nbsp;<br>&nbsp;<br>AT#SMSATRUN=0&lt;CR&gt;&nbsp;<br>OK&nbsp;<br>AT#TCPATRUNL=0&lt;CR&gt;&nbsp;<br>OK&nbsp;<br>AT#TCPATRUND=0&lt;CR&gt;&nbsp;<br>OK&nbsp;<br>AT#ENAEVMONI=0&lt;CR&gt;&nbsp;<br>OK&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;24&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=25></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-25_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-25_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Set up the Digital Sensor Temperature&nbsp;<br>&nbsp;<br>Warning:&nbsp;the AT#I2CWR Command, due its structure, is not supported by the SMS&nbsp;<br>AT Run service, consequently Digital Temperature Sensor&nbsp;registers must be&nbsp;set up&nbsp;<br>using the DTE connected to the&nbsp;remote module. It is worth remind that AT#I2CWR&nbsp;<br>Command is supported&nbsp;by&nbsp;the&nbsp;TCP AT Run&nbsp;Service as will be described on&nbsp;the next&nbsp;<br>chapters. &nbsp; &nbsp;&nbsp;<br>&nbsp;<br>AT#I2CWR=11,12,50,02,02&lt;CR&gt;&nbsp;&nbsp;&nbsp;set&nbsp;<br>
+up&nbsp;low&nbsp;temperature&nbsp;limit (Thyst)&nbsp;<br>
+&gt;1700CtrlZ&nbsp;<br>
+&nbsp; &nbsp; 0x1700&nbsp;<br>
+=&nbsp;<br>
+23°C&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#I2CWR=11,12,50,03,02&lt;CR&gt;&nbsp;&nbsp;&nbsp;set&nbsp;<br>
+up&nbsp;<br>
+high temperature&nbsp;limit (Toti)&nbsp;<br>
+&gt;1B00CtrlZ&nbsp;<br>
+&nbsp; &nbsp; 0x1B00&nbsp;<br>
+=&nbsp;<br>
+27°C&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>Set up the SMS AT Run Service on remote module&nbsp;<br>&nbsp;<br>AT+CMGF=1&lt;CR&gt;&nbsp;<br>
+&nbsp; &nbsp;SMS&nbsp;<br>
+in&nbsp;<br>
+text&nbsp;<br>
+mode.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#SMSATRUNCFG=3,1,5&nbsp;<br>
+&nbsp; set&nbsp;<br>
+up&nbsp;<br>
+&nbsp;<br>
+SMS&nbsp;AT Run Service, instance # 3&nbsp;<br>
+is&nbsp;<br>OK&nbsp;<br>
+&nbsp; &nbsp; &nbsp;assigned&nbsp;<br>
+to&nbsp;<br>
+the&nbsp;<br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#24">service,&nbsp;</a><br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#24">fig.&nbsp;9.&nbsp;</a><br>
+&nbsp;<br>AT#SMSATWL=0,1,0,”+39*”&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+add an element to the WhiteList.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#SMSATRUN=1&nbsp;<br>
+&nbsp; &nbsp;enable&nbsp;<br>
+SMS&nbsp;<br>
+AT&nbsp;<br>
+Run&nbsp;<br>
+Service.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>Yet, the remote module when receives an SMS message holding&nbsp;an AT Command,&nbsp;<br>executes the received AT Command&nbsp;and the relative result&nbsp;is sent back to the local&nbsp;<br>module using the transport protocol provided by the SMS message Service.&nbsp;<br>&nbsp;<br>Preliminary DTE/LOCAL&nbsp;MODULE connection set up&nbsp;<br>&nbsp;<br>Local module doesn’t run AT Run or Event Monitor Services,&nbsp;see&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#26">fig. 10</a>. To set up the&nbsp;<br>DTE/LOCAL&nbsp;MODULE connection follow these steps:&nbsp;<br>&nbsp;<br>
+•&nbsp;&nbsp;connect COM1 to ASC0 using&nbsp;an RS 232 straight cable (pins are connected&nbsp;<br>
+one on one);&nbsp;<br>
+•&nbsp;&nbsp;start an HyperTerminal session on DTE.&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;25&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=26></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_3.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_4.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_5.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_6.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_7.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_8.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_9.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_10.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_11.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-26_12.png"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+The HyperTerminal COM1 session will be used&nbsp;to read the registers&nbsp;of the Digital&nbsp;<br>Temperature Sensor installed on the&nbsp;RDTSB&nbsp;board or read/write the remote GPIOs.&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Preliminary LOCAL MODULE set up&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+local module is not using the Services.&nbsp;<br>
+AT#SELINT=2&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+OK&nbsp;<br>
+AT#SMSATRUN=0&lt;CR&gt;&nbsp;<br>
+AT#SMSMODE=1&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#TCPATRUNL=0&lt;CR&gt;&nbsp;<br>
+AT#REGMODE=1&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#TCPATRUND=0&lt;CR&gt;&nbsp;<br>
+AT+CMEE=2&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#ENAEVMONI=0&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Radio Link&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+RADIO<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+MODULE&nbsp;<br>
+The local module doesn’t run AT Run or&nbsp;<br>
+&nbsp;<br>
+SW ENGINE&nbsp;<br>
+Event Monitor Services.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+AT0 Parser&nbsp;<br>
+AT1 Parser&nbsp;<br>
+AT2 Parser&nbsp;<br>
+TRACE&nbsp;<br>
+&nbsp;<br>
+instance #&nbsp;1&nbsp;<br>
+instance #&nbsp;2&nbsp;<br>
+instance #&nbsp;3&nbsp;<br>
+Access Point&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+ASC0&nbsp;<br>
+ASC1&nbsp;<br>
+RS<br>
+&nbsp;<br>
+232&nbsp;Serial Line&nbsp;<br>
+&nbsp;<br>
+COM1&nbsp;<br>
+&nbsp;<br>
+At module power on:&nbsp;<br>
+&nbsp;<br>
+- the ASC0&nbsp;serial port is connected to&nbsp;AT0 Parser,&nbsp;<br>
+HyperTerminal&nbsp;<br>
+&nbsp;<br>
+DTE<br>
+- the ASC1&nbsp;serial port is connected to&nbsp;the TRACE. &nbsp;<br>
+Session&nbsp;connected&nbsp;<br>
+&nbsp;<br>
+to AT0&nbsp;Parser<br>
+&nbsp;<br>&nbsp;<br>
+<b>fig. 10: Local Module doesn’t run&nbsp;AT Run&nbsp;and Event Monitor Services&nbsp;</b><br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;26&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=27></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-27_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-27_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Hereafter is&nbsp;reported an example showing how the user, by means of the LOCAL&nbsp;<br>MODULE, can get information from the REMOTE&nbsp;MODULE:&nbsp;&nbsp;<br>
+&nbsp;<br>AT+CMGF=1&lt;CR&gt;&nbsp;<br>
+&nbsp; &nbsp;SMS&nbsp;<br>
+in&nbsp;<br>
+text&nbsp;<br>
+mode&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT+CNMI=2,1,0,0,0&nbsp;<br>
+&nbsp; &nbsp;set&nbsp;<br>
+up&nbsp;<br>
+New Message Indication on DTE.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>//------------------------------------------------------------------------------------&nbsp;<br>AT+CMGS=”+393290569XYZ”&lt;CR&gt; &nbsp;<br>
+get&nbsp;<br>
+the&nbsp;<br>
+remote module signal strength.&nbsp;<br>
+&gt;AT#MONI CtrlZ&nbsp;<br>+CMGS: 243&nbsp;<br>OK&nbsp;<br>&nbsp;<br>
+The local module operator waits for&nbsp;the response from the remote module.&nbsp;<br>
+&nbsp;<br>+CMTI: “SM”,1&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+unsolicited&nbsp;code indicates that an SMS is received.&nbsp;<br>
+&nbsp;<br>AT+CMGR=1&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+display the remote module signal strength. &nbsp;<br>
++CMGR: &quot;REC UNREAD&quot;&nbsp;…………………………..&nbsp;<br>#MONI: I TIM BSIC:21 RxQual:0 LAC:D5BD Id:5265 ARFCN:9&nbsp;PWR:-89dbm TA: 1&nbsp;<br>OK&nbsp;<br>OK&nbsp;<br>&nbsp;<br>//------------------------------------------------------------------------------------&nbsp;<br>AT+CMGS=”+393290569XYZ”&lt;CR&gt;&nbsp;<br>&gt;AT#GPIO=9,2,0 CtrlZ&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+set up the remote GPIO9 in input mode.&nbsp;<br>
++CMGS: 244&nbsp;<br>OK&nbsp;<br>&nbsp;<br>
+The local module operator waits for&nbsp;the response from the remote module.&nbsp;<br>
+&nbsp;<br>+CMTI: “SM”,2&nbsp;<br>&nbsp;<br>AT+CMGR=2&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+display the remote GPIO9 state. &nbsp;<br>
++CMGR: &quot;REC UNREAD&quot;&nbsp;…………………………..&nbsp;<br>#GPIO: 0,1&nbsp;<br>OK&nbsp;<br>OK&nbsp;<br>&nbsp;<br>//------------------------------------------------------------------------------------&nbsp;<br>AT+CMGS=”+393290569XYZ”&lt;CR&gt;&nbsp;<br>&gt;AT#I2CRD=11,12,50,00,02CtrlZ &nbsp;<br>
+get&nbsp;<br>
+the&nbsp;<br>
+remote room temperature value.&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;27&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=28></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-28_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-28_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
++CMGS: 245&nbsp;<br>OK&nbsp;<br>&nbsp;<br>
+The local module operator waits for&nbsp;the response from the remote module.&nbsp;<br>
+&nbsp;<br>+CMTI: “SM”,3&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+unsolicited&nbsp;code indicates that an SMS is received.&nbsp;<br>
+&nbsp;<br>AT+CMGR=3&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+display the remote room temperature value. &nbsp;<br>
++CMGR: &quot;REC UNREAD&quot;&nbsp;…………………………..&nbsp;<br>#I2CR: 17C0&nbsp;<br>OK&nbsp;<br>OK&nbsp;<br>&nbsp;<br>//------------------------------------------------------------------------------------&nbsp;<br>AT+CMGS=”+393290569XYZ”&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+get &nbsp;Config&nbsp;Register content&nbsp;<br>
+&gt;AT#I2CRD=11,12,50,01,01CtrlZ&nbsp;<br>+CMGS: 246&nbsp;<br>OK&nbsp;<br>&nbsp;<br>
+The local module operator waits for&nbsp;the response from the remote module.&nbsp;<br>
+&nbsp;<br>+CMTI: “SM”,4&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+unsolicited&nbsp;code indicates that an SMS is received&nbsp;<br>
+&nbsp;<br>AT+CMGR=4&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+display Config Register value. &nbsp;<br>
+&nbsp;<br>+CMGR: &quot;REC UNREAD&quot;, …………………………..&nbsp;<br>#I2CR: 00&nbsp;<br>OK&nbsp;<br>OK&nbsp;<br>&nbsp;<br>//------------------------------------------------------------------------------------&nbsp;<br>AT+CMGS=”+393290569XYZ”&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+get low&nbsp;temperature limit (Thyst). &nbsp;<br>
+&gt;AT#I2CRD=11,12,50,02,02CtrlZ&nbsp;<br>+CMGS: 247&nbsp;<br>OK&nbsp;<br>&nbsp;<br>
+The local module operator waits for&nbsp;the response from the remote module.&nbsp;<br>
+&nbsp;<br>+CMTI: “SM”,5&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+unsolicited&nbsp;code indicates that an SMS is received.&nbsp;<br>
+&nbsp;<br>AT+CMGR=5&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+display low&nbsp;temperature&nbsp;limit (Thyst). &nbsp;<br>
++CMGR: &quot;REC UNREAD&quot;, …………………………..&nbsp;<br>#I2CR: 1700&nbsp;<br>OK&nbsp;<br>OK&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;28&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=29></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-29_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-29_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>//------------------------------------------------------------------------------------&nbsp;<br>AT+CMGS=”+393290569XYZ”&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+get high temperature limit (Toti).&nbsp;<br>
+&gt;AT#I2CRD=11,12,50,03,02CtrlZ&nbsp;<br>+CMGS: 248&nbsp;<br>OK&nbsp;<br>&nbsp;<br>The local module operator waits for&nbsp;the response from the remote module.&nbsp;<br>+CMTI: “SM”,6&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+unsolicited&nbsp;code indicates that an SMS is received.&nbsp;<br>
+&nbsp;<br>AT+CMGR=6&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+display high temperature limit (Toti).&nbsp;<br>
++CMGR: &quot;REC UNREAD&quot;, …………………………..&nbsp;<br>#I2CR: 1B00&nbsp;<br>OK&nbsp;<br>OK&nbsp;<br>&nbsp;<br>//------------------------------------------------------------------------------------&nbsp;<br>AT+CMGS=”+393290569XYZ”&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+get heating state (input&nbsp;GPIO9).&nbsp;<br>
+&gt;AT#GPIO=9,02CtrlZ&nbsp;<br>+CMGS: 249&nbsp;<br>OK&nbsp;<br>&nbsp;<br>The local module operator waits for&nbsp;the response from the remote module.&nbsp;<br>+CMTI: “SM”,7&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+unsolicited&nbsp;code indicates that an SMS is received.&nbsp;<br>
+&nbsp;<br>AT+CMGR=7&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+display heating state (input GPIO).&nbsp;<br>
++CMGR: &quot;REC UNREAD&quot;, …………………………..&nbsp;<br>#GPIO: 0,1&nbsp;<br>OK&nbsp;<br>OK&nbsp;<br>//------------------------------------------------------------------------------------&nbsp;<br>&nbsp;<br>
+This introductory example gives the&nbsp;basic information to:&nbsp;<br>&nbsp;<br>
+•&nbsp;&nbsp;develop a suitable software application running on the&nbsp;Local&nbsp;Control&nbsp;Station&nbsp;<br>
+PC to automatically control the&nbsp;remote room temperature and store its&nbsp;<br>behavior;&nbsp;<br>
+•&nbsp;&nbsp;set up the remote module to obtain a stand-alone remote station without DTE&nbsp;<br>
+and install it in the remote site;&nbsp;<br>
+•&nbsp;&nbsp;select the suitable AT&nbsp;Run Service in accordance with&nbsp;the application&nbsp;<br>
+requirements&nbsp;and AT Run Service capability. &nbsp;&nbsp;<br>
+&nbsp;<br>Note:&nbsp;in this configuration all the&nbsp;actions are&nbsp;initiated by the local module, the&nbsp;<br>remote module doesn’t take own initiative.&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;29&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=30></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-30_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-30_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+6.2.<b>&nbsp;</b><br>
+Event Monitor Service&nbsp;<br>
+&nbsp;<br>
+The example described on the chapter&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#20">6.1&nbsp;shows that all the actions are initiated b</a>y&nbsp;<br>the local module.&nbsp;The remote module executes&nbsp;the AT Command received from the&nbsp;<br>local module and sends&nbsp;back the&nbsp;SMS holding the relative result. Using the Event&nbsp;<br>Monitor&nbsp;feature the remote module&nbsp;can send&nbsp;on its initiative the heater&nbsp;state to the&nbsp;<br>local module every time the state&nbsp;goes high (refer to the&nbsp;exampl<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#20">e on chapter&nbsp;6.1</a>,&nbsp;<br>GPIO9). In this case the local module doesn’t need to send&nbsp;an AT Command to the&nbsp;<br>remote module to read the GPIO associated to the remote heater activity. &nbsp;&nbsp;<br>&nbsp;<br>This chapter illustrates&nbsp;the&nbsp;set up of the&nbsp;remote module running only the Event&nbsp;<br>Monitor Service, the local module is&nbsp;set up as de<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#20">scribed on chapter&nbsp;6.1. &nbsp; &nbsp;&nbsp;<br></a>&nbsp;<br>&nbsp;<br>Preliminary DTE/REMOTE MODULE connection set up&nbsp;<br>&nbsp;<br>Remote module runs the Event Monitor Service, see&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#31">fig. 11. To set up th</a>e&nbsp;<br>DTE/REMOTE MODULE connection follow these steps:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;connect COM1 to ASC0 using&nbsp;an RS 232 straight cable (pins are connected&nbsp;<br>
+one on one);&nbsp;<br>
+•&nbsp;&nbsp;start an HyperTerminal session on DTE.&nbsp;<br>
+&nbsp;<br>
+The HyperTerminal COM1 session will be used&nbsp;to configure&nbsp;the Event Monitor Service&nbsp;<br>and the Digital Temperature Sensor installed on the RDTSB&nbsp;board.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Preliminary REMOTE&nbsp;MODULE set up&nbsp;&nbsp;<br>
+Make sure&nbsp;that all Services are&nbsp;<br>
+&nbsp;<br>
+disabled&nbsp;<br>
+AT#SELINT=2&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+OK&nbsp;<br>
+AT#SMSATRUN=0&lt;CR&gt;&nbsp;<br>
+AT#SMSMODE=1&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#TCPATRUNL=0&lt;CR&gt;&nbsp;<br>
+AT#REGMODE=1&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#TCPATRUND=0&lt;CR&gt;&nbsp;<br>
+AT+CMEE=2&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#ENAEVMONI=0&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;30&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=31></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-31_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-31_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-31_3.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-31_4.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-31_5.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-31_6.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-31_7.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-31_8.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-31_9.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-31_10.png"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Services vs. Instances&nbsp;<br>&nbsp;<br>In this configuration, the remote module only runs the Event Monitor Service. On&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#31">Tab.&nbsp;<br>2&nbsp;the default relationship between the service and the instance is showed by the</a>&nbsp;<br>shadowed area. &nbsp;<br>
+&nbsp;<br>
+Instances available for Services&nbsp;<br>
+Services&nbsp;<br>
+#1&nbsp;#2&nbsp;#3&nbsp;<br>
+SMS AT Run&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+TCP AT Run&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+Event Monitor&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+&nbsp;<br>
+<b>Tab. 2: Instances vs. Event Monitor Service&nbsp;</b><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Radio Link&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+RADIO<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+MODULE&nbsp;<br>
+EVENT MONITOR&nbsp;<br>
+&nbsp;<br>
+SW ENGINE&nbsp;<br>
+SERVICE&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+AT0 Parser&nbsp;<br>
+AT1 Parser&nbsp;<br>
+AT2 Parser&nbsp;<br>
+TRACE&nbsp;<br>
+&nbsp;<br>
+instance #&nbsp;1&nbsp;<br>
+instance #&nbsp;2&nbsp;<br>
+instance #&nbsp;3&nbsp;<br>
+Access Point&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+ASC0&nbsp;<br>
+ASC1&nbsp;<br>
+RS&nbsp;&nbsp;232&nbsp;Serial Line&nbsp;<br>
+At module power on:&nbsp;<br>
+&nbsp;<br>
+COM1&nbsp;<br>
+- the ASC0&nbsp;serial port is connected to&nbsp;AT0 Parser,&nbsp;<br>
+&nbsp;<br>
+- the ASC1&nbsp;serial port is connected to&nbsp;the TRACE. &nbsp;<br>
+&nbsp;<br>
+HyperTerminal&nbsp;<br>
+DTE<br>
+Session&nbsp;connected&nbsp;<br>
+&nbsp;<br>
+to AT0&nbsp;Parser&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<b>fig. 11: Remote Module running Event Monitor Service&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;31&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=32></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-32_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-32_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Event Monitor Service configuration&nbsp;<br>
+&nbsp;<br>AT#ENAEVMONICFG=3,1,5&lt;CR&gt;&nbsp;<br>
+&nbsp; set&nbsp;<br>
+up&nbsp;<br>
+Event&nbsp;Monitor Service, instance # 3 &nbsp;is &nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+is&nbsp;assigned&nbsp;to&nbsp;Event&nbsp;Monitor&nbsp;Service,<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#31">&nbsp;fig.&nbsp;11.&nbsp;</a><br>
+&nbsp;<br>AT#EVMONI=”GPIO1”,0,1,9&lt;CR&gt;&nbsp;<br>
+&nbsp; GPIO9 is connected to GPIO1 label.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#EVMONI=”GPIO1”,0,2,1&lt;CR&gt;&nbsp;&nbsp;<br>
+&nbsp;<br>
+GPIO9 = HIGH starts the action.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#EVMONI=”GPIO1”,0,3,5&lt;CR&gt;&nbsp;<br>
+&nbsp; time&nbsp;<br>
+interval (sec) after GPIO9 is gone HIGH&nbsp;<br>
+OK&nbsp;<br>
+&nbsp; &nbsp; &nbsp; the&nbsp;<br>
+AT&nbsp;<br>
+Command&nbsp;<br>
+is&nbsp;<br>
+sent.&nbsp;<br>
+&nbsp;<br>
+Connect “GPIO1” label&nbsp;with the dispatch of&nbsp;an&nbsp;SMS message and&nbsp;force in SMS text&nbsp;<br><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#31">mode the instance #3,&nbsp;fig. 11.&nbsp;</a>The AT Commands managed by the&nbsp;Event Monitor&nbsp;<br>Service are&nbsp;analyzed by&nbsp;the AT2 Parser (instance # 3),&nbsp;in accordance with the&nbsp;<br>analyses results the AT Commands are executed&nbsp;by the remote module:&nbsp;<br>
+&nbsp;<br>AT#EVMONI=”GPIO1”,0,0,”AT+CMGF=1;#CMGS=+393468686XYZ,\22HEATER ON\22”&nbsp;<br>
+&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#EVMONI=”GPIO1”,1&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+enable the single “GPIO1” Event.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#ENAEVMONI=1&nbsp;<br>
+&nbsp; &nbsp; enable&nbsp;<br>
+the&nbsp;<br>
+Event&nbsp;<br>
+Monitor&nbsp;<br>
+Service.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>Yet, if the GPIO9 is high or when it&nbsp;goes high, the remote&nbsp;module sends to&nbsp;the&nbsp;local module the&nbsp;<br>configured SMS message.&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+heather is&nbsp;ON&nbsp;<br>
+heather is&nbsp;ON&nbsp;<br>
+&nbsp;<br>
+SMS is sent to&nbsp;local&nbsp;module&nbsp;<br>
+SMS is sent to&nbsp;local&nbsp;module&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+time<br>
+&nbsp;<br>
+GPIO9&nbsp;<br>
+&nbsp;<br>
+heather is&nbsp;OFF<br>
+&nbsp;<br>
+<b>fig. 12: Heater State (GPIO9)&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;32&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=33></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-33_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-33_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+6.3.<b>&nbsp;</b><br>
+TCP AT Run Service&nbsp;<br>
+&nbsp;<br>
+This paragraph focuses the&nbsp;attention on the&nbsp;RDTSB board control&nbsp;performed&nbsp;by&nbsp;<br>means of the TCP AT Run Service running on remote module. The&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#34">fig.&nbsp;13&nbsp;shows the&nbsp;<br></a>configuration target that must be&nbsp;reached&nbsp;to&nbsp;accomplish a remote&nbsp;control. This&nbsp;<br>introductory&nbsp;example assumes that the&nbsp;local module and the remote&nbsp;module are&nbsp;<br>located on&nbsp;the same site (LAB) and the&nbsp;AT&nbsp;Commands are entered by&nbsp;the user&nbsp;<br>through two DTE equipments.&nbsp;<br>It is assumed that the user enters&nbsp;the AT Commands and waits&nbsp;for&nbsp;the responses&nbsp;<br>from the remote module. This&nbsp;approach permits to clearly&nbsp;show the procedure used&nbsp;<br>to accomplish the remote temperature control.&nbsp;<br>&nbsp;<br>Preliminary DTE/REMOTE MODULE connection set up&nbsp;<br>&nbsp;<br>The remote module runs the&nbsp;TCP AT&nbsp;Run Service to&nbsp;execute the AT&nbsp;Commands sent&nbsp;<br><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#35">by the local module, see&nbsp;fig. 14. To set up the</a>&nbsp;DTE/REMOTE MODULE&nbsp;connection&nbsp;<br>follow these steps:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;connect COM1 to ASC0 using&nbsp;an RS 232 straight cable (pins are connected&nbsp;<br>
+one on one);&nbsp;<br>
+•&nbsp;&nbsp;start an HyperTerminal session on DTE.&nbsp;<br>
+&nbsp;<br>
+The HyperTerminal COM1 session will be&nbsp;used to configure the TCP AT Run.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Preliminary REMOTE&nbsp;MODULE set up&nbsp;&nbsp;<br>
+Make sure&nbsp;that all Services are&nbsp;<br>
+&nbsp;<br>
+disabled&nbsp;<br>
+AT#SELINT=2&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+OK&nbsp;<br>
+AT#SMSATRUN=0&lt;CR&gt;&nbsp;<br>
+AT#SMSMODE=1&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#TCPATRUNL=0&lt;CR&gt;&nbsp;<br>
+AT#REGMODE=1&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#TCPATRUND=0&lt;CR&gt;&nbsp;<br>
+AT+CMEE=2&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#ENAEVMONI=0&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;33&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=34></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-34_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-34_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+PLMN A&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+External Internet Network<br>
+BTS&nbsp;<br>
+SGSN<br>
+GGSN<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+GPRS&nbsp;<br>
+PLMN B<br>
+&nbsp;<br>&nbsp;<br>
+BTS<br>
+SGSN<br>
+GGSN<br>
+&nbsp;<br>
+IP Remote Server Address&nbsp;<br>
+&nbsp;<br>
+Room temperature&nbsp;<br>
+dynamically&nbsp;assigned&nbsp;by&nbsp;the&nbsp;<br>
+under&nbsp;control&nbsp;<br>
+&nbsp;<br>
+Telit Module&nbsp;<br>
+Network&nbsp;must&nbsp;be&nbsp;known&nbsp;by&nbsp;<br>
+GPRS&nbsp;<br>
+cable length<br>
+EASY GPRS&nbsp;<br>
+the&nbsp;Client&nbsp;Application&nbsp;<br>
+&nbsp;<br>
+Local module<br>
+TCP/IP stack&nbsp;<br>
+running on&nbsp;the&nbsp;Local&nbsp;<br>
+&nbsp;<br>
+on&nbsp;module&nbsp;<br>
+Control Station PC&nbsp; &nbsp;<br>
++ EVK&nbsp;<br>
+&nbsp;<br>
+Room Temperature &nbsp;<br>
+&nbsp;<br>
+RS&nbsp;232 Serial&nbsp;Line&nbsp;<br>
+Remote&nbsp;module&nbsp;<br>
+Telit Module&nbsp;<br>
+Control Board&nbsp;<br>
+in Server&nbsp;Mode<br>
++ EVK<br>
+&nbsp;<br>
+GPIO&nbsp;&nbsp;<br>
+HyperTerminal&nbsp;<br>
+&nbsp;<br>
+Local&nbsp;Control&nbsp;<br>
+interface&nbsp;&nbsp;<br>
+or&nbsp;<br>
+Station&nbsp;PC<br>
+AC/DC&nbsp;<br>
+Customer Application<br>
+&nbsp;<br>
+Adapter<br>
+heater<br>
+&nbsp;<br>
+●<br>
+●<br>
+~&nbsp;220 Volt&nbsp;<br>
+~&nbsp;220&nbsp;Volt<br>
+&nbsp;<br>
+●<br>
+●<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Local Site&nbsp;<br>
+Remote Site<br>
+&nbsp;<br>
+<b>fig. 13: RDTSB board &amp; TCP AT Run Service&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;34&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=35></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-35_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-35_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-35_3.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-35_4.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-35_5.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-35_6.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-35_7.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-35_8.png"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Services vs. Instances&nbsp;<br>&nbsp;<br><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#35">In this configuration the remote module only runs TCP AT Run Service. On&nbsp;Tab. 3&nbsp;th</a>e&nbsp;<br>default relationship between service and instance is showed by the shadowed area. &nbsp;<br>
+&nbsp;<br>
+Instances available for Services&nbsp;<br>
+Services&nbsp;<br>
+#1&nbsp;#2&nbsp;#3&nbsp;<br>
+SMS AT Run&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+TCP AT Run&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+Event Monitor&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+&nbsp;<br>
+<b>Tab. 3: Instances vs. TCP AT Run Service&nbsp;</b><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Radio Link&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+RADIO<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+MODULE&nbsp;<br>
+TCP AT RUN&nbsp;<br>
+&nbsp;<br>
+SW ENGINE&nbsp;<br>
+SERVICE&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+AT0 Parser&nbsp;<br>
+AT1 Parser&nbsp;<br>
+AT2 Parser&nbsp;<br>
+TRACE&nbsp;<br>
+&nbsp;<br>
+instance #&nbsp;1&nbsp;<br>
+instance #&nbsp;2&nbsp;<br>
+instance #&nbsp;3&nbsp;<br>
+Access Point&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+ASC0&nbsp;<br>
+ASC1&nbsp;<br>
+&nbsp;<br>
+RS232&nbsp;Serial Line&nbsp;<br>
+&nbsp;<br>
+COM1&nbsp;<br>
+At module power on:&nbsp;<br>
+&nbsp;<br>
+- the ASC0&nbsp;serial port is connected to&nbsp;AT0 Parser,&nbsp;<br>
+&nbsp;<br>
+HyperTerminal&nbsp;<br>
+DTE&nbsp;<br>
+- the ASC1&nbsp;serial port is connected to&nbsp;the TRACE. &nbsp;<br>
+&nbsp;<br>
+Session&nbsp;connected&nbsp;<br>to AT0&nbsp;Parser&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<b>fig. 14: Remote Module running TCP AT Run Service&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;35&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=36></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-36_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-36_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+TCP AT Run Service in Server Mode&nbsp;configuration&nbsp;<br>
+&nbsp;<br>AT+CGATT?&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+check if the remote module is GPRS&nbsp;attached,&nbsp;<br>
++CGATT:1&nbsp;<br>
+&nbsp; &nbsp; &nbsp;it&nbsp;<br>
+is&nbsp;<br>
+attached.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT+CGDCONT=1,”IP”,”IBOX.TIM.IT”&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+set up PDP Context definition.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>
+Warning:&nbsp;the IP Remote&nbsp;Server Address is dynamically assigned by the Network&nbsp;<br>Operator and it must be&nbsp;known by the local module.&nbsp;<br>
+&nbsp;<br>AT#SGACT=1,1&lt;CR&gt;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+PDP&nbsp;activation,&nbsp;<br>
+#SGACT:&nbsp;<br>
+217.203.146.115&nbsp;<br>
+&nbsp; &nbsp;IP&nbsp;<br>
+address assigned by the Network.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#SCFG=1,1,300,0,600,1&lt;CR&gt;&nbsp;&nbsp;&nbsp;&nbsp;socket&nbsp;<br>
+configuration&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>
+Warning:&nbsp;the remote TCP port must&nbsp;be known by the local module.&nbsp;<br>&nbsp;<br>The AT Command sent by the local&nbsp;module is received by the remote&nbsp;module,&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#35">fig. 14.&nbsp;<br></a>The &nbsp;AT1 Parser (instance # 2) analyzes it and&nbsp;in accordance with the analyses result&nbsp;<br>the AT Command is executed by the remote module, the result is sent back to the&nbsp;<br>local module.&nbsp;<br>
+&nbsp;<br>AT#TCPATRUNCFG=1,2,1024,12345,””,1,5,1,5,2&lt;CR&gt;&nbsp;<br>
+TCP AT Run Service configuration,&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+instance # 2 is assigned&nbsp;to TCP AT Run Service.&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+AT#TCPATRUNFRWL=2&lt;CR&gt;&nbsp;<br>
+&nbsp; &nbsp;drop&nbsp;<br>
+the old firewall configuration.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#TCPATRUNFRWL=1,”000.000.000.000”,”000.000.000.000”&lt;CR&gt;&nbsp;&nbsp;<br>
+set up new&nbsp;firewall &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+configuration.&nbsp;<br>
+&nbsp;<br>AT#TCPATRUNAUTH=2&lt;CR&gt;&nbsp;<br>
+&nbsp; &nbsp;drop&nbsp;<br>
+old authentication&nbsp;parameters.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#TCPATRUNAUTH=1, “TESTUSER”,”TESTPASSW”&lt;CR&gt;&nbsp;&nbsp;set up new authentication parameters.&nbsp;<br>OK&nbsp;<br>&nbsp;<br>AT#TCPATRUNL=1&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+enable TCP AT Run service in Server mode.&nbsp;<br>
+OK&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;36&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=37></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-37_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-37_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>AT#SS&lt;CR&gt;&nbsp;<br>
+&nbsp; &nbsp; &nbsp;check&nbsp;<br>
+the&nbsp;<br>
+Socket&nbsp;<br>
+Status&nbsp;<br>
+#SS: 1,4,&nbsp;217.203.146.115,1024&nbsp;<br>#SS: &nbsp;2,0&nbsp;<br>#SS: &nbsp;3,0&nbsp;<br>#SS: &nbsp;4,0&nbsp;<br>#SS: &nbsp;5,0&nbsp;<br>#SS: &nbsp;6,0&nbsp;<br>OK&nbsp;<br>&nbsp;<br>
+Yet, the remote module is running the TCP AT Run Service in Server (Listen) mode, it&nbsp;<br>is waiting&nbsp;for &nbsp;AT Commands from&nbsp;the local module in order to execute them and&nbsp;<br>send back the relative results.&nbsp;<br>&nbsp;<br>&nbsp;<br>Preliminary DTE/LOCAL&nbsp;MODULE connection set up&nbsp;<br>&nbsp;<br>Refer to&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#26">fig.&nbsp;10</a>: the local module doesn’t run AT Run or Event Monitor Services. To&nbsp;<br>set up the DTE/LOCAL MODULE connection follow these steps:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;connect COM1 to ASC0 using&nbsp;an RS 232 straight cable (pins are connected&nbsp;<br>
+one on one);&nbsp;<br>
+•&nbsp;&nbsp;start an HyperTerminal session on DTE.&nbsp;<br>
+&nbsp;<br>
+The HyperTerminal COM1 session&nbsp;will be used to read/write the registers of the&nbsp;<br>Digital&nbsp;Temperature Sensor installed on the RDTSB board&nbsp;or read/write the remote&nbsp;<br>GPIOs.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>Preliminary local module set up&nbsp;<br>
+local module is not using the Services.&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+AT#SELINT=2&lt;CR&gt;&nbsp;<br>
+AT#SMSATRUN=0&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#SMSMODE=1&lt;CR&gt;&nbsp;<br>
+AT#TCPATRUNL=0&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#REGMODE=1&lt;CR&gt;&nbsp;<br>
+AT#TCPATRUND=0&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT+CMEE=2&lt;CR&gt;&nbsp;<br>
+AT#ENAEVMONI=0&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Open a TCP connection&nbsp;<br>
+&nbsp;<br>AT+CGATT?&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+check if the Remote module is attached,&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;37&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=38></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-38_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-38_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
++CGATT:1&nbsp;<br>
+&nbsp; &nbsp; &nbsp;it&nbsp;<br>
+is&nbsp;<br>
+attached.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT+CGDCONT=1,”IP”,”WEB.OMNITEL.IT”&lt;CR&gt;&nbsp;<br>
+PDP Context definition.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#SGACTAUTH?&lt;CR&gt;&nbsp;&nbsp; &nbsp;check&nbsp;<br>
+authentication,&nbsp;<br>
+#SGACTAUTH:&nbsp;<br>
+1&nbsp;<br>
+&nbsp; &nbsp; PAP&nbsp;<br>
+authentication&nbsp;<br>
+(factory&nbsp;<br>
+default)&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#SCFG=1,1,300,0,600,1&lt;CR&gt;&nbsp;&nbsp;&nbsp;&nbsp;socket&nbsp;<br>
+configuration.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#SCFGEXT=1,2,0,0,0,0&lt;CR&gt;&nbsp;&nbsp; extended socket configuration.&nbsp;<br>OK&nbsp;<br>&nbsp;<br>&nbsp;<br>AT#SGACT=1,1&lt;CR&gt;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+PDP&nbsp;activation,&nbsp;<br>
+#SGACT:&nbsp;<br>
+109.113.46.58&nbsp;&nbsp; &nbsp;IP&nbsp;<br>
+address assigned by the Network.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>
+Yet, the local module is able to open the&nbsp;connection by&nbsp;means of the configured&nbsp;<br>socket:&nbsp;<br>&nbsp;<br>
+Warning:&nbsp;the IP Remote Server Address and remote TCP port must be known.&nbsp;<br>
+&nbsp;<br>AT#SD=1,0,1024,217.203.146.115,255,1,0&lt;CR&gt;&nbsp;<br>
+open the connection&nbsp;<br>
+&nbsp;<br>
+yet, on the DTE is displayed:&nbsp;<br>
+&nbsp;<br>CONNECT &nbsp;<br>
+unsolicited&nbsp;<br>
+massage&nbsp;<br>
+Username:&nbsp;<br>
+&nbsp;<br>
+message from remote module&nbsp;<br>
+TESTUSER&lt;CR&gt;&nbsp;<br>
+entered by the user, characters are&nbsp;not echoed&nbsp;<br>
+Password:&nbsp;<br>
+&nbsp;<br>
+message from remote module&nbsp;<br>
+TESTPASSW&lt;CR&gt;&nbsp;<br>
+entered by the user, characters are&nbsp;not echoed&nbsp;<br>
+Login successful.&nbsp;<br>
+message from remote module&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Yet,&nbsp;&nbsp;the&nbsp;&nbsp;local&nbsp;&nbsp;module&nbsp;&nbsp;is&nbsp;&nbsp;in&nbsp;&nbsp;ON&nbsp;&nbsp;Line&nbsp;&nbsp;Mode,&nbsp;&nbsp;it&nbsp;&nbsp;is&nbsp;&nbsp;connected&nbsp;&nbsp;to&nbsp;&nbsp;the&nbsp;&nbsp;remote&nbsp;&nbsp;module&nbsp;<br>running the&nbsp;TCP AT Run<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#35">&nbsp;Service in Server (Listen) mode,&nbsp;fig. 14. The A</a>T&nbsp;Commands&nbsp;<br>characters entered by the user are echoed on&nbsp;the local DTE by the&nbsp;remote module&nbsp;<br>(instance # 2). The AT Commands are executed by the remote module and their&nbsp;<br>results are&nbsp;sent back to the local module.&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;38&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=39></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-39_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-39_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>ATE1&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+enable echo&nbsp;on the instance # 2 of the remote module,&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#35">fig.&nbsp;14</a>.&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;39&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=40></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-40_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-40_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Remote Digital Temperature Sensor configuration &nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>AT#I2CWR=11,12,50,02,02&lt;CR&gt;&nbsp;&nbsp;&nbsp;set&nbsp;<br>
+up&nbsp;low&nbsp;temperature&nbsp;limit (Thyst)&nbsp;<br>
+&gt;1700CtrlZ&nbsp;<br>
+&nbsp; &nbsp; 0x1700&nbsp;<br>
+=&nbsp;<br>
+23°C&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#I2CWR=11,12,50,03,02&lt;CR&gt;&nbsp;&nbsp;&nbsp;set&nbsp;<br>
+up&nbsp;<br>
+high temperature&nbsp;limit (Toti)&nbsp;<br>
+&gt;1B00CtrlZ&nbsp;<br>
+&nbsp; &nbsp; 0x1B00&nbsp;<br>
+=&nbsp;<br>
+27°C&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT#GPIO=9,2,0&lt;CR&gt;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+set up the remote GPIO 9 in input mode&nbsp;<br>
+#GPIO:&nbsp;<br>
+0,1&nbsp;<br>
+&nbsp; &nbsp; and&nbsp;<br>
+display&nbsp;<br>
+heating&nbsp;<br>
+state.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>
+Remote room temperature monitoring&nbsp;<br>
+&nbsp;<br>get the remote temperature and display &nbsp;it.&nbsp;<br>
+get heating state (input&nbsp;GPIO9) and&nbsp;display it.&nbsp;<br>
+AT#I2CRD=11,12,50,00,02&lt;CR&gt;&nbsp;&nbsp;<br>
+AT#GPIO=9,02&lt;CR&gt;&nbsp;<br>
+#I2CR: &nbsp;1700&nbsp;<br>
+#GPIO: 0,1&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Exit ON Line Mode&nbsp;<br>
+&nbsp;<br>
+When the user needs to send AT Commands to&nbsp;the local&nbsp;module, the module must&nbsp;<br>exit ON Line Mode and enter Command Mode. To accomplish this action the user&nbsp;<br>must enter the following escape sequence:&nbsp;<br>
+&nbsp;<br>+++<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#40">4</a>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+escape&nbsp;sequence&nbsp;without&nbsp;&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>
+Yet, the local module is&nbsp;in Command Mode, the TCP connection with the remote&nbsp;<br>module is still active, but the&nbsp;DTE is&nbsp;not more connected to&nbsp;the used TCP/IP socket.&nbsp;<br>DTE can be used to enter AT Commands addressed to the local module.&nbsp;<br>
+&nbsp;<br>Exit Command Mode&nbsp;<br>&nbsp;<br>
+If the user&nbsp;needs to modify the configuration of the remote RDTSB board&nbsp;or read the&nbsp;<br>remote temperature room, the ON Line Mode&nbsp;must be entered again.&nbsp;<br>
+&nbsp;<br>AT#SO=1&lt;CR&gt;&nbsp;<br>CONNECT&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+4&nbsp;The remote connection must be open&nbsp;with the AT#SD Command using the &lt;closureType&gt; = 255, [4] &nbsp; &nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;40&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=41></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-41_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-41_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>Yet, the operator can read/write registers of the remote RDTSB board. &nbsp;<br>&nbsp;<br>Disconnect&nbsp;<br>&nbsp;<br>
+Let’s suppose that the&nbsp;module is in Command Mode, to disconnect the connection&nbsp;<br>with the remote module the user&nbsp;must enter the following Command:&nbsp;<br>
+&nbsp;<br>AT#SH=1&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+disconnect the connection with the remote module.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>
+Note:&nbsp;in this example all the actions are initiated by&nbsp;the user from the&nbsp;local site, the&nbsp;<br>remote module sends the result to the local module only after a previous “query”. No&nbsp;<br>actions are&nbsp;autonomously initiated by the remote module.&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;41&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=42></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-42_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-42_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+6.4.<b>&nbsp;</b><br>
+TCP AT Run &amp; Event Monitor Services&nbsp;<br>
+&nbsp;<br>
+In the last paragraph an introductory example illustrating the use of the TCP AT Run&nbsp;<br>Service was&nbsp;considered. In this paragraph the description is extended to the jointed&nbsp;<br>use of two services on the remote&nbsp;module:&nbsp;TCP AT Run (in Server<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#42">5</a>&nbsp;mode) and Event&nbsp;<br>Monitor Services.&nbsp;<br>&nbsp;&nbsp;<br>The combined use of the two services on the remote module, allows&nbsp;the user to&nbsp;<br>read/write the Digital&nbsp;Temperature Sensor&nbsp;registers installed on the RDTSB board&nbsp;<br>and in addition, when the user doesn’t need to&nbsp;read the remote room temperature&nbsp;<br>value, the local module can be forced to exit the&nbsp;ON Line Mode, enter the Command&nbsp;<br>Mode and check if some SMS messages are arrived from the remote module to&nbsp;<br>detect if some configured events are happened. In fact, the&nbsp;remote module can send&nbsp;<br>an SMS message&nbsp;in order to communicate that an event is occurred, e.g.: the heater&nbsp;<br>is on.&nbsp;<br>&nbsp;<br>With the support of the Telit Serial Port&nbsp;MUX application installed&nbsp;on the DTE<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#42">6</a>&nbsp;<br>connected to the local&nbsp;module it is&nbsp;possible to&nbsp;dedicate an&nbsp;HyperTerminal session&nbsp;to&nbsp;<br>the ON Line Mode, a second HyperTerminal session to the Command Mode and a&nbsp;<br>third HyperTerminal session to the reception of the SMS messages sent by the&nbsp;<br>remote module. &nbsp;<br>&nbsp;<br>Hereafter is&nbsp;following the set up procedure of the REMOTE and LOCAL MODULES. &nbsp;<br>&nbsp;<br>&nbsp;<br>Preliminary DTE/REMOTE MODULE connection set up&nbsp;<br>&nbsp;<br>Remote module must run, at the same time, two services: the TCP AT Run Service to&nbsp;<br>execute the&nbsp;AT Commands sent by the local module and &nbsp;the Event Monitor Service&nbsp;to&nbsp;<br>send an SMS message&nbsp;when a configured ev<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#44">ent is occurred, see&nbsp;fig. 15.&nbsp;</a>To set up the&nbsp;<br>DTE/REMOTE MODULE connection follow these steps:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;connect COM1 to ASC0 using&nbsp;an RS 232 straight cable (pins are connected&nbsp;<br>
+one on one);&nbsp;<br>
+•&nbsp;&nbsp;start an HyperTerminal session on DTE.&nbsp;<br>
+&nbsp;<br>
+The HyperTerminal COM1 session will be&nbsp;used to&nbsp;configure the TCP&nbsp;AT Run and&nbsp;<br>Event Monitor services.&nbsp;<br>
+&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+5&nbsp;Server mode&nbsp;or Listen mode.&nbsp;<br>
+6&nbsp;PC running&nbsp;Windows.&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;42&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=43></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-43_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-43_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>Preliminary remote module set up&nbsp;&nbsp;<br>
+Make sure that all Services are disabled&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+AT#SELINT=2&lt;CR&gt;&nbsp;<br>
+AT#SMSATRUN=0&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#SMSMODE=1&lt;CR&gt;&nbsp;<br>
+AT#TCPATRUNL=0&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#REGMODE=1&lt;CR&gt;&nbsp;<br>
+AT#TCPATRUND=0&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT+CMEE=2&lt;CR&gt;&nbsp;<br>
+AT#ENAEVMONI=0&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Services vs. Instances&nbsp;<br>&nbsp;<br>In this&nbsp;configuration the remote module runs two services at the same time: TCP AT&nbsp;<br>Run and Event Monitor,&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#44">see&nbsp;fig. 15</a>. On&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#43">Tab. 4</a>&nbsp;the relationships between services and&nbsp;<br>instances are showed by the shadowed areas. &nbsp;<br>
+&nbsp;<br>
+Instances available for Services&nbsp;<br>
+Services&nbsp;<br>
+#1&nbsp;#2&nbsp;#3&nbsp;<br>
+SMS AT Run&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+TCP AT Run&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+Event Monitor&nbsp;<br>
+/&nbsp;<br>
+☺&nbsp;<br>
+☺&nbsp;<br>
+&nbsp;<br>
+<b>Tab. 4: Combined Services &amp; Instances&nbsp;</b><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Event Monitor Service configuration&nbsp;<br>&nbsp;<br><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#30">Refer to chapter&nbsp;6.2.&nbsp;<br></a>&nbsp;<br>TCP AT Run Service in Server Mode&nbsp;configuration&nbsp;<br>&nbsp;<br><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#33">Refer to chapter&nbsp;6.3.&nbsp;</a><br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;43&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=44></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_3.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_4.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_5.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_6.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_7.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_8.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_9.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_10.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_11.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_12.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_13.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-44_14.png"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Radio Link&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+RADIO<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+MODULE&nbsp;<br>
+TCP AT RUN&nbsp;<br>
+EVENT MONITOR&nbsp;<br>
+&nbsp;<br>
+SW ENGINE&nbsp;<br>
+SERVICE&nbsp;<br>
+SERVICE&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+AT0 Parser&nbsp;<br>
+AT1 Parser&nbsp;<br>
+AT2 Parser&nbsp;<br>
+TRACE&nbsp;<br>
+&nbsp;<br>
+instance #&nbsp;1&nbsp;<br>
+instance #&nbsp;2&nbsp;<br>
+instance #&nbsp;3&nbsp;<br>
+Access Point&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+ASC0&nbsp;<br>
+ASC1&nbsp;<br>
+RS232&nbsp;&nbsp;<br>
+&nbsp;Serial Line&nbsp;<br>
+&nbsp;<br>
+COM1&nbsp;<br>
+At module power on:&nbsp;<br>
+&nbsp;<br>
+- the ASC0&nbsp;serial port is connected to&nbsp;AT0 Parser,&nbsp;<br>
+&nbsp;<br>
+HyperTerminal&nbsp;<br>
+DTE&nbsp;<br>
+- the ASC1&nbsp;serial port is connected to&nbsp;the TRACE. &nbsp;<br>
+&nbsp;<br>
+Session&nbsp;connected&nbsp;<br>to AT0&nbsp;Parser&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<b>fig. 15: Combined Services on Remote Module&nbsp;</b><br>
+&nbsp;<br>
+Preliminary DTE/LOCAL&nbsp;MODULE connection set up&nbsp;<br>&nbsp;<br>At the same time, the local module&nbsp;must manage: the TCP connection to the remote&nbsp;<br>module in order to write/read the remote&nbsp;Digital Temperature Sensor registers&nbsp;and&nbsp;<br>display on DTE the received SMS messages indicating the remote heater status. The&nbsp;<br>SMSs are sent by the remote module using the Event Monitor Service. &nbsp;Follow&nbsp;these&nbsp;<br>steps, see&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#45">fig. 16</a>:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;load and run&nbsp;on DTE<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#44">7</a>&nbsp;the&nbsp;Telit Serial&nbsp;Port MUX application;&nbsp;&nbsp;<br>
+•&nbsp;&nbsp;connect COM1 to ASC0 using&nbsp;an RS 232 straight cable (pins are connected&nbsp;<br>
+one on one);&nbsp;<br>
+•&nbsp;&nbsp;ran three HyperTerminal sessions: the first one connected to COM7<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#44">8</a>, the&nbsp;<br>
+second one connected to COM8, the last one connected to COM9.&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+7&nbsp;PC running&nbsp;Windows.&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;44&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=45></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_3.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_4.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_5.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_6.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_7.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_8.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_9.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_10.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_11.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_12.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_13.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-45_14.png"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Radio Link<br>
+&nbsp;<br>&nbsp;<br>
+RADIO<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+MODULE&nbsp;<br>
+The local module doesn’t run AT Run or&nbsp;<br>
+&nbsp;<br>
+SW ENGINE&nbsp;<br>
+Event Monitor Services.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+AT0 Parser&nbsp;<br>
+AT1 Parser&nbsp;<br>
+AT2 Parser&nbsp;<br>
+TRACE&nbsp;<br>
+&nbsp;<br>
+instance #&nbsp;1&nbsp;<br>
+instance #&nbsp;2&nbsp;<br>
+instance #3&nbsp;<br>
+Access Point&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+VC1 = COM7&nbsp;<br>
+VC2 = COM8<br>
+VC3 = COM9&nbsp;<br>
+VC4 = COM10<br>
+&nbsp;<br>&nbsp;<br>
+MUX&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+ASC0&nbsp;<br>
+ASC1<br>
+&nbsp;<br>&nbsp;<br>RS232&nbsp;Serial Line&nbsp;<br>&nbsp;<br>
+COM1&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Telit Serial&nbsp;Port MUX&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+COM7&nbsp;<br>
+COM8&nbsp;<br>
+COM9<br>
+COM10&nbsp;<br>
+&nbsp;<br>&nbsp;&nbsp;HyperTerminal&nbsp;<br>
+HyperTerminal&nbsp;<br>
+HyperTerminal&nbsp;<br>
+&nbsp;&nbsp;Session&nbsp;connected&nbsp;<br>
+Session&nbsp;connected&nbsp;<br>
+Session&nbsp;connected&nbsp;<br>
+&nbsp;&nbsp;through VC1&nbsp;to&nbsp;AT0&nbsp;<br>
+through VC2&nbsp;to&nbsp;AT1&nbsp;<br>
+through VC3&nbsp;to&nbsp;AT2&nbsp;<br>
+DTE&nbsp;<br>
+Access Point&nbsp;<br>
+Access Point&nbsp;<br>
+Access Point&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;At module power on,&nbsp;when the Telit Serial&nbsp;Port MUX application is running on the connected&nbsp;<br>&nbsp;DTE, the internal module control establish the following&nbsp;connection:&nbsp;<br>&nbsp;<br>&nbsp;VC1/COM7/AT0 (instance#1); &nbsp; VC2/COM8/AT1&nbsp;(instance#2); &nbsp;VC3/COM9/AT2 (instance#3);&nbsp;<br>&nbsp;VC4/COM10/TRACE.&nbsp;<br>&nbsp;<br>
+<b>fig. 16: Telit Serial Port MUX on Local Module.&nbsp;</b><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>8&nbsp;COM&nbsp;number is function&nbsp;of the DTE&nbsp;configuration.&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;45&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=46></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-46_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-46_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+The HyperTerminal COM7 (hereafter called HTC7) will be&nbsp;used to manage the TCP&nbsp;<br>remote connection. &nbsp;<br>&nbsp;<br>The HyperTerminal COM8 (HTC8)&nbsp;will be used to enter&nbsp;AT&nbsp;Commands to&nbsp;the local&nbsp;<br>module.&nbsp;<br>&nbsp;<br>The HyperTerminal COM9 (HTC9) will be used&nbsp;to display the SMSs sent&nbsp;by the remote&nbsp;<br>module.&nbsp;<br>&nbsp;<br>Preliminary LOCAL MODULE set up,&nbsp;use HTC7 session&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+AT#SELINT=2&lt;CR&gt;&nbsp;<br>
+local module is not using the Services.&nbsp;<br>
+OK&nbsp;<br>
+AT#SMSATRUN=0&lt;CR&gt;&nbsp;<br>
+AT#SMSMODE=1&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#TCPATRUNL=0&lt;CR&gt;&nbsp;<br>
+AT#REGMODE=1&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+AT#TCPATRUND=0&lt;CR&gt;&nbsp;<br>
+active only on instance #1/HTC7 session.&nbsp;<br>
+OK&nbsp;<br>
+AT+CMEE=2&lt;CR&gt;&nbsp;<br>
+AT#ENAEVMONI=0&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Open a TCP connection,&nbsp;use HTC7 session&nbsp;<br>&nbsp;<br><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#33">Refer to chapter&nbsp;6.3.&nbsp;<br></a>&nbsp;<br>Yet, the local module is in ON Line&nbsp;Mode, it is connected to&nbsp;the remote&nbsp;module. The&nbsp;<br>AT Commands characters entered by the user are echoed on the local HTC7 session&nbsp;<br>by the remote module (instance # 2) then, the AT Commands are executed by the&nbsp;<br>remote module and their results are sent back to the local module on HTC7 session.&nbsp;<br>
+&nbsp;<br>ATE1&lt;CR&gt;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+enable echo&nbsp;on the instance # 2 of the remote module.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>
+Remote Digital Temperature Sensor&nbsp;configuration, use HTC7 session&nbsp; &nbsp;<br>&nbsp;<br><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#33">Refer to chapter&nbsp;6.3.&nbsp;<br></a>&nbsp;<br>Remote room temperature monitoring, use HTC7&nbsp;session&nbsp; &nbsp;<br>&nbsp;<br><a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#33">Refer to chapter&nbsp;6.3.&nbsp;</a><br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;46&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=47></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-47_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-47_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Enter AT Commands addressed to local module (Command Mode), use HTC8 session&nbsp;<br>
+&nbsp;<br>AT+CNMI=0,0,0,0,0&nbsp;<br>
+&nbsp; &nbsp;&nbsp;disable New Message Indications on HTC8 &nbsp;&nbsp;&nbsp;&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+session.&nbsp;<br>
+&nbsp;<br>
+When the remote module sends an&nbsp;SMS, its unsolicited code will not be displayed on&nbsp;<br>HTC8 session, it will be&nbsp;displayed on HTC9. In the meanwhile the user,&nbsp;by means of&nbsp;<br>the HTC7 session &nbsp;(in ON Line Mode), can use the TCP&nbsp;AT Run Service features&nbsp;<br>running on the remote module.&nbsp;<br>
+&nbsp;<br>AT#MONI&lt;CR&gt;&nbsp;<br>#MONI: vodafone IT BSIC:60 RxQual:0 LAC:4E54&nbsp;Id:6A1A ARFCN:90 PWR:-80dbm TA:1&nbsp;<br>OK&nbsp;<br>&nbsp;<br>
+Enable the notification of the unsolicited code , use HTC9 session&nbsp;<br>
+&nbsp;<br>AT+CMGF=1&lt;CR&gt;&nbsp;<br>
+&nbsp; &nbsp; SMS&nbsp;<br>
+in&nbsp;<br>
+text&nbsp;<br>
+mode.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>AT+CNMI=2,1,0,0,0&nbsp;<br>
+&nbsp; &nbsp; set&nbsp;<br>
+up&nbsp;<br>
+New&nbsp;<br>
+Message Indications on HTC9 &nbsp;&nbsp;&nbsp;&nbsp;<br>
+OK&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+session.&nbsp;<br>
+&nbsp;<br>
+When the remote module sends an SMS, its&nbsp;unsolicited&nbsp;code will be displayed on&nbsp;<br>HTC9 session. &nbsp;<br>
+&nbsp;<br>+CMTI: &quot;SM&quot;,21&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+unsolicited&nbsp;CODE on HTC9 session.&nbsp;<br>
+&nbsp;<br>AT+CMGR=21&lt;CR&gt;&nbsp;<br>
+&nbsp; &nbsp;read&nbsp;<br>
+SMS&nbsp;<br>
+number&nbsp;<br>
+21&nbsp;<br>
++CMGR: &quot;REC UNREAD&quot;, ………………………………………..&nbsp;<br>HEATER ON&nbsp;<br>OK &nbsp;<br>&nbsp;<br>
+Hereafter&nbsp;are listed some AT Commands that should be&nbsp;useful&nbsp;when only one&nbsp;<br>HyperTerminal session (e.g.: HTC7) is available on DTE. &nbsp;&nbsp;<br>&nbsp;<br>Exit ON Line Mode, use HTC7 session&nbsp;<br>&nbsp;<br>When the user needs to send AT Commands to&nbsp;the local&nbsp;module, the module must&nbsp;<br>exit ON Line Mode and enter Command Mode. To accomplish this action the user&nbsp;<br>must enter the following escape sequence:&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;47&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=48></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-48_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-48_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
++++<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#48">9</a>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+escape&nbsp;sequence&nbsp;without&nbsp;&lt;CR&gt;&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>
+Yet, the local module is&nbsp;in Command Mode, the TCP connection with the remote&nbsp;<br>module is still&nbsp;active, but the HTC7 session is not&nbsp;more connected to the used socket,&nbsp;<br>it can be used to enter AT&nbsp;Commands for the local module.&nbsp;<br>&nbsp;<br>Exit Command Mode, use HTC7 session&nbsp;<br>&nbsp;<br>If the user&nbsp;needs to modify the configuration of the remote RDTSB board&nbsp;or read the&nbsp;<br>remote temperature room, the ON Line Mode&nbsp;must be entered again.&nbsp;<br>
+&nbsp;<br>AT#SO=1&lt;CR&gt;&nbsp;<br>CONNECT&nbsp;<br>&nbsp;<br>
+Yet, the operator can read/write registers of the remote RDTSB board. &nbsp;<br>&nbsp;<br>Disconnect,&nbsp;use HTC7 session&nbsp;<br>&nbsp;<br>Let’s suppose that the&nbsp;module is in Command Mode, to disconnect the connection&nbsp;<br>with the remote module the user&nbsp;must enter the following command:&nbsp;<br>
+&nbsp;<br>AT#SH=1&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+disconnect the connection with the remote module.&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+9&nbsp;The remote connection must be open&nbsp;with the AT#SD Command using the &lt;closureType&gt; = 255, [4] &nbsp; &nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;48&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=49></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-49_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-49_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+<b>7.</b>&nbsp;<br>
+<b>Appendix: RRTC Application&nbsp;</b><br>
+&nbsp;<br>
+The objective of this chapter is to provide the reader with the description of a simple&nbsp;<br>demo application of the TCP AT Run and&nbsp;Event Monitor services. The simple&nbsp;<br>application is the&nbsp;Remote Room Temperature Control introduced by<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#17">&nbsp;chapter&nbsp;6. T</a>o&nbsp;<br>accomplish it a Remote Digital Temperature Sensor Board is needed. Refer to Telit&nbsp;<br>Download Zone to download the DEMO software package and the schematic of the&nbsp;<br>RDTSB board.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+GM862&nbsp;PL103&nbsp;<br>
+3,8&nbsp;V&nbsp;&nbsp;<br>
+&nbsp;<br>
+POWER SUPPLY<br>
+Voltage&nbsp;Regulator&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+GPIO8 &nbsp;<br>
+CONVST<br>
+&nbsp;<br>
+WRITE&nbsp;<br>
+&nbsp;<br>
+GPIO11&nbsp;<br>
+Digital&nbsp;Temperature Sensor&nbsp;<br>
+&nbsp;<br>
+I2CBUS &nbsp;<br>
+GPIO12&nbsp;<br>
+AD&nbsp;7417&nbsp;<br>
+I2BUS<br>
+&nbsp;<br>&nbsp;<br>
+GPIO9&nbsp;<br>
+OTI<br>
+&nbsp;<br>
+Opto TRIAC&nbsp;<br>
+READ&nbsp;<br>
+&nbsp;<br>
+EVK board&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+ER<br>T<br>
+CONNECTION&nbsp;TABLE&nbsp;<br>
+PL103 connector&nbsp;<br>
+AD7417&nbsp;<br>
+HEA<br>
+&nbsp;<br>
+Pin Name&nbsp;<br>
+Pin #&nbsp;<br>
+Pin Name&nbsp;<br>
+Pin #&nbsp;<br>
+230 V&nbsp;~&nbsp;<br>
+GPIO11&nbsp;27&nbsp;<br>
+SDA&nbsp;<br>
+2&nbsp;<br>
+GPIO12&nbsp;28&nbsp;<br>
+SCL&nbsp;<br>
+3&nbsp;<br>
+GPIO8 out&nbsp;<br>
+5&nbsp;<br>
+CONVST&nbsp;<br>
+15&nbsp;<br>
+GPIO9 inp&nbsp;<br>
+6&nbsp;<br>
+OTI&nbsp;<br>
+4&nbsp;<br>
+&nbsp;<br>
+<b>fig. 17: Remote Digital Temperature Sensor Board&nbsp;</b><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+For demo purposes the heater is substituted by a light bulb&nbsp;just to create some thing&nbsp;<br>like to the&nbsp;room temperature changes. When the light bulb&nbsp;is on the temperature&nbsp;<br>value goes&nbsp;high, the digital temperature sensor&nbsp;- when the&nbsp;high temperature limit is&nbsp;<br>reached - turns the light&nbsp;bulb off.&nbsp;When the temperature reaches the low limit value,&nbsp;<br>the digital temperature sensor turn&nbsp;the&nbsp;light bulb on … and&nbsp;so on.&nbsp;The&nbsp;temperature&nbsp;<br>behavior and the light bulb state are monitored&nbsp;and stored by the local&nbsp;module. Refer&nbsp;<br>to paragraph&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#60">7.3</a>&nbsp;to glance at some RDTSB board photos. &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;49&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=50></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-50_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-50_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+7.1.<b>&nbsp;</b><br>
+First Demo Hardware Configuration&nbsp;<br>
+&nbsp;<br>
+The “First Demo Hardware Configuration”&nbsp;is showed in d<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#51">etail on&nbsp;fig. 18, it can be&nbsp;<br></a>used to carry out the architecture showed on&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#34">fig.&nbsp;13</a>. &nbsp;For practical arrangement in&nbsp;<br>the LAB, only one PC is&nbsp;used to manage both local and remote Telit modules. &nbsp;<br>&nbsp;<br>&nbsp;<br>On the LAB PC run the following&nbsp;applications, refer to&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#51">fig. 18</a>:&nbsp;<br>&nbsp;<br>TelitSerialPortMUX: creates&nbsp;<br>
+four&nbsp;virtual ports (e.g. : COM7&nbsp;÷&nbsp;COM10), consequently&nbsp;<br>
+four application can use at the same time the physical port COM1.&nbsp;<br>&nbsp;<br>TelitActiveObj:&nbsp;&nbsp;<br>
+the generic VBScript can access by&nbsp;means of the TelitActiveObj&nbsp;<br>
+the virtual or physical serial&nbsp;ports and also the TCP/IP stack.&nbsp;<br>&nbsp;<br>RTMCOM.VBS:&nbsp;&nbsp;<br>
+opens the connection towards the remote module, sets up&nbsp;the&nbsp;<br>
+Remote Digital Temperature Sensor Board&nbsp;and monitor the remote room&nbsp;<br>temperature. It is&nbsp;connected to&nbsp;TelitActiveObj instance # 1, virtual port COM7, AT0&nbsp;<br>Parser instance # 1. &nbsp;<br>&nbsp;<br>EVMONRX.VBS:&nbsp;<br>
+receives the SMS messages sent by the Event Monitor Service&nbsp;<br>
+running on the remote&nbsp;module. It is connected to&nbsp;TelitActiveObj instance # 3, virtual&nbsp;<br>port COM9, AT2 Parser instance # 3. &nbsp;<br>&nbsp;<br>REMOTE.VBS:&nbsp;&nbsp;<br>
+enables on the remote module TCP AT Run and Event Monitor&nbsp;<br>
+Services. It is connected to TelitActiveObj&nbsp;&nbsp;instance&nbsp;&nbsp;#&nbsp;&nbsp;2,&nbsp;&nbsp;physical&nbsp;&nbsp;port&nbsp;&nbsp;COM2,&nbsp;&nbsp;AT0&nbsp;<br>Parser instance # 1. &nbsp;&nbsp;<br>&nbsp;<br>&nbsp;<br>The following pages&nbsp;show how&nbsp;the above mentioned applications&nbsp;announces&nbsp;<br>themselves; the user, before starting the applications, &nbsp;can change the configuration&nbsp;<br>parameters. In addition, are&nbsp;also showed&nbsp;the applications windows&nbsp;during the&nbsp;<br>running. &nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;50&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=51></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_3.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_4.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_5.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_6.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_7.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_8.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_9.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_10.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_11.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-51_12.png"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+Radio Link&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Radio Link&nbsp;<br>
+MODULE EGINE<br>
+&nbsp;<br>&nbsp;<br>
+TCP AT RUN&nbsp;<br>
+EVENT MONITOR&nbsp;<br>
+&nbsp;<br>
+MODULE&nbsp;<br>
+SERVICE&nbsp;<br>
+SERVICE&nbsp;<br>
+A<br>
+&nbsp;<br>
+T0 Parser&nbsp;<br>
+AT1 Parser&nbsp;<br>
+AT2 Parser&nbsp;<br>
+TRACE&nbsp;<br>
+ENGINE&nbsp;<br>
+instance #&nbsp;1&nbsp;<br>
+instance #&nbsp;2&nbsp;<br>
+instance #3&nbsp;<br>
+Access Point&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+REMOTE MODULE&nbsp;<br>
+VC1 = COM7&nbsp;<br>
+&nbsp;<br>
+VC2 = COM8<br>
+VC3 = COM9<br>
+VC4&nbsp;=&nbsp;COM10&nbsp;<br>
+AT0 Parser&nbsp;<br>
+&nbsp;<br>
+MUX&nbsp;<br>
+instance #&nbsp;1&nbsp;<br>
+Remote&nbsp;Digital&nbsp;<br>
+&nbsp;<br>
+Temperature Sensor&nbsp;<br>
+&nbsp;<br>
+LOCAL MODULE<br>
+Board&nbsp;<br>
+&nbsp;<br>
+ASC0<br>
+ASC1<br>
+RS232&nbsp;&nbsp;<br>
+&nbsp;Serial Line&nbsp;<br>
+RS232&nbsp;Serial Line<br>
+&nbsp;<br>
+COM1<br>
+COM2<br>
+&nbsp;<br>&nbsp;<br>
+Telit Serial Port MUX &nbsp;&nbsp;<br>
+LAB PC<br>
+&nbsp;<br>&nbsp;COM7&nbsp;<br>
+COM8&nbsp;<br>
+COM9<br>
+&nbsp;<br>&nbsp;&nbsp;#1&nbsp;<br>
+#3<br>
+#2<br>
+TelitActiveObj.dll&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+RTMCOM.VBS<br>
+EVMONRX.VBS<br>
+REMOTE.VBS<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<b>fig. 18: First Configuration Details&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;51&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=52></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-52_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-52_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-52_3.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-52_4.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>RTMCOM&nbsp;window. Push&nbsp;OK button if the configuration&nbsp;<br>parameters&nbsp;are accepted. Otherwise change them following&nbsp;<br>the indications.&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>TelitSerialPortMux Window&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;52&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=53></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-53_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-53_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-53_3.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-53_4.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>REMOTE window. Push OK button if the&nbsp;configuration&nbsp;<br>parameters&nbsp;are accepted. Otherwise change them following&nbsp;<br>
+&nbsp;<br>
+the indications.&nbsp;<br>
+EVMONRX&nbsp;window. Push OK button if the&nbsp;configuration&nbsp;<br>
+&nbsp;<br>
+parameters&nbsp;are accepted. Otherwise change them following&nbsp;<br>
+&nbsp;<br>
+the indications.&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;53&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=54></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-54_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-54_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-54_3.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>From the above window it is possible to evict that&nbsp;the RTMCOM application reads periodically the remote room temperature, when&nbsp;<br>the light bulb is on the heater state is marked on. In addition, the collected remote information is&nbsp;stored on a log file. &nbsp;&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;54&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=55></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-55_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-55_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-55_3.png"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>The above window shows that the EVMONRX application receives &nbsp;the Event Monitor SMS’s when the light bulb&nbsp;is turned on. In&nbsp;<br>addition, the received SMS’s &nbsp;are stored on a log file. &nbsp;&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;55&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=56></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-56_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-56_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-56_3.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>The above window shows that the REMOTE application displays on&nbsp;the screen the remote IP address assigned by the network.&nbsp;<br>When the local module&nbsp;accomplishes successfully the connection, on&nbsp;the screen is displayed the local IP address. In addition,&nbsp;<br>when a Event Monitor SMS is sent, its contents is&nbsp;showed on the screen. &nbsp;&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;56&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=57></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-57_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-57_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+48<br>
+46<br>
+44<br>
+<b>C]</b><br>
+42<br>
+<b>&nbsp;°<br>&nbsp;[</b><br>
+40<br>
+<b>URE</b><br>
+38<br>
+<b>RAT<br>E</b><br>
+36<br>
+<b>P<br>M<br>E</b><br>
+34<br>
+<b>T</b><br>
+32<br>
+30<br>
+28<br>
+57<br>
+18<br>
+38<br>
+05<br>
+25<br>
+47<br>
+06<br>
+30<br>
+55<br>
+20<br>
+47<br>
+05<br>
+38<br>
+59<br>
+06<br>
+38<br>
+13<br>
+33<br>
+08<br>
+31<br>
+50<br>
+1.<br>
+7.<br>
+&nbsp;&nbsp;&nbsp;16.24.&nbsp;&nbsp;&nbsp;16.26.&nbsp;&nbsp;&nbsp;16.27.&nbsp;&nbsp;&nbsp;16.29.&nbsp;&nbsp;&nbsp;16.30.&nbsp;&nbsp;&nbsp;16.3&nbsp;&nbsp;&nbsp;&nbsp;16.33.&nbsp;&nbsp;&nbsp;16.34.&nbsp;&nbsp;&nbsp;16.35.&nbsp;&nbsp;&nbsp;16.3&nbsp;&nbsp;&nbsp;&nbsp;16.38.&nbsp;&nbsp;&nbsp;16.40.&nbsp;&nbsp;&nbsp;16.42.&nbsp;&nbsp;&nbsp;16.43.&nbsp;&nbsp;&nbsp;16.46.&nbsp;&nbsp;&nbsp;16.47.&nbsp;&nbsp;&nbsp;16.49.&nbsp;&nbsp;&nbsp;16.50.&nbsp;&nbsp;&nbsp;16.52.&nbsp;&nbsp;&nbsp;16.53.&nbsp;&nbsp;&nbsp;16.54.<br>
+<b>TIME&nbsp;[&nbsp;H.MIN.SEC]</b><br>
+&nbsp;<br>
+&nbsp;<br>Temperature values collected by the RTMCOM&nbsp;application and stored into a log file, it is possible arrange them into the above&nbsp;<br>graph.&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;57&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=58></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-58_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-58_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+7.2.<b>&nbsp;</b><br>
+Second Demo Hardware Configuration&nbsp;<br>
+&nbsp;<br>
+The “Second Demo Hardware Configuration” is showed in detail on&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#59">fig. 19</a>, it can be&nbsp;<br>used to carry out the&nbsp;architecture showed on&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#13">fig.&nbsp;4</a>. &nbsp;For practical arrangement in the&nbsp;<br>LAB, only one PC is used to manage the TCP/IP connection to the Internet Network&nbsp;<br>and the remote Telit module. &nbsp;<br>&nbsp;<br>On the LAB PC run the following&nbsp;applications, refer to&nbsp;<a href="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0s.html#59">fig. 19</a>:&nbsp;<br>
+&nbsp;<br>
+TelitActiveObj:&nbsp;&nbsp;<br>
+the generic VBScript can access by&nbsp;means of the TelitActiveObj&nbsp;<br>
+the virtual or physical serial&nbsp;ports and also the TCP/IP stack.&nbsp;<br>&nbsp;<br>RTMNET.VBS:&nbsp;&nbsp;<br>
+opens the connection towards the remote module, sets up&nbsp;the&nbsp;<br>
+Remote Digital Temperature Sensor Board&nbsp;and monitor the remote room&nbsp;<br>temperature. It is connected to TelitActiveObj instance # 4, ETH port. &nbsp;<br>&nbsp;<br>REMOTE.VBS:&nbsp;&nbsp;<br>
+enables on the remote module TCP AT Run and Event Monitor&nbsp;<br>
+Services. It is connected to TelitActiveObj&nbsp;&nbsp;instance&nbsp;&nbsp;#&nbsp;&nbsp;2,&nbsp;&nbsp;physical&nbsp;&nbsp;port&nbsp;&nbsp;COM2,&nbsp;&nbsp;AT0&nbsp;<br>Parser instance # 1. &nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;58&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=59></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-59_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-59_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-59_3.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-59_4.png"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-59_5.png"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Radio Link&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+External Internet Networks<br>
+&nbsp;<br>
+TCP AT RUN&nbsp;<br>
+&nbsp;<br>
+MODULE&nbsp;<br>
+SERVICE&nbsp;<br>
+&nbsp;<br>
+ENGINE&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+IP address location<br>
+AT0 Parser&nbsp;<br>
+&nbsp;<br>
+instance #&nbsp;1&nbsp;<br>
+&nbsp;<br>
+Remote&nbsp;Digital&nbsp;<br>
+Local Network&nbsp;<br>
+Temperature Sensor&nbsp;<br>
+&nbsp;<br>
+Board&nbsp;<br>
+&nbsp;<br>
+ASC0<br>
+&nbsp;<br>
+RS232&nbsp;Serial Line<br>
+&nbsp;<br>
+ETH PORT<br>
+COM2<br>
+&nbsp;<br>&nbsp;<br>
+LAB PC<br>
+&nbsp;<br>
+#4<br>
+TelitActiveObj ActiveX&nbsp;Server &nbsp;<br>
+#2<br>
+&nbsp;<br>&nbsp;<br>
+RTMNET.VBS&nbsp;<br>
+REMOTE.VBS<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<b>fig. 19: Second Configuration Details&nbsp;</b><br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;59&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=60></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-60_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-60_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-60_3.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+7.3.<b>&nbsp;</b><br>
+RDTSB board Pictures&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+<b>photo 1: RDTSB board &amp; Remote Module&nbsp;</b><br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;60&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=61></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-61_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-61_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-61_3.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+<b>photo 2: RDTSB board details&nbsp;</b><br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;61&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=62></a><IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-62_1.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-62_2.jpg"><br>
+<IMG src="Telit_AT_Run_and_Event_Monitor_Services_App_Note_r0-62_3.jpg"><br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+AT Run and&nbsp;Event Monitor Services Remote Room&nbsp;Temperature Control&nbsp;Application&nbsp;Note &nbsp;<br>
+80000nt10043a Rev.0 –&nbsp;2010-10-13&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+<b>photo 3: RDTSB/Module&nbsp;Connection details&nbsp;</b><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A’s. written authorization&nbsp;-&nbsp;All Rights&nbsp;Reserved.&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;62&nbsp;of&nbsp;62&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name="outline"></a><h1>Document Outline</h1>
+<ul><li>��
+<ul><li>��
+<li>��
+<li>��
+<li>��
+<li>��
+<li>��
+</ul><li>��
+<li>��
+<li>��
+<li>��
+<li>��
+<ul><li>��
+<li>��
+<li>��
+<li>��
+</ul><li>��
+<ul><li>��
+<li>��
+<li>��
+</ul></ul><hr>
+</BODY>
+</HTML>

@@ -1,0 +1,1289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+<A name=1></a><IMG src="Telit_CMUX_User_Guide_r5-1_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-1_2.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-1_3.jpg"><br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<b>CMUX User Guide&nbsp;<br></b>30268ST10299A Rev. 5 –&nbsp;2011-03-01&nbsp;&nbsp; &nbsp;&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=2></a><IMG src="Telit_CMUX_User_Guide_r5-2_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-2_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+APPLICABILITY&nbsp;TABLE&nbsp;<br>
+&nbsp;<br>
+PRODUCT<br>
+GT863-PY<br>
+GT864-QUAD<br>
+GT864-PY<br>
+GM862-GPS<br>
+GC864-QUAD<br>
+GC864-DUAL<br>
+GC864-QUAD V2<br>
+GC864-DUAL&nbsp;V2<br>
+GE863-QUAD<br>
+GE863-GPS<br>
+GE863-SIM<br>
+GE863-PRO3<br>
+GE864-QUAD<br>
+GE864-QUAD V2<br>
+GE864-DUAL&nbsp;V2<br>
+GE864-QUAD Automotive&nbsp;V2<br>
+GE864-QUAD Atex<br>
+GE865-QUAD<br>
+GL865-DUAL<br>
+GL865-QUAD<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+From&nbsp;SW Version:&nbsp;<br>
+7.02.04 / 7.03xx0&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;2 of&nbsp;32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=3></a><IMG src="Telit_CMUX_User_Guide_r5-3_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-3_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Contents&nbsp;<br>
+&nbsp;<br>
+1.&nbsp;&nbsp;Introduction ................................................................................................................&nbsp;&nbsp;5&nbsp;<br>
+1.1.&nbsp;<br>
+Scope ................................................................................................................................ 5&nbsp;<br>
+1.2.&nbsp;<br>
+Contact Information, Support&nbsp;...........................................................................................&nbsp;5&nbsp;<br>
+1.3.&nbsp;<br>
+Text Conventions ..............................................................................................................&nbsp;6&nbsp;<br>
+1.4.&nbsp;<br>
+Related Documents&nbsp;.......................................................................................................... 6&nbsp;<br>
+1.5.&nbsp;<br>
+Document&nbsp;History&nbsp;.............................................................................................................&nbsp;6&nbsp;<br>
+2.&nbsp;&nbsp;Technical characteristics ...........................................................................................&nbsp;7&nbsp;<br>
+2.1.&nbsp;<br>
+Product architecture&nbsp;........................................................................................................&nbsp;7&nbsp;<br>
+2.2.&nbsp;<br>
+Implementation&nbsp;feature ....................................................................................................&nbsp;9&nbsp;<br>
+3.&nbsp;&nbsp;Serial Multiplexer Protocol&nbsp;.......................................................................................10&nbsp;<br>
+3.1.&nbsp;<br>
+CMUX Frame Structure ..................................................................................................&nbsp;10&nbsp;<br>
+3.2.&nbsp;<br>
+UIH Control Channel&nbsp;Frame Coding&nbsp;...............................................................................&nbsp;14&nbsp;<br>
+3.3.&nbsp;<br>
+UIH Data Channel&nbsp;Frame Coding&nbsp;....................................................................................&nbsp;19&nbsp;<br>
+3.4.&nbsp;<br>
+CMUX establishment scenario&nbsp;........................................................................................&nbsp;20&nbsp;<br>
+3.5.&nbsp;<br>
+CMUX establishment scenario typical log&nbsp;......................................................................&nbsp;21&nbsp;<br>
+3.6.&nbsp;<br>
+Lookup table for FCS calculation&nbsp;...................................................................................&nbsp;22&nbsp;<br>
+4.&nbsp;&nbsp;INTEGRATOR&nbsp;HINTS ..................................................................................................24&nbsp;<br>
+4.1.&nbsp;<br>
+Basic requirement ..........................................................................................................&nbsp;24&nbsp;<br>
+4.2.&nbsp;<br>
+Restriction ...................................................................................................................... 24&nbsp;<br>
+4.3.&nbsp;<br>
+Exception to independent profile&nbsp;setting ........................................................................&nbsp;26&nbsp;<br>
+4.4.&nbsp;<br>
+Suggestion&nbsp;...................................................................................................................... 27&nbsp;<br>
+5.&nbsp;&nbsp;Telit serial port PC interface for&nbsp;CMUX .....................................................................28&nbsp;<br>
+5.1.&nbsp;<br>
+Interface Specification&nbsp;....................................................................................................&nbsp;&nbsp;28&nbsp;<br>
+5.2.&nbsp;<br>
+Scenario&nbsp;......................................................................................................................... 28&nbsp;<br>
+5.3.&nbsp;<br>
+Graphical Interface&nbsp;.........................................................................................................&nbsp;29&nbsp;<br>
+5.4.&nbsp;<br>
+Application Setup ............................................................................................................&nbsp;&nbsp;31&nbsp;<br>
+6.&nbsp;&nbsp;AT Commands ...........................................................................................................32&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;3 of&nbsp;32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=4></a><IMG src="Telit_CMUX_User_Guide_r5-4_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-4_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+DISCLAIMER&nbsp;<br>&nbsp;<br>The information contained in this document&nbsp;is the proprietary information of Telit&nbsp;<br>Communications S.p.A.&nbsp;and its&nbsp;affiliates (“TELIT”). &nbsp;<br>The contents are confidential and any disclosure to persons other than the officers,&nbsp;<br>employees, agents or subcontractors of the owner or licensee of this document,&nbsp;<br>without the prior written consent of Telit,&nbsp;is strictly prohibited.&nbsp;<br>Telit makes&nbsp;every effort&nbsp;to ensure&nbsp;the quality of the information it makes available.&nbsp;<br>Notwithstanding the foregoing,&nbsp;Telit&nbsp;does not make any&nbsp;warranty as to the information&nbsp;<br>contained herein,&nbsp;and does not accept any liability for any&nbsp;injury, loss or&nbsp;damage of&nbsp;any&nbsp;<br>kind incurred by use of or&nbsp;reliance upon the information.&nbsp;<br>Telit disclaims any and&nbsp;all&nbsp;responsibility&nbsp;for&nbsp;the&nbsp;application&nbsp;of the devices characterized&nbsp;<br>in this document, and notes that the application of the device must comply with the&nbsp;<br>safety standards of the&nbsp;applicable&nbsp;country, and where&nbsp;applicable,&nbsp;with&nbsp;the relevant&nbsp;<br>wiring rules.&nbsp;<br>Telit reserves the right&nbsp;to make modifications,&nbsp;additions and deletions to this document&nbsp;<br>due to typographical errors, inaccurate information, or improvements to programs&nbsp;<br>and/or equipment at any time and without notice. &nbsp;<br>Such changes will, nevertheless be incorporated&nbsp;into new editions of this document.&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>Copyright: Transmittal,&nbsp;reproduction, dissemination and/or editing of this document as&nbsp;<br>well as utilization of its&nbsp;contents and communication thereof to others without express&nbsp;<br>authorization are prohibited. Offenders will be held liable for payment of damages. All&nbsp;<br>rights are reserved. &nbsp;<br>&nbsp;<br>Copyright © Telit Communications S.p.A. 2011.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;4 of&nbsp;32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=5></a><IMG src="Telit_CMUX_User_Guide_r5-5_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-5_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>1.</b>&nbsp;<br>
+<b>Introduction&nbsp;<br></b>The information presented in this document is believed to be&nbsp;accurate and reliable.&nbsp;<br>However, no responsibility is assumed by&nbsp;Telit Communications S.p.A. for its use, nor&nbsp;<br>any infringement of patents or other&nbsp;rights&nbsp;of third parties which may result from its&nbsp;<br>use. No license is granted by implication or otherwise under any patent rights of Telit&nbsp;<br>Communications S.p.A.&nbsp;other than for circuitry embodied in&nbsp;Telit products. This&nbsp;<br>document is subject to change&nbsp;without notice.&nbsp;<br>&nbsp;<br>
+1.1.<b>&nbsp;</b><br>
+Scope&nbsp;<br>
+The scope of this document is to describe a multiplexing protocol implemented on the&nbsp;<br>Telit module. The multiplexing protocol can be&nbsp;used to send any data, SMS, fax, TCP&nbsp;<br>data.&nbsp;<br>&nbsp;<br>NOTE:&nbsp;<br>&nbsp;<br>CMUX can be activated only with the interface SELINT 2; this means that for the&nbsp;<br>modules which start as default in SELINT 0 or SELINT 11, before activating CMUX,&nbsp;<br>interface should be changed to SELINT 2.&nbsp;<br>
+1.2.<b>&nbsp;</b><br>
+Contact Information, Support&nbsp;<br>
+For general contact, technical support, to report documentation errors and to order&nbsp;<br>manuals, contact Telit’s&nbsp;Technical Support Center (TTSC) at:&nbsp;<br>
+&nbsp;<br>
+TS-EMEA@telit.com&nbsp;<br>TS-NORTHAMERICA@telit.com&nbsp;<br>TS-LATINAMERICA@telit.com&nbsp;<br>TS-APAC@telit.com&nbsp;<br>
+&nbsp;<br>
+Alternatively, use: &nbsp;<br>http://www.telit.com/en/products/technical-support-center/contact.php&nbsp;<br>
+3<br>T<br>U<br>
+U<br>3<br>T<br>
+For detailed information about where you can buy the Telit&nbsp;modules or for&nbsp;<br>recommendations on accessories and components visit: &nbsp;<br>http://www.telit.com&nbsp;<br>
+3<br>T<br>U<br>
+To register&nbsp;for product&nbsp;news and&nbsp;announcements or for&nbsp;product questions contact&nbsp;<br>Telit's Technical Support&nbsp;Center (TTSC).&nbsp;<br>Our aim is&nbsp;to make this guide as helpful as possible. Keep us informed of your&nbsp;<br>comments and suggestions for improvements.&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>1&nbsp;please consult AT&nbsp;Commands&nbsp;Reference&nbsp;Guide 80000ST10025a for more information&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;5 of&nbsp;32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=6></a><IMG src="Telit_CMUX_User_Guide_r5-6_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-6_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Telit appreciates feedback from the users of our&nbsp;information.&nbsp;<br>
+1.3.<b>&nbsp;</b><br>
+Text Conventions&nbsp;<br>
+&nbsp;<br>
+Danger – This information MUST be followed&nbsp;or catastrophic equipment failure or&nbsp;<br>
+U<br>
+bodily injury may occur.&nbsp;<br>&nbsp;<br>Caution or Warning –&nbsp;Alerts the user to&nbsp;important points about integrating the&nbsp;<br>module, if these points are not followed, the module and end user equipment may&nbsp;<br>fail or malfunction.&nbsp;<br>&nbsp;<br>Tip or Information –&nbsp;Provides advice and suggestions&nbsp;that may&nbsp;be useful when&nbsp;<br>integrating the module.&nbsp;<br>&nbsp;<br>All dates are in ISO 8601 format, i.e.&nbsp;YYYY-MM-DD.&nbsp;<br>
+1.4.<b>&nbsp;</b><br>
+Related Documents&nbsp;<br>
+The following is a list of&nbsp;applicable documents downloadable from the Download Zone&nbsp;<br>section of Telit’s website&nbsp;http://www.telit.com&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;Digital Cellular Telecommunications&nbsp;Systems (Phase 2+); Terminal Equipment&nbsp;<br>
+to Mobile Station (TE-MS) “Multiplexer&nbsp;Protocol”; ETSI TS 101 369 V7.1.0 (1999-<br>11), GSM 07.10 Version 7.1.0, Release 199&nbsp;&nbsp;<br>
+1.5.<b>&nbsp;</b><br>
+Document History&nbsp;<br>
+Revision&nbsp;<br>
+Date&nbsp;<br>
+Changes&nbsp;<br>
+ISSUE #0&nbsp;<br>
+2006-10-13&nbsp;Initial release&nbsp;<br>
+ISSUE #1&nbsp;<br>
+2007-09-07&nbsp;Added products into the&nbsp;applicability&nbsp;table&nbsp;<br>
+ISSUE #2&nbsp;<br>
+2008-02-01&nbsp;6.1 How to begin: updated&nbsp;<br>
+general overview of the document&nbsp;<br>4.1 CMUX Frame Structure: updated&nbsp;<br>Added PSC (Power Saving Control) paragraph 4.2&nbsp;<br>General review of document&nbsp;<br>
+ISSUE #3&nbsp;<br>
+2009-01-19&nbsp;Update P/N&nbsp;list and applicability table&nbsp;<br>
+ISSUE#4&nbsp;<br>
+2010-11-25&nbsp;Cleared bit positions uncertainty about commands format.&nbsp;<br>
+ISSUE#5&nbsp;<br>
+2011-03-01&nbsp;New Layout&nbsp;(added chapter 1)&nbsp;<br>
+Updated Applicability table&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;6 of&nbsp;32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=7></a><IMG src="Telit_CMUX_User_Guide_r5-7_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-7_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>2.</b>&nbsp;<br>
+<b>Technical characteristics&nbsp;</b><br>
+&nbsp;<br>
+2.1.<b>&nbsp;</b><br>
+Product architecture&nbsp;<br>
+&nbsp;<br>
+The Multiplexer mode enables one serial interface to transmit data to&nbsp;four different&nbsp;<br>customer applications. This is achieved with&nbsp;the Multiplexer (Mux) that provides&nbsp;four&nbsp;<br>virtual channels.&nbsp;<br>&nbsp;&nbsp;<br>This is represents a great advantage for fax,&nbsp;data, and GPRS ongoing calls. Thanks&nbsp;to&nbsp;<br>the Multiplexer feature operations such as&nbsp;controlling&nbsp;the module or using the SMS&nbsp;<br>service can be done via&nbsp;the additional channels&nbsp;without disturbing the data flow and&nbsp;no&nbsp;<br>access to the second UART is necessary.&nbsp;<br>&nbsp;<br>Another important particularity is that it is&nbsp;possible to use several independent&nbsp;<br>electronic devices or interfaces at the same&nbsp;time, since Multiplexer permits to create&nbsp;<br>more than one access to the module.&nbsp;<br>&nbsp;<br>To access&nbsp;the three virtual&nbsp;interfaces, both&nbsp;the GSM engine&nbsp;and&nbsp;the customer&nbsp;<br>application must contain Mux components that communicate over the multiplexer&nbsp;<br>protocol.&nbsp;<br>&nbsp;<br>In Multiplexer mode, AT&nbsp;commands and data are encapsulated into&nbsp;packets. Each&nbsp;<br>packet has channel identification and&nbsp;may vary in length.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;7 of&nbsp;32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=8></a><IMG src="Telit_CMUX_User_Guide_r5-8_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-8_2.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-8_3.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-8_4.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-8_5.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-8_6.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-8_7.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-8_8.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-8_9.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-8_10.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-8_11.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-8_12.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Telit serial communications and AT&nbsp;interface&nbsp;layer&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;8 of&nbsp;32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=9></a><IMG src="Telit_CMUX_User_Guide_r5-9_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-9_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+2.2.<b>&nbsp;</b><br>
+Implementation feature&nbsp;<br>
+&nbsp;<br>
+Some of the most important characteristics of CMUX are described below.&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;7.10 CMUX&nbsp;Basic Option&nbsp;used&nbsp;<br>&nbsp;&nbsp;CMUX implementation support four full DLCI (Serial&nbsp;Port)&nbsp;<br>&nbsp;&nbsp;Every CMUX instance has its own&nbsp;user profile storage in NVM&nbsp;<br>&nbsp;&nbsp;Independent setting of unsolicited message.&nbsp;<br>&nbsp;&nbsp;In case of GPS product&nbsp;one serial port can be dedicated to NMEA output.&nbsp;<br>&nbsp;&nbsp;Every CMUX instance has its own independent flow control.&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;9 of&nbsp;32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=10></a><IMG src="Telit_CMUX_User_Guide_r5-10_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-10_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>3.</b>&nbsp;<br>
+<b>Serial Multiplexer Protocol&nbsp;</b><br>
+3.1.<b>&nbsp;</b><br>
+CMUX Frame Structure&nbsp;<br>
+&nbsp;<br>
+All information transmitted between the module and the application are based on&nbsp;<br>frame that has the following&nbsp;frame Structure:&nbsp;<br>
+&nbsp;<br>
+Length&nbsp;<br>
+Flag&nbsp;<br>
+Address&nbsp;<br>
+Control&nbsp;<br>
+Information&nbsp;<br>
+FCS&nbsp;<br>
+Flag&nbsp;<br>
+Indicator&nbsp;<br>
+Unspecified length but&nbsp;<br>
+1 octet&nbsp;<br>
+1 octet&nbsp;<br>
+1 octet&nbsp;<br>
+1or2 octets&nbsp;<br>
+integral number of&nbsp;<br>
+1 octet&nbsp;<br>
+1 octet<br>
+octets&nbsp;<br>
+&nbsp;<br>
+Flag Octet&nbsp;<br>&nbsp;<br>Each frame&nbsp;begins and&nbsp;ends with a flag octet defined as&nbsp;&nbsp;<br>Binary: 11111001&nbsp;or&nbsp;&nbsp;<br>Hexadecimal: 0xF9&nbsp;<br>&nbsp;<br>Address Octet&nbsp;<br>The form of address octet is the following:&nbsp;<br>
+&nbsp;<br>
+0&nbsp;<br>
+1&nbsp;<br>
+2&nbsp;<br>
+3&nbsp;<br>
+4&nbsp;<br>
+5&nbsp;<br>
+6&nbsp;<br>
+7&nbsp;<br>
+EA&nbsp;&nbsp;C/R<br>
+&nbsp;<br>
+D&nbsp;<br>
+L&nbsp;<br>
+C&nbsp;<br>
+I&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+EA: &nbsp;<br>
+Extension Bit &nbsp;&nbsp;<br>
+Should always have the&nbsp;value 1 as the basic option of the protocol.&nbsp;<br>&nbsp;<br>C/R: &nbsp;<br>
+Command Response&nbsp;<br>
+The C/R (command/response) bit identifies the frame as either a&nbsp;command or&nbsp;a&nbsp;<br>response. In conformance with the standard&nbsp;HDLC rules, a command&nbsp;frame contains&nbsp;<br>the address of the data link connection entity to which it is transmitted while&nbsp;a&nbsp;<br>response frame contains&nbsp;the address of the data&nbsp;link connection entity transmitting the&nbsp;<br>frame.&nbsp;<br>
+&nbsp;<br>
+Command/response&nbsp;<br>
+Direction&nbsp;<br>
+C/R value&nbsp;<br>
+Command&nbsp;<br>
+Application&nbsp;<br>
+<br>
+Module&nbsp;<br>
+1&nbsp;<br>
+&nbsp;<br>
+Module&nbsp;<br>
+<br>
+Application&nbsp;<br>
+0&nbsp;<br>
+Response&nbsp;<br>
+Application&nbsp;<br>
+<br>
+Module&nbsp;<br>
+0&nbsp;<br>
+&nbsp;<br>
+Module&nbsp;<br>
+<br>
+Application&nbsp;<br>
+1&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;10 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=11></a><IMG src="Telit_CMUX_User_Guide_r5-11_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-11_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Example:&nbsp;<br>&nbsp;<br>Let’s suppose that application is the one that takes the initiative to initialize the&nbsp;<br>multiplexer&nbsp;(i.e. sends the SABM command at&nbsp;DLCI 0) and that the Module accepts&nbsp;the&nbsp;<br>initialization&nbsp;of the multiplexer (i.e. sends the UA response at DLCI 0).&nbsp;<br>&nbsp;<br>DLCI: Data Link Connection Identifier&nbsp;<br>DLCI value identifies the&nbsp;Virtual Port inside&nbsp;the Module&nbsp;with the&nbsp;following&nbsp;assignment&nbsp;<br>
+&nbsp;<br>
+DLCI&nbsp;&nbsp;Virtual Port&nbsp;type&nbsp;<br>
+0&nbsp;<br>
+Reserved to Control Channel&nbsp;<br>
+1&nbsp;<br>
+Virtual Port&nbsp;#1&nbsp;<br>
+2&nbsp;<br>
+Virtual Port&nbsp;#2&nbsp;<br>
+3&nbsp;<br>
+Virtual Port&nbsp;#3&nbsp;<br>
+4&nbsp;<br>
+Reserved for Python debug&nbsp;<br>
+&nbsp;<br>
+Control Field&nbsp;<br>The content of the control field defines the type of&nbsp;frame as in&nbsp;the following&nbsp;table:&nbsp;<br>
+&nbsp;<br>
+Frame Type&nbsp;<br>
+0&nbsp;<br>
+1&nbsp;<br>
+2&nbsp;<br>
+3&nbsp;<br>
+4&nbsp;<br>
+5&nbsp;<br>
+6&nbsp;<br>
+7&nbsp;<br>
+SABM (Set Asynchronous Balanced&nbsp;Mode)&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+P/F&nbsp;<br>
+1&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+UA (Unnumbered Acknowledgement)&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+P/F&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+0&nbsp;<br>
+DM (Disconnected Mode)&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+P/F&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+DISC (Disconnect)&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+P/F&nbsp;<br>
+0&nbsp;<br>
+1&nbsp;<br>
+0&nbsp;<br>
+UIH (Unnumbered Information with Header&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+P/F&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+1&nbsp;<br>
+check)&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+P/F stands for Poll/Final bit:&nbsp;<br>&nbsp;&nbsp;Commands: &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;P=1&nbsp;<br>&nbsp;&nbsp;Response: &nbsp;&nbsp;<br>
+F=1&nbsp;<br>
+&nbsp;<br>SABM (Set Asynchronous Balanced Mode)&nbsp;<br>The SABM command is used by the&nbsp;application to start the HDLC Connection and&nbsp;<br>module will&nbsp;answer to this command with an UA Frame. &nbsp;<br>&nbsp;<br>UA (Unnumbered Acknowledgement)&nbsp;<br>The UA response is sent&nbsp;by the module as an acknowledgement that a SABM or DISC&nbsp;<br>command was accepted.&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;11 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=12></a><IMG src="Telit_CMUX_User_Guide_r5-12_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-12_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>DM (Disconnected Mode)&nbsp;<br>In case module rejects SABM or DISC&nbsp;command&nbsp;it will send DM response, this happens&nbsp;<br>if for example a SABM is&nbsp;sent for a DLCI not supported. Or if a DISC is sent&nbsp;to a DLCI&nbsp;<br>Address already closed.&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>DISC (Disconnect)&nbsp;<br>The DISC is used to close a previously established connection. If the application sends a&nbsp;<br>disc for the DLCI 0 (the&nbsp;control channel), all the established&nbsp;channels will be closed.&nbsp;<br>The module&nbsp;will answer&nbsp;to this command with an UA Frame.&nbsp;&nbsp;<br>&nbsp;<br>UIH (Unnumbered Information)&nbsp;<br>Please refer to the following chapters&nbsp;for the detailed information about UIH&nbsp;<br>&nbsp;<br>Length Indicator&nbsp;<br>This Octet specifies the&nbsp;length of the information field&nbsp;<br>
+&nbsp;<br>
+0&nbsp;<br>
+1&nbsp;<br>
+2&nbsp;<br>
+3&nbsp;<br>
+4&nbsp;<br>
+5&nbsp;<br>
+6&nbsp;<br>
+7&nbsp;<br>
+E/A&nbsp;<br>
+L1&nbsp;<br>
+L2&nbsp;<br>
+L3&nbsp;<br>
+L4&nbsp;<br>
+L5&nbsp;<br>
+L6&nbsp;<br>
+L7&nbsp;<br>
+&nbsp;<br>
+E/A Bit should be 1 in case 7 bits are enough for&nbsp;the&nbsp;len&nbsp;(len&nbsp;&lt;= 127)&nbsp;otherwise&nbsp;len&nbsp;<br>should be coded with two octets as described below:&nbsp;<br>&nbsp;<br>Octet 1&nbsp;<br>
+0&nbsp;<br>
+1&nbsp;<br>
+2&nbsp;<br>
+3&nbsp;<br>
+4&nbsp;<br>
+5&nbsp;<br>
+6&nbsp;<br>
+7&nbsp;<br>
+0&nbsp;<br>
+L1&nbsp;<br>
+L2&nbsp;<br>
+L3&nbsp;<br>
+L4&nbsp;<br>
+L5&nbsp;<br>
+L6&nbsp;<br>
+L7&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Octet 2&nbsp;<br>
+0&nbsp;<br>
+1&nbsp;<br>
+2&nbsp;<br>
+3&nbsp;<br>
+4&nbsp;<br>
+5&nbsp;<br>
+6&nbsp;<br>
+7&nbsp;<br>
+1&nbsp;<br>
+L9&nbsp;<br>
+L10&nbsp;<br>
+L11&nbsp;<br>
+L12&nbsp;<br>
+L13&nbsp;<br>
+L14&nbsp;<br>
+L15&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+NOTE:&nbsp;&nbsp;<br>&nbsp;<br>Since the maximum frame length used by&nbsp;Telit implementation is 128,&nbsp;Octet 2 is never&nbsp;<br>used. Codification of the&nbsp;octet (Octet&nbsp;1=0&nbsp;and Octet 2=1) derives from GSM 07.10.&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;12 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=13></a><IMG src="Telit_CMUX_User_Guide_r5-13_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-13_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Information Data&nbsp;<br>The information field is the payload&nbsp;of the frame and carries&nbsp;the user data. The&nbsp;field&nbsp;<br>exists only for frame type that contains UIH Control Field.&nbsp;The P/F bit should be set&nbsp;to&nbsp;<br>value 0 when&nbsp;this field is sent.&nbsp;<br>&nbsp;<br>FCS (Frame Checking Sequence)&nbsp;<br>The FCS is calculated over the entire frame,&nbsp;but excluding the flags. Only&nbsp;in case of UIH&nbsp;<br>frame the FCS will not be calculated&nbsp;over the information&nbsp;field.&nbsp;<br>The FCS is the ones complement of&nbsp;the sum (modulo 2) of&nbsp;<br>the remainder of xk&nbsp;(x7&nbsp;+ x6&nbsp;+ x5&nbsp;+ x4&nbsp;+&nbsp;x3&nbsp;+ x2&nbsp;+ x1&nbsp;+ 1)&nbsp;&nbsp;<br>divided (modulo 2) by the generator polynomial&nbsp;x8&nbsp;+ x2&nbsp;+ x&nbsp;+&nbsp;1,&nbsp;<br>where k is the number of bits in the frame.2&nbsp;<br>See specific chapter with&nbsp;code examples for more&nbsp;implementation details.&nbsp;<br>
+&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>2&nbsp;refer&nbsp;to the ETSI Specification 07.10&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;13 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=14></a><IMG src="Telit_CMUX_User_Guide_r5-14_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-14_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+3.2.<b>&nbsp;</b><br>
+UIH Control Channel Frame Coding&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+DLCI shall always have the value 0&nbsp;<br>
+&nbsp;<br>
+Type&nbsp;<br>
+Length&nbsp;<br>
+Value&nbsp;<br>
+Indicator&nbsp;<br>
+1 octet&nbsp;<br>
+1or2 octets&nbsp;<br>
+n Octet&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Type Octet:&nbsp;<br>
+0&nbsp;<br>
+1&nbsp;<br>
+2&nbsp;<br>
+3&nbsp;<br>
+4&nbsp;<br>
+5&nbsp;<br>
+6&nbsp;<br>
+7&nbsp;<br>
+EA&nbsp;&nbsp;C/R<br>
+&nbsp;<br>
+T&nbsp;<br>
+Y&nbsp;<br>
+P&nbsp;<br>
+E&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+EA: &nbsp;<br>
+Extension Bit &nbsp;&nbsp;<br>
+Will always&nbsp;be 1.&nbsp;<br>&nbsp;<br>C/R: &nbsp;<br>
+Identifies if it is a Command or Response&nbsp;<br>
+&nbsp;&nbsp;&nbsp;<br>&nbsp;<br>Length indicator&nbsp;<br>Specifies the length of the information field and&nbsp;it is code like in the Cmux Frame&nbsp;<br>Structure paragraph.&nbsp;<br>&nbsp;<br>&nbsp;<br>Value&nbsp;<br>The number of octets is&nbsp;specified by the Length Indicator and&nbsp;depends on&nbsp;the type of&nbsp;<br>the command. &nbsp;<br>The available command types are listed below:&nbsp;<br>&nbsp;<br>&nbsp;<br>
+1.<b>&nbsp;&nbsp;</b>Multiplexer&nbsp;close down (CLD)&nbsp;<br>
+The multiplexer close down command is used to reset the link into normal AT&nbsp;<br>command mode without&nbsp;multiplexing. Least Significant bit is on left side&nbsp;of the octet:&nbsp;<br>
+&nbsp;<br>&nbsp;&nbsp;<br>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; LSb&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;MSb LSb &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;MSb&nbsp;<br>
+Type3&nbsp;<br>
+Len&nbsp;<br>
+E/A&nbsp;&nbsp;C/R&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;1&nbsp;&nbsp;E/A<br>
+0<br>
+0<br>
+0<br>
+0<br>
+0<br>
+0<br>
+0<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>3&nbsp;Type&nbsp;value is based on the GSM 07.10&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;14 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=15></a><IMG src="Telit_CMUX_User_Guide_r5-15_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-15_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+2.<b>&nbsp;&nbsp;</b>Test Command (Test)&nbsp;<br>
+The test command is used to test the connection between MS and the TE. The&nbsp;<br>length byte describes the number of values&nbsp;bytes, which are&nbsp;used as a verification&nbsp;<br>pattern. The opposite entity shall respond with exactly the same value bytes.&nbsp;<br>Least Significant bit is on left side of the octet:&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; LSb&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;MSb&nbsp;<br>
+Type4&nbsp;<br>
+Len&nbsp;<br>
+follow&nbsp;the Values&nbsp;octets&nbsp;on the&nbsp;<br>next row.&nbsp;<br>
+E/A&nbsp;&nbsp;C/R&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;E/A<br>
+length&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Value 1&nbsp;<br>
+Value2&nbsp;<br>
+Value ..&nbsp;<br>
+Value length&nbsp;<br>
+Any Char&nbsp;<br>
+Any Char&nbsp;<br>
+Any Char&nbsp;<br>
+Any Char&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+3.<b>&nbsp;&nbsp;</b>Modem Status Command (MSC)&nbsp;<br>
+This command is used to send V.24&nbsp;signal&nbsp;info.&nbsp;This signal is&nbsp;independent for each&nbsp;<br>instance. If the&nbsp;module receives&nbsp;a MSC command it will always answer with&nbsp;<br>another MSC that will contain its V24 status.&nbsp;<br>&nbsp;<br>Format without Break Indication&nbsp;<br>
+&nbsp;<br>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; LSb&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;MSb&nbsp;<br>
+Type5&nbsp;<br>
+Len&nbsp;<br>
+follow&nbsp;the Values&nbsp;octets&nbsp;on the&nbsp;<br>
+E/A&nbsp;&nbsp;C/R&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;1&nbsp;&nbsp;1&nbsp;&nbsp;E/A<br>
+0<br>
+1<br>
+0<br>
+0<br>
+0<br>
+0<br>
+0<br>
+next row.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+DLCI&nbsp;<br>
+V24 octet&nbsp;<br>
+E/A&nbsp;&nbsp;1&nbsp;<br>
+DLCI&nbsp;<br>
+E/A<br>
+Lines Status&nbsp;<br>
+&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>4&nbsp;Type&nbsp;value is based on the GSM 07.10&nbsp;<br>5&nbsp;Type&nbsp;value is based on the GSM 07.10&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;15 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=16></a><IMG src="Telit_CMUX_User_Guide_r5-16_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-16_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Format with Break Indication&nbsp;<br>
+&nbsp;<br>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; LSb&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;MSb&nbsp;<br>
+Type6&nbsp;<br>
+Len&nbsp;<br>
+follow&nbsp;the Values&nbsp;octets&nbsp;on the&nbsp;<br>
+E/A&nbsp;&nbsp;C/R&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;1&nbsp;&nbsp;1&nbsp;&nbsp;E/A<br>
+1<br>
+1<br>
+0<br>
+0<br>
+0<br>
+0<br>
+0<br>
+next row.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+DLCI&nbsp;<br>
+V24 octet&nbsp;<br>
+Break octet&nbsp;<br>
+E/A&nbsp;&nbsp;1&nbsp;<br>
+DLCI&nbsp;<br>
+E/A<br>
+Lines Status&nbsp;<br>
+Break Status&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+V24 Octet from Module to&nbsp;Application&nbsp;<br>
+&nbsp;<br>
+0&nbsp;<br>
+1&nbsp;<br>
+2&nbsp;<br>
+3&nbsp;<br>
+4&nbsp;<br>
+5&nbsp;<br>
+6&nbsp;<br>
+7&nbsp;<br>
+1&nbsp;<br>
+FC&nbsp;<br>
+DSR&nbsp;<br>
+CTS&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+RING<br>
+DCD&nbsp;<br>
+&nbsp;<br>
+V24 Octet from Application to Module&nbsp;<br>
+&nbsp;<br>
+0&nbsp;<br>
+1&nbsp;<br>
+2&nbsp;<br>
+3&nbsp;<br>
+4&nbsp;<br>
+5&nbsp;<br>
+6&nbsp;<br>
+7&nbsp;<br>
+1&nbsp;<br>
+FC&nbsp;<br>
+DTR&nbsp;<br>
+RTS&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+&nbsp;<br>
+FC: &nbsp; This bit is set to 1 when module or application is not able to accept any frames.&nbsp;<br>CTS: This bit&nbsp;is set to 1 when module is able to receive data (ref. cmd &amp;K,\Q and&nbsp;<br>related)&nbsp;<br>RTS: This bit&nbsp;is set to 1 when application is able to&nbsp;receive data. (ref. cmd&nbsp; &amp;K,\Q and&nbsp;<br>related)&nbsp;<br>DSR: &nbsp;This bit is set to 1&nbsp;when module is ready to communicate (ref. cmd &amp;S, and&nbsp;<br>related)&nbsp;<br>DTR:&nbsp; This bit is set to&nbsp;1&nbsp;when application is ready to receive data. (ref. cmd &nbsp;&amp;D, and&nbsp;<br>related)&nbsp;<br>RING: &nbsp;This bit is set to&nbsp;1 when module receive&nbsp;an incoming&nbsp;call (ref. cmd &nbsp;\R, and&nbsp;<br>related)&nbsp;<br>DCD: &nbsp; This bit is set to&nbsp;1 when module has&nbsp;an active data connection. (ref. cmd &nbsp;&amp;C, and&nbsp;<br>related)&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>6&nbsp;Type&nbsp;value is based on the GSM 07.10&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;16 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=17></a><IMG src="Telit_CMUX_User_Guide_r5-17_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-17_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+NOTE: &nbsp;<br>&nbsp;<br>When a new instance is established&nbsp;the default settings are&nbsp;FC = 1, RTS&nbsp;= 0, DTR = 0,&nbsp;<br>this means that the module will not&nbsp;be able to send the data to application until user&nbsp;<br>changes the default setting to FC = 0,&nbsp;RTS&nbsp;= 1, DTR = 1. The application&nbsp;will send an&nbsp;<br>MSC command to change this value before starting sending data.&nbsp;<br>&nbsp;<br>Break Octet&nbsp;<br>&nbsp;<br>
+0&nbsp;<br>
+1&nbsp;<br>
+2&nbsp;<br>
+3&nbsp;<br>
+4&nbsp;<br>
+5&nbsp;<br>
+6&nbsp;<br>
+7&nbsp;<br>
+1&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+&nbsp;<br>
+This octet will be sent each time a Break Signal is simulated.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+4.<b>&nbsp;&nbsp;</b>Non Supported Command Response&nbsp;(NSC)&nbsp;<br>
+This response is sent in&nbsp;case a command type is not supported by the receiving&nbsp;<br>entity.&nbsp;<br>
+&nbsp;<br>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; LSb&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;MSb&nbsp;<br>
+Type&nbsp;<br>
+Len&nbsp;<br>
+Command Type&nbsp;<br>
+E/A&nbsp;&nbsp;C/R&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;E/A<br>
+1<br>
+0<br>
+0<br>
+0<br>
+0<br>
+0<br>
+0<br>
+E/A&nbsp;&nbsp;C/R&nbsp;&nbsp;command type&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+5.<b>&nbsp;&nbsp;</b>Power Saving Control (PSC)&nbsp;<br>
+This command is used to program the power saving mode of the module when it&nbsp;<br>is in Multiplexer mode.&nbsp;<br>
+AT+CFUN command will&nbsp;not be used.&nbsp;<br>
+&nbsp;<br>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; LSb&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;MSb&nbsp;<br>
+Type&nbsp;<br>
+Len&nbsp;<br>
+Power Saving Mode&nbsp;<br>
+E/A&nbsp;&nbsp;C/R&nbsp;&nbsp;0&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+0&nbsp;<br>
+1&nbsp;<br>
+0&nbsp;<br>
+E/A<br>
+1<br>
+0<br>
+0<br>
+0<br>
+0<br>
+0<br>
+0<br>
+mode&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Power Saving Mode: &nbsp; 0 (Enter AT+CFUN=0 mode)&nbsp;<br>&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+other values&nbsp;are reserved&nbsp;and treated as 0 in current&nbsp;<br>
+implementation&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;17 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=18></a><IMG src="Telit_CMUX_User_Guide_r5-18_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-18_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+NOTE:&nbsp;&nbsp;<br>&nbsp;<br>During&nbsp;the power saving&nbsp;mode module will&nbsp;not able to receive&nbsp;any character on the&nbsp;<br>serial interface. For further detail how to exit from power saving refer to&nbsp;SW User&nbsp;<br>Guide document.&nbsp;<br>Chapter 5.4.7 of&nbsp;FSM 07.10 are not applicable to&nbsp;Telit&nbsp;Module.&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;18 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=19></a><IMG src="Telit_CMUX_User_Guide_r5-19_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-19_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+3.3.<b>&nbsp;</b><br>
+UIH&nbsp;Data Channel Frame Coding&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+DLCI can assume values: 1, 2, 3 or 4&nbsp;<br>
+&nbsp;<br>
+Length Indicator<br>
+User Data&nbsp;<br>
+1or2 octets&nbsp;<br>
+n Octet&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Length indicator&nbsp;<br>Specifies the length of the information field and&nbsp;it is code like in the Cmux Frame&nbsp;<br>Structure paragraph.&nbsp;<br>&nbsp;<br>&nbsp;<br>User Data &nbsp;<br>The Number&nbsp;of data is defined by the Length Indicator&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;19 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=20></a><IMG src="Telit_CMUX_User_Guide_r5-20_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-20_2.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-20_3.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-20_4.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+3.4.<b>&nbsp;</b><br>
+CMUX establishment scenario&nbsp;<br>
+MSC&nbsp;CMU&nbsp;Establishment<br>
+APPLICATION&nbsp;<br>
+MODULE<br>
+AT+CMUX=0&lt;CR&gt;<br>
+OK&lt;CR&gt;&lt;LF&gt;<br>
+Control Channel&nbsp;&nbsp;<br>
+SABM&nbsp;<br>
+Established&nbsp;<br>
+(&nbsp;DLC&nbsp;&nbsp;I&nbsp;=&nbsp;&nbsp;0&nbsp;)&nbsp;<br>
+UA<br>
+(<br>(DLCI = 0<br>
+)<br>
+SABM&nbsp;<br>
+Virtual Port #1<br>
+(&nbsp;DLC&nbsp;&nbsp;I&nbsp;=&nbsp;&nbsp;1&nbsp;)&nbsp;<br>
+Open&nbsp;<br>
+UA<br>
+(<br>(DLCI = 1<br>
+)<br>
+UIH<br>
+V.24 Signal&nbsp;<br>
+Exchange<br>
+(&nbsp;DLCI =&nbsp;0, &nbsp;MSC on&nbsp;DLCI1&nbsp;<br>
+)<br>
+UIH<br>
+(<br>
+DLCI=0, MSC, On&nbsp;DLCI=1<br>
+)<br>
+UIH<br>
+(&nbsp;DLC&nbsp;&nbsp;I&nbsp;=&nbsp;&nbsp;1&nbsp;)&nbsp;<br>
+UIH<br>
+(DLCI=0, MSC<br>
+)<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;20 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=21></a><IMG src="Telit_CMUX_User_Guide_r5-21_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-21_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+3.5.<b>&nbsp;</b><br>
+CMUX establishment scenario typical log&nbsp;<br>
+&nbsp;<br>Red &nbsp;<br>
+- commands sent from Application to Module&nbsp;<br>
+Green&nbsp;&nbsp;- commands sent form Module to Application&nbsp;<br>Black -&nbsp;<br>
+Comments&nbsp;<br>
+&nbsp;<br>// ASCII Log&nbsp;<br>AT#SELINT=2 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Make sure that Interface selection is equal 2&nbsp;<br>OK&nbsp;<br>ATE0V1&amp;K3&amp;D2&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;-Disable Echo, Activate Hardware Flow&nbsp;Control, Program the DTR to disconnect &nbsp;<br>OK&nbsp;<br>AT+CMUX=0&nbsp;<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;-Start MUX&nbsp;protocol&nbsp;&nbsp;&nbsp;<br>
+OK&nbsp;<br>&nbsp;<br>
+NOTE: &nbsp;<br>&nbsp;<br>After Multiplexer is established the AT Instance 1 is removed from the Physical Serial&nbsp;<br>port and mapped to Virtual COM1. The settings ATE0V1&amp;K3&amp;D2 will be&nbsp;available on&nbsp;<br>Virtual port&nbsp;#1.&nbsp;<br>
+&nbsp;<br>// Hexadecimal Log&nbsp;<br>&nbsp;<br>F9 03 3F 01 1C F9&nbsp;<br>
+&nbsp;&nbsp;<br>
+-DLCI = 0, &nbsp;&nbsp;SABM CMD, &nbsp;<br>
+POLL BIT SET&nbsp;<br>
+F9 03 73 01 D7 F9&nbsp; &nbsp;&nbsp;<br>
+-DLCI = 0, &nbsp;&nbsp;UA RESPONSE,&nbsp;FINAL BIT SET&nbsp;<br>
+CMUX Protocol Established&nbsp;<br>&nbsp;<br>F9 07 3F 01 DE F9 &nbsp;&nbsp;&nbsp;<br>
+-DLCI = 1,&nbsp;<br>
+SABM CMD, &nbsp;<br>
+POLL BIT SET&nbsp;<br>
+F9 07 73 01 15 F9&nbsp; &nbsp;&nbsp;<br>
+-DLCI = 1, &nbsp;&nbsp;UA RESPONSE,&nbsp;FINAL BIT SET&nbsp;<br>
+Virtual Port #1 Opened&nbsp;<br>&nbsp;<br>F9 03 EF 09 E3 05 07 0C FB F9&nbsp; -DLCI = 0, UIH Frame, MSC Cmd &nbsp; for DLCI 1&nbsp;<br>Application Set FC=0, RTS=1, DTR=1 for Virtual Com 1&nbsp;<br>&nbsp;<br>F9 03 EF 09 E1 05 07 0C FB F9&nbsp; -DLCI = 0, UIH Frame, MSC Cmd &nbsp; for DLCI 1&nbsp;<br>Module Set FC=0, RTS=1, DTR=1, RING=0, DCD=0 for Virtual Com 1&nbsp;<br>Ready to send AT Command on Instance #1&nbsp;<br>&nbsp;<br>&nbsp;<br>F9 07 EF 11 41 54 2B 43 47 4D 52 0D 2B F9&nbsp;&nbsp;-Send Command AT+CGMR&nbsp;<br>F9 05 EF 27 0D 0A 30 37 2E 30 32 2E 35 30 34 0D 0A 0D 0A 4F 4B 0D 0A 8° F9&nbsp;<br>&nbsp;-Answer from module is &lt;CR&gt;&lt;LF&gt;07.02.504&lt;CR&gt;&lt;LF&gt;&lt;CR&gt;&lt;LF&gt;&lt;OK&gt;&nbsp;<br>&nbsp;<br>F9 03 EF 05 41 00 F2 F9&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp; &nbsp;&nbsp;- Send PSC = 0 Command&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;21 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=22></a><IMG src="Telit_CMUX_User_Guide_r5-22_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-22_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>To wake up the module or the Application Toggle refer to the AT command&nbsp;<br>AT+CFUN=0. &nbsp;<br>&nbsp;<br>
+3.6.<b>&nbsp;</b><br>
+Lookup table for FCS calculation&nbsp;<br>
+&nbsp;<br>
+The following part of the&nbsp;code is provided to make easier the FCS calculation:&nbsp;<br>
+&nbsp;<br>static const unsigned char crctable[256] = { //reversed, 8-bit, poly=0x07&nbsp;<br>
+&nbsp;0x00, 0x91, 0xE3, 0x72, 0x07, 0x96, 0xE4, 0x75, 0x0E, 0x9F, 0xED, 0x7C, 0x09, 0x98, 0xEA,&nbsp;<br>0x7B,&nbsp;<br>
+&nbsp;0x1C, 0x8D, 0xFF, 0x6E, 0x1B, 0x8A, 0xF8, 0x69, 0x12, 0x83, 0xF1, 0x60, 0x15, 0x84, 0xF6,&nbsp;<br>0x67,&nbsp;<br>
+&nbsp;0x38, 0xA9, 0xDB, 0x4A, 0x3F, 0xAE, 0xDC, 0x4D, 0x36, 0xA7, 0xD5, 0x44, 0x31, 0xA0, 0xD2,&nbsp;<br>0x43,&nbsp;<br>
+&nbsp;0x24, 0xB5, 0xC7, 0x56, 0x23, 0xB2, 0xC0, 0x51, 0x2A, 0xBB, 0xC9, 0x58, 0x2D, 0xBC, 0xCE,&nbsp;<br>0x5F,&nbsp;<br>
+&nbsp;0x70, 0xE1, 0x93, 0x02, 0x77, 0xE6, 0x94, 0x05, 0x7E, 0xEF, 0x9D, 0x0C, 0x79, 0xE8, 0x9A,&nbsp;<br>0x0B,&nbsp;<br>
+&nbsp;0x6C, 0xFD, 0x8F, 0x1E, 0x6B, 0xFA, 0x88, 0x19, 0x62, 0xF3, 0x81, 0x10, 0x65, 0xF4, 0x86,&nbsp;<br>0x17,&nbsp;<br>
+&nbsp;0x48, 0xD9, 0xAB, 0x3A, 0x4F, 0xDE, 0xAC, 0x3D, 0x46, 0xD7, 0xA5, 0x34, 0x41, 0xD0, 0xA2,&nbsp;<br>0x33,&nbsp;<br>
+&nbsp;0x54, 0xC5, 0xB7, 0x26, 0x53, 0xC2, 0xB0, 0x21, 0x5A, 0xCB, 0xB9, 0x28, 0x5D, 0xCC, 0xBE,&nbsp;<br>0x2F,&nbsp;<br>
+&nbsp;0xE0, 0x71, 0x03, 0x92, 0xE7, 0x76, 0x04, 0x95, 0xEE, 0x7F, 0x0D, 0x9C, 0xE9, 0x78, 0x0A,&nbsp;<br>0x9B,&nbsp;<br>
+&nbsp;0xFC, 0x6D, 0x1F, 0x8E, 0xFB, 0x6A, 0x18, 0x89, 0xF2, 0x63, 0x11, 0x80, 0xF5, 0x64, 0x16,&nbsp;<br>0x87,&nbsp;<br>
+&nbsp;0xD8, 0x49, 0x3B, 0xAA, 0xDF, 0x4E, 0x3C, 0xAD, 0xD6, 0x47, 0x35, 0xA4, 0xD1, 0x40, 0x32,&nbsp;<br>0xA3,&nbsp;<br>
+&nbsp;0xC4, 0x55, 0x27, 0xB6, 0xC3, 0x52, 0x20, 0xB1, 0xCA, 0x5B, 0x29, 0xB8, 0xCD, 0x5C, 0x2E,&nbsp;<br>0xBF,&nbsp;<br>
+&nbsp;0x90, 0x01, 0x73, 0xE2, 0x97, 0x06, 0x74, 0xE5, 0x9E, 0x0F, 0x7D, 0xEC, 0x99, 0x08, 0x7A,&nbsp;<br>0xEB,&nbsp;<br>
+&nbsp;0x8C, 0x1D, 0x6F, 0xFE, 0x8B, 0x1A, 0x68, 0xF9, 0x82, 0x13, 0x61, 0xF0, 0x85, 0x14, 0x66,&nbsp;<br>0xF7,&nbsp;<br>
+&nbsp;0xA8, 0x39, 0x4B, 0xDA, 0xAF, 0x3E, 0x4C, 0xDD, 0xA6, 0x37, 0x45, 0xD4, 0xA1, 0x30, 0x42,&nbsp;<br>0xD3,&nbsp;<br>
+&nbsp;0xB4, 0x25, 0x57, 0xC6, 0xB3, 0x22, 0x50, 0xC1, 0xBA, 0x2B, 0x59, 0xC8, 0xBD, 0x2C, 0x5E,&nbsp;<br>0xCF&nbsp;<br>
+};&nbsp;<br>
+&nbsp;&nbsp;<br>
+static UINT8 CalcFCS( UINT8 *buf, int len)&nbsp;<br>
+{&nbsp;<br>
+UINT8 FCS=0xFF;&nbsp;<br>
+&nbsp; &nbsp;<br>
+while (len--) FCS=crctable[FCS^*buf++];&nbsp;<br>
+&nbsp;&nbsp;<br>
+return (0xFF-FCS);&nbsp;<br>
+}&nbsp;<br>
+&nbsp;<br>
+static int CheckFCS( UINT8 *buf, int len)&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;22 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=23></a><IMG src="Telit_CMUX_User_Guide_r5-23_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-23_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+{&nbsp;<br>
+UINT8 FCS=0xFF ;&nbsp;<br>
+UINT8 crc ;&nbsp;<br>
+&nbsp;&nbsp;<br>
+&nbsp; &nbsp; while (len--)&nbsp;<br>
+&nbsp; &nbsp; {&nbsp;<br>
+&nbsp; &nbsp; &nbsp; FCS=crctable[FCS^*buf++];&nbsp;<br>
+&nbsp; &nbsp; }&nbsp;<br>
+&nbsp;&nbsp;<br>
+/*0xCF is the reversed order of 11110011.*/&nbsp;<br>
+return (FCS==0xCF);&nbsp;<br>
+}&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;23 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=24></a><IMG src="Telit_CMUX_User_Guide_r5-24_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-24_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>4.</b>&nbsp;<br>
+<b>Integrator hints&nbsp;</b><br>
+&nbsp;<br>
+4.1.<b>&nbsp;</b><br>
+Basic&nbsp;requirement&nbsp;<br>
+&nbsp;<br>
+The customer/integrator in order to design&nbsp;its own multiplexer application must follow&nbsp;<br>these basic requirements:&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;The GSM engine supports the basic option and UIH Framing according to GSM&nbsp;<br>
+07.10;&nbsp;<br>
+&nbsp;&nbsp;Character framing must be configured&nbsp;for&nbsp;8 data bits, no parity&nbsp;and 1 stop&nbsp;bit;&nbsp;<br>&nbsp;&nbsp;It is recommended to used the hardware&nbsp;flow control with multiplexer&nbsp;mode&nbsp;<br>
+and it should be set before you enter in Multiplexer mode with command&nbsp;<br>AT&amp;K3;&nbsp;<br>
+&nbsp;&nbsp;DTR Lines should be set correctly (pull-up), since a transition of the DTR causes&nbsp;<br>
+closing&nbsp;of&nbsp;multiplexer.&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+4.2.<b>&nbsp;</b><br>
+Restriction&nbsp;<br>
+&nbsp;<br>
+If the GSM engine is operating in multiplexer mode, the following restrictions will be&nbsp;<br>applied:&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;Software flow&nbsp;control XON/XOFF flow&nbsp;control is&nbsp;not supported in multiplexer&nbsp;<br>
+mode.&nbsp;<br>
+&nbsp;&nbsp;Call control:&nbsp;a voice call&nbsp;can be initiated,&nbsp;answered and &nbsp;closed on any channel&nbsp;<br>&nbsp;&nbsp;Call control: Data or Fax call can be initiated and&nbsp;answered on any channel but&nbsp;<br>
+closed only on the channel where the call was started/answered&nbsp;<br>
+&nbsp;&nbsp;Phonebook&nbsp;access: if you wish to write the same phonebook entry on two or&nbsp;<br>
+more different channels at the same time, please note that only the last entry&nbsp;<br>will be stored;&nbsp;<br>
+&nbsp;&nbsp;When in Multiplexed mode, the escape sequence ‘+++’ will not be detected&nbsp;by&nbsp;<br>
+the module.&nbsp;It is responsibility of the application to use the break octet of the&nbsp;<br>MSC (Modem Status Command) instead. Break octet of the MSC produce&nbsp;the&nbsp;<br>same effect as ‘+++’ escape sequence.&nbsp;<br>
+&nbsp;&nbsp;The commands reported in the table below are ignored in case of Multiplexer&nbsp;<br>
+mode. To be more precise it is possible to read/write values&nbsp;but they will have&nbsp;<br>no effect on the behavior&nbsp;of the module&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;24 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=25></a><IMG src="Telit_CMUX_User_Guide_r5-25_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-25_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+AT+IPR&nbsp;<br>
+&nbsp;<br>
+AT+IFC&nbsp;<br>
+&nbsp;<br>
+AT+ICF&nbsp;<br>
+&nbsp;<br>
+Escape sequence is not&nbsp;handled by the Module&nbsp;<br>
+ATS2; ATS12; &nbsp;<br>
+but shall be handled by the applicator that will&nbsp;<br>
+‘+++’&nbsp;<br>
+send a BREAK signal to the module using the&nbsp;<br>
+MSC command&nbsp;<br>
+Module&nbsp;will&nbsp;recognize DTR off as soon as the&nbsp;<br>
+ATS25&nbsp;<br>
+MSC command is received&nbsp;<br>
+AT+CMUX&nbsp;<br>
+&nbsp;<br>
+AT#SELINT&nbsp;<br>
+&nbsp;<br>
+AT&amp;F, ATZ,&nbsp;<br>
+Default value of previous&nbsp;ignored command are&nbsp;<br>
+AT#Z&nbsp;<br>
+reset but not applied&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;&nbsp;Due to some restriction in the GSM/GPRS&nbsp;standard or limitation&nbsp;of&nbsp;the software&nbsp;<br>
+some AT commands will not be executed in&nbsp;parallel by the&nbsp;module. If&nbsp;one of the&nbsp;<br>following commands are requested to&nbsp;be executed on one&nbsp;AT Instance&nbsp;while one&nbsp;<br>of this command is running on another instance, the latest&nbsp;execution is&nbsp;suspend&nbsp;<br>until the first request is&nbsp;completed&nbsp;<br>
+&nbsp;&nbsp;ATA &lt;Until CONNECT is not displayed&gt;&nbsp;<br>&nbsp;&nbsp;ATD &lt;Until&nbsp;CONNECT is not displayed&gt;&nbsp;<br>&nbsp;&nbsp;ATO&nbsp;<br>&nbsp;&nbsp;ATH&nbsp;<br>&nbsp;&nbsp;AT#CAMEN&nbsp;<br>&nbsp;&nbsp;AT#TPHOTO&nbsp;<br>&nbsp;&nbsp;AT+CGATT &lt;Set command&gt;&nbsp;<br>&nbsp;&nbsp;AT+CGACT&nbsp;<br>&nbsp;&nbsp;AT+COPS &nbsp;&lt;Set Command or Test Command&gt;&nbsp;<br>&nbsp;&nbsp;AT+CREG &nbsp;&lt;Set Command&gt;&nbsp;<br>&nbsp;&nbsp;AT#SEMAIL &lt;Blocked after Ctrl-z is sent&gt;&nbsp;<br>&nbsp;&nbsp;AT#EMAILD &lt;Blocked after Ctrl-z is sent&gt;&nbsp;<br>&nbsp;&nbsp;AT#SKTOP &nbsp;&lt;Until CONNECT is not displayed&gt;&nbsp;<br>&nbsp;&nbsp;AT#SKTD &nbsp; &lt;Until CONNECT is not displayed&gt;&nbsp;<br>&nbsp;&nbsp;AT#QDNS&nbsp;<br>&nbsp;&nbsp;AT+CAMM&nbsp;<br>&nbsp;&nbsp;All FTP Command&nbsp;<br>&nbsp;&nbsp;All CSURV Command&nbsp;<br>&nbsp;&nbsp;All Supplementary Service Command&nbsp;<br>&nbsp;&nbsp;All Phone&nbsp;Book related&nbsp;command&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;25 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=26></a><IMG src="Telit_CMUX_User_Guide_r5-26_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-26_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+NOTE:&nbsp;<br>
+This limitation is appears only when two or more&nbsp;of the commands listed above are&nbsp;<br>combined. For a simple&nbsp;example commands&nbsp;AT#MONI, +CGMR, AT+COPS? Will always&nbsp;<br>be executed without suspension since only one of the commands listed above is&nbsp;<br>running.&nbsp;<br>
+&nbsp;<br>
+For Further&nbsp;restriction on&nbsp;behavior of&nbsp;other command please&nbsp;refer to the specific&nbsp;<br>documentation such as AT&nbsp;Commands Reference&nbsp;Guide, Easy&nbsp;GPRS User Guide, SIM&nbsp;<br>Access Profile User Guide.&nbsp;<br>
+&nbsp;<br>
+4.3.<b>&nbsp;</b><br>
+Exception to independent profile setting&nbsp;<br>
+Every instance has its own user profile stored in NVM, with the exception of the&nbsp;<br>following AT&nbsp;commands that will modify the global&nbsp;operation of&nbsp;the system,&nbsp;<br>independently from the CMUX instance that is using them.&nbsp;&nbsp;<br>
+&nbsp;&nbsp;AT#HFMICG&nbsp;<br>
+&nbsp;&nbsp;AT#HSMICG&nbsp;<br>
+&nbsp;&nbsp;AT+CMUT&nbsp;<br>
+&nbsp;&nbsp;AT#STM&nbsp;<br>
+&nbsp;&nbsp;AT#SHFEC&nbsp;<br>
+&nbsp;&nbsp;AT#CAP&nbsp;<br>
+&nbsp;&nbsp;AT+CLVL&nbsp;<br>
+&nbsp;&nbsp;AT#SRS&nbsp;<br>
+&nbsp;&nbsp;AT+CRSL&nbsp;<br>
+&nbsp;&nbsp;AT#SRP&nbsp;<br>
+&nbsp;&nbsp;AT#NITZ&nbsp;<br>
+&nbsp;&nbsp;AT+CALM&nbsp;<br>
+&nbsp;&nbsp;AT#SHFSD&nbsp;<br>
+&nbsp;&nbsp;AT#DAC&nbsp;<br>
+&nbsp;&nbsp;AT+CFUN&nbsp;<br>
+&nbsp;&nbsp;AT+COPS&nbsp;<br>
+&nbsp;&nbsp;AT#CODEC&nbsp;<br>
+&nbsp;&nbsp;AT#DVI&nbsp;<br>
+&nbsp;&nbsp;AT#E2SMSRI&nbsp;<br>
+&nbsp;&nbsp;AT#E2SLRI&nbsp;<br>
+&nbsp;&nbsp;AT+CSCB&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;26 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=27></a><IMG src="Telit_CMUX_User_Guide_r5-27_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-27_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+The AT commands that require to modify a setting would be saved in&nbsp;a global profile.&nbsp;<br>They would be reloaded&nbsp;at boot time with relation&nbsp;to the ATY1, ATY0 previously issued&nbsp;<br>on the instance CMUX1 or ASC0.&nbsp;&nbsp;<br>
+4.4.<b>&nbsp;</b><br>
+Suggestion&nbsp;<br>
+When in multiplexed mode it is suggested not to&nbsp;used the +CFUN=0 or AT+CFUN=5&nbsp;<br>command but the PSC (Power saving&nbsp;command).&nbsp;<br>
+In case the&nbsp;AT+CFUN command is used we suggest not to set AT+CFUN=5 because in&nbsp;<br>this case the DTR on/off transition can&nbsp;cause disconnection of the CMUX&nbsp;protocol.&nbsp;<br>CMUX protocol is not sensitive to AT&amp;Dx setting.&nbsp;<br>
+In absence of communication it is suggested to send a periodic Test Command to the&nbsp;<br>module to verify if the CMUX protocol has been correctly established.&nbsp;&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;27 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=28></a><IMG src="Telit_CMUX_User_Guide_r5-28_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_2.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_3.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_4.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_5.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_6.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_7.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_8.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_9.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_10.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_11.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_12.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_13.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-28_14.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>5.</b>&nbsp;<br>
+<b>Telit serial port PC interface for CMUX&nbsp;</b><br>
+5.1.<b>&nbsp;</b><br>
+Interface Specification&nbsp;<br>
+&nbsp;<br>
+Telit has developed a tool&nbsp;called Telit&nbsp;Serial Port MUX in order to make easier&nbsp;<br>application of the CMUX&nbsp;mode. It is&nbsp;a PC interface able to manage data&nbsp;coming/to or&nbsp;<br>being sent from/to CMUX. This target&nbsp;has been achieved by creating&nbsp;up to four serial&nbsp;<br>virtual ports&nbsp;on the PC and using a specific communication&nbsp;protocol to manage the&nbsp;<br>communication between&nbsp;the real serial COM that&nbsp;changes data with CMUX and each of&nbsp;<br>the virtual port.&nbsp;<br>
+&nbsp;<br>
+5.2.<b>&nbsp;</b><br>
+Scenario&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Virtual&nbsp;COM&nbsp;1<br>
+PC&nbsp;TOOL&nbsp;1&nbsp;<br>
+MODULE&nbsp;<br>
+C&nbsp;<br>
+Virtual&nbsp;COM&nbsp;2&nbsp;<br>
+PC&nbsp;TOOL&nbsp;2&nbsp;<br>
+PC&nbsp;<br>
+CMUX&nbsp;<br>
+O&nbsp;<br>
+M&nbsp;<br>
+Virtual&nbsp;C<br>
+COM&nbsp;3<br>
+3&nbsp;<br>
+PC&nbsp;TOOL3&nbsp;<br>
+Python&nbsp;<br>
+PC&nbsp;TOOL&nbsp;4&nbsp;<br>
+debug<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+As you can see, it is possible to run 3&nbsp;different applications using the same CMUX&nbsp;<br>module, for example 3 HyperTerminal can send&nbsp;AT commands at the same time to the&nbsp;<br>same module.&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;28 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=29></a><IMG src="Telit_CMUX_User_Guide_r5-29_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-29_2.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-29_3.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-29_4.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-29_5.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-29_6.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-29_7.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+5.3.<b>&nbsp;</b><br>
+Graphical Interface&nbsp;<br>
+&nbsp;<br>
+Telit Serial&nbsp;Port Mux application on&nbsp;your PC after installation looks as in&nbsp;the following&nbsp;<br>figure:&nbsp;<br>
+&nbsp;<br>
+Modem Port&nbsp;Panel:&nbsp;<br>
+&nbsp;&nbsp;Real port (COM) used&nbsp;<br>
+for communication with&nbsp;<br>PC&nbsp;<br>
+&nbsp;&nbsp;Speed (Baud rate)&nbsp;<br>&nbsp;Status<br>
+Virtual Port&nbsp;Panel:&nbsp;<br>
+&nbsp;&nbsp;Virtual port&nbsp;number&nbsp;<br>&nbsp;&nbsp;Status&nbsp;<br>&nbsp;&nbsp;Baud Rate&nbsp;<br>&nbsp;&nbsp;Bytes Transmitted\Received&nbsp;<br>&nbsp;&nbsp;RTS: Request to send&nbsp;<br>&nbsp;&nbsp;DTR:&nbsp;Data Terminal Ready&nbsp;<br>&nbsp;&nbsp;CTS: Clear To Send&nbsp;<br>&nbsp;&nbsp;DCD: Data&nbsp;Carrier&nbsp;Detect&nbsp;<br>&nbsp;&nbsp;DSR: Data&nbsp;Set Ready&nbsp;<br>&nbsp;RI:&nbsp;Ring&nbsp;Indicator<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Tray icon:&nbsp;when Telit Serial&nbsp;Port Mux is working,&nbsp;there is a&nbsp;<br>
+&nbsp;<br>
+Tray Icon that shows the state of the connection&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Modem Port&nbsp;Panel: contains information about the modem connected to your PC, such&nbsp;<br>as:&nbsp;<br>
+&nbsp;<br>
+1.&nbsp;&nbsp;which COM&nbsp;on your PC will be used to transfer data (this can be set during&nbsp;the&nbsp;<br>
+initial setup or in the Setup voice of the application menu)&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;29 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=30></a><IMG src="Telit_CMUX_User_Guide_r5-30_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-30_2.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-30_3.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-30_4.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-30_5.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-30_6.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+2.&nbsp;&nbsp;COM Speed selected.&nbsp;<br>3.&nbsp;&nbsp;Connection Status: it can be “idle” or “error” when CMUX is disconnected,&nbsp;<br>
+“connecting” when PC is&nbsp;trying to connect to CMUX and “connected” when&nbsp;<br>CMUX is connected successfully.&nbsp;<br>
+4.&nbsp;&nbsp;Indication about the model of the modem connected.&nbsp;<br>
+&nbsp;<br>
+Virtual&nbsp;Port Panel: here&nbsp;you can find all the information about the connection using a&nbsp;<br>Virtual Com&nbsp;installed on your PC:&nbsp;<br>
+&nbsp;<br>
+1.&nbsp;&nbsp;Virtual&nbsp;Com number. &nbsp;<br>2.&nbsp;&nbsp;Virtual&nbsp;Port Status: it can be “idle”, “idle no DCD”, “Error”, “Opened”.&nbsp;<br>3.&nbsp;&nbsp;Baud Rate.&nbsp;<br>4.&nbsp;&nbsp;Number of bytes received and transmitted (RX Bytes, TX Bytes).&nbsp;<br>5.&nbsp;&nbsp;All the common serial port signals like&nbsp;RequestToSend, DataTerminalReady,&nbsp;<br>
+ClearToSend, DataCarrierDetected,&nbsp;DataSetReady and RingIndicator.&nbsp;<br>
+&nbsp;<br>
+Tray Icon: indicates the status of the Serial Port Mux:&nbsp;<br>
+&nbsp;<br>
+1.&nbsp;<br>
+&nbsp;<br>
+&nbsp;CMUX connected: &nbsp;the Tray Icon is blinking.&nbsp;<br>
+2.&nbsp;<br>
+&nbsp;CMUX disconnected or connecting.&nbsp;<br>
+3.&nbsp;<br>
+&nbsp;CMUX error.&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;30 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=31></a><IMG src="Telit_CMUX_User_Guide_r5-31_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-31_2.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-31_3.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-31_4.png"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-31_5.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+5.4.<b>&nbsp;</b><br>
+Application Setup&nbsp;<br>
+&nbsp;<br>
+In order to select the number of Virtual ports that are going&nbsp;to be created, real COM&nbsp;<br>ports that are going to be&nbsp;used and their speed you should go to the Setup menu. These&nbsp;<br>setups can be done during the tool installation and also when&nbsp;the tool is running.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Module Serial Port Panel:&nbsp;<br>here you can select the&nbsp;<br>Real COM to use and its&nbsp;<br>speed<br>
+Virtual Serial Port&nbsp;<br>Panel: here&nbsp;you can&nbsp;<br>create virtual ports&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Virtual&nbsp;Ports created can also be visualized in the Device Manager.&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;31 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=32></a><IMG src="Telit_CMUX_User_Guide_r5-32_1.jpg"><br>
+<IMG src="Telit_CMUX_User_Guide_r5-32_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+CMUX User Guide&nbsp;<br>
+&nbsp;30268ST10299A&nbsp;Rev.&nbsp;5&nbsp;– 2011-03-01&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>6.</b>&nbsp;<br>
+<b>AT&nbsp;Commands &nbsp;</b><br>
+&nbsp;<br>
+AT commands related to the CMUX feature are the following:&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+command&nbsp;<br>
+description&nbsp;<br>
++CMUX&nbsp;<br>
+Enable/Disable Multiplexing&nbsp;Mode&nbsp;<br>
+#CMUXSCR7&nbsp;<br>
+CMUX Script Enable&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+For more detailed information please refer to AT Commands Reference&nbsp;Guide&nbsp;<br>80000ST10025a.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>7&nbsp;only for&nbsp;the&nbsp;modules with Python&nbsp;feature&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+page&nbsp;32 of 32&nbsp;<br>
+&nbsp;<br>
+<hr>
+</BODY>
+</HTML>

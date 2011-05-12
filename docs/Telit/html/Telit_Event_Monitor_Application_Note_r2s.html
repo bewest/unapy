@@ -1,0 +1,628 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+<A name=1></a><IMG src="Telit_Event_Monitor_Application_Note_r2-1_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-1_2.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-1_3.png"><br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<b>Event Monitor&nbsp;Application Note&nbsp;<br></b>80000ST10028a&nbsp;Rev.2&nbsp;–&nbsp;2010-10-04&nbsp; &nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=2></a><IMG src="Telit_Event_Monitor_Application_Note_r2-2_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-2_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+APPLICABILITY&nbsp;TABLE&nbsp;<br>
+&nbsp;<br>
+PRODUCT&nbsp;<br>
+&nbsp;<br>GT863-PY&nbsp;<br>
+GT864-QUAD&nbsp;<br>
+GT864-PY&nbsp;<br>
+GM862-QUAD-PY&nbsp;<br>
+GM862-QUAD&nbsp;<br>
+GM862-GPS&nbsp;<br>
+GC864-PY&nbsp;<br>
+GC864-QUAD&nbsp;<br>
+GC864-PY w/&nbsp;SIM&nbsp;holder&nbsp;<br>
+GC864-DUAL&nbsp;<br>
+GE863-PY&nbsp;<br>
+GE863-QUAD&nbsp;<br>
+GE863-GPS&nbsp;<br>
+GE863-SIM&nbsp;<br>
+GE863-PRO3&nbsp;<br>
+GE864-PY&nbsp;<br>
+GE864-QUAD&nbsp;<br>
+GE864-QUAD V2&nbsp;<br>
+GE864-DUAL&nbsp;V2&nbsp;<br>
+GE864-QUAD&nbsp;AUTOMOTIVE&nbsp;<br>
+GE864-QUAD&nbsp;AUTOMOTIVE&nbsp;V2&nbsp;<br>
+GE864-QUAD&nbsp;ATEX&nbsp;<br>
+GE865-QUAD&nbsp;<br>
+GL865-DUAL&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;2&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=3></a><IMG src="Telit_Event_Monitor_Application_Note_r2-3_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-3_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+SW&nbsp;Version&nbsp;<br>
+7.03.02&nbsp;/&nbsp;7.02.07&nbsp;<br>
+10.0x.xx2&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;3&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=4></a><IMG src="Telit_Event_Monitor_Application_Note_r2-4_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-4_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+<b>Contents&nbsp;<br></b><a href="Telit_Event_Monitor_Application_Note_r2s.html#6">1.&nbsp;&nbsp;INTRODUCTION&nbsp;....................................................................................................................................&nbsp;6&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#6">1.1.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#6">CONTACT&nbsp;INFORMATION,&nbsp;SUPPORT&nbsp;.......................................................................................................................&nbsp;6&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#7">1.2.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#7">TEXT&nbsp;CONVENTIONS&nbsp;.............................................................................................................................................&nbsp;7&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#7">1.3.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#7">RELATED&nbsp;DOCUMENTS&nbsp;.........................................................................................................................................&nbsp;7&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#7">1.4.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#7">DOCUMENT&nbsp;HISTORY&nbsp;...........................................................................................................................................&nbsp;7&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#8">2.&nbsp;&nbsp;EVENT&nbsp;MONITOR&nbsp;..................................................................................................................................&nbsp;8&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#8">2.1.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#8">DESCRIPTION&nbsp;......................................................................................................................................................&nbsp;8&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#9">2.1.1.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#9">Battery&nbsp;voltage drop&nbsp;...............................................................................................................................&nbsp;9&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#9">2.1.2.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#9">DTR&nbsp;signal status....................................................................................................................................&nbsp;9&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#10">2.1.3.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#10">Network&nbsp;roaming&nbsp;state&nbsp;........................................................................................................................&nbsp;10&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#10">2.1.4.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#10">GPRS&nbsp;context&nbsp;deactivation&nbsp;...................................................................................................................&nbsp;10&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#11">2.1.5.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#11">Call rings&nbsp;number&nbsp;.................................................................................................................................&nbsp;11&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#11">2.1.6.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#11">Module&nbsp;start-up&nbsp;....................................................................................................................................&nbsp;11&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#12">2.1.7.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#12">Network&nbsp;registration&nbsp;............................................................................................................................&nbsp;12&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#12">2.1.8.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#12">GPIO&nbsp;pin&nbsp;status&nbsp;monitoring&nbsp;..................................................................................................................&nbsp;12&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#13">2.1.9.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#13">ADC&nbsp;pin voltage&nbsp;threshold&nbsp;exceeding&nbsp;..................................................................................................&nbsp;13&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#13">2.1.10.&nbsp;&nbsp;ADC&nbsp;pin voltage&nbsp;threshold&nbsp;drop&nbsp;...........................................................................................................&nbsp;13&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#14">2.2.&nbsp;</a><br>
+<a href="Telit_Event_Monitor_Application_Note_r2s.html#14">REQUIREMENTS&nbsp;................................................................................................................................................&nbsp;14&nbsp;</a><br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;4&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=5></a><IMG src="Telit_Event_Monitor_Application_Note_r2-5_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-5_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+DISCLAIMER&nbsp;<br>
+&nbsp;<br>
+The information contained&nbsp;in this&nbsp;document&nbsp;is&nbsp;the proprietary&nbsp;information of&nbsp;&nbsp;Telit&nbsp;<br>Communications&nbsp;S.p.A.&nbsp;and&nbsp;its&nbsp;affiliates&nbsp;(“TELIT”).&nbsp;The contents&nbsp;are confidential&nbsp;and&nbsp;<br>
+any&nbsp;disclosure&nbsp;to persons&nbsp;other&nbsp;than&nbsp;the&nbsp;officers,&nbsp;employees,&nbsp;agents&nbsp;or&nbsp;subcontractors&nbsp;<br>
+of&nbsp;the&nbsp;owner or licensee&nbsp;of&nbsp;this&nbsp;document,&nbsp;without&nbsp;the prior written consent&nbsp;of&nbsp;Telit, is&nbsp;<br>
+strictly prohibited.&nbsp;<br>
+&nbsp;<br>Telit&nbsp;makes&nbsp;every&nbsp;effort&nbsp;to&nbsp;ensure&nbsp;the quality&nbsp;of&nbsp;the information it&nbsp;makes&nbsp;available.&nbsp;<br>
+Notwithstanding&nbsp;the foregoing,&nbsp;Telit&nbsp;does&nbsp;not&nbsp;make any&nbsp;warranty&nbsp;as&nbsp;to&nbsp;the information&nbsp;<br>
+contained&nbsp;herein,&nbsp;and&nbsp;does&nbsp;not&nbsp;accept&nbsp;any&nbsp;liability&nbsp;for any&nbsp;injury,&nbsp;loss&nbsp;or damage of&nbsp;any&nbsp;<br>
+kind&nbsp;incurred&nbsp;by&nbsp;use&nbsp;of&nbsp;or reliance upon&nbsp;the information.&nbsp;<br>
+&nbsp;<br>Telit&nbsp;disclaims&nbsp;any&nbsp;and&nbsp;all&nbsp;responsibility&nbsp;for&nbsp;the application of&nbsp;the devices&nbsp;characterized&nbsp;<br>
+in this&nbsp;document,&nbsp;and&nbsp;notes&nbsp;that&nbsp;the application&nbsp;of&nbsp;the device&nbsp;must&nbsp;comply&nbsp;with&nbsp;the&nbsp;<br>
+safety&nbsp;standards&nbsp;of&nbsp;the&nbsp;applicable&nbsp;country,&nbsp;and&nbsp;where&nbsp;applicable,&nbsp;with&nbsp;the&nbsp;relevant&nbsp;<br>
+wiring&nbsp;rules.&nbsp;<br>
+&nbsp;<br>Telit&nbsp;reserves&nbsp;the&nbsp;right&nbsp;to make modifications,&nbsp;additions&nbsp;and&nbsp;deletions&nbsp;to this&nbsp;document&nbsp;<br>
+due to typographical&nbsp;errors,&nbsp;inaccurate&nbsp;information,&nbsp;or improvements&nbsp;to&nbsp;programs&nbsp;<br>
+and/or equipment&nbsp;at&nbsp;any&nbsp;time and&nbsp;without&nbsp;notice.&nbsp;Such changes&nbsp;will,&nbsp;nevertheless&nbsp;be&nbsp;<br>
+incorporated&nbsp;into&nbsp;new&nbsp;editions&nbsp;of&nbsp;this&nbsp;application&nbsp;note.&nbsp;<br>
+&nbsp;<br>Copyright:&nbsp;Transmittal,&nbsp;reproduction,&nbsp;dissemination&nbsp;and/or&nbsp;editing&nbsp;of&nbsp;this&nbsp;document&nbsp;as&nbsp;<br>
+well&nbsp;as&nbsp;utilization&nbsp;of&nbsp;its&nbsp;contents&nbsp;and&nbsp;communication&nbsp;thereof&nbsp;to&nbsp;others&nbsp;without&nbsp;express&nbsp;<br>
+authorization are prohibited.&nbsp;Offenders&nbsp;will&nbsp;be held&nbsp;liable for payment&nbsp;of&nbsp;damages.&nbsp;All&nbsp;<br>
+rights&nbsp;are reserved.&nbsp;<br>&nbsp;<br>Copyright&nbsp;© Telit&nbsp;Communications&nbsp;SpA&nbsp;2010.&nbsp;<br>
+&nbsp;<br>&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; &nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp; &nbsp;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;5&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=6></a><IMG src="Telit_Event_Monitor_Application_Note_r2-6_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-6_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+<b>1.</b>&nbsp;<br>
+<b>Introduction&nbsp;</b><br>
+The information presented&nbsp;in&nbsp;this&nbsp;document&nbsp;is&nbsp;believed&nbsp;to be accurate and&nbsp;reliable.&nbsp;<br>
+However,&nbsp;no&nbsp;responsibility&nbsp;is&nbsp;assumed&nbsp;by&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;for its&nbsp;use,&nbsp;nor&nbsp;<br>
+any&nbsp;infringement&nbsp;of&nbsp;patents&nbsp;or other&nbsp;rights&nbsp;of&nbsp;third&nbsp;parties&nbsp;which may&nbsp;result&nbsp;from&nbsp;its&nbsp;<br>
+use.&nbsp;No license is&nbsp;granted&nbsp;by&nbsp;implication&nbsp;or&nbsp;otherwise&nbsp;under&nbsp;any&nbsp;patent&nbsp;rights&nbsp;of&nbsp;Telit&nbsp;<br>
+Communications&nbsp;S.p.A.&nbsp;other&nbsp;than&nbsp;for circuitry&nbsp;embodied&nbsp;in Telit&nbsp;products.&nbsp;This&nbsp;<br>
+document&nbsp;is&nbsp;subject&nbsp;to change&nbsp;without&nbsp;notice.&nbsp;<br>
+1.1.<b>&nbsp;</b><br>
+Contact Information,&nbsp;Support&nbsp;<br>For general&nbsp;contact,&nbsp;technical&nbsp;support,&nbsp;to report&nbsp;documentation errors&nbsp;and&nbsp;to&nbsp;order&nbsp;<br>
+manuals,&nbsp;contact&nbsp;Telit&nbsp;Technical&nbsp;Support&nbsp;Center (TTSC)&nbsp;at:&nbsp;<br>
+&nbsp;&nbsp;<a href="mailto:TS-EMEA@telit.com">TS-EMEA@telit.com&nbsp;</a><br>
+<a href="mailto:TS-NORTHAMERICA@telit.com">TS-NORTHAMERICA@telit.com&nbsp;</a><br>
+<a href="mailto:TS-LATINAMERICA@telit.com">TS-LATINAMERICA@telit.com&nbsp;</a><br>
+<a href="mailto:TS-APAC@telit.com">TS-APAC@telit.com&nbsp;</a><br>
+&nbsp;<br>Alternatively, use:&nbsp;<br>
+<a href="http://www.telit.com/en/products/technical-support-center/contact.php">http://www.telit.com/en/products/technical-support-center/contact.php&nbsp;</a><br>
+For detailed&nbsp;information about&nbsp;where you&nbsp;can buy&nbsp;the Telit&nbsp;modules&nbsp;or for&nbsp;<br>
+recommendations&nbsp;on accessories&nbsp;and&nbsp;components&nbsp;visit:&nbsp;<br>
+<a href="http://www.telit.com/">http://www.telit.com&nbsp;</a><br>
+To register for product&nbsp;news&nbsp;and&nbsp;announcements&nbsp;or for product&nbsp;questions&nbsp;contact&nbsp;Telit&nbsp;<br>
+Technical&nbsp;Support&nbsp;Center (TTSC).&nbsp;<br>
+Our aim&nbsp;is&nbsp;to make this&nbsp;guide as&nbsp;helpful&nbsp;as&nbsp;possible.&nbsp;Keep&nbsp;us&nbsp;informed&nbsp;of&nbsp;your&nbsp;<br>
+comments&nbsp;and&nbsp;suggestions&nbsp;for improvements.&nbsp;<br>
+Telit&nbsp;appreciates&nbsp;feedback&nbsp;from&nbsp;the&nbsp;users&nbsp;of&nbsp;our information.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;6&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=7></a><IMG src="Telit_Event_Monitor_Application_Note_r2-7_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-7_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+1.2.<b>&nbsp;</b><br>
+Text&nbsp;Conventions&nbsp;<br>
+&nbsp;<br>
+Danger&nbsp;<i><b>–</b></i>&nbsp;This&nbsp;information MUST&nbsp;be&nbsp;followed&nbsp;or catastrophic&nbsp;equipment&nbsp;failure&nbsp;or&nbsp;<br>
+bodily injury may occur.&nbsp;<br>
+&nbsp;<br>Caution&nbsp;or Warning&nbsp;<i><b>–</b></i>&nbsp;&nbsp;Alerts&nbsp;the&nbsp;user to&nbsp;important&nbsp;points&nbsp;about&nbsp;integrating&nbsp;the&nbsp;<br>
+module,&nbsp;if&nbsp;these points&nbsp;are not&nbsp;followed,&nbsp;the module and&nbsp;end&nbsp;user&nbsp;equipment&nbsp;may&nbsp;<br>
+fail&nbsp;or malfunction.&nbsp;<br>
+&nbsp;<br>Tip&nbsp;or Information&nbsp;<b>–</b>&nbsp;&nbsp;Provides&nbsp;advice&nbsp;and&nbsp;suggestions&nbsp;that&nbsp;may&nbsp;be&nbsp;useful&nbsp;when&nbsp;<br>
+integrating&nbsp;the&nbsp;module.&nbsp;<br>
+&nbsp;<br>All&nbsp;dates&nbsp;are&nbsp;in&nbsp;ISO&nbsp;8601&nbsp;format, i.e.&nbsp;YYYY-MM-DD.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+1.3.<b>&nbsp;</b><br>
+Related Documents&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;AT&nbsp;Commands&nbsp;Reference guide,&nbsp;80000ST10025a&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+1.4.<b>&nbsp;</b><br>
+Document&nbsp;History&nbsp;<br>
+&nbsp;<br>
+Revision&nbsp;<br>
+Date&nbsp;<br>
+Changes&nbsp;<br>
+ISSUE#0&nbsp;<br>
+2009-08-28&nbsp;&nbsp;Release&nbsp;First&nbsp;ISSUE#&nbsp;0&nbsp;<br>
+ISSUE #1&nbsp;<br>
+2010-05-07&nbsp;&nbsp;Added&nbsp;note on alerts&nbsp;section&nbsp;<br>
+Added&nbsp;note regarding&nbsp;STARTUP&nbsp;event&nbsp;on&nbsp;alerts&nbsp;section&nbsp;<br>
+ISSUE#2&nbsp;<br>
+2010-10-04&nbsp;&nbsp;Added&nbsp;GL865-DUAL&nbsp;to&nbsp;the&nbsp;applicability&nbsp;table&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;7&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=8></a><IMG src="Telit_Event_Monitor_Application_Note_r2-8_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-8_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+<b>2.</b>&nbsp;<br>
+<b>EVENT MONITOR&nbsp;</b><br>
+2.1.<b>&nbsp;</b><br>
+Description&nbsp;<br>&nbsp;<br>This&nbsp;service&nbsp;allows&nbsp;an&nbsp;user&nbsp;to associate an&nbsp;AT&nbsp;command&nbsp;to a&nbsp;specified&nbsp;event&nbsp;monitored&nbsp;<br>
+from&nbsp;the module.&nbsp;<br>
+The&nbsp;EVENT&nbsp;MONITOR&nbsp;service is&nbsp;configured&nbsp;and&nbsp;enabled&nbsp;by&nbsp;the&nbsp;following&nbsp;commands:&nbsp;<br>
+&nbsp;<br>AT#ENAEVMONICFG=3,1,2&nbsp;&nbsp;<br>
+//&nbsp;the service&nbsp;is&nbsp;configured&nbsp;to run&nbsp;on&nbsp;the&nbsp;third&nbsp;<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;instance,&nbsp;the unsolicited&nbsp;is&nbsp;enabled&nbsp;and&nbsp;the&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;timeout&nbsp;for the&nbsp;response&nbsp;to the AT&nbsp;commands&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;<br>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;//&nbsp;is&nbsp;set&nbsp;to&nbsp;2&nbsp;minutes&nbsp;<br>
+&nbsp;<br>AT#ENAEVMONI=1&nbsp;<br>
+//&nbsp;the&nbsp;service&nbsp;is&nbsp;enabled&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>At&nbsp;this&nbsp;point&nbsp;one&nbsp;or&nbsp;more&nbsp;events&nbsp;can be configured&nbsp;and&nbsp;enabled.&nbsp;The available events&nbsp;<br>
+are&nbsp;the following:&nbsp;<br>
+&nbsp;<br>
+VBATT&nbsp;<br>
+Battery&nbsp;voltage&nbsp;threshold&nbsp;drop&nbsp;<br>
+DTR&nbsp;<br>
+Data&nbsp;Terminal&nbsp;Ready&nbsp;signal&nbsp;status&nbsp;monitoring&nbsp;<br>
+ROAM&nbsp;<br>
+Network&nbsp;roaming&nbsp;state&nbsp;<br>
+CONTDEACT&nbsp;<br>
+GPRS context&nbsp;deactivation&nbsp;<br>
+RING&nbsp;<br>
+Call&nbsp;rings&nbsp;number&nbsp;<br>
+STARTUP&nbsp;<br>
+Module start-up&nbsp;(with or without&nbsp;SIM)&nbsp;<br>
+REGISTERED&nbsp;<br>
+Network&nbsp;registration (to&nbsp;home network&nbsp;or in&nbsp;roaming)&nbsp;<br>
+after&nbsp;the start-up&nbsp;and&nbsp;the&nbsp;SMS ordering&nbsp;<br>
+GPIOx&nbsp;(with&nbsp;x =&nbsp;1,2,3,4,5)&nbsp;&nbsp;GPIO&nbsp;pin status&nbsp;monitoring&nbsp;<br>ADCH1&nbsp;<br>
+ADC&nbsp;pin&nbsp;voltage&nbsp;threshold&nbsp;exceeding&nbsp;<br>
+ADCL1&nbsp;<br>
+ADC&nbsp;pin&nbsp;voltage&nbsp;threshold&nbsp;drop&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;8&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=9></a><IMG src="Telit_Event_Monitor_Application_Note_r2-9_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-9_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+2.1.1.<b>&nbsp;</b><br>
+Battery&nbsp;voltage&nbsp;drop&nbsp;<br>If&nbsp;the&nbsp;event&nbsp;to&nbsp;monitor is&nbsp;the&nbsp;battery&nbsp;voltage drop,&nbsp;then&nbsp;the parameters&nbsp;to configure&nbsp;<br>
+are:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;Voltage threshold&nbsp;<br>
+AT#EVMONI=”VBATT”,0,1,400&nbsp;&nbsp;//the&nbsp;threshold&nbsp;of&nbsp;4&nbsp;is set&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;Time interval&nbsp;(in&nbsp;seconds)&nbsp;after&nbsp;that,&nbsp;if&nbsp;the&nbsp;voltage&nbsp;keeps&nbsp;being&nbsp;below&nbsp;the&nbsp;<br>
+threshold,&nbsp;the AT&nbsp;command&nbsp;is&nbsp;issued&nbsp;<br>
+AT#EVMONI=”VBATT”,0,2,10&nbsp;<br>
+//the&nbsp;interval&nbsp;of&nbsp;10&nbsp;seconds&nbsp;is&nbsp;set&nbsp;<br>
+&nbsp;<br>•&nbsp;&nbsp;AT&nbsp;command&nbsp;to issue when&nbsp;the threshold&nbsp;drop&nbsp;is&nbsp;permanent&nbsp;<br>
+AT#EVMONI=”VBATT”,0,0,”AT#CMGS=+39346XXXXX,\22Battery&nbsp;low\22”&nbsp;&nbsp;&nbsp;<br>
+//&nbsp;an&nbsp;SM&nbsp;will&nbsp;be&nbsp;sent&nbsp;to the number +39346XXXXX&nbsp;containing&nbsp;<br>
+//&nbsp;the text&nbsp;Battery&nbsp;low&nbsp;<br>
+&nbsp;<br>The voltage battery&nbsp;monitoring&nbsp;is&nbsp;enabled&nbsp;issuing&nbsp;the&nbsp;following&nbsp;command:&nbsp;<br>
+&nbsp;<br>
+AT#EVMONI=”VBATT”,1&nbsp;<br>
+&nbsp;<br>
+(The enabling&nbsp;can be set&nbsp;also setting&nbsp;to&nbsp;1&nbsp;the&nbsp;second&nbsp;AT&nbsp;command&nbsp;parameter&nbsp;during&nbsp;<br>
+one&nbsp;of&nbsp;the above 3&nbsp;configurations)&nbsp;<br>
+&nbsp;<br>
+2.1.2.<b>&nbsp;</b><br>
+DTR&nbsp;signal&nbsp;status&nbsp;<br>If&nbsp;the&nbsp;event&nbsp;to&nbsp;monitor is&nbsp;the&nbsp;DTR&nbsp;signal&nbsp;status,&nbsp;then&nbsp;the parameters&nbsp;to configure are:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;Signal&nbsp;status:&nbsp;“high”&nbsp;or “low”&nbsp;<br>
+AT#EVMONI=”DTR”,0,1,1&nbsp;<br>
+//the&nbsp;status&nbsp;to&nbsp;monitor&nbsp;is&nbsp;the&nbsp;“high”&nbsp;one&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;Time interval&nbsp;(in&nbsp;seconds)&nbsp;after&nbsp;that,&nbsp;if&nbsp;the&nbsp;DTR&nbsp;signal&nbsp;status&nbsp;keeps&nbsp;being,&nbsp;the AT&nbsp;<br>
+command&nbsp;is&nbsp;issued&nbsp;<br>
+AT#EVMONI=”DTR”,0,2,50&nbsp;<br>
+//the&nbsp;interval&nbsp;of&nbsp;50&nbsp;seconds&nbsp;is&nbsp;set&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;AT&nbsp;command&nbsp;to issue when&nbsp;the DTR&nbsp;signal&nbsp;status&nbsp;drop&nbsp;is&nbsp;permanent&nbsp;<br>
+AT#EVMONI=”DTR”,0,0,”AT#CMGS=+39346XXXXX,\22DTR&nbsp;high\22”&nbsp;<br>
+&nbsp;<br>
+//an SM&nbsp;will&nbsp;be&nbsp;sent&nbsp;to the number +39346XXXXX&nbsp;containing&nbsp;the text&nbsp;DTR high&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;9&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=10></a><IMG src="Telit_Event_Monitor_Application_Note_r2-10_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-10_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+&nbsp;<br>
+The DTR&nbsp;signal&nbsp;status&nbsp;monitoring&nbsp;is&nbsp;enabled&nbsp;issuing&nbsp;the&nbsp;following&nbsp;command:&nbsp;<br>
+&nbsp;<br>
+AT#EVMONI=”DTR”,1&nbsp;<br>
+&nbsp;<br>
+(The enabling&nbsp;can be set&nbsp;also setting&nbsp;to&nbsp;1&nbsp;the&nbsp;second&nbsp;AT&nbsp;command&nbsp;parameter&nbsp;during&nbsp;<br>
+one&nbsp;of&nbsp;the above 3&nbsp;configurations)&nbsp;<br>
+&nbsp;<br>
+2.1.3.<b>&nbsp;</b><br>
+Network&nbsp;roaming&nbsp;state&nbsp;<br>If&nbsp;the event&nbsp;to monitor&nbsp;is&nbsp;the&nbsp;network&nbsp;roaming&nbsp;state,&nbsp;then the&nbsp;parameter to&nbsp;configure&nbsp;is:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;AT&nbsp;command&nbsp;to issue when&nbsp;the network&nbsp;roaming&nbsp;state&nbsp;is&nbsp;happened&nbsp;<br>
+AT#EVMONI=”ROAM”,0,0,”AT#CMGS=+39346XXXXX,\22Roaming\22”&nbsp;&nbsp;&nbsp;<br>
+//an SM&nbsp;will&nbsp;be&nbsp;sent&nbsp;to the number +39346XXXXX&nbsp;containing&nbsp;the text&nbsp;Roaming&nbsp;<br>
+&nbsp;<br>
+The network&nbsp;roaming&nbsp;state&nbsp;monitoring&nbsp;is&nbsp;enabled&nbsp;issuing&nbsp;the&nbsp;following&nbsp;command:&nbsp;<br>
+&nbsp;<br>
+AT#EVMONI=”ROAM”,1&nbsp;<br>&nbsp;<br>
+(The enabling&nbsp;can be set&nbsp;also setting&nbsp;to&nbsp;1&nbsp;the&nbsp;second&nbsp;AT&nbsp;command&nbsp;parameter&nbsp;during&nbsp;<br>
+the&nbsp;above configuration)&nbsp;<br>
+&nbsp;<br>
+2.1.4.<b>&nbsp;</b><br>
+GPRS&nbsp;context&nbsp;deactivation&nbsp;<br>If&nbsp;the event&nbsp;to monitor&nbsp;is&nbsp;the&nbsp;GPRS&nbsp;context&nbsp;deactivation,&nbsp;then the&nbsp;parameter&nbsp;to&nbsp;<br>
+configure is:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;AT&nbsp;command&nbsp;to issue when&nbsp;the GPRS&nbsp;context&nbsp;is&nbsp;deactivated&nbsp;&nbsp;<br>
+AT#EVMONI=”CONTDEACT”,0,0,”AT#CMGS=+39346XXXXX,\22Context&nbsp;deactivation\22”&nbsp;&nbsp;&nbsp;<br>
+//an SM&nbsp;will&nbsp;be&nbsp;sent&nbsp;to the number +39346XXXXX&nbsp;containing&nbsp;the text&nbsp;Context&nbsp;deactivation&nbsp;<br>
+&nbsp;<br>
+The GPRS&nbsp;context&nbsp;deactivation&nbsp;monitoring&nbsp;is&nbsp;enabled&nbsp;issuing&nbsp;the following&nbsp;command:&nbsp;<br>
+&nbsp;<br>
+AT#EVMONI=”CONTDEACT”,1&nbsp;<br>&nbsp;<br>
+(The enabling&nbsp;can be set&nbsp;also setting&nbsp;to&nbsp;1&nbsp;the&nbsp;second&nbsp;AT&nbsp;command&nbsp;parameter&nbsp;during&nbsp;<br>
+the&nbsp;above configuration)&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;10&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=11></a><IMG src="Telit_Event_Monitor_Application_Note_r2-11_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-11_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+2.1.5.<b>&nbsp;</b><br>
+Call&nbsp;rings&nbsp;number&nbsp;<br>If&nbsp;the&nbsp;event&nbsp;to&nbsp;monitor is&nbsp;the&nbsp;call&nbsp;rings&nbsp;number,&nbsp;then&nbsp;the parameters&nbsp;to configure are:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;Call&nbsp;rings&nbsp;number&nbsp;<br>
+AT#EVMONI=”RING”,0,1,5&nbsp;<br>
+//the&nbsp;call&nbsp;rings&nbsp;to count&nbsp;are 5&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;AT&nbsp;command&nbsp;to issue when&nbsp;the set&nbsp;call&nbsp;rings&nbsp;number is&nbsp;reached&nbsp;<br>
+AT#EVMONI=”RING”,0,0,”AT#CMGS=+39346XXXXX,\22call&nbsp;rings\22”<br>
+&nbsp;<br>
+//an SM&nbsp;will&nbsp;be&nbsp;sent&nbsp;to the number +39346XXXXX&nbsp;containing&nbsp;the text&nbsp;call&nbsp;<br>
+rings&nbsp;<br>
+&nbsp;<br>
+The call&nbsp;rings&nbsp;number&nbsp;monitoring&nbsp;is&nbsp;enabled&nbsp;issuing&nbsp;the&nbsp;following&nbsp;command:&nbsp;<br>
+&nbsp;<br>
+AT#EVMONI=”RING”,1&nbsp;<br>
+&nbsp;<br>
+(The enabling&nbsp;can be set&nbsp;also setting&nbsp;to&nbsp;1&nbsp;the&nbsp;second&nbsp;AT&nbsp;command&nbsp;parameter&nbsp;during&nbsp;<br>
+one&nbsp;of&nbsp;the above 2&nbsp;configurations)&nbsp;<br>
+&nbsp;<br>
+2.1.6.<b>&nbsp;</b><br>
+Module&nbsp;start-up&nbsp;<br>If&nbsp;the event&nbsp;to monitor&nbsp;is&nbsp;the&nbsp;module start-up,&nbsp;then the parameter to configure is:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;AT&nbsp;command&nbsp;to issue when&nbsp;the module&nbsp;start-up&nbsp;(with or without&nbsp;SIM)&nbsp;is&nbsp;<br>
+happened&nbsp;<br>
+AT#EVMONI=”STARTUP”,0,0,”AT#CMGW=+39346XXXXX,\22module&nbsp;start-up\22”<br>
+&nbsp;<br>
+//an&nbsp;SM&nbsp;will&nbsp;be&nbsp;stored&nbsp;containing&nbsp;the&nbsp;text&nbsp;module start-up&nbsp;<br>
+&nbsp;<br>
+The module&nbsp;start-up&nbsp;monitoring&nbsp;is&nbsp;enabled&nbsp;issuing&nbsp;the following&nbsp;command:&nbsp;<br>
+&nbsp;<br>
+AT#EVMONI=”STARTUP”,1&nbsp;<br>
+&nbsp;<br>
+(The enabling&nbsp;can be set&nbsp;also setting&nbsp;to&nbsp;1&nbsp;the&nbsp;second&nbsp;AT&nbsp;command&nbsp;parameter&nbsp;during&nbsp;<br>
+the&nbsp;above configuration)&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;11&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=12></a><IMG src="Telit_Event_Monitor_Application_Note_r2-12_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-12_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+2.1.7.<b>&nbsp;</b><br>
+Network&nbsp;registration&nbsp;<br>If&nbsp;the event&nbsp;to monitor&nbsp;is&nbsp;the&nbsp;network&nbsp;registration,&nbsp;then the&nbsp;parameter to configure&nbsp;is:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;AT&nbsp;command&nbsp;to issue when&nbsp;the module&nbsp;has&nbsp;been&nbsp;registered&nbsp;to&nbsp;home&nbsp;network&nbsp;or&nbsp;<br>
+in roaming&nbsp;after the&nbsp;start-up&nbsp;<br>
+AT#EVMONI=”REGISTERED”,0,0,”AT#CMGS=+39346XXXXX,\22module&nbsp;registered\22”&nbsp;<br>
+//an SM&nbsp;will&nbsp;be&nbsp;sent&nbsp;to the number +39346XXXXX&nbsp;containing&nbsp;the text&nbsp;module registered&nbsp;<br>
+&nbsp;<br>
+The network&nbsp;registration&nbsp;monitoring&nbsp;is&nbsp;enabled&nbsp;issuing&nbsp;the&nbsp;following&nbsp;command:&nbsp;<br>
+&nbsp;<br>
+AT#EVMONI=”REGISTERED”,1&nbsp;<br>
+&nbsp;<br>
+(The enabling&nbsp;can be set&nbsp;also setting&nbsp;to&nbsp;1&nbsp;the&nbsp;second&nbsp;AT&nbsp;command&nbsp;parameter&nbsp;during&nbsp;<br>
+the&nbsp;above configuration)&nbsp;<br>
+&nbsp;<br>
+2.1.8.<b>&nbsp;</b><br>
+GPIO&nbsp;pin&nbsp;status&nbsp;monitoring&nbsp;<br>There&nbsp;is&nbsp;the possibility&nbsp;to&nbsp;monitor the&nbsp;status&nbsp;of&nbsp;up&nbsp;till&nbsp;5&nbsp;different&nbsp;GPIO&nbsp;pins:&nbsp;the&nbsp;5&nbsp;<br>
+different&nbsp;events&nbsp;are&nbsp;selected&nbsp;using&nbsp;the&nbsp;5&nbsp;labels&nbsp;GPIO1,&nbsp;GPIO2,&nbsp;GPIO3,&nbsp;GPIO4&nbsp;and&nbsp;GPIO5&nbsp;<br>
+as&nbsp;first&nbsp;parameter&nbsp;of&nbsp;#EVMONI&nbsp;command.&nbsp;The&nbsp;parameters&nbsp;to configure are:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;GPIO&nbsp;pin to monitor&nbsp;<br>
+AT#EVMONI=”GPIO1”,0,1,4&nbsp;<br>
+//the&nbsp;GPIO&nbsp;pin&nbsp;4&nbsp;is&nbsp;set&nbsp;for&nbsp;the event&nbsp;“GPIO1&quot;&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;GPIO&nbsp;pin&nbsp;status:&nbsp;“high” or&nbsp;“low”&nbsp;<br>
+AT#EVMONI=”GPIO1”,0,2,1&nbsp;&nbsp;//the&nbsp;GPIO&nbsp;pin status&nbsp;to monitor&nbsp;is&nbsp;the&nbsp;“high”&nbsp;one&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;Time interval&nbsp;(in&nbsp;seconds)&nbsp;after&nbsp;that,&nbsp;if&nbsp;the&nbsp;GPIO&nbsp;pin status&nbsp;keeps&nbsp;being,&nbsp;the&nbsp;AT&nbsp;<br>
+command&nbsp;is&nbsp;issued&nbsp;<br>
+AT#EVMONI=”GPIO1”,0,3,5&nbsp;&nbsp;//the&nbsp;interval&nbsp;of&nbsp;5&nbsp;seconds&nbsp;is&nbsp;set&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;AT&nbsp;command&nbsp;to issue when&nbsp;the threshold&nbsp;drop&nbsp;is&nbsp;permanent&nbsp;<br>
+AT#EVMONI=”GPIO1”,0,0,”AT#CMGS=+39346XXXXX,\22GPIO&nbsp;4&nbsp;high\22”&nbsp;<br>
+//an SM&nbsp;will&nbsp;be&nbsp;sent&nbsp;to the number +39346XXXXX&nbsp;containing&nbsp;the text&nbsp;GPIO&nbsp;4&nbsp;high&nbsp;<br>
+&nbsp;<br>
+The GPIO&nbsp;pin status&nbsp;monitoring&nbsp;is&nbsp;enabled&nbsp;issuing&nbsp;the following&nbsp;command:&nbsp;<br>
+&nbsp;<br>
+AT#EVMONI=”GPIO1”,1&nbsp;<br>
+&nbsp;<br>
+(The enabling&nbsp;can be set&nbsp;also setting&nbsp;to&nbsp;1&nbsp;the&nbsp;second&nbsp;AT&nbsp;command&nbsp;parameter&nbsp;during&nbsp;<br>
+one&nbsp;of&nbsp;the above 4&nbsp;configurations)&nbsp;<br>
+&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;12&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=13></a><IMG src="Telit_Event_Monitor_Application_Note_r2-13_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-13_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+2.1.9.<b>&nbsp;</b><br>
+ADC&nbsp;pin&nbsp;voltage&nbsp;threshold&nbsp;exceeding&nbsp;<br>If&nbsp;the&nbsp;event&nbsp;to&nbsp;monitor is&nbsp;the&nbsp;ADC&nbsp;pin voltage&nbsp;threshold&nbsp;exceeding,&nbsp;then&nbsp;the parameters&nbsp;<br>
+to configure are:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;ADC&nbsp;pin&nbsp;to monitor&nbsp;<br>
+AT#EVMONI=”ADCH1”,0,1,2&nbsp;&nbsp;//the&nbsp;ADC&nbsp;pin 2&nbsp;is&nbsp;set&nbsp;<br>
+&nbsp;<br>•&nbsp;&nbsp;Voltage threshold&nbsp;<br>
+AT#EVMONI=”ADCH1”,0,2,1500&nbsp;<br>
+//the&nbsp;threshold&nbsp;of&nbsp;1500&nbsp;mV&nbsp;is&nbsp;set&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;Time interval&nbsp;(in&nbsp;seconds)&nbsp;after&nbsp;that,&nbsp;if&nbsp;the&nbsp;voltage&nbsp;keeps&nbsp;being&nbsp;above&nbsp;the&nbsp;<br>
+threshold,&nbsp;the AT&nbsp;command&nbsp;is&nbsp;issued&nbsp;<br>
+AT#EVMONI=”ADCH1”,0,3,10&nbsp;//the&nbsp;interval&nbsp;of&nbsp;10&nbsp;seconds&nbsp;is&nbsp;set&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;AT&nbsp;command&nbsp;to issue when&nbsp;the threshold&nbsp;exceeding&nbsp;is&nbsp;permanent&nbsp;<br>
+AT#EVMONI=”ADCH1”,0,0,”AT#CMGS=+39346XXXXX,\22ADC&nbsp;pin&nbsp;2&nbsp;high\22”&nbsp;<br>
+//an SM&nbsp;will&nbsp;be&nbsp;sent&nbsp;to the number +39346XXXXX&nbsp;containing&nbsp;the text&nbsp;ADC&nbsp;pin&nbsp;2&nbsp;high&nbsp;<br>
+&nbsp;<br>
+The ADC&nbsp;pin voltage threshold&nbsp;exceeding&nbsp;monitoring&nbsp;is&nbsp;enabled&nbsp;issuing&nbsp;the&nbsp;following&nbsp;<br>
+command:&nbsp;<br>
+&nbsp;<br>
+AT#EVMONI=”ADCH1”,1&nbsp;<br>
+&nbsp;<br>
+(The enabling&nbsp;can be set&nbsp;also setting&nbsp;to&nbsp;1&nbsp;the&nbsp;second&nbsp;AT&nbsp;command&nbsp;parameter&nbsp;during&nbsp;<br>
+one&nbsp;of&nbsp;the above 4&nbsp;configurations)&nbsp;<br>
+&nbsp;<br>
+2.1.10.<b>&nbsp;</b><br>
+ADC&nbsp;pin&nbsp;voltage&nbsp;threshold&nbsp;drop&nbsp;<br>If&nbsp;the event&nbsp;to monitor&nbsp;is&nbsp;the&nbsp;ADC&nbsp;pin&nbsp;voltage&nbsp;threshold&nbsp;DROP,&nbsp;then the&nbsp;parameters&nbsp;to&nbsp;<br>
+configure are:&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;ADC&nbsp;pin&nbsp;to monitor&nbsp;<br>
+AT#EVMONI=”ADCL1”,0,1,2&nbsp;&nbsp;//the&nbsp;ADC&nbsp;pin 2&nbsp;is&nbsp;set&nbsp;<br>
+&nbsp;<br>•&nbsp;&nbsp;Voltage threshold&nbsp;<br>
+AT#EVMONI=”ADCL1”,0,2,500&nbsp;<br>
+//the&nbsp;threshold&nbsp;of&nbsp;500&nbsp;mV&nbsp;is&nbsp;set&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;Time interval&nbsp;(in&nbsp;seconds)&nbsp;after&nbsp;that,&nbsp;if&nbsp;the&nbsp;voltage&nbsp;keeps&nbsp;being&nbsp;below&nbsp;the&nbsp;<br>
+threshold,&nbsp;the AT&nbsp;command&nbsp;is&nbsp;issued&nbsp;<br>
+AT#EVMONI=”ADCL1”,0,3,10&nbsp;&nbsp;//the&nbsp;interval&nbsp;of&nbsp;10&nbsp;seconds&nbsp;is&nbsp;set&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;13&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=14></a><IMG src="Telit_Event_Monitor_Application_Note_r2-14_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-14_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+•&nbsp;&nbsp;AT&nbsp;command&nbsp;to issue when&nbsp;the threshold&nbsp;drop&nbsp;is&nbsp;permanent&nbsp;<br>
+AT#EVMONI=”ADCL1”,0,0,”AT#CMGS=+39346XXXXX,\22ADC&nbsp;pin&nbsp;2&nbsp;low\22”&nbsp;<br>
+//an SM&nbsp;will&nbsp;be&nbsp;sent&nbsp;to the number +39346XXXXX&nbsp;containing&nbsp;the text&nbsp;ADC&nbsp;pin&nbsp;2&nbsp;low&nbsp;<br>
+&nbsp;<br>
+The ADC&nbsp;pin voltage threshold&nbsp;drop&nbsp;monitoring&nbsp;is&nbsp;enabled&nbsp;issuing&nbsp;the following&nbsp;<br>
+command:&nbsp;<br>
+&nbsp;<br>
+AT#EVMONI=”ADCL1”,1&nbsp;<br>
+&nbsp;<br>
+(The enabling&nbsp;can be set&nbsp;also setting&nbsp;to&nbsp;1&nbsp;the&nbsp;second&nbsp;AT&nbsp;command&nbsp;parameter&nbsp;during&nbsp;<br>
+one&nbsp;of&nbsp;the above 4&nbsp;configurations)&nbsp;<br>
+2.2.<b>&nbsp;</b><br>
+Requirements&nbsp;<br>
+&nbsp;<br>
+•&nbsp;&nbsp;When&nbsp;the EVENT&nbsp;MONITOR&nbsp;service is&nbsp;enabled&nbsp;setting&nbsp;to 1&nbsp;the parameter&nbsp;&lt;mod&gt;&nbsp;<br>
+of&nbsp;the AT&nbsp;command&nbsp;#ENAEVMONI,&nbsp;then&nbsp;the&nbsp;AT&nbsp;instance&nbsp;specified&nbsp;by&nbsp;the&nbsp;<br>
+parameter &lt;muxInstance&gt;&nbsp;of&nbsp;the AT&nbsp;command&nbsp;#ENAEVMONICFG&nbsp;is&nbsp;reserved&nbsp;to&nbsp;<br>
+run&nbsp;the AT&nbsp;commands&nbsp;associated&nbsp;to&nbsp;the&nbsp;monitored&nbsp;event&nbsp;<br>
+&nbsp;<br>•&nbsp;&nbsp;If&nbsp;the EVENT&nbsp;MONITOR&nbsp;service is&nbsp;disabled&nbsp;setting&nbsp;to 0&nbsp;the parameter &lt;mod&gt;&nbsp;of&nbsp;<br>
+the&nbsp;AT&nbsp;command&nbsp;#ENAEVMONI,&nbsp;then&nbsp;the&nbsp;used&nbsp;AT&nbsp;instance is&nbsp;returned&nbsp;to&nbsp;the&nbsp;<br>previous&nbsp;user,&nbsp;if&nbsp;there&nbsp;is&nbsp;<br>
+&nbsp;<br>•&nbsp;&nbsp;The &lt;mod&gt;&nbsp;of&nbsp;the&nbsp;AT&nbsp;command&nbsp;#ENAEVMONI&nbsp;and&nbsp;&lt;muxInstance&gt;&nbsp;parameter&nbsp;of&nbsp;<br>
+the&nbsp;AT&nbsp;command&nbsp;#ENAEVMONICFG&nbsp;are&nbsp;stored&nbsp;in&nbsp;the&nbsp;NVM.&nbsp;At&nbsp;boot,&nbsp;if&nbsp;the&nbsp;&lt;mod&gt;&nbsp;<br>
+parameter&nbsp;is&nbsp;set&nbsp;to&nbsp;1,&nbsp;then&nbsp;the&nbsp;AT&nbsp;instance&nbsp;specified&nbsp;in&nbsp;the&nbsp;&lt;muxInstance&gt;&nbsp;is&nbsp;<br>
+automatically&nbsp;reserved&nbsp;to&nbsp;run the&nbsp;AT&nbsp;commands&nbsp;associated&nbsp;to&nbsp;the monitored&nbsp;<br>
+event&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;14&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=15></a><IMG src="Telit_Event_Monitor_Application_Note_r2-15_1.jpg"><br>
+<IMG src="Telit_Event_Monitor_Application_Note_r2-15_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;Monitor&nbsp;Application&nbsp;Note&nbsp;<br>
+80000ST10028a&nbsp;Rev.&nbsp;0&nbsp;–&nbsp;2009-05-07&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+ALERTS:&nbsp;<br>&nbsp;<br>When an AT&nbsp;instance is&nbsp;reserved&nbsp;for the EVENT&nbsp;MONITOR&nbsp;service,&nbsp;then every&nbsp;other&nbsp;<br>
+request&nbsp;to use it,&nbsp;coming&nbsp;from&nbsp;other&nbsp;services,&nbsp;is&nbsp;refused:&nbsp;only&nbsp;the OTA&nbsp;service can&nbsp;<br>
+subtract&nbsp;the AT&nbsp;instance&nbsp;reserved&nbsp;to EVENT&nbsp;MONITOR&nbsp;service.&nbsp;<br>
+&nbsp;<br>The AT&nbsp;command&nbsp;to issue when an event&nbsp;has&nbsp;been happened,&nbsp;has&nbsp;to be&nbsp;set&nbsp;with a&nbsp;string&nbsp;<br>
+starting&nbsp;with&nbsp;the&nbsp;2&nbsp;characters&nbsp;AT&nbsp;(or&nbsp;at).&nbsp;After&nbsp;the&nbsp;“AT”&nbsp;string&nbsp;there&nbsp;are&nbsp;the&nbsp;commands&nbsp;<br>
+(for example:&nbsp;AT+CGMR;+CGSN).&nbsp;The&nbsp;maximum&nbsp;length&nbsp;of&nbsp;AT&nbsp;command&nbsp;string&nbsp;is&nbsp;96&nbsp;<br>
+characters.&nbsp;If&nbsp;the string&nbsp;contains&nbsp;the&nbsp;character ”,&nbsp;then&nbsp;it&nbsp;has&nbsp;to&nbsp;be replaced&nbsp;with the 3&nbsp;<br>
+characters&nbsp;\22.&nbsp;<br>
+&nbsp;<br>If&nbsp;the&nbsp;AT&nbsp;command&nbsp;+CFUN=0&nbsp;is&nbsp;associated&nbsp;to&nbsp;the&nbsp;DTR&nbsp;event,&nbsp;it&nbsp;has&nbsp;effect&nbsp;only&nbsp;if&nbsp;the&nbsp;<br>
+corresponding&nbsp;URC&nbsp;(see&nbsp;command&nbsp;#ENAEVMONICFG)&nbsp;is&nbsp;disabled&nbsp;<br>
+&nbsp;<br>If&nbsp;the&nbsp;GPIO&nbsp;pin direction&nbsp;is&nbsp;set&nbsp;to&nbsp;2,&nbsp;i.e.&nbsp;“Alternate Functions”,&nbsp;(see command&nbsp;#GPIO),&nbsp;<br>
+the GPIO&nbsp;pin status&nbsp;cannot&nbsp;be&nbsp;monitored,&nbsp;because&nbsp;it&nbsp;has&nbsp;no meaning.&nbsp;<br>
+&nbsp;<br>The commands&nbsp;that&nbsp;enter in&nbsp;online&nbsp;mode&nbsp;connection&nbsp;&nbsp;(like&nbsp;#SD,&nbsp;#FTPGET,&nbsp;#FTPPUT,&nbsp;<br>
+and&nbsp;so&nbsp;on)&nbsp;have&nbsp;to be avoided&nbsp;because they&nbsp;cause a&nbsp;block&nbsp;of&nbsp;the EVMONI&nbsp;mechanism&nbsp;<br>
+until&nbsp;the module&nbsp;reboots&nbsp;after&nbsp;timeout&nbsp;set&nbsp;with AT#ENAEVMONICFG&nbsp;command&nbsp;expires.&nbsp;<br>
+&nbsp;<br>When&nbsp;the&nbsp;module powers&nbsp;on in alarm&nbsp;mode,&nbsp;the&nbsp;STARTUP&nbsp;event&nbsp;is&nbsp;not&nbsp;triggered.&nbsp;The&nbsp;<br>
+AT&nbsp;command&nbsp;AT#WAKE&nbsp;has&nbsp;to be issued&nbsp;to&nbsp;enter the&nbsp;normal&nbsp;operating&nbsp;mode and&nbsp;to&nbsp;<br>
+trigger the&nbsp;STARTUP&nbsp;event.&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Reproduction&nbsp;forbidden&nbsp;without&nbsp;Telit&nbsp;Communications&nbsp;S.p.A.&nbsp;written&nbsp;authorization&nbsp;-&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;15&nbsp;of&nbsp;15&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name="outline"></a><h1>Document Outline</h1>
+<ul><li>��
+<ul><li>��
+<li>��
+<li>��
+<li>��
+</ul><li>��
+<ul><li>��
+<ul><li>��
+<li>��
+<li>��
+<li>��
+<li>��
+<li>��
+<li>��
+<li>��
+<li>��
+<li>��
+</ul><li>��
+</ul></ul><hr>
+</BODY>
+</HTML>

@@ -1,0 +1,696 @@
+SIM Access Profile User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+APPLICABILITY TABLE
+PRODUCT
+GT863-PY
+GT864-QUAD
+GT864-PY
+GM862-GPS
+GC864-QUAD
+GC864-DUAL
+GC864-QUAD V2
+GC864-DUAL V2
+GE863-QUAD
+GE863-GPS
+GE863-SIM
+GE863-PRO3
+GE864-QUAD
+GE864-QUAD V2
+GE864-DUAL V2
+GE864-QUAD Automotive V2
+GE864-QUAD Atex
+GE865-QUAD
+GL865-DUAL
+GL865-QUAD
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 2 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+Contents
+1.  Introduction ................................................................................................................ 5 
+1.1. 
+
+Scope ................................................................................................................................ 5 
+
+1.2. 
+
+Contact Information, Support ........................................................................................... 5 
+
+1.3. 
+
+Text Conventions .............................................................................................................. 6 
+
+1.4. 
+
+Related Documents .......................................................................................................... 6 
+
+1.5. 
+
+Document History ............................................................................................................. 6 
+
+2.  Technical characteristics ........................................................................................... 7 
+2.1. 
+
+Using a remote SIM card .................................................................................................. 7 
+
+2.2. 
+
+Product architecture ........................................................................................................ 7 
+
+2.3. 
+
+Implementation feature .................................................................................................... 8 
+
+3.  AT Command Description ........................................................................................... 9 
+3.1. 
+
+Remote SIM Enable - #RSEN............................................................................................ 9 
+
+4.  Remote SIM Message Command Description ............................................................11 
+5.  Remote SIM Typical Activation Scenario ....................................................................14 
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 3 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+DISCLAIMER
+The information contained in this document is the proprietary information of Telit
+Communications S.p.A. and its affiliates (“TELIT”).
+The contents are confidential and any disclosure to persons other than the officers,
+employees, agents or subcontractors of the owner or licensee of this document,
+without the prior written consent of Telit, is strictly prohibited.
+Telit makes every effort to ensure the quality of the information it makes available.
+Notwithstanding the foregoing, Telit does not make any warranty as to the information
+contained herein, and does not accept any liability for any injury, loss or damage of any
+kind incurred by use of or reliance upon the information.
+Telit disclaims any and all responsibility for the application of the devices characterized
+in this document, and notes that the application of the device must comply with the
+safety standards of the applicable country, and where applicable, with the relevant
+wiring rules.
+Telit reserves the right to make modifications, additions and deletions to this document
+due to typographical errors, inaccurate information, or improvements to programs
+and/or equipment at any time and without notice.
+Such changes will, nevertheless be incorporated into new editions of this document.
+
+Copyright: Transmittal, reproduction, dissemination and/or editing of this document as
+well as utilization of its contents and communication thereof to others without express
+authorization are prohibited. Offenders will be held liable for payment of damages. All
+rights are reserved.
+Copyright © Telit Communications S.p.A. 2011.
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 4 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+1.
+
+Introduction
+The information presented in this document is believed to be accurate and reliable.
+However, no responsibility is assumed by Telit Communications S.p.A. for its use, nor
+any infringement of patents or other rights of third parties which may result from its
+use. No license is granted by implication or otherwise under any patent rights of Telit
+Communications S.p.A. other than for circuitry embodied in Telit products. This
+document is subject to change without notice.
+
+1.1.
+
+Scope
+The scope of the present document is to describe the Telit implementation of SAP (SIM
+Access Profile).
+
+1.2.
+
+Contact Information, Support
+For general contact, technical support, to report documentation errors and to order
+manuals, contact Telit’s Technical Support Center (TTSC) at:
+TS-EMEA@telit.com
+TS-NORTHAMERICA@telit.com
+TS-LATINAMERICA@telit.com
+TS-APAC@telit.com
+Alternatively, use:
+http://www.telit.com/en/products/technical-support-center/contact.php
+For detailed information about where you can buy the Telit modules or for
+recommendations on accessories and components visit:
+http://www.telit.com
+To register for product news and announcements or for product questions contact
+Telit's Technical Support Center (TTSC).
+Our aim is to make this guide as helpful as possible. Keep us informed of your
+comments and suggestions for improvements.
+Telit appreciates feedback from the users of our information.
+3TU
+
+U3T
+
+3TU
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 5 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+1.3.
+
+Text Conventions
+Danger – This information MUST be followed or catastrophic equipment failure or
+bodily injury may occur.
+U
+
+Caution or Warning – Alerts the user to important points about integrating the
+module, if these points are not followed, the module and end user equipment may
+fail or malfunction.
+Tip or Information – Provides advice and suggestions that may be useful when
+integrating the module.
+All dates are in ISO 8601 format, i.e. YYYY-MM-DD.
+
+1.4.
+
+Related Documents
+The following is a list of applicable documents downloadable from the Download Zone
+section of Telit’s website http://www.telit.com
+[1]
+[2]
+
+[3]
+
+[4]
+
+Digital Cellular Telecommunications Systems (Phase 2+); AT Command set for
+GSM Mobile Equipment (ME); GSM 07.07 Version xxxx, Release xxxx
+Digital Cellular Telecommunications Systems (Phase 2+); Terminal Equipment
+to Mobile Station (TE-MS) "Multiplexer Protocol"; ETSI TS 101 369 V7.1.0 (199911), GSM 07.10 Version 7.1.0, Release 1999
+Digital Cellular Telecommunications Systems (Phase 2+); Specification of the
+Subscriber Identity Module - Mobile Equipment (SIM - ME) interface; GSM 11.11
+Version xxxx, Release xxxx
+CMUX Product Specification, Telit Communication SpA Document Id.
+30268ST10299A
+
+[5]
+
+1.5.
+
+Bluetooth SIG Specification: SIM Access Profile, Interoperability Specification ;
+Version 10, Release 00
+
+Document History
+
+Revision
+ISSUE#0
+ISSUE#1
+ISSUE#2
+
+Date
+2007-03-23
+2007-09-04
+2008-11-25
+
+ISSUE#3
+
+2011-03-01
+
+Changes
+Initial Release
+updated applicability table
+Updated applicability table with new P/Ns
+added GE863-SIM, GE863-PRO3 and GE864-QUAD Automotive
+New Layout (Added chapter 1)
+Updated Applicability table
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 6 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+2.
+
+Technical characteristics
+
+2.1.
+
+Using a remote SIM card
+The SIM Access Profile (SAP) defines a protocol and related procedures that allow
+access to a remote SIM card through the serial port or, through an additional hardware,
+using Bluetooth. For instance, this feature allows the user to access the SIM of its
+handheld mobile phone, while using the car phone.
+The basic system configuration includes a SAP Client implemented in the module, and
+SAP Server, implemented in the handheld phone. The SAP Server has the electrical
+access to the SIM and therefore it acts as a SIM card reader. It supports the SAP Client
+in accessing and controlling the SIM.
+The SAP Client accesses the information and services contained in the SIM as if it was
+directly connected to SAP Client, in this case the GSM module. Therefore, this feature
+allows the registration of the module in the GSM network using all the subscription
+information stored in the SIM. It is also possible to access the phonebook and making a
+call from the SAP Client using the information held in the SIM.
+This feature is available enabling a special AT Command on a virtual port of the CMUX
+interface.
+
+Application
+including a GSM
+module with SAP
+Client
+
+Bluetooth link
+
+GSM phone with SAP
+Server
+
+GSM network
+
+2.2.
+
+Product architecture
+The SAP feature allows the module to use the SIM of a remote SIM Server. This feature
+is implemented using special AT Command on a Virtual circuit of the CMUX interface.
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 7 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+2.3.
+
+Implementation feature
+
+
+
+
+
+SAP is based on 7.10 CMUX Basic Option used
+SAP command are supported only on one User Selected virtual interface
+Only SAP Client features (defined as mandatory in Bluetooth specification) are
+supported
+Logic hardware flow control shall be used on the Virtual instance selected for
+the SAP command.
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 8 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+3.
+
+AT Command Description
+
+3.1.
+
+Remote SIM Enable - #RSEN
+
+#RSEN – Remote SIM Enable
+Set command is used to enable/disable the Remote SIM feature. The
+AT#RSEN=<mode>,
+command returns ERROR if requested on a non multiplexed interface
+[<sapformat>],
+[<role>],
+Parameter:
+[<muxch>],
+<mode>
+[<beacon>]
+0 - disable
+1 - enable
+<sapformat>
+0 - X-SAP (unsupported)
+1 - binary SAP (default)
+<role>
+0 - remote SIM Client (default)
+1 - remote SIM Server (unsupported)
+<muxch> - MUX Channel Number; mandatory if <mode>=1
+and <sapformat>=1
+1..3
+<beacon> - retransmition timer of SAP Connection Request
+0 - only one transmition (default)
+1..100 - timer interval in seconds.
+NOTES:
+If the module has a SIM inserted, when it receives the enable
+Command:
+- de-register from the actual network
+- de-initialize the current SIM.
+NOTE for <sapformat>=1 (binary SAP): while RSEN is activate SAP
+connection status is signalled with following URC:
+
+AT#RSEN?
+AT#RSEN=?
+
+#RSEN: <conn>
+where
+<conn> - connection status
+0 - disconnected
+1 - connected
+Read command returns the connection status of Remote SIM feature
+Test command returns all supported values of Remote SIM Enable
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 9 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+#RSEN – Remote SIM Enable
+command
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 10 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+4.
+
+Remote SIM Message Command Description
+The module sends request commands to the client application through a binary
+message that is crowned in the CMUX message. The client application shall extract the
+message and send it to the SAP server, through the appropriate protocols (e.g. by
+RFCOMM, that is the Bluetooth serial port emulation entity).
+The client application shall extract all the messages sent by SAP server and put them
+in the CMUX message, to send to the module.
+The module satisfies the following feature requirements:
+ Connection management
+ Transfer APDU
+ Transfer ATR
+ Power SIM on
+ Report Status
+ Error Handling
+Every feature needs some procedures support:
+Feature
+Connection Management
+
+Transfer APDU
+Transfer ATR
+Power SIM on
+Report Status
+Error Handling
+
+Procedure
+Connect
+Report Status
+Transfer ATR
+Disconnection Initiated by the Client
+Disconnection Initiated by the Server
+Transfer APDU
+Transfer ATR
+Power SIM on
+Transfer ATR
+Report Status
+Error Response
+
+Report Status, Disconnection Initiated by the Server and Error Response are
+independent messages sent by server. The other procedures consist of couples of
+messages, started by client.
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 11 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+The format of the message is:
+
+Header
+
+MsgId
+Bytes
+
+Number of
+Parameters
+
+Reserved
+
+1
+
+2
+
+1
+
+Payload
+varies
+
+The message header consists of three fields. The number of parameters gives the
+parameters presented in the payload of the message. Each parameter is formatted as
+shown in the following figure:
+
+Parameter 1
+
+Parameter 2
+
+Par Id
+Bytes
+
+Reserved
+
+Parameter
+Length
+
+Parameter Value
+
+Padding
+Bytes
+
+Par Id
+
+Reserved
+
+1
+
+1
+
+2
+
+varies
+
+0-3
+
+1
+
+1
+
+The length of each parameter shall be a multiple of 4 bytes: some bytes are added after
+Parameter value, if needed.
+
+Next table describes the messages sent by the Client (module).
+Message Id
+0x00
+0x02
+0x05
+0x07
+0x0B
+
+Message Description
+Connection Request
+Disconnection Request
+Transfer APDU Request
+Transfer ATR Request
+Power SIM on Request
+
+Parameters Number
+1
+0
+1
+0
+0
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+Parameter Value
+Max Message Size
+APDU command
+
+page 12 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+The server shall sent a response message after receiving a command message from
+the client. Moreover, it can send messages to indicate the SIM status, the will of
+disconnection and the presence of am invalid message from the Client.
+
+Next table describes the message sent by the Server.
+
+Message Id
+
+Message Description
+
+0x01
+
+Connection Response
+
+Parameters
+Number
+1 or 2
+
+0x03
+0x04
+
+Disconnection Response
+Disconnection Indication
+
+0
+1
+
+0x06
+
+Transfer APDU Response
+
+1 or 2
+
+0x08
+
+Transfer ATR Response
+
+1 or 2
+
+0x0C
+0x11
+0x12
+
+Power SIM on Response
+Status Indication
+Error Response
+
+1
+1
+0
+
+Parameter Value
+First Parameter is the
+connection status. The
+optional second parameter is
+the max message size
+supported by Server
+Disconnection Type
+(Immediate type is the only
+supported)
+First Parameter is the Result
+Code. Second parameter is
+the APDU message (present
+only if Result Code is OK)
+First Parameter is the Result
+Code. Second parameter is
+the ATR message (present
+only if Result Code is OK)
+Result Code
+Remote Card Status
+
+More details are available on Error! Reference source not found..
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 13 of 14
+
+SAP User Guide
+80000ST10029a Rev. 3 - 2011-03-01
+
+5.
+
+Remote SIM Typical Activation Scenario
+The AT command that is used to enable/disable the Remote SIM feature is AT#RSEN.
+Before issuing this command a multiplexed interface (CMUX) should be activated. In
+order to get more detailed information about CMUX please refer to the CMUX User
+Guide.
+AT#RSEN=1,1,0,2,0
+OK
+
+// Activate SAP
+// SAP Connected
+
+// On virtual COM 2
+
+//  Connection Request with Max Message Size = 300
+0x00
+
+0x01
+
+0x00
+
+0x00
+
+0x00
+
+0x00
+
+0x00
+
+0x02
+
+0x01
+
+0x2C
+
+0x00
+
+0x00
+
+0x01
+
+0x00
+
+0x00
+
+0x01
+
+0x00
+
+0x00
+
+0x00
+
+0x00
+
+//  Connection Response: OK
+0x01
+
+0x01
+
+0x00
+
+0x00
+
+…
+…
+#QSS: 1
+AT+CPIN?
++CPIN: SIM PIN
+OK
+AT+CPIN=1234
+OK
+#QSS: 2
+...
+...
+
+#QSS: 3
+
+// SIM is inserted
+// Local SIM is Deactivated and Remote needs
+// PIN
+
+// PIN Unlocked
+
+// SIM READY ( SMS and Phonebook access is possible)
+
+Reproduction forbidden without Telit Communications S.p.A. written authorization - All Rights Reserved
+
+page 14 of 14
+
+

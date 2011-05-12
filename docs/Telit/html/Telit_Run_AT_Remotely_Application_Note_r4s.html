@@ -1,0 +1,986 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+<A name=1></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-1_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-1_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-1_3.jpg"><br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<b>Running AT Commands Remotely&nbsp;<br>Application Note&nbsp;<br></b>80000NT10029a Rev.4 –&nbsp;2011-02-10&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=2></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-2_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-2_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+APPLICABILITY&nbsp;TABLE&nbsp;<br>
+&nbsp;<br>
+PRODUCT<br>
+GT863-PY<br>
+GT864-QUAD<br>
+GT864-PY<br>
+GM862-GPS<br>
+GC864-QUAD<br>
+GC864-QUAD V2<br>
+GC864-PY&nbsp;w/ SIM&nbsp;holder<br>
+GC864-DUAL<br>
+GC864-DUAL&nbsp;V2<br>
+GE863-GPS<br>
+GE863-SIM<br>
+GE863-PRO3<br>
+GE864-QUAD<br>
+GE864-QUAD V2<br>
+GE864-DUAL&nbsp;V2<br>
+GE864-QUAD AUTOMOTIVE&nbsp;V2<br>
+GE864-QUAD ATEX<br>
+GE865-QUAD<br>
+GL865-DUAL<br>
+&nbsp;<br>&nbsp;<br>
+SW Version&nbsp;<br>
+7.03.02 / 7.02.07&nbsp;<br>
+10.0x.xx4&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page 2 of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=3></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-3_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-3_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Contents&nbsp;<br>
+1.&nbsp;&nbsp;INTRODUCTION ....................................................................................................................... 5&nbsp;<br>
+1.1.&nbsp;<br>
+CONTACT&nbsp;INFORMATION,&nbsp;SUPPORT&nbsp;.....................................................................................................&nbsp;5&nbsp;<br>
+1.2.&nbsp;<br>
+TEXT&nbsp;CONVENTIONS&nbsp;..........................................................................................................................&nbsp;6&nbsp;<br>
+1.3.&nbsp;<br>
+RELATED&nbsp;DOCUMENTS&nbsp;......................................................................................................................&nbsp;6&nbsp;<br>
+1.4.&nbsp;<br>
+DOCUMENT&nbsp;HISTORY&nbsp;.........................................................................................................................&nbsp;6&nbsp;<br>
+2.&nbsp;&nbsp;SMSATRUN&nbsp;.............................................................................................................................. 7&nbsp;<br>
+2.1.&nbsp;<br>
+REQUIREMENTS&nbsp;................................................................................................................................ 7&nbsp;<br>
+2.2.&nbsp;<br>
+ALERTS&nbsp;............................................................................................................................................ 8&nbsp;<br>
+2.3.&nbsp;<br>
+DESCRIPTION&nbsp;.................................................................................................................................... 9&nbsp;<br>
+2.4.&nbsp;<br>
+EXAMPLE&nbsp;SMS&nbsp;ATRUN&nbsp;..................................................................................................................&nbsp;14&nbsp;<br>
+2.5.&nbsp;<br>
+DELAYS&nbsp;AND&nbsp;NOTES&nbsp;................................................................................................................... 16&nbsp;<br>
+2.5.1.&nbsp;<br>
+Delays&nbsp;................................................................................................................................... 16&nbsp;<br>
+2.5.2.&nbsp;<br>
+Notes .................................................................................................................................... 17&nbsp;<br>
+3.&nbsp;&nbsp;TCPATRUN&nbsp;............................................................................................................................ 19&nbsp;<br>
+3.1.&nbsp;<br>
+CONFIGURATION&nbsp;.............................................................................................................................&nbsp;20&nbsp;<br>
+3.2.&nbsp;<br>
+TCPATRUN&nbsp;IN&nbsp;SERVER MODE&nbsp;.........................................................................................................&nbsp;21&nbsp;<br>
+3.2.1.&nbsp;<br>
+Description&nbsp;........................................................................................................................... 21&nbsp;<br>
+3.2.2.&nbsp;<br>
+Authentication mode ...........................................................................................................&nbsp;24&nbsp;<br>
+3.3.&nbsp;<br>
+TCPATRUN&nbsp;IN CLIENT&nbsp;MODE&nbsp;..........................................................................................................&nbsp;25&nbsp;<br>
+3.3.1.&nbsp;<br>
+Description&nbsp;........................................................................................................................... 25&nbsp;<br>
+3.4.&nbsp;<br>
+AT&nbsp;COMMANDS IN SEQUENCE&nbsp;...........................................................................................................&nbsp;27&nbsp;<br>
+3.5.&nbsp;<br>
+TRANSPARENCE&nbsp;..............................................................................................................................&nbsp;28&nbsp;<br>
+3.6.&nbsp;<br>
+ALERTS&nbsp;.......................................................................................................................................... 28&nbsp;<br>
+3.7.&nbsp;<br>
+EXAMPLES&nbsp;...................................................................................................................................... 30&nbsp;<br>
+3.7.1.&nbsp;<br>
+TCP ATRUN in server mode and AT&nbsp;commands&nbsp;.................................................................&nbsp;&nbsp;30&nbsp;<br>
+3.7.2.&nbsp;<br>
+TCPATCMDSEQ&nbsp;feature&nbsp;.......................................................................................................&nbsp;&nbsp;31&nbsp;<br>
+3.8.&nbsp;<br>
+DELAYS&nbsp;AND&nbsp;NOTES&nbsp;................................................................................................................... 32&nbsp;<br>
+3.8.1.&nbsp;<br>
+Delays&nbsp;................................................................................................................................... 32&nbsp;<br>
+3.8.2.&nbsp;<br>
+Notes .................................................................................................................................... 32&nbsp;<br>
+3.9.&nbsp;<br>
+TCPATRUN&nbsp;AND&nbsp;PYTHON&nbsp;...............................................................................................................&nbsp;&nbsp;33&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page 3 of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=4></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-4_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-4_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+DISCLAIMER&nbsp;<br>
+&nbsp;<br>
+The information contained in this document&nbsp;is the proprietary information of Telit&nbsp;<br>Communications S.p.A.&nbsp;and its affiliates (“TELIT”). The contents are confidential and&nbsp;<br>any disclosure to persons other than&nbsp;the&nbsp;officers, employees, agents or subcontractors&nbsp;<br>of the owner or licensee&nbsp;of this document, without the prior written consent of Telit, is&nbsp;<br>strictly prohibited.&nbsp;<br>&nbsp;<br>Telit makes&nbsp;every effort&nbsp;to ensure&nbsp;the quality of the information it makes available.&nbsp;<br>Notwithstanding the foregoing,&nbsp;Telit&nbsp;does not make any&nbsp;warranty as to the information&nbsp;<br>contained herein,&nbsp;and does not accept any liability for any&nbsp;injury, loss or&nbsp;damage of&nbsp;any&nbsp;<br>kind incurred by use of or&nbsp;reliance upon the information.&nbsp;<br>&nbsp;<br>Telit disclaims any and&nbsp;all&nbsp;responsibility&nbsp;for&nbsp;the&nbsp;application&nbsp;of the devices characterized&nbsp;<br>in this document, and notes that the application of the device must comply with the&nbsp;<br>safety standards of the&nbsp;applicable&nbsp;country, and where&nbsp;applicable,&nbsp;with&nbsp;the relevant&nbsp;<br>wiring rules.&nbsp;<br>&nbsp;<br>Telit reserves the right&nbsp;to make modifications,&nbsp;additions and deletions to this document&nbsp;<br>due to typographical errors, inaccurate information, or improvements to programs&nbsp;<br>and/or equipment at any time and&nbsp;without notice. Such&nbsp;changes will, nevertheless&nbsp;be&nbsp;<br>incorporated&nbsp;into new editions of this&nbsp;application note.&nbsp;<br>&nbsp;<br>Copyright: Transmittal,&nbsp;reproduction, dissemination and/or editing of this document as&nbsp;<br>well as utilization of its&nbsp;contents and communication thereof to others without express&nbsp;<br>authorization are prohibited. Offenders will be held liable for payment of damages. All&nbsp;<br>rights are reserved. &nbsp;<br>&nbsp;<br>Copyright © Telit Communications SpA 2011.&nbsp;<br>
+&nbsp;<br>&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;<br>&nbsp;<br>&nbsp;&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp; &nbsp;&nbsp;<br>&nbsp;<br>&nbsp; &nbsp;&nbsp;<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page 4 of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=5></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-5_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-5_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>1.</b>&nbsp;<br>
+<b>Introduction&nbsp;</b><br>
+The information presented in this document is believed to be&nbsp;accurate and reliable.&nbsp;<br>However, no responsibility is assumed by&nbsp;Telit Communications S.p.A. for its use, nor&nbsp;<br>any infringement of patents or other&nbsp;rights&nbsp;of third parties which may result from its&nbsp;<br>use. No license is granted by implication or otherwise under any patent rights of Telit&nbsp;<br>Communications S.p.A.&nbsp;other than for circuitry embodied in&nbsp;Telit products. This&nbsp;<br>document is subject to change&nbsp;without notice.&nbsp;<br>
+1.1.<b>&nbsp;</b><br>
+Contact Information, Support&nbsp;<br>
+For general contact, technical support, to report documentation errors and to order&nbsp;<br>manuals, contact Telit Technical Support Center (TTSC) at:&nbsp;<br>&nbsp;<br>
+TS-EMEA@telit.com&nbsp;<br>TS-NORTHAMERICA@telit.com&nbsp;<br>TS-LATINAMERICA@telit.com&nbsp;<br>TS-APAC@telit.com&nbsp;<br>
+&nbsp;<br>Alternatively, use: &nbsp;<br>
+http://www.telit.com/en/products/technical-support-center/contact.php&nbsp;<br>
+For detailed information about where you can buy the Telit&nbsp;modules or for&nbsp;<br>recommendations on accessories and components visit: &nbsp;<br>
+http://www.telit.com&nbsp;<br>
+To register for product news and announcements or for product questions contact Telit&nbsp;<br>Technical Support Center (TTSC).&nbsp;<br>Our aim is&nbsp;to make this guide as helpful as possible. Keep us informed of your&nbsp;<br>comments and suggestions for improvements.&nbsp;<br>Telit appreciates feedback from the users of our&nbsp;information.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page 5 of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=6></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-6_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-6_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+1.2.<b>&nbsp;</b><br>
+Text Conventions&nbsp;<br>
+&nbsp;<br>Danger&nbsp;<i><b>–</b></i>&nbsp;This information MUST be followed or catastrophic equipment failure or&nbsp;<br>bodily injury may occur.&nbsp;<br>&nbsp;<br>Caution or Warning&nbsp;<i><b>–</b></i>&nbsp;Alerts the user to important points about integrating the&nbsp;<br>module, if these points are not followed, the module and end user equipment may&nbsp;<br>fail or malfunction.&nbsp;<br>&nbsp;<br>Tip or Information&nbsp;<i><b>–</b></i>&nbsp;Provides advice and suggestions&nbsp;that may&nbsp;be useful when&nbsp;<br>integrating the module.&nbsp;<br>&nbsp;<br>All dates are in ISO 8601 format, i.e.&nbsp;YYYY-MM-DD.&nbsp;<br>&nbsp;<br>
+1.3.<b>&nbsp;</b><br>
+Related Documents&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;AT Commands Reference guide, 80000ST10025a&nbsp;<br>
+1.4.<b>&nbsp;</b><br>
+Document History&nbsp;<br>
+&nbsp;<br>
+Revision&nbsp;<br>
+Date&nbsp;<br>
+Changes<br>
+s&nbsp;<br>
+ISSUE #0&nbsp;<br>
+2009-08-28&nbsp;Release&nbsp;First ISSUE# 0<br>
+ISSUE #1&nbsp;<br>
+2010-05-07&nbsp;Added&nbsp;commands&nbsp;in&nbsp;paragraph 3.9.2&nbsp;(Notes)&nbsp;<br>
+Correction of delays&nbsp;table&nbsp;regarding AT+CFUN command in&nbsp;<br>paragraph 3.9.1&nbsp;<br>Correction in&nbsp;the pictures&nbsp;in&nbsp;paragraph&nbsp;2.3&nbsp;<br>“Alerts”&nbsp;moved from paragraph 3.3.1 to&nbsp;paragraph 3.6 and&nbsp;<br>integrated&nbsp;with a note about Idle&nbsp;Activity&nbsp;Timeout&nbsp;<br>
+ISSUE #2&nbsp;<br>
+2010-05-18&nbsp;Deletion of&nbsp;note 15 in&nbsp;par. 3.9.2 Notes&nbsp;<br>
+Shifted paragraph 3.9&nbsp;in&nbsp;par. 2.5, renamed Delays and Notes.&nbsp;<br>Added par. 3.9 regarding Python&nbsp;use.&nbsp;Changed&nbsp;the&nbsp;images in&nbsp;par&nbsp;<br>2.3 and&nbsp;in par.&nbsp;3.1 (before 3.1).&nbsp;<br>Added&nbsp;notes&nbsp;about ATZ&nbsp;command&nbsp;and&nbsp;about Packet&nbsp;Size&nbsp;<br>
+ISSUE#3&nbsp;<br>
+2010-10-04&nbsp;Added&nbsp;GL865-DUAL to&nbsp;the&nbsp;applicability table&nbsp;<br>
+ISSUE#4&nbsp;<br>
+2010-02-10&nbsp;Added note regarding SMS ATRUN Activation&nbsp;in 2.5.2&nbsp;<br>
+Added note regarding the Idle&nbsp;Activity&nbsp;Timeout&nbsp;and the&nbsp;<br>Transparence&nbsp;in&nbsp;3.6&nbsp;<br>Edited table in&nbsp;par&nbsp;3.8.1&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page 6 of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=7></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-7_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-7_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>2.</b>&nbsp;<br>
+<b>SMSATRUN&nbsp;</b><br>
+2.1.<b>&nbsp;</b><br>
+Requirements&nbsp;<br>
+&nbsp;<br>
+Two kinds of SMS are valid for the SMS ATRUN&nbsp;service:&nbsp;<br>
+&nbsp;<br>
+1.<b>&nbsp;&nbsp;</b>Simple ATRUN SMS:&nbsp;<br>
+a)&nbsp;&nbsp;the SMS originating address shall match with a number defined in a white list&nbsp;<br>
+in the module&nbsp;<br>
+b)&nbsp;&nbsp;the text has to begin with&nbsp;the string “AT” or “HAT”&nbsp;<br>c)&nbsp;&nbsp;the SMS coding alphabet&nbsp;has to&nbsp;be default GSM 7 bit or 8 bit&nbsp;<br>
+2.<b>&nbsp;&nbsp;</b>Digest ATRUN SMS:&nbsp;<br>
+a)&nbsp;&nbsp;The SMS User Data has&nbsp;to contain an header comprising&nbsp;a MD5 digest&nbsp;calculated&nbsp;<br>
+on the useful text with a&nbsp;password belonging to&nbsp;a white list in the module&nbsp;<br>
+b)&nbsp;&nbsp;the text has to begin with&nbsp;the string “AT” or “HAT”&nbsp;<br>c)&nbsp;&nbsp;the SMS coding alphabet&nbsp;has to be 8&nbsp;bit&nbsp;<br>
+&nbsp;<br>
+In the Digest SMS case the SMS User Data has the following format:&nbsp;<br>
+&nbsp;<br>
+Offset&nbsp;<br>
+Size&nbsp;<br>
+Value&nbsp;<br>
+Description&nbsp;<br>
+0&nbsp;<br>
+3&nbsp;<br>
+0xD0D0D0&nbsp;<br>
+RUNAT SMS&nbsp;Code&nbsp;<br>
+3&nbsp;<br>
+1&nbsp;<br>
+0&nbsp;<br>
+Transaction Id&nbsp;<br>
+4&nbsp;<br>
+1&nbsp;<br>
+0x11&nbsp;<br>
+Segment 1 of 1&nbsp;<br>
+5&nbsp;<br>
+1&nbsp;<br>
+&nbsp;<br>
+Session Id&nbsp;<br>
+6&nbsp;<br>
+24&nbsp;<br>
+&nbsp;&nbsp;<br>
+Digest:&nbsp;<br>B64(MD5(B64(MD5(Pwd)):B64(MD5(Useful Text))))&nbsp;<br>
+30 &nbsp;&nbsp;<br>
+Useful&nbsp;<br>
+Text&nbsp;<br>
+<b>Table 1 Digest ATRUN SMS User Data Format&nbsp;</b><br>
+&nbsp;<br>
+The format is the same of OTA service SMS protocol: obviously the first 3 bytes code&nbsp;<br>value is different&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;If the text begins&nbsp;with the “AT” string,&nbsp;then the AT command response has to be&nbsp;<br>
+sent to the&nbsp;sender by one or more&nbsp;response SMS. If the text begins&nbsp;with the&nbsp;<br>“HAT” string, then the AT command response hasn’t to be sent&nbsp;to the sender&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;After the&nbsp;“AT” (or&nbsp;“HAT”) string there are&nbsp;the commands. For&nbsp;example:&nbsp;<br>
+AT+CGMR;+CGSN or HAT+CGMR;+CGSN&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page 7 of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=8></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-8_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-8_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;The response SMS from the module to the sender are coded with the same&nbsp;<br>
+alphabet&nbsp;and is of the&nbsp;same kind&nbsp;of the received SMS (Simple SMS or&nbsp;Digest&nbsp;<br>SMS)&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;The received SMS hasn’t to be concatenated, but the response SMS can be&nbsp;<br>
+concatenated. In the&nbsp;case of Digest&nbsp;SMS, the&nbsp;MD5 digest is calculated on the&nbsp;<br>portion of text contained in the same SMS; the User Data&nbsp;has the following&nbsp;<br>format:&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Offset&nbsp;<br>
+Size&nbsp;<br>
+Value&nbsp;<br>
+Description&nbsp;<br>
+0&nbsp;<br>
+3&nbsp;<br>
+0xD1D1D1&nbsp;<br>
+Response RUNAT SMS Code&nbsp;<br>
+3&nbsp;<br>
+1&nbsp;<br>
+0&nbsp;<br>
+Transaction Id&nbsp;<br>
+4&nbsp;<br>
+1&nbsp;<br>
+0x11&nbsp;<br>
+Segment 1 of 1&nbsp;<br>
+5&nbsp;<br>
+1&nbsp;<br>
+&nbsp;<br>
+Session Id&nbsp;<br>
+6&nbsp;<br>
+24&nbsp;<br>
+&nbsp;&nbsp;<br>
+Digest:&nbsp;<br>B64(MD5(B64(MD5(Pwd)):B64(MD5(Useful Text))))&nbsp;<br>
+30 &nbsp;&nbsp;<br>
+Useful&nbsp;<br>
+Text&nbsp;<br>
+<b>Table 2 Response Digest ATRUN SMS User Data Format&nbsp;</b><br>
+&nbsp;<br>
+&nbsp;&nbsp;When the SMS RUN AT service is enabled setting to 1 the parameter &lt;mod&gt; of&nbsp;<br>
+the AT command #SMSATRUN, then the AT instance specified by the parameter&nbsp;<br>&lt;muxInstance&gt; of the AT command&nbsp;#SMSATRUNCFG is reserved to run the AT&nbsp;<br>commands inserted in the received validated SMS&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;If the SMS&nbsp;RUN AT service is disabled&nbsp;setting to 0 the&nbsp;parameter &lt;mod&gt; of the&nbsp;<br>
+AT command #SMSATRUN, then&nbsp;the used AT instance&nbsp;is returned&nbsp;to the&nbsp;<br>previous user, if there is&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+&nbsp;&nbsp;The &lt;mod&gt;&nbsp;of the AT command #SMSATRUN and &lt;muxInstance&gt; parameter of&nbsp;<br>
+the AT command #SMSATRUNCFG&nbsp;are stored in the NVM.&nbsp;At boot, if the &lt;mod&gt;&nbsp;<br>parameter&nbsp;is set to 1, then the AT&nbsp;instance specified&nbsp;in the &lt;muxInstance&gt; is&nbsp;<br>automatically reserved to run the AT commands inserted in the received&nbsp;<br>validated SMS&nbsp;<br>
+2.2.<b>&nbsp;</b><br>
+Alerts&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;If the&nbsp;&lt;mod&gt; parameter of the AT&nbsp;command #SMSATRUN is set&nbsp;to&nbsp;1,&nbsp;then&nbsp;all&nbsp;<br>
+received SMS are subjected to a test&nbsp;to validate them as ATRUN SMS&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;If a SMS is recognized as ATRUN SMS,&nbsp;it is handled and silently discarded&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page 8 of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=9></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-9_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-9_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-9_3.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;When an AT&nbsp;instance is&nbsp;reserved for&nbsp;the SMS ATRUN service,&nbsp;then every&nbsp;other&nbsp;<br>
+request to use it, coming from other services, is refused: only the OTA&nbsp;service&nbsp;<br>can subtract the AT instance reserved to SMS ATRUN service.&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;if the service is activated on the first instance (&lt;muxInstance&gt; = 1 in&nbsp;<br>
+AT#SMSATRUNCFG), the control of that&nbsp;instance will be&nbsp;loosed and there will&nbsp;<br>be the need of the multiplexer to deactivate the service by the second&nbsp;or third&nbsp;<br>instance.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+2.3.<b>&nbsp;</b><br>
+Description&nbsp;<br>
+&nbsp;<br>
+This service&nbsp;allows&nbsp;an user to run an AT&nbsp;Command&nbsp;via SMS. The user can send an SMS&nbsp;<br>requesting the module to know the selected network operator or to set&nbsp;a GPIO&nbsp;<br>The scenario is the following:&nbsp;<br>
+&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All&nbsp;Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page 9 of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=10></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-10_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-10_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Module on the field&nbsp;<br>
+&nbsp;Mobile &nbsp; &nbsp; &nbsp;&nbsp;<br>
+SMS ATRUN Idle &nbsp;&nbsp;<br>
+Local: AT#SMSATRUNCFG=3,1,2<br>
+Local: AT#SMSATRUN=1<br>
+Local: AT#SMSATWL=0,1,0,”+39346XYWZ”<br>
+SMS ATRUN Active&nbsp;<br>
+SMS: AT+ COPS?<br>
+SMS: &lt;CR&gt;&lt;LF&gt;+COPS: 0,0,&quot;vodafone IT&quot;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;&nbsp;<br>
+&lt;CR&gt;&lt;LF&gt;&quot;&lt;CR&gt;&lt;LF&gt;OK&lt;CR&gt;&lt;LF&gt;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+First of all, the SMS ATRUN service is locally configured and enabled in the&nbsp;module on&nbsp;<br>the field&nbsp;by the command #SMSATRUNCFG and :&nbsp;<br>&nbsp;<br>AT#SMSATRUNCFG=3,1,2&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+// the service is configured to run on&nbsp;the third instance, the unsolicited is&nbsp;enabled and&nbsp;<br>// the timeout for the response to the AT commands is set to&nbsp;2 minutes&nbsp;<br>&nbsp;<br>AT#SMSATRUN=1&nbsp;&nbsp;&nbsp;<br>
+// the service is enabled&nbsp;<br>
+&nbsp;<br>&nbsp;and the&nbsp;mobile&nbsp;number is added in the white list&nbsp;by the command #SMSATWL:&nbsp;<br>&nbsp;<br>AT#SMSATWL=0,1,0,”+39346XYWZ”&nbsp;&nbsp;//the number +39346XYWZ is added in the&nbsp;&nbsp;<br>&nbsp; //&nbsp;first position of the white list&nbsp;<br>&nbsp;<br>At this point&nbsp;the SMS ATRUN service is enabled and AT commands can be issued to the&nbsp;<br>module on the field&nbsp;via SMS from another device containing the SIM with the number&nbsp;<br>added in the white list.&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;10&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=11></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-11_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-11_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+For example&nbsp;another&nbsp;mobile&nbsp;can set the GPIO of the&nbsp;module on the field&nbsp;issuing the&nbsp;<br>command AT#GPIO=2,1 using the following standard AT command&nbsp;<br>
+&nbsp;<br>
+AT+CMGS=346XYWZ&nbsp;<br>&gt;&nbsp;AT#GPIO=2,1&nbsp;<br>&nbsp;<br>The&nbsp;module&nbsp;on the field&nbsp;let run the AT+COPS? on the third instance and will send back&nbsp;<br>to the&nbsp;mobile&nbsp;an SMS with the response. The&nbsp;mobile&nbsp;reads the arrived SMS:&nbsp;<br>&nbsp;<br>+CMTI:&nbsp;&quot;SM&quot;,1&nbsp;<br>AT+CMGR=1&nbsp;<br>+CMGR: &quot;REC UNREAD&quot;,&quot;+39346XYWZ&quot;,&quot;&quot;,&quot;08/05/28,11:04:37+08&quot;&nbsp;<br>&nbsp;<br>+COPS: 0,0,&quot;vodafone IT&quot;&nbsp;<br>&nbsp;<br>OK&nbsp;<br>&nbsp;<br>If the&nbsp;mobile&nbsp;doesn’t want to receive back the response, it can issue the following&nbsp;<br>command:&nbsp;<br>&nbsp;<br>AT+CMGS=346XYWZ&nbsp;<br>&gt;&nbsp;HAT+COPS?&nbsp;<br>&nbsp;<br>If the&nbsp;mobile&nbsp;wants to communicate&nbsp;to the&nbsp;module on the field&nbsp;using the Digest ATRUN&nbsp;<br>SMS, a common password has to be&nbsp;inserted locally in the white list of the&nbsp;module on&nbsp;<br>the field&nbsp;by the command&nbsp;AT#SMSATWL:&nbsp;<br>
+&nbsp;<br>
+AT#SMSATWL=0,2,1,&quot;1234567890123456&quot;&nbsp;<br>
+//the password has to be&nbsp;16&nbsp;&nbsp;<br>// characters&nbsp;length and&nbsp;is &nbsp;<br>// inserted, in this example, in&nbsp;&nbsp;<br>// position 2 of the white&nbsp;list&nbsp;<br>
+&nbsp;<br>
+A maximum number of 2 passwords can be inserted in the white list.&nbsp;<br>Now the&nbsp;mobile&nbsp;can also change the SIM because the sender number isn’t checked&nbsp;<br>from&nbsp;module on the field&nbsp;in the case of Digest ATRUN SMS.&nbsp;<br>So the&nbsp;mobile&nbsp;can interrogate the&nbsp;module on the field, to know the selected network&nbsp;<br>operator, issuing the command AT+COPS? using the following standard&nbsp;AT command&nbsp;<br>
+&nbsp;<br>AT+CMGS=53&nbsp;<br>&gt;079193432900200011000C919343868676110015AD26D0D0D000110157696A437032715633734E7<br>62B61727532305A5561773D3D41542B434F50533F&nbsp;<br>&nbsp;<br>
+Where the User Data portion Is formatted according to Table 1 as follows:&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;11&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=12></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-12_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-12_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Offset&nbsp;&nbsp;Size&nbsp;&nbsp;Value&nbsp;<br>
+Description&nbsp;<br>
+0&nbsp;<br>
+3&nbsp;<br>
+D0D0D0&nbsp;<br>
+RUNAT SMS&nbsp;Code&nbsp;<br>
+3&nbsp;<br>
+1&nbsp;<br>
+00&nbsp;<br>
+Transaction Id&nbsp;<br>
+4&nbsp;<br>
+1&nbsp;<br>
+11&nbsp;<br>
+Segment 1 of 1&nbsp;<br>
+5&nbsp;<br>
+1&nbsp;<br>
+01&nbsp;<br>
+Session Id&nbsp;<br>
+6&nbsp;<br>
+24&nbsp;<br>
+57696A437032715633734E762B61727532305A<br>
+Digest:&nbsp;<br>
+5561773D3D&nbsp;<br>
+B64(MD5(B64(MD5(Pwd)):B64(<br>MD5(AT+COPS?))))&nbsp;<br>
+30&nbsp;&nbsp;&nbsp;41542B434F50533F&nbsp;<br>
+AT+COPS?&nbsp;<br>
+&nbsp;<br>
+The&nbsp;module&nbsp;on the field&nbsp;let run the AT+COPS? on the third instance and will send back&nbsp;<br>to the&nbsp;mobile&nbsp;an SMS with the response. The&nbsp;mobile&nbsp;reads the arrived SMS:&nbsp;<br>
+&nbsp;<br>+CMTI:&nbsp;&quot;SM&quot;,1&nbsp;<br>AT+CMGR=1&nbsp;<br>+CMGR:&nbsp;0,&quot;&quot;,83&nbsp;<br>0791934329002000040C9193438686761100158050922102818040D1D1D10011014A756E726137723<br>06B494563483971563534326E33513D3D0D0A2B434F50533A20302C302C22766F6461666F6E6520<br>4954220D0A0D0A4F4B0D0A&nbsp;<br>&nbsp;<br>
+Where the User Data portion Is formatted according to Table 2 as follows:&nbsp;<br>
+&nbsp;<br>
+Offset&nbsp;&nbsp;Size&nbsp;<br>
+Value&nbsp;<br>
+Description&nbsp;<br>
+0&nbsp;<br>
+3&nbsp;<br>
+D1D1D1&nbsp;<br>
+Response RUNAT SMS Code&nbsp;<br>
+3&nbsp;<br>
+1&nbsp;<br>
+00&nbsp;<br>
+Transaction Id&nbsp;<br>
+4&nbsp;<br>
+1&nbsp;<br>
+11&nbsp;<br>
+Segment 1 of 1&nbsp;<br>
+5&nbsp;<br>
+1&nbsp;<br>
+01&nbsp;<br>
+Session Id&nbsp;<br>
+6&nbsp;<br>
+24&nbsp;<br>
+4A756E72613772306B494563483<br>
+Digest:&nbsp;<br>
+971563534326E33513D3D&nbsp;<br>
+B64(MD5(B64(MD5(Pwd)):B64(MD5(&lt;CR&gt;&lt;<br>LF&gt;+COPS: 0,0,&quot;vodafone&nbsp;<br>IT&quot;&lt;CR&gt;&lt;LF&gt;&quot;&lt;CR&gt;&lt;LF&gt;OK&lt;CR&gt;&lt;LF<br>&gt;))))&nbsp;<br>
+30&nbsp;&nbsp;&nbsp;0D0A2B434F50533A20302C302C<br>
+&lt;CR&gt;&lt;LF&gt;+COPS: 0,0,&quot;vodafone&nbsp;<br>
+22766F6461666F6E65204954220<br>
+IT&quot;&lt;CR&gt;&lt;LF&gt;&quot;&lt;CR&gt;&lt;LF&gt;OK&lt;CR&gt;&lt;LF<br>
+D0A0D0A4F4B0D0A&nbsp;<br>
+&gt;&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;12&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=13></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-13_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-13_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>ALERTS:&nbsp;<br></b>&nbsp;<br>Some AT commands can fail&nbsp;if set through SMS&nbsp;ATRUN service, due to an interaction of&nbsp;<br>the AT command execution with the SMS service. These problems can be avoided&nbsp;<br>inserting&nbsp;a delay before AT command&nbsp;execution (e.g. AT+COPS=? using SMS ATRUN).&nbsp;<br>&nbsp;<br>This delay is&nbsp;set through the command AT#ATRUNDELAY:&nbsp;<br>&nbsp;<br>AT#ATRUNDELAY=1,5&nbsp; &nbsp; &nbsp;sets&nbsp;for SMS ATRUN&nbsp;commands a delay of 5 seconds&nbsp;<br>&nbsp;<br>Once set, the delay is valid till a new AT#ATRUNDELAY is issued.&nbsp;<br>&nbsp;<br>
+Some other commands can block the AT command sending-AT command&nbsp;response&nbsp;<br>
+receiving mechanism if set through ATRUN service, see below.&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;13&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=14></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-14_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-14_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-14_3.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+2.4.<b>&nbsp;</b><br>
+Example SMS ATRUN&nbsp;<br>
+&nbsp;<br>
+Figure 1: Module in the field&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;14&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=15></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-15_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-15_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-15_3.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Figure&nbsp;2: Mobile&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;15&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=16></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-16_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-16_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+In&nbsp;Figure 1: Module in the field&nbsp;it’s shown the local configuration:&nbsp;<br>
+&nbsp;&nbsp;All the numbers starting with +39&nbsp;are added in the white&nbsp;list by the command&nbsp;<br>
+#SMSATWL&nbsp;<br>
+&nbsp;&nbsp;the service is configured&nbsp;with the command #SMSATRUNCFG to run on the third&nbsp;<br>
+instance, the unsolicited is enabled&nbsp;and the timeout for the response to the AT&nbsp;<br>commands is set to 2 minutes&nbsp;<br>
+&nbsp;&nbsp;the service is enabled with the command #SMSATRUN&nbsp;<br>
+&nbsp;<br>
+In&nbsp;Figure&nbsp;2:&nbsp;Mobile&nbsp;the mobile sends to the module in the field an SMS with the text&nbsp;<br>containing the string AT+COPS?. &nbsp;<br>At the SMS reception, the module on the field runs automatically the command&nbsp;<br>AT+COPS?,&nbsp;puts on the instance the URC&nbsp;#SMSATRUN:&nbsp;AT+COPS?&nbsp;(as shown&nbsp;in Figure&nbsp;<br>1: Module in&nbsp;the field) and sends back the response SMS.&nbsp;<br>As shown in&nbsp;Figure&nbsp;2: Mobile, the SMS received from the mobile contains the response&nbsp;<br>to the command AT+COPS? that the&nbsp;module on the field has&nbsp;executed.&nbsp;<br>
+2.5.<b>&nbsp;</b><br>
+DELAYS AND NOTES&nbsp;<br>
+2.5.1.<b>&nbsp;</b><br>
+Delays&nbsp;<br>
+&nbsp;<br>
+The following table shows the suggested delays (in seconds) for SMS ATRUN service.&nbsp;<br>These delays&nbsp;are set using AT#ATRUNDELAY command.&nbsp;<br>
+&nbsp;<br>
+AT+COPS=?&nbsp;<br>
+10&nbsp;<br>
+AT+CGCLASS&nbsp;<br>AT+CFUN&nbsp;<br>AT#GPRS&nbsp;<br>AT#SIMDET&nbsp;<br>AT#CSURV AT#CSURVC&nbsp;<br>AT#CSURVU&nbsp;<br>AT#CSURVUC&nbsp;<br>AT#CSURVB&nbsp;<br>AT#CSURVBC&nbsp;<br>AT#CSURVP&nbsp;<br>AT#CSURVPC&nbsp;<br>AT#SGACT&nbsp;<br>
+5&nbsp;<br>
+AT+CGACT&nbsp;<br>AT+CGATT&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;16&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=17></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-17_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-17_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+2.5.2.<b>&nbsp;</b><br>
+Notes&nbsp;<br>
+&nbsp;<br>
+1) To send AT\x and AT^xxx commands it is&nbsp;necessary to set&nbsp;the outgoing SMS’s Data&nbsp;<br>Coding Scheme (DCS) so&nbsp;that they are 8 bits&nbsp;coded, because characters ‘\&nbsp;‘and ‘^’ are&nbsp;<br>not included in the standard GSM 7 bit alphabet. AT#SMSMODE must be&nbsp;set to 1, and&nbsp;<br>the SMS text must be in&nbsp;hexadecimal format; the answer SMS received to the sent&nbsp;<br>command is&nbsp;also 8 bit coded (hexadecimal format);&nbsp;<br>&nbsp;<br>2) AT#REBOOT and AT#SHDN commands do&nbsp;not send back the answer SMS before&nbsp;<br>powering down the “module in the field”; AT+CFUN=4, AT+CGCLASS=&quot;CG” and&nbsp;<br>AT+COPS=2&nbsp;commands do not send&nbsp;back the answer SMS before deregistering the&nbsp;<br>module;&nbsp;<br>&nbsp;<br>3) AT#SIMDET=0, AT+CGDATA=”PPP”,1,&nbsp;AT#FTPPUT,&nbsp;AT$GPSNMUN=3, ATQ1 and&nbsp;<br>ATQ2 commands cause a block of the SMS exchange mechanism, until the “module&nbsp;in&nbsp;<br>the field”&nbsp;reboots after timeout set with AT#SMSATRUNCFG command expires;&nbsp;<br>&nbsp;<br>4) AT+CMUX=0, AT#BND=3, AT+CFUN=2 and AT+CFUN=4 commands cause an&nbsp;<br>irreversible&nbsp;block of the SMS exchange mechanism;&nbsp;<br>&nbsp;<br>5) AT+CGCLASS=”CG” and AT+CGSMS=0 commands cause an irreversible block of&nbsp;the&nbsp;<br>SMS exchange mechanism, until a new AT+CGCLASS or AT+CGSMS command is sent&nbsp;<br>with TCP ATRUN; AT+CFUN=4 and AT+COPS=2 commands cause an irreversible block&nbsp;<br>of the SMS exchange mechanism, until a&nbsp;new AT+CFUN or AT+COPS command is sent&nbsp;<br>with TCP ATRUN;&nbsp;<br>&nbsp;<br>6) enabling&nbsp;of FDN phonebook in the “module in&nbsp;the field”&nbsp;causes an irreversible block&nbsp;<br>of the SMS exchange mechanism if the “mobile”&nbsp;phone number is not in the FDN list;&nbsp;<br>FDN must then be disabled using TCP ATRUN;&nbsp;<br>&nbsp;<br>7) if ATD command is sent to the “module in&nbsp;the field”&nbsp;to start a data call the response&nbsp;<br>SMS, containing the CONNECT or NO CARRIER result, is received only after the call has&nbsp;<br>been disconnected by the called party;&nbsp;<br>&nbsp;<br>8)AT+CMGS, AT+CMGW,&nbsp;AT#SEMAIL, AT#SSEND,&nbsp;AT#WSCRIPT and all commands that&nbsp;<br>require to insert data after a prompt is received cannot be executed via SMS ATRUN,&nbsp;<br>because the prompt is not sent back in an SMS response;&nbsp;<br>&nbsp;<br>9) The commands of AT#CSURV family will have&nbsp;their response truncated if too long&nbsp;<br>(response text longer than the text that can&nbsp;fit into a concatenated SMS made up of the&nbsp;<br>maximum number of SMS that can be concatenated, i.e. 15);&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;17&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=18></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-18_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-18_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+10) The command ATZ returns ERROR if a Data Call is up;&nbsp;<br>&nbsp;<br>11) By default the SMS ATRUN service is disabled. It can be activated either by the&nbsp;<br>command AT#SMSATRUN or receiving a special SMS that can be sent from a Telit&nbsp;<br>server. After the reception of this SMS, the module activates&nbsp;the service and inserts a&nbsp;<br>default password in the white list. An&nbsp;optional phone number can be specified in the&nbsp;<br>SMS body that will be inserted in the white list. For further information please refer to&nbsp;<br>Telit contacts&nbsp;indicated in 1.1 above.&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;18&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=19></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-19_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-19_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-19_3.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<b>3.</b>&nbsp;<br>
+<b>TCPATRUN&nbsp;</b><br>
+&nbsp;<br>
+AT command&nbsp;execution can also be requested via TCP. The AT interface&nbsp;input and&nbsp;<br>output will be&nbsp;redirected&nbsp;to the TCP&nbsp;socket.&nbsp;<br>
+&nbsp;<br>
+&nbsp; &nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+There are two kinds of&nbsp;TCP ATRUN service, differing the one from the other in the way&nbsp;<br>the module connects to&nbsp;the remote PC.&nbsp;<br>In the first kind of TCP ATRUN, the module acts&nbsp;as a server, that is to say it is in TCP&nbsp;<br>listen state,&nbsp;waiting&nbsp;for an&nbsp;incoming&nbsp;TCP/IP connection from&nbsp;a client.&nbsp;&nbsp;<br>In the second&nbsp;one, the module acts as a client, that is to say it tries, as soon as the&nbsp;<br>service is enabled, to connect to a server.&nbsp;<br>In next paragraphs we describe the AT&nbsp;command sequence&nbsp;to start the&nbsp;TCP ATRUN&nbsp;<br>service and how the service behaves. Please&nbsp;refer to the AT&nbsp;commands specification for&nbsp;<br>the exact commands syntax.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;19&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=20></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-20_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-20_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+3.1.<b>&nbsp;</b><br>
+Configuration&nbsp;<br>
+&nbsp;<br>
+To start TCPATRUN service, either in&nbsp;server mode or in client&nbsp;mode, it is necessary that&nbsp;<br>a PDP context is opened, through the command AT#SGACT:&nbsp;<br>&nbsp;<br>AT#SGACT=1,1&nbsp;<br>
+for example,&nbsp;here we open the PDP&nbsp;context with&nbsp;id 1&nbsp;<br>
+&nbsp;<br>The answer, in case of success, will&nbsp;be the IP address of the module:&nbsp;<br>&nbsp;<br>#SGACT: “212.141.113.92”&nbsp;<br>&nbsp;<br>It is recommended to use the command “AT#SGACTCFG” to set the&nbsp;context “auto-<br>activation”: in this way the context will be&nbsp;automatically activated in case of switching&nbsp;<br>off/on, in case of deactivation from&nbsp;Network and in case of SIM removal.&nbsp;&nbsp;<br>&nbsp;<br>AT#SGACTCFG=1,1&nbsp;<br>
+the auto-activation is set&nbsp;on context 1&nbsp;<br>
+&nbsp;<br>It is suggested to configure the socket&nbsp;parameters through the command&nbsp;AT#SCFG&nbsp;<br>(please read&nbsp;the paragraph “Alerts”), using the socket identifier (the first parameter).&nbsp;<br>For example:&nbsp;<br>&nbsp;<br>AT#SCFG=1,1,300,0,600,1&nbsp;<br>&nbsp;<br>Now, some&nbsp;configuration parameters have to be&nbsp;set for both type of service, through&nbsp;<br>the command AT#TCPATRUNCFG:&nbsp;<br>&nbsp;<br>AT#TCPATRUNCFG =1,2,1024,12345,`&quot;212.141.125.127`&quot;,1,5,1,5,2&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>The first parameter is the identifier of&nbsp;the socket that will be used, the second one is&nbsp;<br>the instance (in the module the AT interface can&nbsp;use three instances) that will be&nbsp;<br>dedicated to the TCP ATRUN, the third one is the TCP port for listen (used in server&nbsp;<br>mode), the fourth one and the fifth one are respectively the TCP port and IP address of&nbsp;<br>the host (for the client mode), the sixth one&nbsp;is for enabling the unsolicited that advises&nbsp;<br>of the connection/disconnection from&nbsp;server, the seventh one is the timeout for an AT&nbsp;<br>command execution, the eighth one&nbsp;is for choosing the authentication mode (in server&nbsp;<br>mode), the ninth one is the number of attempts to connect that the module will do in&nbsp;<br>case of automatic re-start of the service (in client mode), the&nbsp;last one is the delay (in&nbsp;<br>minutes) from one attempt and the&nbsp;other (in client mode).&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;20&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=21></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-21_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-21_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+3.2.<b>&nbsp;</b><br>
+TCPATRUN in server mode&nbsp;<br>
+3.2.1.<b>&nbsp;</b><br>
+Description&nbsp;<br>
+&nbsp;<br>
+The TCP ATRUN service&nbsp;in server mode is enabled locally by&nbsp;the AT command&nbsp;<br>AT#TCPATRUNL.&nbsp;<br>This command puts the&nbsp;module in listen state on a determined port, so that a client can&nbsp;<br>connect from remote opening a TCP socket to the IP address and port of the module.&nbsp;<br>Once connected, the client can issue AT commands to the module.&nbsp;<br>&nbsp;&nbsp;<br>Note that the TCP ATRUN service in server&nbsp;mode is useful with&nbsp;static IP address.&nbsp;<br>&nbsp;<br>The TCP access to the module is controlled by a firewall.&nbsp;<br>In the case&nbsp;of TCP ATRUN service,&nbsp;this firewall&nbsp;can be set (and saved in memory) by the&nbsp;<br>following command&nbsp;<br>&nbsp;<br>AT#TCPATRUNFRWL=1,”212.141.112.216”,”255.255.255.255”&nbsp;<br>&nbsp;<br>&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+The two strings represent the IP address and mask&nbsp;<br>
+&nbsp;<br>The service is also protected by the&nbsp;authentication parameters: Username and&nbsp;<br>Password.&nbsp;<br>These parameters are set (and saved in memory) through the following command&nbsp;<br>&nbsp;<br>AT#TCPATRUNAUTH=1,”testuser”,”testpassw”&nbsp;<br>&nbsp;<br>The user can choose between two kinds of authentication procedure, as we will see in&nbsp;<br>the next paragraph.&nbsp;<br>&nbsp;<br>Finally, the&nbsp;TCP ATRUN service can be enabled using “AT#TCPATRUNL”:&nbsp;<br>&nbsp;<br>AT#TCPATRUNL =1&nbsp;<br>&nbsp;<br>Now, referring to the parameters configuration that has been set in this&nbsp;example&nbsp;<br>through the command AT#TCPATRUNCFG:&nbsp;<br>&nbsp;<br>the socket 1&nbsp;is in listen state on port 1024, and the IP address is the one given by the&nbsp;<br>AT#SGACT command.&nbsp;<br>The client can connect to the module if its address is included in the firewall.&nbsp;<br>It can use Telnet or a dedicated program to&nbsp;open the socket&nbsp;and communicate with the&nbsp;<br>module. Once&nbsp;connected, username&nbsp;and password have to be transmitted in a way that&nbsp;<br>depends on&nbsp;the authentication mode set with AT#TCPATRUNCFG.&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;21&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=22></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-22_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-22_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+After authentication, an&nbsp;AT command can&nbsp;be issued and the&nbsp;module will&nbsp;parse the&nbsp;<br>command and send the&nbsp;response.&nbsp;<br>
+&nbsp;<br>
+For example, client can interrogate the module about all the cells in the neighbour of&nbsp;<br>the serving&nbsp;cell, by the commands AT#MONI=7 and AT#MONI. &nbsp;<br>&nbsp;<br>If the TCP ATRUN service is not disabled, it&nbsp;automatically starts at every start-up of the&nbsp;<br>module as long as the PDP context auto-activation has been set by AT#SGACTCFG.&nbsp;<br>The same happens in case of a deactivation&nbsp;from&nbsp;Network and in case of SIM removal.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;22&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=23></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-23_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-23_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-23_3.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;23&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=24></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-24_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-24_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+3.2.2.<b>&nbsp;</b><br>
+Authentication mode&nbsp;<br>
+&nbsp;<br>
+Setting the&nbsp;authentication mode&nbsp;parameter in the command AT#TCPATRUNCFG, the&nbsp;<br>user can choose between two kinds of authentication:&nbsp;“automatic” and “step-by-step”.&nbsp;<br>The first one&nbsp;is useful for&nbsp;easily automate the procedure, the&nbsp;second one&nbsp;is more&nbsp;<br>graphically pleasant.&nbsp;<br>
+3.2.2.1.<b>&nbsp;</b><br>
+Automatic mode (default)&nbsp;<br>
+&nbsp;<br>
+Once the connection between server&nbsp;and module&nbsp;is opened and before issuing any AT&nbsp;<br>command, username and password have to&nbsp;be transmitted in the following way:&nbsp;<br>&nbsp;<br>userid&lt;CR&gt;passw&lt;CR&gt; (where &lt;CR&gt; means Carriage Return and is equal to 0x0d)&nbsp;<br>&nbsp;<br>After these strings, AT commands can be sent to&nbsp;the module.&nbsp;<br>The couple&nbsp;Username –&nbsp;Password&nbsp;has to be included in the&nbsp;authentication parameters&nbsp;<br>list built through the command AT#TCPATRUNAUTH, otherwise the module will&nbsp;<br>immediately&nbsp;close the connection.&nbsp;<br>If a timeout expires in the module without receiving one of the two parameters, then&nbsp;<br>the module will close the connection.&nbsp;<br>
+3.2.2.2.<b>&nbsp;</b><br>
+Step-by-step&nbsp;<br>
+&nbsp;<br>
+Once the connection between server and module is opened, the module first requests&nbsp;<br>the Username and then, if the Username has been received&nbsp;and accepted (userid&lt;CR&gt;),&nbsp;<br>requests the Password. Once the Password has been received and accepted&nbsp;<br>(passw&lt;CR&gt;), the module transmits a “Login successful” message.&nbsp;&nbsp;<br>&nbsp;<br>Username:&nbsp;userid&nbsp;<br>Password: &nbsp;passw&nbsp;<br>Login successful.&nbsp;<br>&nbsp;<br>From this moment AT commands sent by the server are parsed by the module.&nbsp;<br>Also in this case, if the couple&nbsp;Username – Password&nbsp;is not included in the&nbsp;<br>authentication parameters list, or if the timeout expires without receiving a parameter,&nbsp;<br>the module will close the connection.&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;24&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=25></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-25_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-25_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+3.3.<b>&nbsp;</b><br>
+TCPATRUN in client mode&nbsp;<br>
+&nbsp;<br>
+3.3.1.<b>&nbsp;</b><br>
+Description&nbsp;<br>
+&nbsp;<br>
+This TCP ATRUN service&nbsp;is enabled locally by the AT command AT#TCPATRUND:&nbsp;<br>&nbsp;<br>AT#TCPATRUND = 1&nbsp;<br>&nbsp;<br>This command opens a&nbsp;TCP socket to connect to&nbsp;the Host IP&nbsp;address and to the Host&nbsp;<br>port specified in AT#TCPATRUNCFG.&nbsp;<br>&nbsp;<br>To allow the module to connect, the server (the remote PC) has to have been put in&nbsp;<br>listen through a dedicated program&nbsp;at the port specified&nbsp;with&nbsp;AT#TCPATRUNCFG&nbsp;<br>command (in the previous example&nbsp;12345).&nbsp;<br>If the response to AT#TCPATRUND command&nbsp;is&nbsp;“OK”, the module is connected to the&nbsp;<br>remote PC and ready to receive AT commands.&nbsp;<br>&nbsp;<br>If the TCP ATRUN service is not disabled, it&nbsp;automatically starts at every start-up of the&nbsp;<br>module as long as the PDP context auto-activation has been set through&nbsp;<br>AT#SGACTCFG.&nbsp;<br>The same happens in case of a deactivation&nbsp;from&nbsp;Network and in case of SIM removal.&nbsp;<br>This means&nbsp;that the module will automatically try to connect&nbsp;to the Host IP (the one set&nbsp;<br>through AT#TCPATRUNCFG), and if&nbsp;connection&nbsp;is not successful, it&nbsp;will retry. The&nbsp;<br>number of attempts and&nbsp;the delay between one and the other will be those set through&nbsp;<br>AT# TCPATRUNCFG.&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;25&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=26></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-26_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-26_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-26_3.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;26&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=27></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-27_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-27_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+3.4.<b>&nbsp;</b><br>
+AT commands in sequence&nbsp;<br>
+&nbsp;<br>
+The standard usage of AT&nbsp;interface consists in&nbsp;waiting for response to an AT command&nbsp;<br>before issuing another&nbsp;one. Each command ends with the delimiter character (&lt;CR&gt; is&nbsp;<br>the default). In alternative, AT commands can be issued separated by “;”, being treated&nbsp;<br>like a single&nbsp;command. For example,&nbsp;the response to&nbsp;<br>
+&nbsp;<br>
+AT# SGACT=1,1;#SS&nbsp;<br>
+&nbsp;<br>
+could be&nbsp;<br>
+&nbsp;<br>
+#SGACT: 212.141.252.44&nbsp;<br>&nbsp;<br>#SS: 1,1,212.141.121.05, 1024,212.141.121.148,1332&nbsp;<br>#SS: 2,0&nbsp;<br>#SS: 3,0&nbsp;<br>#SS: 4,0&nbsp;<br>#SS: 5,0&nbsp;<br>#SS: 6,0&nbsp;<br>&nbsp;<br>OK&nbsp;<br>
+&nbsp;<br>
+What happens if the remote application doesn’t wait for&nbsp;an AT command&nbsp;response&nbsp;<br>before issuing another&nbsp;one?&nbsp;<br>If AT commands are issued with the delimiter character but without waiting for&nbsp;<br>response, some commands can be ignored,&nbsp;for&nbsp;example in the sequence&nbsp;<br>
+&nbsp;<br>
+AT#SGACT=1,1&nbsp;<br>AT#SS&nbsp;<br>
+&nbsp;<br>
+The AT#SS&nbsp;would be ignored.&nbsp;&nbsp;<br>&nbsp;<br>In the case&nbsp;of AT commands issued through TCP ATRUN service, a new&nbsp;feature has&nbsp;<br>been introduced that solves this problem.&nbsp;&nbsp;<br>This feature is enabled through the command &nbsp;<br>&nbsp;<br>AT#TCPATCMDSEQ=1. &nbsp;<br>&nbsp;<br>If enabled, the response to the sequence&nbsp;<br>
+&nbsp;<br>
+AT#SGACT=1,1&nbsp;<br>AT#SS<b>&nbsp;</b><br>
+&nbsp;<br>
+could be for example&nbsp;<br>
+&nbsp;<br>
+#SGACT: 212.141.252.44&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;27&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=28></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-28_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-28_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>OK&nbsp;<br>&nbsp;<br>#SS: 1,1,212.141.121.05, 1024,212.141.121.148,1332&nbsp;<br>#SS: 2,0&nbsp;<br>#SS: 3,0&nbsp;<br>#SS: 4,0&nbsp;<br>#SS: 5,0&nbsp;<br>#SS: 6,0&nbsp;<br>&nbsp;<br>OK&nbsp;<br>
+&nbsp;<br>
+The command AT#TCPATCMDSEQ&nbsp;can be set from any instance, but it just affects AT&nbsp;<br>commands issued through ATRUN service.&nbsp;<br>
+&nbsp;<br>
+3.5.<b>&nbsp;</b><br>
+Transparence&nbsp;<br>
+&nbsp;<br>
+From TCP ATRUN service, it is possible to connect directly to a serial port of the&nbsp;<br>module, in transparent&nbsp;mode, that is to say that&nbsp;data will be&nbsp;transferred directly&nbsp;<br>between TCP ATRUN and the serial port specified. So any data in input on the serial&nbsp;<br>port will&nbsp;be sent to the remote PC via TCP/IP (and&nbsp;vice-versa). This connection is&nbsp;<br>opened issuing the command AT#TCPATCONSER=&lt;port&gt;,&lt;rate&gt; from the TCP ATRUN&nbsp;<br>instance.&nbsp;<br>&nbsp;<br>&nbsp;<br>After this command has been issued, if no&nbsp;error has occurred, then a “CONNECT”&nbsp;will&nbsp;<br>be returned from module to advise that the TCP ATRUN instance is in&nbsp;online mode&nbsp;and&nbsp;<br>connected to the port specified.&nbsp;<br>To exit&nbsp;from&nbsp;online mode&nbsp;and close the connection, the escape sequence (the default is&nbsp;<br>“+++”) has to&nbsp;be sent on&nbsp;the TCP ATRUN instance, taking into account that the escape&nbsp;<br>sequence needs to be sent in one single packet. (So the use&nbsp;of Telnet for&nbsp;Windows,&nbsp;<br>sending every single byte&nbsp;in a TCP packet, is not&nbsp;appropriate&nbsp;in this case).&nbsp;<br>&nbsp;<br>
+3.6.<b>&nbsp;</b><br>
+Alerts&nbsp;<br>
+&nbsp;<br>For the connection used by the TCP&nbsp;ATRUN service, a particular socket identifier&nbsp;is&nbsp;<br>used (see the first parameter of AT#TCPATRUNCFG). So all the settings on that socket&nbsp;<br>can affect the connection: please refer to the module Easy GPRS User Guide for the use&nbsp;<br>of the AT commands concerning TCP sockets.&nbsp;<br>In particular, by the command AT#SCFG, the user can read and change&nbsp;the packet size,&nbsp;<br>the Transmission Timeout and the Idle Activity Timeout. &nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;28&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=29></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-29_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-29_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+To summarize briefly the meaning of the Transmission Timeout: if the bytes to be sent&nbsp;<br>from the module are less&nbsp;than packet size, then they will be&nbsp;sent just at&nbsp;Transmission&nbsp;<br>Timeout expiry. So in the case of TCP ATRUN service, it is suggested to set the&nbsp;<br>minimum Transmission&nbsp;Timeout to avoid to&nbsp;wait for responses. It is strongly&nbsp;<br>recommended to avoid having it set to infinite.&nbsp;<br>It is also recommended not to set a&nbsp;Packet Size&nbsp;smaller than the default one.&nbsp;<br>&nbsp;<br>The meaning of the Idle Activity Timeout is this: if there is no data exchange within the&nbsp;<br>Idle Activity Timeout period, the connection is closed. This is&nbsp;useful in the following&nbsp;<br>situation:&nbsp;if the TCP/IP socket is closed by the remote PC in an “unilateral”&nbsp;way,&nbsp;that is&nbsp;<br>to say without signal exchange&nbsp;with the other side of the connection, on the local side&nbsp;<br>(the module on the field) the connection is still up, but cannot&nbsp;be used anymore.&nbsp;&nbsp;<br>In this situation, if the Idle Activity Timeout has been set locally on the module, it will&nbsp;<br>automatically close the connection, otherwise the&nbsp;only way to close it is using the AT&nbsp;<br>command AT#TCPATRUNCLOSE locally.&nbsp;<br>In particular, if the remote PC closes the&nbsp;connection in this “unilateral” way during a&nbsp;<br>“transparent&nbsp;mode” (described in 3.5) there is no way to close locally the TCP ATRUN.&nbsp;<br>So if the user wants to use the “transparent mode”, it is very important to set the Idle&nbsp;<br>Activity Timeout.&nbsp;<br>After the connection local closure, the TCP ATRUN status is still enabled, so the service&nbsp;<br>re-starts automatically.&nbsp;<br>&nbsp;<br>If the TCPATRUN service,&nbsp;in server or client mode, is activated on the first instance&nbsp;<br>(&lt;muxInstance&gt; =&nbsp;1 in AT#TCPATRUNCFG), the&nbsp;control of that instance will be loosed&nbsp;<br>and there will be the need of the multiplexer to deactivate the service by the second&nbsp;or&nbsp;<br>third instance.&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;29&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=30></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-30_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-30_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-30_3.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+3.7.<b>&nbsp;</b><br>
+Examples&nbsp;<br>
+3.7.1.<b>&nbsp;</b><br>
+TCP ATRUN in server mode and AT commands&nbsp;<br>
+&nbsp;<br>
+Remote Mobile&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;30&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=31></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-31_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-31_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-31_3.png"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-31_4.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+PC&nbsp;( telnet )&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+3.7.2.<b>&nbsp;</b><br>
+TCPATCMDSEQ feature&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;31&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=32></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-32_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-32_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+<b>ALERTS:&nbsp;<br></b>&nbsp;<br>Some AT commands can fail&nbsp;if set through TCP&nbsp;ATRUN service, due to an interaction of&nbsp;<br>the AT command execution with the GPRS&nbsp;service. These problems can be avoided&nbsp;<br>inserting&nbsp;a delay before AT command&nbsp;execution (e.g. AT+COPS=? using SMS ATRUN).&nbsp;<br>&nbsp;<br>This delay is&nbsp;set through the command AT#ATRUNDELAY:&nbsp;<br>&nbsp;<br>AT#ATRUNDELAY=0,5&nbsp;<br>
+sets for TCP ATRUN commands a delay of 5 seconds&nbsp;<br>
+&nbsp;<br>Once set, the delay is valid till a new AT#ATRUNDELAY is issued.&nbsp;<br>&nbsp;<br>Some other commands can block the AT command sending-AT command&nbsp;response&nbsp;<br>receiving mechanism if set through ATRUN service, see below.&nbsp;<br>
+3.8.<b>&nbsp;</b><br>
+DELAYS AND NOTES&nbsp;<br>
+3.8.1.<b>&nbsp;</b><br>
+Delays&nbsp;<br>
+&nbsp;<br>
+The following table shows the suggested delays (in seconds) for TCP ATRUN. These&nbsp;<br>delays are set using AT#ATRUNDELAY command.&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+AT+COPS=? 10&nbsp;<br>
+3.8.2.<b>&nbsp;</b><br>
+Notes&nbsp;<br>
+1) AT#SKTD, AT#SKTL,&nbsp;AT#SKTSAV:&nbsp;<br>Initial setting for TCPATRUN service(through AT#TCPATRUNCFG) has to be done:&nbsp;<br>&lt;connId&gt; different from &lt;muxInstance&gt;.&nbsp;<br>&nbsp;<br>2) AT#QDNS:&nbsp;<br>&nbsp;<br>a) &nbsp;Initial setting for TCPATRUN service(through AT#TCPATRUNCFG) has to be done:&nbsp;<br>&lt;muxInstance&gt; =&nbsp;1.&nbsp;<br>&nbsp;<br>b) Initial setting by the command AT#SCFG has to be done: &nbsp;<br>&lt;connId&gt; set for TPCATRUN service(through&nbsp;AT#TCPATRUNCFG) has to be associated&nbsp;<br>to a &lt;cid&gt; different from 1.&nbsp;<br>&nbsp;<br>3) AT#GPRS:&nbsp;same as 2b)&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;32&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=33></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-33_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-33_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>4) AT#SKTOP: same as&nbsp;2) and furthermore:&nbsp;<br>Initial setting for TCPATRUN service(through AT#TCPATRUNCFG) has to be done:&nbsp;<br>&lt;connId&gt; different from 1.&nbsp;<br>&nbsp;<br>5) If initial setting for TCPATRUN&nbsp;service(through&nbsp;AT#TCPATRUNCFG) has done:&nbsp;<br>&lt;connId&gt;&nbsp;= &lt;muxInstance&gt;, &nbsp;<br>then parameters set by&nbsp;AT#PKTSZ,&nbsp;AT#SKTTO, AT#DSTO affect the same &lt;connId&gt; &nbsp;<br>socket on which TCPATRUN service is running.&nbsp;<br>&nbsp;<br>6) AT+CGATT=0, AT+CGACT=0, AT+CGCLASS=”CC”, AT#SHDN, AT#BND=2, AT#BND=3,&nbsp;<br>ATQ1, ATQ2, AT#SIMDET=0, AT+CFUN=2 and AT+CFUN=4 commands cause an&nbsp;<br>irreversible&nbsp;block of the TCP AT RUN&nbsp;mechanism;&nbsp;<br>&nbsp;<br>7) The commands of AT#CSURV family can&nbsp;have&nbsp;the response truncated if too long:&nbsp;<br>these commands in fact send their responses during the network search, but while&nbsp;<br>they are executed, the GPRS service is suspended and so the&nbsp;TCP ATRUN cannot&nbsp;<br>transmit anything. It stores these responses in a buffer till the network search&nbsp;<br>completes. &nbsp;<br>Anyway, the&nbsp;use of this command is deprecated.&nbsp;<br>&nbsp;<br>8) The command ATZ returns ERROR if a Data&nbsp;Call is up and this Data Call has been set&nbsp;<br>up on a “muxInstance” different from&nbsp;the TCPATRUN “muxInstance”. The ATZ returns&nbsp;<br>ERROR also&nbsp;in the case the TCPATRUN works on an IPEGSM context (opened through&nbsp;<br>AT#SGACT=0,1), because the IPEGSM&nbsp;context is based on a Data Call.&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+3.9.<b>&nbsp;</b><br>
+TCPATRUN and Python&nbsp;<br>
+TCPARUN allows to download/upgrade/execute&nbsp;a Python script into Telit&nbsp;modules&nbsp;<br>using a remote TCP/IP connection (e.g Telnet). Below&nbsp;is reported a generic example to&nbsp;<br>demonstrate this feature.&nbsp;<br>&nbsp;<br>The module&nbsp;has been configured before in TCPATRUN in server mode with the AT&nbsp;<br>sequence reported below. This sequence can be&nbsp;configured locally (module site) or&nbsp;<br>using SMSATRUN service.&nbsp;<br>&nbsp;<br>AT+CGDCONT=1,&quot;IP&quot;,&quot;myAPN&quot;&nbsp;<br>&nbsp;<br>AT#SCFG=1,1,1500,0,600,50 &nbsp;// set&nbsp;Inactivity Timeout to 0&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;33&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=34></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-34_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-34_2.jpg"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>AT#TCPATRUNCFG=1,3,1024,… //&nbsp;listening on port 1024&nbsp;<br>&nbsp;<br>AT#TCPATRUNFRWL=2;#TCPATRUNFRWL=1,&quot;217.0.0.0&quot;,&quot;255.0.0.0&quot;&nbsp;<br>&nbsp;<br>AT#TCPATRUNAUTH=1,&quot;MyUser&quot;,&quot;MyPwd&quot;&nbsp;<br>&nbsp;<br>AT#SGACT=1,1 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// activate the context&nbsp;<br>&nbsp;<br>AT#TCPATRUNL=1&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+// start TCPRUNAT service&nbsp;<br>
+&nbsp;<br>A remote computer works as an IP client and Telnet is used to connect to&nbsp;the module&nbsp;<br>on the field.&nbsp;<br>&nbsp;<br>To start a Telnet session on the remote computer, it is possible to use Hyper Terminal&nbsp;<br>or any other terminal emulator via TCP/IP, setting the right&nbsp;port (1024 in&nbsp;this case) and&nbsp;<br>the IP address of the module (returned by&nbsp;AT#SGACT). After&nbsp;the login phase (login&nbsp;<br>requires username and&nbsp;password), the Python script can be&nbsp;downloaded on the&nbsp;<br>module, entering on Telnet, AT#WSCRIPT command using&nbsp;the same settings described&nbsp;<br>in the Telit_Easy_Script_Python user&nbsp;guide.&nbsp;<br>&nbsp;<br>Below is reported a screen-shot of the procedure described above.&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;34&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=35></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-35_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-35_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-35_3.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>&nbsp;<br>To upgrade&nbsp;a Python script that is running using TCPATRUN&nbsp;service we recommend&nbsp;<br>this procedure that can be easily execute using remote Telnet:&nbsp;<br>&nbsp;<br>1)&nbsp;&nbsp;download a new PY script with the same procedure above&nbsp;<br>
+&nbsp;<br>
+2)&nbsp;&nbsp;enable the new PY script&nbsp;with AT#ESCRIPT=ciclo3.py”&nbsp;<br>
+&nbsp;<br>
+3)&nbsp;&nbsp;reboot the module with AT#REBOOT to start the execution&nbsp;of the new python script&nbsp;<br>
+(ciclo3.py)&nbsp;<br>
+&nbsp;<br>
+Below is reported a series of screen-shots of the steps described above.&nbsp;<br>&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;35&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=36></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-36_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-36_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-36_3.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;36&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+<A name=37></a><IMG src="Telit_Run_AT_Remotely_Application_Note_r4-37_1.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-37_2.jpg"><br>
+<IMG src="Telit_Run_AT_Remotely_Application_Note_r4-37_3.png"><br>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+&nbsp;<br>
+Running AT commands remotely Application Note&nbsp;<br>
+80000NT10029a&nbsp;Rev.4 –&nbsp;2011-02-10&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Reproduction forbidden&nbsp;without Telit Communications S.p.A.&nbsp;written authorization -&nbsp;All Rights&nbsp;Reserved&nbsp;&nbsp;<br>
+&nbsp;<br>
+Page&nbsp;37&nbsp;of&nbsp;37&nbsp;<br>
+&nbsp;<br>
+<hr>
+</BODY>
+</HTML>
