@@ -1,0 +1,44 @@
+
+The Telit documentation was likely written by someone whose first language isa
+not English and doesn't seem to contain a command reference.
+
+// get an ip address
+//
+// 1. set PDP context
+AT#SGACT=1,1
+#SGACT: 
+
+
+// TCTPATRUNCFG
++----------------+--------------------------------------+-----+
+| Command      | Description                          | pg  |
++================+======================================+=====+
+| #SMSATRUN    | Enable SMS Run AT Service            | 377 |
+| #SMSATRUNCFG  | Set SMS Run AT Service parameters    | 378 |
+| #SMSATWL     | SMS AT Run white list                | 379 |
+| #TCPATRUNCFG  | Set TCP Run AT service parameters    | 380 |
+| #TCPATRUNL   | TCP Run AT Service in server mode    | 383 |
+| #TCPATRUNFRWL | TCP AT Run Firewall list             | 384 |
+| #TCPATRUNAUTH | TCP AT Run authentication param list | 385 |
+| #TCPATRUND   | TCP AT Run in client mode            | 386 |
+| #TCPATRUNCLOSE | Close TCP Run AT socket              | 387 |
+| #TCPATCMDSEQ  | TCP AT Run command sequence          | 387 |
+| #TCPATCONSER  | TCP Run AT service to serial port    | 388 |
+| #ATRUNDELAY  | Run AT Command execution             | 388 |
+| #ENAEVMONI   | Enable EvMoni Service                | 389 |
+| #ENAEVMONICFG |EvMoni Service params                | 390 |
+| #EVMONI      | Event monitoring                     | 391 |
+| #CMGS        | Send message                         | 394 |
+| #CMGW        | Write message to memory              | 395 |
++----------------+--------------------------------------+-----+
+
+G865 Tests
+~~~~~~~~~~
+http://wiki.groundlab.cc/doku.php?id=devices
+
+
+List:
+  * 
+
+
+

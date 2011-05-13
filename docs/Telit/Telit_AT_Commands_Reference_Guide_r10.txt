@@ -1554,7 +1554,7 @@ Reproduction forbidden without Telit Communications S.p.A. written authorization
 
 page 24 of 604
 
-AT Commands Reference Guide
+AT Commands Reference Guide
 80000ST10025a Rev. 10 – 2011-02-17
 
 3.2.5.
