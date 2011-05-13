@@ -4,5 +4,52 @@ Hello World: Telit GE865
 
 Objective
 ~~~~~~~~~
-Set up a series of hello world experiments
+
+Set up a series of hello world experiments.
+
+  * connecting to the device from an IP based system
+
+
+
+
+Requirements 
+~~~~~~~~~~~~
+
+  * set up service
+  * activate correct contexts
+  * set up socket
+  * configure firewall on device
+  * setup TCPATRUN
+
+Can this be done through TCPATRUN?  I don't think so:::
+
+    // can be done via SMSATRUN or otherwise locally
+    AT+CGDCONT=1,"IP","myAPN"
+    AT#SFCG=1,1,1500,0,600,50 // set Inactivity Timeout to 0
+
+Once the device is ready for TCPATRUN, do we device is client or in server
+mode?  If the device is in client mode, do we want some kind of hello ack to
+aid in discovery?  Should we make a few custom AT commands for TWI?
+If the device is in server mode, how do we discover the device's IP?
+
+Can we charge through a usb cable to a known power supply?
+
+
+Telit Commands
+~~~~~~~~~~~~~~
+code:
+
+    // set up client mode
+    AT#SGACTCFG=1,1
+    AT#SGACT=1,1
+    AT#TCPATRUNCFG=1,2,1024
+
+    AT#TCPATRUND=1
+    // DATA set up?
+    AT#MON1=7
+    AT#MON1
+    // data...
+    +++ // disconnect?
+
+
 

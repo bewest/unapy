@@ -1,7 +1,51 @@
 
-Overview:
+
+#####################
+Use Cases
+#####################
   
 
+Forward New Test Results
+========================
+
+When a test result is written to the meter's serial port, forward the result
+to a server.  
+
+Storing the result in Ram
+~~~~~~~~~~~~~~~~~~~~~~~~~
+  * store the result in RAM
+
+then
+,,,,
+
+  * run TCPATRUN in client mode
+  * write the result from RAM into the socket
+
+or
+,,,,
+
+  * run TCPATRUN in client mode
+  * write the result from RAM into the socket
+
+or
+,,
+
+  * socket dial the server and write the result
+    The Easy IP guide has a better writeup on this than the TCPATRUN app note.
+
+  * email a special user
+  * sms a special message
+  * ftp a file
+
+I believe the network has to be configured after the test result has already
+been written to the device's port?
+
+Port forward the meter
+======================
+
+An SMSATRUN configuration can tell the module to configure a socket to the
+meter.  IP Guide has a nice write up on this kind of thing.  I'm not sure
+TCPATRUN is needed, althought SMSATRUN is in the same guide.
 
 
 
