@@ -1,0 +1,12 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"><title>Redirect Notice</title><style><!--
+body,td,div,.p,a{font-family:arial,sans-serif}
+div,td{color:#000}
+.f{color:#6f6f6f}
+a:link{color:#00c}
+a:visited{color:#551a8b}
+a:active{color:red}
+div.a{border-top:1px solid #bbb;border-bottom:1px solid #bbb;background:#f2f2f2;margin-top:1em;width:100%}
+div.b{padding:0.5em 0;margin-left:10px}
+div.c{margin-top:35px;margin-left:35px}
+--></style>
+<script>function go_back() {window.history.go(-1);return false;}function ctu() {var link = document && document.referrer;var esc_link = "";if (link) {var e = (window && window.encodeURIComponent) ? encodeURIComponent : escape;esc_link = e(link);}new Image().src ="/url?sa=T&url=" + esc_link + "&oi=unauthorizedredirect&ct=originlink";return false;}</script></head><body topmargin=3 bgcolor=#ffffff marginheight=3><div class=a><div class=b><font size=+1><b>Redirect Notice</b></font></div></div><div class=c>&nbsp;The previous page is sending you to an invalid url.<br><br>&nbsp;If you do not want to visit that page, you can <a href="#" onclick="return go_back();" onmousedown="ctu();">return to the previous page</a>.<br><br><br></div></body></html>
