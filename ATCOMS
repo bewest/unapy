@@ -42,3 +42,5 @@ List:
 
 
 
+AT+CGDCONT=0,"IP", "webtrial.globalm2m.net"
+
