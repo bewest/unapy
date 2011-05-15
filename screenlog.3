@@ -1,0 +1,154 @@
+AT+G
+
+ERROR
+AT
+
+OK
+AT+
+
+ERROR
+AT#GRPS?
+
+ERROR
+AT#GPRS?
+
+#GPRS: 1
+
+OK
+AT#
+ERROR
+AT+CGDCONT?
+
++CGDCONT: 1,"IP","webtrial.globalm2m.net","",0,0
+
+OK
+AT#GR
+
+ERROR
+AT#P
+
+ERROR
+AT#GPRS=1
+
++CME ERROR: context already activated
+AT#CGPAA
+
+ERROR
+AT#CGPADDR
+
++CME ERROR: operation not allowed
+AT#CGPADDR=1
+
+#CGPADDR: 1,"10.215.214.188"
+
+OK
+AT#CGPADDR=?
+#CGPADDR: (1)
+
+OK
+AT
+
+OK
+AT
+
+OK
+AT
+
+OK
+AT// comment
+ERROR
+AT
+
+OK
+AT$GPSP?
+
+ERROR
+AT$GPSP
+
+ERROR
+AT$GPSP
+
+ERROR
+AT$GPSP?
+ERROR
+AT$GPSP=1
+ERROR
+AT$GPSAV?
+
+ERROR
+AT$GPSAV
+
+ERROR
+AT$GPSP=0
+ERROR
+AT$GPSR=0
+
+ERROR
+AT$GPSD=0
+
+ERROR
+AT$GPSSAV
+
+ERROR
+AT+$GPSP?
+
+ERROR
+AT#SNUM?
+
+ERROR
+AT#SNUM=?0
+
+ERROR
+AT#SNUME
+
+ERROR
+AT#SNUM=?1
+
+ERROR
+AT#QTEMP?
+
+#QTEMP: 0
+
+OK
+AT#QTEMP=1
+
++CME ERROR: operation not supported
+AT#QTEMP=0
+
+OK
+AT#TEMPMON?
+
+#TEMPMON: 0,0
+
+OK
+
++CREG: 3
+
++CREG: 5
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/threading.py", line 532, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.6/threading.py", line 484, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/usr/local/lib/python2.6/dist-packages/pyserial-2.5-py2.6.egg/EGG-INFO/scripts/miniterm.py", line 200, in reader
+    data = self.serial.read(1)
+  File "/usr/local/lib/python2.6/dist-packages/pyserial-2.5-py2.6.egg/serial/serialposix.py", line 456, in read
+    raise SerialException('device reports readiness to read but returned no data (device disconnected?)')
+SerialException: device reports readiness to read but returned no data (device disconnected?)
+
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/threading.py", line 532, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.6/threading.py", line 484, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/usr/local/lib/python2.6/dist-packages/pyserial-2.5-py2.6.egg/EGG-INFO/scripts/miniterm.py", line 373, in writer
+    self.serial.write(c)                    # send character
+  File "/usr/local/lib/python2.6/dist-packages/pyserial-2.5-py2.6.egg/serial/serialposix.py", line 485, in write
+    raise SerialException('write failed: %s' % (v,))
+SerialException: write failed: [Errno 5] Input/output error
+
+
+--- exit ---
+]0;bewest@mimsy: /home/bewest/Documents/bb/summer-2011[01;32mbewest@mimsy[00m:[01;34m~/Documents/bb/summer-2011[00m$ 
