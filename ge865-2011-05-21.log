@@ -1,0 +1,602 @@
+miniterm.py -p /dev/ttyUSB0 
+--- Miniterm on /dev/ttyUSB0: 9600,8,N,1 ---
+--- Quit: Ctrl+]  |  Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+ATI
+
+332
+
+OK
+AT+CMER
+
+ERROR
+AT+CMEE=2
+
+OK
+AT+CREG?
+
++CREG: 0,5
+
+OK
+ATI4
+
+GE865
+
+OK
+AT+CNUM?
++CME ERROR: operation not supported
+AT+CNUM
+
++CNUM: "","",129
+
+OK
+AT+CBST?
++CBST: 0,0,1
+
+OK
+AT+COPS?
+
++COPS: 0,0,"AT&T"
+
+OK
+AT+CR?
+
++CR: 0
+
+OK
+AT+CR=2
+ERROR
+AT+CR=1
+OK
+AT+CR
+ERROR
+AT+CR?
+
++CR: 1
+
+OK
+AT+GCAP
++GCAP: +CGSM,+DS,+FCLASS,+MS
+
+OK
+AT+CLKC
+
+ERROR
+AT+CLCK?
+
++CME ERROR: operation not supported
+AT+CLCK
+
++CME ERROR: operation not supported
+AT+GMI
+Telit
+
+OK
+AT+GMM
+
+GE865
+
+OK
+AT+GMR
+10.00.002
+
+OK
+AT+GCAP
++GCAP: +CGSM,+DS,+FCLASS,+MS
+
+OK
+AT+V
+
+ERROR
+AT&V
+
+ 
+DTE SPEED                      : AUTO
+DTE FORMAT                     : AUTO
+GSM DATA MODE                  : Not Transparent
+AUTOBAUD                       : +IPR0=YES            
+COMMAND ECHO                   : E1=YES            
+RESULT MESSAGES                : Q0=S            
+VERBOSE MESSAGES               : V1=YES            
+EXTENDED MESSAGES              : X1=YES            
+LINE SPEED                     : F0=autodetect     
+CONSTANT DTE SPEED             : YES            
+FLOW CONTROL OPTIONS           : &K3=HW bidirect.   
+ERROR CORRECTION MODE          : RLP            
+CTS (C106) OPTIONS             : &B2=OFF while disc.
+DSR (C107) OPTIONS             : &S3=PHONE ready->ON
+DTR (C108) OPTIONS             : &D0=ignored        
+DCD (C109) OPTIONS             : &C1=follows carrier
+RI (C125) OPTIONS              : \R1=OFF dur. off-hk
+C108/1 OPERATION               : &D4=NO             
+POWER SAVING ON DTR            : +CFUN:1=NO             
+DEFAULT PROFILE                : &Y0=user profile 1 
+
+OK
+AT&V0
+
+ 
+DTE SPEED                      : AUTO
+DTE FORMAT                     : AUTO
+GSM DATA MODE                  : Not Transparent
+AUTOBAUD                       : +IPR0=YES            
+COMMAND ECHO                   : E1=YES            
+RESULT MESSAGES                : Q0=YES            
+VERBOSE MESSAGES               : V1=YES            
+EXTENDED MESSAGES              : X1=YES            
+LINE SPEED                     : F0=autodetect     
+CONSTANT DTE SPEED             : YES            
+FLOW CONTROL OPTIONS           : &K3=HW bidirect.   
+ERROR CORRECTION MODE          : RLP            
+CTS (C106) OPTIONS             : &B2=OFF while disc.
+DSR (C107) OPTIONS             : &S3=PHONE ready->ON
+DTR (C108) OPTIONS             : &D0=ignored        
+DCD (C109) OPTIONS             : &C1=follows carrier
+RI (C125) OPTIONS              : \R1=OFF dur. off-hk
+C108/1 OPERATION               : &D4=NO             
+POWER SAVING ON DTR            : +CFUN:1=NO             
+DEFAULT PROFILE                : &Y0=user profile 1 
+
+OK
+AT&V1
+
+ 
+REG     DEC     HEX              
+000     000     000
+001     000     000
+002     043     02B
+003     013     00D
+004     010     00A
+005     008     008
+007     060     03C
+012     050     032
+025     005     005
+038     020     014
+
+OK
+AT&2
+
+ERROR
+AT&V2
+
+ 
+TOTAL CONNECTION TIME          : 0:00:00
+CONNECTION FAILURE REASON      : powered off    
+
+OK
+AT+CGMR?
++CME ERROR: operation not supported
+AT+CGMR
+10.00.002
+
+OK
+AT+GSN
+
+0000614558
+
+OK
+AT&L
+
+ERROR
+AT5L
+
+ERROR
+AT%L
+
+OK
+AT%L?
+000
+
+OK
+AT+CPOL?
+
++CPOL: 1,2,"310410"
++CPOL: 2,2,"310090"
++CPOL: 3,2,"310560"
++CPOL: 4,2,"310680"
++CPOL: 5,2,"310380"
++CPOL: 6,2,"310030"
++CPOL: 7,2,"310830"
++CPOL: 8,2,"310100"
++CPOL: 9,2,"311190"
++CPOL: 10,2,"310950"
++CPOL: 11,2,"311040"
++CPOL: 12,2,"311090"
++CPOL: 13,2,"310590"
++CPOL: 14,2,"311210"
++CPOL: 15,2,"310890"
++CPOL: 16,2,"311330"
++CPOL: 17,2,"310610"
++CPOL: 18,2,"310320"
++CPOL: 19,2,"310260"
++CPOL: 20,2,"334020"
++CPOL: 21,2,"310770"
++CPOL: 22,2,"310140"
+
+OK
+AT+CLCK?
+
++CME ERROR: operation not supported
+AT+
+
+ERROR
+AT+CPAS
+
++CPAS: 0
+
+OK
+AT+CPAS?
+
++CME ERROR: operation not supported
+AT+CCID?
+
++CME ERROR: operation not supported
+AT+CCID
+
++CME ERROR: operation not supported
+AT+CCID?
+
++CME ERROR: operation not supported
+AT#SELINT?
+
+#SELINT: 2
+
+OK
+ATI0
+
+332
+
+OK
+ATI1
+
+0
+
+OK
+ATI2
+
+OK
+ATI1?
+
+0
+
+000
+
+OK
+ATI2?
+
+000
+
+OK
+ATI3?
+
+Telit
+
+000
+
+OK
+ATI4?
+
+GE865
+
+000
+
+OK
+ATI5?
+
+DOB v.2.0
+
+000
+
+OK
+ATD9082165054;       
+ 
+OK
+ATH
+
+OK
+ATD4152053920;
+
+OK
+ATH
+
+OK
+ATD*99#
+
+CONNECT
+
+--- pySerial (2.5) - miniterm - help
+---
+--- Ctrl+]   Exit program
+--- Ctrl+T   Menu escape key, followed by:
+--- Menu keys:
+---       Ctrl+T   Send the menu character itself to remote
+---       Ctrl+]   Send the exit character to remote
+---       Ctrl+I   Show info
+---       Ctrl+U   Upload file (prompt will be shown)
+--- Toggles:
+---       Ctrl+R  RTS          Ctrl+E  local echo
+---       Ctrl+D  DTR          Ctrl+B  BREAK
+---       Ctrl+L  line feed    Ctrl+A  Cycle repr mode
+---
+--- Port settings (Ctrl+T followed by the following):
+--- 7 8           set data bits
+--- n e o s m     change parity (None, Even, Odd, Space, Mark)
+--- 1 2 3         set stop bits (1, 2, 1.5)
+--- b             change baud rate
+--- x X           disable/enable software flow control
+--- r R           disable/enable hardware flow control
+
+--- exit ---
+]0;bewest@ripen: /home/bewest/Documents/bb/summer-2011[01;32mbewest@ripen[00m:[01;34m~/Documents/bb/summer-2011[00m$ miniterm.py -p /dev/ttyUSB0 
+--- Miniterm on /dev/ttyUSB0: 9600,8,N,1 ---
+--- Quit: Ctrl+]  |  Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+ATI
+
+332
+
+OK
+ATI?
+
+332
+
+000
+
+OK
+ATI
+
+332
+
+OK
+AT1
+
+ERROR
+ATI1?
+
+0
+
+000
+
+OK
+AT+CGATT?
++CGATT: 1
+
+OK
+AT+CMEE=2
+OK
+AT+CGATT?
+
++CGATT: 1
+
+OK
+AT+CR=1
+
+OK
+AT+CGATT?
+
++CGATT: 1
+
+OK
+AT+CGEREP?
+
++CGEREP: 0,0
+
+OK
+AT+CGREG=1?
+
+OK
+AT+CGREG?
+
++CGREG: 1,5
+
+OK
+AT&V0
+
+ 
+DTE SPEED                      : AUTO
+DTE FORMAT                     : AUTO
+GSM DATA MODE                  : Not Transparent
+AUTOBAUD                       : +IPR0=YES            
+COMMAND ECHO                   : E1=YES            
+RESULT MESSAGES                : Q0=YES            
+VERBOSE MESSAGES               : V1=YES            
+EXTENDED MESSAGES              : X1=YES            
+LINE SPEED                     : F0=autodetect     
+CONSTANT DTE SPEED             : YES            
+FLOW CONTROL OPTIONS           : &K3=HW bidirect.   
+ERROR CORRECTION MODE          : RLP            
+CTS (C106) OPTIONS             : &B2=OFF while disc.
+DSR (C107) OPTIONS             : &S3=PHONE ready->ON
+DTR (C108) OPTIONS             : &D0=ignored        
+DCD (C109) OPTIONS             : &C1=follows carrier
+RI (C125) OPTIONS              : \R1=OFF dur. off-hk
+C108/1 OPERATION               : &D4=NO             
+POWER SAVING ON DTR            : +CFUN:1=NO             
+DEFAULT PROFILE                : &Y0=user profile 1 
+
+OK
+AT&V1
+ 
+REG     DEC     HEX              
+000     000     000
+001     000     000
+002     043     02B
+003     013     00D
+004     010     00A
+005     008     008
+007     060     03C
+012     050     032
+025     005     005
+038     020     014
+
+OK
+AT&V2
+
+ 
+TOTAL CONNECTION TIME          : 0:00:00
+CONNECTION FAILURE REASON      : powered off    
+
+OK
+AT&3
+
+ERROR
+AT+CGDCONT=?
+
++CGDCONT: (1-5),"IP",,,(0,1),(0,1)
+
+OK
+AT
+OK
+AT+CGDCONT=1,"IP","webtrial.globalm2m.net"
+
+OK
+AT+CGDCONT?
+
++CGDCONT: 1,"IP","webtrial.globalm2m.net","",0,0
++CGDCONT: 2,"IP","wap.cingular","",0,0
+
+OK
+AT#SGACT=1,1 
+
+#SGACT: 10.214.230.150
+
+OK
+AT#SCFGEXT=1,2,1,0,1,1 
+
+OK
+AT#SD=1,0,80,"tinymicros.com",0,1,1 
+
++CME ERROR: can not resolve DN
+AT#CGADDR?
+
+ERROR
+ATE
+
+OK
+
+000
+
+OK
+
+OK
+
+OK
+
+OK
+
+000
+
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+
+000
+
+OK
+
+OK
+
+OK
+AT
+
+OK
+AT
+
+OK
+ATI
+
+332
+
+OK
+AT&V2
+
+ 
+TOTAL CONNECTION TIME          : 0:00:00
+CONNECTION FAILURE REASON      : powered off    
+
+OK
+AT&V
+ 
+DTE SPEED                      : AUTO
+DTE FORMAT                     : AUTO
+GSM DATA MODE                  : Not Transparent
+AUTOBAUD                       : +IPR0=YES            
+COMMAND ECHO                   : E1=YES            
+RESULT MESSAGES                : Q0=YES            
+VERBOSE MESSAGES               : V1=YES            
+EXTENDED MESSAGES              : X1=YES            
+LINE SPEED                     : F0=autodetect     
+CONSTANT DTE SPEED             : YES            
+FLOW CONTROL OPTIONS           : &K3=HW bidirect.   
+ERROR CORRECTION MODE          : RLP            
+CTS (C106) OPTIONS             : &B2=OFF while disc.
+DSR (C107) OPTIONS             : &S3=PHONE ready->ON
+DTR (C108) OPTIONS             : &D0=ignored        
+DCD (C109) OPTIONS             : &C1=follows carrier
+RI (C125) OPTIONS              : \R1=OFF dur. off-hk
+C108/1 OPERATION               : &D4=NO             
+POWER SAVING ON DTR            : +CFUN:1=NO             
+DEFAULT PROFILE                : &Y0=user profile 1 
+
+OK
+AT
+
+OK
+AT+CGACT?
+
++CGACT: 1,0
++CGACT: 2,0
+
+OK
+AT+CGPADDR?
+
+ERROR
+AT+CGPADDR
+
+ERROR
+AT+CGPADDR?
+
+ERROR
+AT+CGPADDR
+
+ERROR
+AT+CGPADDR=?
+
++CGPADDR: (1,2)
+
+OK
+AT+CGPADDR=1
+
++CGPADDR: 1,""
+
+OK
+AT+CGPADDR=2
+
++CGPADDR: 2,""
+
+OK
+AT+CGA
+
+ERROR
+AT+CGPADDR?
+ERROR
+AT+CMAR
+
+ERROR
+AT+CMAR=1
+
+ERROR
+AT+CMAR?
+
+ERROR
+
+--- exit ---
+]0;bewest@ripen: /home/bewest/Documents/bb/summer-2011[01;32mbewest@ripen[00m:[01;34m~/Documents/bb/summer-2011[00m$ 
