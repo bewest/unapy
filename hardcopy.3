@@ -1,0 +1,87 @@
+
+ERROR
+AT#SNUM=?1
+
+ERROR
+AT#QTEMP?
+
+#QTEMP: 0
+
+OK
+AT#QTEMP=1
+
++CME ERROR: operation not supported
+AT#QTEMP=0
+
+OK
+AT#TEMPMON?
+
+#TEMPMON: 0,0
+
+OK
+
++CREG: 3
+
++CREG: 5
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/threading.py", line 532, in __bootstrap_inne
+r
+    self.run()
+  File "/usr/lib/python2.6/threading.py", line 484, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/usr/local/lib/python2.6/dist-packages/pyserial-2.5-py2.6.egg/E
+GG-INFO/scripts/miniterm.py", line 200, in reader
+    data = self.serial.read(1)
+  File "/usr/local/lib/python2.6/dist-packages/pyserial-2.5-py2.6.egg/s
+erial/serialposix.py", line 456, in read
+    raise SerialException('device reports readiness to read but returne
+d no data (device disconnected?)')
+SerialException: device reports readiness to read but returned no data
+(device disconnected?)
+
+
+>=====================================================================<
+d no data (device disconnected?)')
+SerialException: device reports readiness to read but returned no data
+(device disconnected?)
+
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/threading.py", line 532, in __bootstrap_inne
+r
+    self.run()
+  File "/usr/lib/python2.6/threading.py", line 484, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/usr/local/lib/python2.6/dist-packages/pyserial-2.5-py2.6.egg/E
+GG-INFO/scripts/miniterm.py", line 373, in writer
+    self.serial.write(c)                    # send character
+  File "/usr/local/lib/python2.6/dist-packages/pyserial-2.5-py2.6.egg/s
+erial/serialposix.py", line 485, in write
+    raise SerialException('write failed: %s' % (v,))
+SerialException: write failed: [Errno 5] Input/output error
+
+
+--- exit ---
+bewest@mimsy:~/Documents/bb/summer-2011$ ls
+addresses  firstrun.log                           rfc2217_server.py
+ARCH       hardcopy.3                             screenlog.3
+ATCOMS     m2m                                    sims-jasper-att.txt
+att        order-confirm-2011-05-10-sparkfun.txt  src
+docs       parts                                  TelitAtRunHelloWorld
+ex         README                                 telit-winpython
+bewest@mimsy:~/Documents/bb/summer-2011$ jobs
+[1]+  Running                 evince pdf/Telit_AT_Commands_Reference_Gu
+ide_r10.pdf &  (wd: ~/Documents/bb/summer-2011/docs/Telit)
+bewest@mimsy:~/Documents/bb/summer-2011$ ls
+addresses  firstrun.log                           rfc2217_server.py
+ARCH       hardcopy.3                             screenlog.3
+ATCOMS     m2m                                    sims-jasper-att.txt
+att        order-confirm-2011-05-10-sparkfun.txt  src
+docs       parts                                  TelitAtRunHelloWorld
+ex         README                                 telit-winpython
+bewest@mimsy:~/Documents/bb/summer-2011$
+bewest@mimsy:~/Documents/bb/summer-2011$ jobs
+[1]+  Running                 evince pdf/Telit_AT_Commands_Reference_Gu
+ide_r10.pdf &  (wd: ~/Documents/bb/summer-2011/docs/Telit)
+bewest@mimsy:~/Documents/bb/summer-2011$
