@@ -6,8 +6,7 @@ series.  It applies to the GE865-QUAD series.
 
 """
 
-
-
+from core import *
 
 #####
 # EOF
