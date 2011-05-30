@@ -51,12 +51,19 @@ class Link(serial.Serial, util.Loggable):
     """
       Synchronously process a single command.
     """
+    # format the command
     message = command.format()
     self.log.info('process.read: %r' % message)
+
+    # write it into the port
     self.write(message)
     self.log.info('reading...')
+
+    # read response
     response = ''.join(self.readlines())
     self.log.info('process.respnse: %r' % response)
+
+    # store response in the command
     result = command.parse(response)
     self.log.info('process.parse.result: %r' % result)
     return command
