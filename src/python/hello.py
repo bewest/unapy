@@ -11,7 +11,7 @@ ge865.logger.setLevel(logging.DEBUG)
 if __name__ == '__main__':
   logging.info('hello world')
   logging.debug('hello world')
-  ge865.test()
+  ge865.test('/dev/ttyUSB0')
 
 #####
 # EOF
