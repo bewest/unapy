@@ -18,17 +18,17 @@ class Link(serial.Serial, util.Loggable):
     self.log.debug('created device: %r' % self)
 
   def dump_port_settings(self):
-    info = [ "Settings: %s  %s,%s,%s,%s\n" % (
+    info = [ "Settings: %s  %s,%s,%s,%s" % (
                         self.portstr, self.baudrate,
                         self.bytesize, self.parity,
                         self.stopbits, ),
-      'software flow control %s\n' % (self.xonxoff and 'active' or 'inactive'),
-      'hardware flow control %s\n' % (self.rtscts and 'active' or 'inactive'),
+      ' -- software flow control %s' % (self.xonxoff and 'active' or 'inactive'),
+      ' -- hardware flow control %s' % (self.rtscts and 'active' or 'inactive'),
     ]
 
     try:
       if self.isOpen():
-        info.append('CTS: %s  DSR: %s  RI: %s  CD: %s\n' % (
+        info.append(' -- CTS: %s  DSR: %s  RI: %s  CD: %s' % (
             ((self.isOpen() and self.getCTS()) and 'active' or 'inactive'),
             (self.getDSR() and 'active' or 'inactive'),
             (self.getRI() and 'active' or 'inactive'),
