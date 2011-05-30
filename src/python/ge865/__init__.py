@@ -81,7 +81,7 @@ def test(name):
   print "%r" % command
   command = d.process(command)
   print "%r" % command
-  command = d.process(commands.Command())
+  command = d.process(commands.ATCommand())
   print "%r" % command
 
 
