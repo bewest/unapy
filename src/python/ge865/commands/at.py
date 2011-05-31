@@ -147,12 +147,6 @@ class CEER(PoundSeparatedCommand):
 class CEERNET(PoundSeparatedCommand):
   """Extended error report for network reject cause."""
 
-class SRS(PoundSeparatedCommand):
-  """Select ringer sound."""
-
-class SRP(PoundSeparatedCommand):
-  """Select ringer path."""
-
 class REGMODE(PoundSeparatedCommand):
   """Select registration operation mode."""
 
@@ -369,6 +363,115 @@ class SWLEVEL(PoundSeparatedCommand):
 
 class CFLO(PoundSeparatedCommand):
   """command flow control."""
+
+class CMGLCONCINDEX(PoundSeparatedCommand):
+  """report concatenated SMS index."""
+
+class CODECINFO(PoundSeparatedCommand):
+  """codec information."""
+
+class SII(PoundSeparatedCommand):
+  """second interface instance."""
+
+class SYSHALT(PoundSeparatedCommand):
+  """system turn-off."""
+
+class ENAUSIM(PoundSeparatedCommand):
+  """enable USIM application."""
+
+class SIMINCFG(PoundSeparatedCommand):
+  """SIMN pin configuration."""
+
+class LANG(PoundSeparatedCommand):
+  """select language."""
+
+class CAPD(WellDefinedCommand):
+  """Postpone alarm."""
+
+class CCWE(WellDefinedCommand):
+  """Call meter maxmimum event."""
+
+class CSDF(WellDefinedCommand):
+  """setting date fromat."""
+
+class CSIL(WellDefinedCommand):
+  """silence command."""
+
+class CSTF(WellDefinedCommand):
+  """setting time format."""
+
+class CTFR(WellDefinedCommand):
+  """call deflection."""
+
+class CTZR(WellDefinedCommand):
+  """time-zone reporting."""
+
+class CTZU(WellDefinedCommand):
+  """automatic time zone update."""
+
+class CSIM(WellDefinedCommand):
+  """generic SIM access."""
+
+class CAP(PoundSeparatedCommand):
+  """change audio path."""
+
+class AXE(PoundSeparatedCommand):
+  """AXE pin reading."""
+
+class SRS(PoundSeparatedCommand):
+  """select ringer sound."""
+
+class SRP(PoundSeparatedCommand):
+  """select ringer path."""
+
+class HFMICG(PoundSeparatedCommand):
+  """hands free microphone gain."""
+
+class HSMICG(PoundSeparatedCommand):
+  """handset microphone gain."""
+
+class HFRECG(PoundSeparatedCommand):
+  """handsfree receiver gain."""
+
+class SHFSD(PoundSeparatedCommand):
+  """set handsfree side tone."""
+
+class SHSSD(PoundSeparatedCommand):
+  """set handset side tone."""
+
+"""
+ALSO seen here:
+
+SPKMUT
+
+
+"""
+
+class OAP(PoundSeparatedCommand):
+  """open audio path."""
+
+class STM(PoundSeparatedCommand):
+  """signaling tones mode."""
+
+class TONE(PoundSeparatedCommand):
+  """tone playback."""
+
+class TONEEXT(PoundSeparatedCommand):
+  """extended tone generation."""
+
+class TSVOL(PoundSeparatedCommand):
+  """tone classes volume."""
+
+class UDTSET(PoundSeparatedCommand):
+  """UDTSET command."""
+
+class UDTSAV(PoundSeparatedCommand):
+  """UDTSAV command."""
+
+class UDTRST(PoundSeparatedCommand):
+  """UDTRST command."""
+
+
 
 
 class CMUX(WellDefinedCommand):
