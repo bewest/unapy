@@ -223,7 +223,7 @@ class MetaCommand(type):
 
   @staticmethod
   def getQuery(name, dct):
-    class query(NullQueryable):
+    class query(dct.get('query', NullQueryable)):
       cmd = name
     if '__query__' in dct:
       query.__Response__ = dct['__query__']
@@ -231,7 +231,7 @@ class MetaCommand(type):
 
   @staticmethod
   def getAssign(name, dct):
-    class assign(NullSettable):
+    class assign(dct.get('assign', NullSettable)):
       cmd = name
     if '__assign__' in dct:
       assign.__Response__ = dct['__assign__']
