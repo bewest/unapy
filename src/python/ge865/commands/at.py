@@ -203,6 +203,54 @@ class CMER(WellDefinedCommand):
   """mobile equipment event reporting."""
 
 
+"""
+IP Easy Operations
+"""
+class CGDCONT(WellDefinedCommand):
+  """Set up PDP context.
+
+  At minimum requires args:
+    * cid
+    * PDP type "IP" or "PPP"
+    * APN
+    * PDP_addr - requested IP
+    * d_comp - data compressions
+    * h_comp - PDP heaer compression
+  """
+
+class CGQMIN(WellDefinedCommand):
+  """Miminum quality of service.
+    * cid - 1..5
+
+    * precedence - 0..3
+      * 0: subscribed
+      * 1: high pri
+      * 2: normal
+      * 3: low pri
+
+    * delay - max delay: 0..4
+      * 0: subscribed (default)
+      * 1: delay class 1
+      * 2: delay class 2
+      * 3: delay class 3
+      * 4: delay class 4
+
+    * reliability - 0..5
+      * 0: subscribed
+      * 1: reliability 1 (acknowledged GTP, LLC, RLC; protected data )
+      * 2: reliability 2 (unacknowledged GTP, acked LLC and RLC; protected
+           data )
+      * 3: reliability 3 (acknowledged GTP, LLC, RLC; protected data )
+      * 4: reliability 4 (acknowledged GTP, LLC, RLC; protected data )
+      * 5: reliability 5 (acknowledged GTP, LLC, RLC; protected data )
+
+    * peak
+    * mean
+    * cr
+
+  """
+
+
 if __name__ == '__main__':
   import doctest
   doctest.testmod()
