@@ -170,7 +170,7 @@ class Settable(ATCommand):
   tail = "{0}"
 
   def __init__(self, *args, **kwds):
-    self.args = args
+    self.args = map(str, args)
     self.kwds = kwds
 
   def format(self):
@@ -180,6 +180,7 @@ class Settable(ATCommand):
     """
     head = ''.join([ self.pre, self.sep, self.cmd ])
     tail = self.tail.format(*self.args, **self.kwds)
+    tail = ', '.join(self.args)
     cmd  = '='.join([head, tail])
     return bytearray("%s\r" % cmd)
 
