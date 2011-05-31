@@ -5,6 +5,10 @@ logger = logging.getLogger(__name__)
 
 from core import Command, ATCommand, Response, NullSettable, NullQueryable
 from core import IdentCommand, WellDefinedCommand, MetaCommand
+
+class PoundSeparatedCommand(WellDefinedCommand):
+  sep = '#'
+
  
 """
 3gpp commands
@@ -294,6 +298,7 @@ class CGEQMIN(WellDefinedCommand):
 
 
   Telit suggests AT+CGEQMIN=1,4,0,0,0,0,2,0,"0E0", "0E0", 3,0,0
+
   """
 
 class CGEQREQ(WellDefinedCommand):
@@ -326,8 +331,6 @@ class CGEQREQ(WellDefinedCommand):
   """
 
 
-  Telit suggests AT+CGEQMIN=1,4,0,0,0,0,2,0,"0E0", "0E0", 3,0,0
-
 
 class CGACT(WellDefinedCommand):
   """PDP Context Activate/Deactivate
@@ -343,13 +346,101 @@ class CGATT(WellDefinedCommand):
   """Attach GPRS"""
 
 class SCFG(WellDefinedCommand):
-  """ 
+  """Configure TCP/IP stack with packet size and timeouts
+
+    * connection id
+    * context id
+    * pkt size (minimum default - 300 bytes)
+    * global timeout - inactivity (90 sec)
+    * connect timeout - (60 sec in tenths of a second)
+    * tx timeout - data send timeout ( 5 sec expressed in 10ths of sec)
   """
   sep = '#'
 
+class CGDATA(WellDefinedCommand):
+  """Enter/exit data state.
+  """
+
+class SGACT(PoundSeparatedCommand):
+  """ Activate/Deactivate context for TCP/IP
+  """
+
+class SGACTAUTH(PoundSeparatedCommand):
+  """ Set authentication
+    * 0:  no auth
+    * 1:  PAP auth (factory default)
+    * 2:  CHAP auth
+  """
+
+class SGACTCFG(PoundSeparatedCommand):
+  """ Set authentication
+    * cid id: 1..5 
+    * retry: 0..15
+    * delay: 180-3600 (seconds) between attempts
+    * urcmode: 0..1 enable unsoluted result code of IP
+    
+
+  """
+
+class SD(PoundSeparatedCommand):
+  """ Socket Dial
+    * should include dns?
+    * 
+
+    * cid
+    * protocol: 0 TCP, 1 UDP
+    * Remote port
+    * IP address
+  """
+
+class PADFWD(PoundSeparatedCommand):
+  """Choose a flush character"""
+
+class PADCMD(PoundSeparatedCommand):
+  """Enabled/disable flush character command"""
+
+class SO(PoundSeparatedCommand):
+  """ resume suspencded connection
+  """
+
+class SH(PoundSeparatedCommand):
+  """ close socket."""
+
+class TCPREASS(PoundSeparatedCommand):
+  """Enable/disable TCP reassembly (off default)
+  """
+
+class TCPMAXDAT(PoundSeparatedCommand):
+  """Set max payload size in one datagram (in bytes).
+  """
+
+class BASE64(PoundSeparatedCommand):
+  """Base64 encode/decode in/out of a socket."""
+
+class SL(PoundSeparatedCommand):
+  """Listen on a socket (TCP/IP).
+    * cid
+    * listen state (1/0)
+    * port
+  """
+
+class SLUDP(PoundSeparatedCommand):
+  """Listen on a socket. (UDP)
+    * cid
+    * listen state (1/0)
+    * port
+  """
+
+class SS(PoundSeparatedCommand):
+  """Socket Status
+  """
+
+class SA(PoundSeparatedCommand):
+  """Accept incoming connection."""
+
 """
 Enable SIM Application Toolkit
-~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 
 class STIA(WellDefinedCommand):
