@@ -179,9 +179,21 @@ class Settable(ATCommand):
       'AT+=1\\r'
     """
     head = ''.join([ self.pre, self.sep, self.cmd ])
-    tail = self.tail.format(*self.args, **self.kwds)
     tail = ', '.join(self.args)
     cmd  = '='.join([head, tail])
+    return bytearray("%s\r" % cmd)
+
+class Inspectable(Settable):
+  def format(self):
+    """
+      >>> str(Inspectable(1).format())
+      'AT+=?1\\r'
+      >>> str(Inspectable().format())
+      'AT+=?\\r'
+    """
+    head = ''.join([ self.pre, self.sep, self.cmd ])
+    tail = ', '.join(self.args)
+    cmd  = '=?'.join([head, tail])
     return bytearray("%s\r" % cmd)
 
 class IdentCommand(Settable):
@@ -203,6 +215,9 @@ class NullQueryable(Queryable):
 class NullSettable(Settable):
   cmd = None
 
+class NullInspectable(Inspectable):
+  cmd = None
+
 
 
 class MetaCommand(type):
@@ -215,6 +230,8 @@ class MetaCommand(type):
     newdict['query']  = meta.glom(meta.getQuery(cmd, dct),
                         dct, ['sep', 'pre'])
     newdict['assign'] = meta.glom(meta.getAssign(cmd, dct),
+                        dct, ['sep', 'pre'])
+    newdict['inspect'] = meta.glom(meta.getInspect(cmd, dct),
                         dct, ['sep', 'pre'])
     t = type.__new__(meta, name, bases, newdict)
     return t
@@ -248,6 +265,14 @@ class MetaCommand(type):
       assign.__Response__ = dct['__assign__']
     return assign
 
+  @staticmethod
+  def getInspect(name, dct):
+    class inspect(dct.get('inspect', NullInspectable)):
+      cmd = name
+    if '__inspect__' in dct:
+      inspect.__Response__ = dct['__inspect__']
+    return inspect
+
 class WellDefinedCommand(ATCommand):
   __metaclass__ = MetaCommand
 
@@ -258,6 +283,11 @@ class Foo(WellDefinedCommand):
 
   >>> str(Foo.assign(1).format())
   'AT+FOO=1\\r'
+
+  >>> str(Foo.inspect(1).format())
+  'AT+FOO=?1\\r'
+  >>> str(Foo.inspect().format())
+  'AT+FOO=?\\r'
   """
   pass
 

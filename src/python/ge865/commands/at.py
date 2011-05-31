@@ -1,3 +1,74 @@
+ 
+"""
+#############
+3gpp commands
+#############
+
+These would be much better off hierarchly organized.
+I started going down the first pages of the reference manual, skipping the
+utterly useless material at the front.  I switched at some point from the
+reference manual to Telit's IP Guide and also tried to make sure that the
+commands from the Jasper User Guide included.
+
+
+Creating new commands
+~~~~~~~~~~~~~~~~~~~~~
+Defining a new AT Command is fairly simple.
+
+Simple commands that don't take any arguments, such as GCAP should inherit
+from ATCommand.  The link command processor expects a parse and format method
+on commands.  parse currently creates an instance of the __Response__ from
+both instances and classes subclasses from ATCommand.  The __Response__ is
+already wired up to a generic object.  The Response is attached as the
+'response' attribute of the command while a Link process' it.  The interesting
+bit of Response is the getData method which might be overridden in order to
+customize how data is presented to other python objects after it's reported by
+the device.
+
+Most commands have a few variants, which I've called 'query', 'assign', and
+'inspect'.
+These Commands with a format method
+that inserts = and ? along with user input when necessary.  There are a number
+of special classes that do slightly different things with formatting.  Some
+commands use '&' and '#' as separators.
+
+Rather than create lots of braindead classes procedurally encoding these
+invariants, I've used a little python magic to help smooth the process.
+
+The WellDefinedCommand uses some python trickery to inspect the name of the
+class you've just created, and uses a normalized (uppercase) version of it as
+the base command for both the 'plain', 'query', and 'assign' variants.
+
+The __Response__ used by these new classes can be influenced in several ways.
+Most commands can be implemented like this:
+
+    >>> class MyCom(WellDefinedCommand):
+    ...   "Some documentation about this command."
+    ...
+
+    >>> str(MyCom().format())
+    'AT+MYCOM\\r'
+    >>> str(MyCom.assign(1).format())
+    'AT+MYCOM=1\\r'
+    >>> str(MyCom.assign(1,2).format())
+    'AT+MYCOM=1, 2\\r'
+    >>> str(MyCom.query().format())
+    'AT+MYCOM?\\r'
+    >>> str(MyCom.inspect().format())
+    'AT+MYCOM=?\\r'
+    >>> str(MyCom.inspect(1).format())
+    'AT+MYCOM=?1\\r'
+    >>> str(MyCom.inspect(1,2).format())
+    'AT+MYCOM=?1, 2\\r'
+
+
+
+Note getData() will currently produce a blob of text in most cases.
+It's unclear whether putting parsing logic in getData is better than using
+some other set of classes for modeling data and grouping commands together.
+
+
+"""
 import re
 
 import logging
@@ -9,11 +80,6 @@ from core import IdentCommand, WellDefinedCommand, MetaCommand
 class PoundSeparatedCommand(WellDefinedCommand):
   sep = '#'
 
- 
-"""
-3gpp commands
-
-"""
 
 """
 Generic Modem Control
@@ -208,7 +274,7 @@ class CMER(WellDefinedCommand):
 
 
 """
-IP Easy Operations
+Easy IP Operations
 """
 class CGDCONT(WellDefinedCommand):
   """Set up PDP context.
