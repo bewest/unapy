@@ -206,6 +206,9 @@ class CFUN(WellDefinedCommand):
 class CIND(WellDefinedCommand):
   """Indicator control."""
 
+class CMER(WellDefinedCommand):
+  """mobile equipment event reporting."""
+
 
 if __name__ == '__main__':
   import doctest
