@@ -273,9 +273,6 @@ class CGDCONT(WellDefinedCommand):
     >>> CGDCONT.query().parse(EXAMPLE_CGDCONT).getData()[0]
     [1, 'IP', 'webtrial.globalm2m.net', '', 0, 0, ['0']]
 
-
-    
-
   """
   class __query__(Response):
     def getData(self):

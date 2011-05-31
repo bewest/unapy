@@ -203,6 +203,9 @@ class CPAS(WellDefinedCommand):
 class CFUN(WellDefinedCommand):
   """Set phone functionality."""
 
+class CIND(WellDefinedCommand):
+  """Indicator control."""
+
 
 if __name__ == '__main__':
   import doctest
