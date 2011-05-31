@@ -183,6 +183,19 @@ class Settable(ATCommand):
     cmd  = '='.join([head, tail])
     return bytearray("%s\r" % cmd)
 
+class IdentCommand(Settable):
+  cmd = 'I'
+  sep = ''
+  def format(self):
+    """
+      >>> str(IdentCommand(1).format())
+      'ATI1\\r'
+    """
+    head = ''.join([ self.pre, self.sep, self.cmd ])
+    tail = self.tail.format(*self.args, **self.kwds)
+    cmd  = ''.join([head, tail])
+    return bytearray("%s\r" % cmd)
+
 class NullQueryable(Queryable):
   cmd = None
 
