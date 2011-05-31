@@ -102,6 +102,87 @@ class CMUX(WellDefinedCommand):
   class assign(NullSettable):
     tail = '{mode},{subset}'
     
+class CHUP(WellDefinedCommand):
+  "Hangup call"
+
+class CBST(WellDefinedCommand):
+  """Select Bearer Service Type."""
+  class assign(NullSettable):
+    tail = '{speed}, {name}, {ce}'
+
+class CRLP(WellDefinedCommand):
+  """Radio Link Protocol"""
+  class assign(NullSettable):
+    tail = '{iws}, {mws}, {t1}, {n2}, {ver}'
+
+class OneParam(NullSettable):
+  tail = '{0}'
+
+class SingleParamRichCommand(WellDefinedCommand):
+  class assign(OneParam): pass
+
+class CR(SingleParamRichCommand):
+  """Service reporting control
+
+  >>> str(CR.assign(1).format())
+  'AT+CR=1\\r'
+  """
+
+class CRC(SingleParamRichCommand):
+  """Cellular result codes."""
+
+class CSNS(SingleParamRichCommand):
+  """Single numbering scheme."""
+
+class CVHU(SingleParamRichCommand):
+ """Sets whether ATH and drop DTR causes voice disconnect."""
+
+class CNUM(WellDefinedCommand):
+  """Get MSISDN (phone number.
+  
+   see also: .. py:`ENS`
+  """
+
+class COPN(WellDefinedCommand):
+  """Read operator names."""
+
+class CREG(SingleParamRichCommand):
+  """Network registration report.
+  """
+
+class CPIN(SingleParamRichCommand):
+  """sim/ready pin report.
+  """
+
+class COPS(WellDefinedCommand):
+  """Operator Selection.
+    >>> str(COPS.assign(mode=1, format=1, oper=2).format())
+    'AT+COPS=1, 1, 2\\r'
+
+  """
+  class assign(NullSettable):
+    tail = '{mode}, {format}, {oper}'
+
+class CLCK(WellDefinedCommand):
+  """Facility lock/unlock.
+  """
+  class assign(NullSettable):
+    tail = '{fac}, {mode}, {passwd} {class}'
+
+class CPWD(WellDefinedCommand):
+  """change facility password.
+  """
+  class assign(NullSettable):
+    tail = '{fac}, {oldpasswd}, {newpasswd}'
+
+class CLIP(WellDefinedCommand):
+  """Enable/disable calling line identity."""
+
+class CLIR(WellDefinedCommand):
+  """calling line identity restriction management. pg 113."""
+
+
+
 
 if __name__ == '__main__':
   import doctest
