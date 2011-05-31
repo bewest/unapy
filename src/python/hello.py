@@ -18,6 +18,7 @@ if __name__ == '__main__':
   link = ge865.Link('/dev/ttyUSB0')
   command = link.process(ge865.commands.at.CMEE.assign(2))
   command = link.process(ge865.commands.at.GCAP())
+  command = link.process(ge865.commands.at.SS())
   logging.info(command)
 
 #####
