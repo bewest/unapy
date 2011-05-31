@@ -240,16 +240,120 @@ class CGQMIN(WellDefinedCommand):
       * 1: reliability 1 (acknowledged GTP, LLC, RLC; protected data )
       * 2: reliability 2 (unacknowledged GTP, acked LLC and RLC; protected
            data )
-      * 3: reliability 3 (acknowledged GTP, LLC, RLC; protected data )
-      * 4: reliability 4 (acknowledged GTP, LLC, RLC; protected data )
-      * 5: reliability 5 (acknowledged GTP, LLC, RLC; protected data )
+      * 3: reliability 3 (unacknowledged GTP and LLC, acked RLC; protected data )
+      * 4: reliability 4 (unacked GTP, LLC, and RLC; protected data )
+      * 5: reliability 5 (unacked GTP, LLC, and RLC; unprotected data )
 
-    * peak
-    * mean
-    * cr
+    * peak -  0..9 (7.8 - 2000kbps
+      * 0: subscribed
+    * mean - 0..31
+
+    Telit suggests:
+    AT+CGQMIN=1,0,0,3,0,0
 
   """
 
+class CGREQ(WellDefinedCommand):
+  """ Request quality of service
+    * cid
+    * precedence
+    * delay
+    * reliability
+    * peak
+    * mean
+
+  """
+
+class CGEQMIN(WellDefinedCommand):
+  """ Request minimum quality of service
+    * cid
+    * traffic class - type of app:
+      * 0: conversational
+      * 1: streaming
+      * 2: interactive
+      * 3: background
+      * 4: subscribed (default)
+    * maxmimum bitrate UL([0] 1..512 max kbit/s)
+    * maxmimum bitrate DL([0] 1..1600 max kbit/s)
+    * guaranteed bitrate UL([0] 1..512 max kbit/s)
+    * guaranteed bitrate DL([0] 1..1600 max kbit/s)
+    * delivery order: UMTS bearer should privde in-sequential SDU deliveries
+      * 0: no
+      * 1: yes
+      * 2: subscribed (default)
+    * max SDU size: [0] 1.1520
+    * SDU error ratio
+    * residual bit error ratio
+    * delivery or erroneious SUDs
+      * 0: no
+      * 1: yes
+      * 2: no detect
+      * 3: subscribed value (Default)
+    * transfer delay - (ms, [0], 100..4000)
+    * traffic handling priority ([0] 1..3)
+
+
+  Telit suggests AT+CGEQMIN=1,4,0,0,0,0,2,0,"0E0", "0E0", 3,0,0
+  """
+
+class CGEQREQ(WellDefinedCommand):
+  """ Request minimum quality of service
+    * cid
+    * traffic class - type of app:
+      * 0: conversational
+      * 1: streaming
+      * 2: interactive
+      * 3: background
+      * 4: subscribed (default)
+    * maxmimum bitrate UL([0] 1..512 max kbit/s)
+    * maxmimum bitrate DL([0] 1..1600 max kbit/s)
+    * guaranteed bitrate UL([0] 1..512 max kbit/s)
+    * guaranteed bitrate DL([0] 1..1600 max kbit/s)
+    * delivery order: UMTS bearer should privde in-sequential SDU deliveries
+      * 0: no
+      * 1: yes
+      * 2: subscribed (default)
+    * max SDU size: [0] 1.1520
+    * SDU error ratio
+    * residual bit error ratio
+    * delivery or erroneious SUDs
+      * 0: no
+      * 1: yes
+      * 2: no detect
+      * 3: subscribed value (Default)
+    * transfer delay - (ms, [0], 100..4000)
+    * traffic handling priority ([0] 1..3)
+  """
+
+
+  Telit suggests AT+CGEQMIN=1,4,0,0,0,0,2,0,"0E0", "0E0", 3,0,0
+
+
+class CGACT(WellDefinedCommand):
+  """PDP Context Activate/Deactivate
+    * state 0/1
+    * cid x
+  """
+
+class CGPADDR(WellDefinedCommand):
+  """Inspect IP address.
+  """
+
+class CGATT(WellDefinedCommand):
+  """Attach GPRS"""
+
+class SCFG(WellDefinedCommand):
+  """ 
+  """
+  sep = '#'
+
+"""
+Enable SIM Application Toolkit
+~~~~~~~~
+"""
+
+class STIA(WellDefinedCommand):
+  sep = '#'
 
 if __name__ == '__main__':
   import doctest
