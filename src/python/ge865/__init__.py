@@ -71,18 +71,28 @@ class Link(serial.Serial, util.Loggable):
 
 def test(name):
   logger.info("hello world %s" % __name__)
-  d = Link('/dev/ttyUSB0')
+  d = Link('/dev/ttyUSB1')
   logger.debug("%s" % d)
-  d = Link('/dev/ttyUSB0')
+  d = Link('/dev/ttyUSB1')
   logger.debug("%r" % d)
   if not d.isOpen():
     d.open()
-  command = d.process(commands.Command())
+  command = commands.ATCommand()
+  result = d.process(command)
   print "%r" % command
-  command = d.process(command)
+
+  command = commands.CMEE.query()
+  result = d.process(command)
   print "%r" % command
-  command = d.process(commands.ATCommand())
+
+  command = commands.CMEE.assign(2)
+  result = d.process(command)
   print "%r" % command
+
+  command = commands.CGDCONT.query()
+  result = d.process(command)
+  print "%r" % command
+
 
 
 if __name__ == '__main__':

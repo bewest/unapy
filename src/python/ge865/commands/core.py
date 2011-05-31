@@ -1,4 +1,5 @@
 import logging
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +38,8 @@ class Response(object):
   def __repr__(self):
     comps = [ str(type(self)),
               "   str: %s" % self.raw,
-              "  isOK: %s" % self.isOK(), ]
+              "  isOK: %s" % self.isOK(),
+              "  data: %s" % self.getData(), ]
     if self.isOK():
       comps.append("length: %s" % len(self.getData()))
     else:
@@ -181,16 +183,120 @@ class Settable(ATCommand):
     cmd  = '='.join([head, tail])
     return bytearray("%s\r" % cmd)
 
-class WellDefinedCommand(object):
+class NullQueryable(Queryable):
+  cmd = None
+
+class NullSettable(Settable):
+  cmd = None
+
+
+
+class MetaCommand(type):
+  def __new__(meta, name, bases, dct):
+    cmd = name.upper()
+    if dct.get('cmd', None) is not None:
+      cmd = dct['cmd']
+    newdict = dct.copy()
+    newdict['cmd']    = cmd
+    newdict['query']  = meta.getQuery(cmd, dct)
+    newdict['assign'] = meta.getAssign(cmd, dct)
+
+    t = type.__new__(meta, name, bases, newdict)
+    return t
+
+  def __init__(clss, name, bases, dct):
+    newdict = dct.copy()
+    super(MetaCommand, clss).__init__(name, bases, newdict)
+
+  @staticmethod
+  def getQuery(name, dct):
+    class query(NullQueryable):
+      cmd = name
+    if '__query__' in dct:
+      query.__Response__ = dct['__query__']
+    return query
+
+  @staticmethod
+  def getAssign(name, dct):
+    class assign(NullSettable):
+      cmd = name
+    if '__assign__' in dct:
+      assign.__Response__ = dct['__assign__']
+    return assign
+
+
+class WellDefinedCommand(ATCommand):
+  __metaclass__ = MetaCommand
+
+class Foo(WellDefinedCommand):
+  """
+  >>> str(Foo.query().format())
+  'AT+FOO?\\r'
+
+  >>> str(Foo.assign(1).format())
+  'AT+FOO=1\\r'
+  """
   pass
 
-class CMEE(Queryable):
+EXAMPLE_CGDCONT = """AT+CGDCONT?\r\r\n+CGDCONT: 1,"IP","webtrial.globalm2m.net","",0,0\r\n+CGDCONT: 2,"IP","wap.cingular","",0,0\r\nOK\r\n"""
+
+class CGDCONT(WellDefinedCommand):
+  """
+    Example of how to replace the query parsing logic.
+    WellDefinedCommand's copy __query__ and __assign__ to the query and
+    assign's __Response__ field's respectively.
+    >>> type(CGDCONT.query().parse(EXAMPLE_CGDCONT).getData())
+    <type 'list'>
+
+    >>> CGDCONT.query().parse(EXAMPLE_CGDCONT).getData()[0]
+    [1, 'IP', 'webtrial.globalm2m.net', '', 0, 0, ['0']]
+
+
+    
+
+  """
+  class __query__(Response):
+    def getData(self):
+      results = [ ]
+      if self.isOK():
+        for line in self.lines:
+          if line.startswith('+CGDCONT: '):
+            parts = line.replace('"', '').split('+CGDCONT: ')
+            parts = parts[-1].split(',')
+            cid      = int(parts[0])
+            pdp_t    = parts[1]
+            apn      = parts[2]
+            pdp_addr = parts[3]
+            d_comp   = int(parts[4])
+            h_comp   = int(parts[5])
+            params   = parts[5:]
+            
+            results.append([ cid, pdp_t, apn, pdp_addr, d_comp, h_comp,
+                             params ])
+      return results
+
+      
+class BadNamed(WellDefinedCommand):
+  """
+  XXXX: Don't use.  Just here to test things.
+  >>> str(BadNamed().format())
+  'AT+Foo\\r'
+
+  >>> str(BadNamed.assign(1).format())
+  'AT+Foo=1\\r'
+
+  >>> str(BadNamed.query().format())
+  'AT+Foo?\\r'
+  """
+  cmd = 'Foo'
+
+class CMEE(WellDefinedCommand):
   """
   >>> str(CMEE.query().format())
-  'AT+CMEE?'
+  'AT+CMEE?\\r'
 
   >>> str(CMEE.assign(2).format())
-  'AT+CMEE=2'
+  'AT+CMEE=2\\r'
   """
   cmd = 'CMEE'
 
