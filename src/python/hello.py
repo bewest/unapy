@@ -7,6 +7,8 @@ logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 ge865.logger.setLevel(logging.DEBUG)
 
+def checkSIM(link):
+  pass
 
 
 

@@ -120,20 +120,256 @@ class H(ATCommand):
   cmd = 'D'
   sep = ''
 
-class CGMI(WellDefinedCommand):
+class CGMI(PoundSeparatedCommand):
   """Manufacturer Information."""
 
-class CGMM(WellDefinedCommand):
+class CGMM(PoundSeparatedCommand):
   """Manufacturer ID Code."""
 
-class CGMR(WellDefinedCommand):
+class CGMR(PoundSeparatedCommand):
   """Manufacturer Revision ID."""
 
-class CGSN(WellDefinedCommand):
+class CGSN(PoundSeparatedCommand):
   """Product Serial No."""
 
-class CIMI(WellDefinedCommand):
+class CIMI(PoundSeparatedCommand):
   """Request internal mobile subscriber number on SIM."""
+
+class CCID(PoundSeparatedCommand):
+  """Read ICCID."""
+
+class SPN(PoundSeparatedCommand):
+  """Service provider name."""
+
+class CEER(PoundSeparatedCommand):
+  """Extended error report."""
+
+class CEERNET(PoundSeparatedCommand):
+  """Extended error report for network reject cause."""
+
+class SRS(PoundSeparatedCommand):
+  """Select ringer sound."""
+
+class SRP(PoundSeparatedCommand):
+  """Select ringer path."""
+
+class REGMODE(PoundSeparatedCommand):
+  """Select registration operation mode."""
+
+class SMSMODE(PoundSeparatedCommand):
+  """SMS commands operation mode."""
+
+class PLMNMODE(PoundSeparatedCommand):
+  """PLMN List selection."""
+
+class PCT(PoundSeparatedCommand):
+  """Display PIN Counter."""
+
+class SHDN(PoundSeparatedCommand):
+  """Software shutdown."""
+
+class Z(PoundSeparatedCommand):
+  """Extended reset."""
+
+class ENHRST(PoundSeparatedCommand):
+  """periodic reset."""
+
+class WAKE(PoundSeparatedCommand):
+  """wake from alarm mode."""
+
+class QTEMP(PoundSeparatedCommand):
+  """query temperature overflow."""
+
+class TEMPMON(PoundSeparatedCommand):
+  """temperature monitor."""
+
+class SGPO(PoundSeparatedCommand):
+  """set general purpose output."""
+
+class SGPI(PoundSeparatedCommand):
+  """set general purpose input."""
+
+class GPIO(PoundSeparatedCommand):
+  """general purpose i/o control."""
+
+class SLED(PoundSeparatedCommand):
+  """STAT_LED_GPIO setting."""
+
+class SLEDSAV(PoundSeparatedCommand):
+  """save STAT_LED_GPIO setting."""
+
+class E2SMSRI(PoundSeparatedCommand):
+  """SMS Ring Indicator."""
+
+class ADC(PoundSeparatedCommand):
+  """analog/digital converter input."""
+
+class DAC(PoundSeparatedCommand):
+  """digital/analog converter control."""
+
+class VAUX(PoundSeparatedCommand):
+  """auxiliary voltage output control."""
+
+class VAUXSAV(PoundSeparatedCommand):
+  """#VAUX saving."""
+
+class V24MODE(PoundSeparatedCommand):
+  """V24 output pins mode."""
+
+class V24CFG(PoundSeparatedCommand):
+  """V24 output pins configuration."""
+
+class V24(PoundSeparatedCommand):
+  """V24 output pins control."""
+
+class TXMONMODE(PoundSeparatedCommand):
+  """TTY-CTM-DSP operation mode."""
+
+class CBC(PoundSeparatedCommand):
+  """battery and charger status"""
+
+class AUTOATT(PoundSeparatedCommand):
+  """GPRS Auto-attach property"""
+
+class MSCCLASS(PoundSeparatedCommand):
+  """multislot class control."""
+
+class MON1(PoundSeparatedCommand):
+  """cell monitor."""
+
+class SERVINFO(PoundSeparatedCommand):
+  """serving cell information."""
+
+class COPSMODE(PoundSeparatedCommand):
+  """+COPS mode."""
+
+class QSS(PoundSeparatedCommand):
+  """Query SIM status."""
+
+class DIALMODE(PoundSeparatedCommand):
+  """ATD Dialing Mode."""
+
+class ACAL(PoundSeparatedCommand):
+  """automatic call."""
+
+class ACALEXT(PoundSeparatedCommand):
+  """Extended automatic call."""
+
+class ECAM(PoundSeparatedCommand):
+  """Extended call monitoring."""
+
+class SMOV(PoundSeparatedCommand):
+  """sms overflow."""
+
+class MBN(PoundSeparatedCommand):
+  """mailbox numbers."""
+
+class MWI(PoundSeparatedCommand):
+  """message waiting indicator."""
+
+class CODEC(PoundSeparatedCommand):
+  """audio codec."""
+
+class SHFEC(PoundSeparatedCommand):
+  """handsfree echo canceller."""
+
+class HSMICG(PoundSeparatedCommand):
+  """handset microphone gain."""
+
+class SPKMUT(PoundSeparatedCommand):
+  """speaker mute control."""
+
+class HFRECG(PoundSeparatedCommand):
+  """handsfree receiver gain."""
+
+class HSRECG(PoundSeparatedCommand):
+  """handset receiver gain."""
+
+class NITZ(PoundSeparatedCommand):
+  """network timezone."""
+
+class CCLK(PoundSeparatedCommand):
+  """clock management."""
+
+class ENS(PoundSeparatedCommand):
+  """enhanced network selection."""
+
+class BND(PoundSeparatedCommand):
+  """select band."""
+
+class AUTOBND(PoundSeparatedCommand):
+  """automatic band selection."""
+
+class SKIPESC(PoundSeparatedCommand):
+  """skip escape sequence."""
+
+class E2ESC(PoundSeparatedCommand):
+  """escape sequence guard time."""
+
+class GAUTH(PoundSeparatedCommand):
+  """pPP-GPRS connection authentication type."""
+
+class GPPPCFG(PoundSeparatedCommand):
+  """PPP-GPRS parameters configuration."""
+
+class RTCSTAT(PoundSeparatedCommand):
+  """RTC status."""
+
+class GSMAD(PoundSeparatedCommand):
+  """GSM Antenna Detection."""
+
+class SIMDET(PoundSeparatedCommand):
+  """SIM Detection mode."""
+
+class ENHSIM(PoundSeparatedCommand):
+  """SIM Enhanced speed."""
+
+class SNUM(PoundSeparatedCommand):
+  """subscriber number."""
+
+class SIMATR(PoundSeparatedCommand):
+  """sim answer to reset."""
+
+class CPUMODE(PoundSeparatedCommand):
+  """cpu clock mode."""
+
+class GSMCONT(PoundSeparatedCommand):
+  """GSM context definition."""
+
+class GSMCONTCFG(PoundSeparatedCommand):
+  """IPEGSM configurations."""
+
+class CGPADDR(PoundSeparatedCommand):
+  """Inspect/show IP address.
+  """
+
+class NWSCANTMR(PoundSeparatedCommand):
+  """network selection timer."""
+
+class CESTHLCK(PoundSeparatedCommand):
+  """call establishment lock."""
+
+class CPASMODE(PoundSeparatedCommand):
+  """phone activity status."""
+
+class FASTCCID(PoundSeparatedCommand):
+  """ICCID SIM file reading mode."""
+
+class I2CWR(PoundSeparatedCommand):
+  """I2C data via GPIO."""
+
+class I2CRD(PoundSeparatedCommand):
+  """I2C data from GPIO."""
+
+class PSMRI(PoundSeparatedCommand):
+  """power saving mode ring."""
+
+class SWLEVEL(PoundSeparatedCommand):
+  """software level selection."""
+
+class CFLO(PoundSeparatedCommand):
+  """command flow control."""
+
 
 class CMUX(WellDefinedCommand):
   """Multiplexing Mode
@@ -215,9 +451,6 @@ class CREG(WellDefinedCommand):
   """Network registration report.
   """
 
-class CPIN(WellDefinedCommand):
-  """sim/ready pin report.
-  """
 
 class COPS(WellDefinedCommand):
   """Operator Selection.
@@ -265,6 +498,13 @@ class CPAS(WellDefinedCommand):
 
 class CFUN(WellDefinedCommand):
   """Set phone functionality."""
+
+class CPIN(WellDefinedCommand):
+  """sim/ready pin report.
+  """
+
+class CSQ(WellDefinedCommand):
+  """Signal quality."""
 
 class CIND(WellDefinedCommand):
   """Indicator control."""
@@ -404,9 +644,6 @@ class CGACT(WellDefinedCommand):
     * cid x
   """
 
-class CGPADDR(WellDefinedCommand):
-  """Inspect IP address.
-  """
 
 class CGATT(WellDefinedCommand):
   """Attach GPRS"""
@@ -425,6 +662,10 @@ class SCFG(WellDefinedCommand):
 
 class CGDATA(WellDefinedCommand):
   """Enter/exit data state.
+  """
+
+class PACSP(WellDefinedCommand):
+  """Network selection menu availability.
   """
 
 class SGACT(PoundSeparatedCommand):
