@@ -181,7 +181,27 @@ class CLIP(WellDefinedCommand):
 class CLIR(WellDefinedCommand):
   """calling line identity restriction management. pg 113."""
 
+class CLCC(WellDefinedCommand):
+  """list current calls."""
 
+class CSSN(WellDefinedCommand):
+  """ss notification.
+    >>> str(CSSN.assign(1,2).format())
+    'AT+CSSN=1, 2\\r'
+  """
+  class assign(NullSettable):
+    tail = '{0}, {1}'
+
+class CPOL(WellDefinedCommand):
+  """Preferred Operator List."""
+  class assign(NullSettable):
+    tail = '{0}, {1}, {2]'
+
+class CPAS(WellDefinedCommand):
+  """Phone activity status."""
+
+class CFUN(WellDefinedCommand):
+  """Set phone functionality."""
 
 
 if __name__ == '__main__':

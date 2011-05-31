@@ -211,15 +211,25 @@ class MetaCommand(type):
       cmd = dct['cmd']
     newdict = dct.copy()
     newdict['cmd']    = cmd
-    newdict['query']  = meta.getQuery(cmd, dct)
-    newdict['assign'] = meta.getAssign(cmd, dct)
-
+    newdict['query']  = meta.glom(meta.getQuery(cmd, dct),
+                        dct, ['sep', 'pre'])
+    newdict['assign'] = meta.glom(meta.getAssign(cmd, dct),
+                        dct, ['sep', 'pre'])
     t = type.__new__(meta, name, bases, newdict)
     return t
 
   def __init__(clss, name, bases, dct):
     newdict = dct.copy()
     super(MetaCommand, clss).__init__(name, bases, newdict)
+
+  @staticmethod
+  def glom(target, src, props):
+    for f in props:
+      if src.get(f, None) is not None:
+        setattr(target, f, src.get(f))
+    return target
+      
+
 
   @staticmethod
   def getQuery(name, dct):
