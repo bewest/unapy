@@ -7,6 +7,7 @@ series.  It applies to the GE865-QUAD series.
 """
 
 from core import *
+import at
 
 if __name__ == '__main__':
   import doctest

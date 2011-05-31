@@ -224,7 +224,6 @@ class MetaCommand(type):
       assign.__Response__ = dct['__assign__']
     return assign
 
-
 class WellDefinedCommand(ATCommand):
   __metaclass__ = MetaCommand
 
