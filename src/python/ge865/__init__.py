@@ -53,7 +53,7 @@ class Link(serial.Serial, util.Loggable):
     """
     # format the command
     message = command.format()
-    self.log.info('process.read: %r' % message)
+    self.log.info('process.write: %r' % message)
 
     # write it into the port
     self.write(message)
@@ -61,7 +61,7 @@ class Link(serial.Serial, util.Loggable):
 
     # read response
     response = ''.join(self.readlines())
-    self.log.info('process.respnse: %r' % response)
+    self.log.info('process.response: %r' % response)
 
     # store response in the command
     result = command.parse(response)

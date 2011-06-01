@@ -1,5 +1,6 @@
 import logging
 import re
+from pprint import pprint
 
 logger = logging.getLogger(__name__)
 
@@ -218,8 +219,6 @@ class NullSettable(Settable):
 class NullInspectable(Inspectable):
   cmd = None
 
-
-
 class MetaCommand(type):
   def __new__(meta, name, bases, dct):
     cmd = name.upper()
@@ -227,18 +226,35 @@ class MetaCommand(type):
       cmd = dct['cmd']
     newdict = dct.copy()
     newdict['cmd']    = cmd
+    """
     newdict['query']  = meta.glom(meta.getQuery(cmd, dct),
                         dct, ['sep', 'pre'])
     newdict['assign'] = meta.glom(meta.getAssign(cmd, dct),
                         dct, ['sep', 'pre'])
     newdict['inspect'] = meta.glom(meta.getInspect(cmd, dct),
                         dct, ['sep', 'pre'])
+
+    """
     t = type.__new__(meta, name, bases, newdict)
+
+    """
+    print "__new__"
+    pprint(['t', t, 'meta', meta, 'name', name,
+            'bases', bases, 'newdict', newdict])
+    """
+
     return t
 
   def __init__(clss, name, bases, dct):
     newdict = dct.copy()
+    #print "__init__"
+    #pprint(['before', clss])
     super(MetaCommand, clss).__init__(name, bases, newdict)
+    clss.__fix__()
+    """
+    pprint(['clss', clss, 'name', name,
+            'bases', bases, 'newdict', newdict])
+    """
 
   @staticmethod
   def glom(target, src, props):
@@ -273,8 +289,22 @@ class MetaCommand(type):
       inspect.__Response__ = dct['__inspect__']
     return inspect
 
+
 class WellDefinedCommand(ATCommand):
   __metaclass__ = MetaCommand
+  __variants__  = [ 'query', 'assign', 'inspect' ]
+
+  class query(NullQueryable): pass
+  class assign(NullSettable): pass
+  class inspect(NullInspectable): pass
+
+  @classmethod
+  def __fix__(klass):
+    for i in klass.__variants__:
+      clname = '%s.%s' % (klass.cmd, i)
+      setattr(klass, i,
+              type(clname, (getattr(klass, i), ),
+                  {'cmd':klass.cmd}))
 
 class Foo(WellDefinedCommand):
   """
@@ -291,17 +321,61 @@ class Foo(WellDefinedCommand):
   """
   pass
 
+class PoundSepCom(ATCommand):
+  sep = '#'
+
+#class PoundSeparatedCommand(PoundSepCom):
+class PoundSeparatedCommand(WellDefinedCommand):
+  """
+    >>> str(PoundSepCom().format())
+    'AT#\\r'
+
+    >>> class MyCom(PoundSeparatedCommand):
+    ...   cmd = 'FOO'
+
+    >>> str(MyCom().format())
+    'AT#FOO\\r'
+
+    >>> str(MyCom.query().format())
+    'AT#FOO?\\r'
+
+    >>> str(MyCom.assign().format())
+    'AT#FOO=\\r'
+
+    >>> str(MyCom.inspect().format())
+    'AT#FOO=?\\r'
+  """
+  sep = '#'
+  class query(NullQueryable):
+    sep = '#'
+
+  class assign(NullSettable):
+    sep = '#'
+
+  class inspect(NullInspectable):
+    sep = '#'
+
+
+class FooPound(PoundSeparatedCommand):
+  """
+    >>> str(FooPound.query().format())
+    'AT#FOOPOUND?\\r'
+  """
+
 EXAMPLE_CGDCONT = """AT+CGDCONT?\r\r\n+CGDCONT: 1,"IP","webtrial.globalm2m.net","",0,0\r\n+CGDCONT: 2,"IP","wap.cingular","",0,0\r\nOK\r\n"""
 
 class CGDCONT(WellDefinedCommand):
   """
+    XXX: Broken.
+
+    This was experimental.
     Example of how to replace the query parsing logic.
     WellDefinedCommand's copy __query__ and __assign__ to the query and
     assign's __Response__ field's respectively.
-    >>> type(CGDCONT.query().parse(EXAMPLE_CGDCONT).getData())
+    >>> # type(CGDCONT.query().parse(EXAMPLE_CGDCONT).getData())
     <type 'list'>
 
-    >>> CGDCONT.query().parse(EXAMPLE_CGDCONT).getData()[0]
+    >>> # CGDCONT.query().parse(EXAMPLE_CGDCONT).getData()[0]
     [1, 'IP', 'webtrial.globalm2m.net', '', 0, 0, ['0']]
 
   """

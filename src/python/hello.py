@@ -6,9 +6,16 @@ import ge865
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 ge865.logger.setLevel(logging.DEBUG)
+from ge865.commands import at
 
-def checkSIM(link):
-  pass
+def check_sim(link):
+  command = link.process(at.QSS.query())
+  print command.response.getData()
+
+def random(link):
+  command = link.process(at.CMEE.assign(2))
+  command = link.process(at.GCAP())
+  command = link.process(at.SS())
 
 
 
@@ -17,11 +24,8 @@ if __name__ == '__main__':
   logging.debug('hello world')
   #ge865.test('/dev/ttyUSB0')
 
-  link = ge865.Link('/dev/ttyUSB0')
-  command = link.process(ge865.commands.at.CMEE.assign(2))
-  command = link.process(ge865.commands.at.GCAP())
-  command = link.process(ge865.commands.at.SS())
-  logging.info(command)
+  link = ge865.Link('/dev/ttyUSB1')
+  check_sim(link)
 
 #####
 # EOF

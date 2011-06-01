@@ -75,10 +75,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 from core import Command, ATCommand, Response, NullSettable, NullQueryable
-from core import IdentCommand, WellDefinedCommand, MetaCommand
+from core import IdentCommand, WellDefinedCommand, PoundSeparatedCommand, MetaCommand
 
-class PoundSeparatedCommand(WellDefinedCommand):
-  sep = '#'
 
 
 """
@@ -238,7 +236,8 @@ class COPSMODE(PoundSeparatedCommand):
   """+COPS mode."""
 
 class QSS(PoundSeparatedCommand):
-  """Query SIM status."""
+  """Query SIM status.
+  """
 
 class DIALMODE(PoundSeparatedCommand):
   """ATD Dialing Mode."""
