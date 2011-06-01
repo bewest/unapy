@@ -48,6 +48,9 @@ def network_test(link):
   command = link.process(at.CSQ())
   print command.data
   attached = link.process(at.CGATT.query()).data
+  if int(attached[0][0]) == 0:
+    print "GPRS PDP context not attached: %s" % attached
+    attached = link.process(at.CGATT.assign(1)).data
   activated = link.process(at.SGACT.query()).data
   print "GPRS PDP context attached: %s" % attached
   print "GPRS PDP context activated: %s" % activated
