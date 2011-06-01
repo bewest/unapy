@@ -47,14 +47,42 @@ def network_test(link):
   print command.data
   command = link.process(at.CSQ())
   print command.data
+  attached = link.process(at.CGATT.query()).data
+  activated = link.process(at.SGACT.query()).data
+  print "GPRS PDP context attached: %s" % attached
+  print "GPRS PDP context activated: %s" % activated
+  if int(attached[0][0]):
+    print "context attached"
+    if activated[0][1] != 1:
+      print "attempt sgact"
+      link.process(at.SGACT.assign(1,1))
 
-  
+  ip_addr(link)
+
+  print "attempt to use the network"
+  # XXX: This reliably gets a CONNECT but leaves the device in a bad state.
+  # I suspect we've connected and just need to figure out how to read/write to
+  # the new serial line given to us.
+  #command = link.process(at.SD.assign(1, 0, 80, '69.55.75.158\rGET /\n\r\n\n'))
+
+
+def get_apn(link):
+  ctx = link.process(at.CGDCONT.query())
+  print ctx.data
+
+
 def ip_addr(link):
+  """How to find the IP address...
+  """
+
+  # inspect gets a list of context indices that can be queried for addresses.
   print link.process(at.CGPADDR.inspect()).data
   # CGPADDR uses the assign syntax to inspect IPs.
+  # we only want the first one
   command = link.process(at.CGPADDR.assign(1))
+  # result is in command.data, which is a list of tuples
   ip = command.data
-  print "IP address is ", ip
+  print "IP address is ", ip[0][1]
 
 def random(link):
   command = link.process(at.CMEE.assign(2))
@@ -70,8 +98,9 @@ if __name__ == '__main__':
 
   link = ge865.Link('/dev/ttyUSB1')
   #check_sim(link)
-  network_test(link)
+  get_apn(link)
   ip_addr(link)
+  network_test(link)
 
 #####
 # EOF

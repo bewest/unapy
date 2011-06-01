@@ -97,6 +97,7 @@ class Command(object):
   __raw__      = None
   __timeout__  = None
   response     = None
+  data         = None
 
   class __Response__(Response): pass
   
@@ -111,7 +112,8 @@ class Command(object):
     """Returns a response, sets self.response to a subclass of Response."""
     self.__raw__  = raw
     self.response = self.__Response__(self.__raw__)
-    self.data = to_python(self.response.getData())
+    if self.response.isOK():
+      self.data = to_python(self.response.getData())
     return self.response
 
   def __repr__(self):
