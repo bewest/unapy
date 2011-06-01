@@ -12,6 +12,12 @@ def check_sim(link):
   command = link.process(at.QSS.query())
   print command.response.getData()
 
+def network_test(link):
+  print "network test"
+  command = link.process(at.CMEE.assign(2))
+  print command
+  
+
 def random(link):
   command = link.process(at.CMEE.assign(2))
   command = link.process(at.GCAP())
@@ -26,6 +32,7 @@ if __name__ == '__main__':
 
   link = ge865.Link('/dev/ttyUSB1')
   check_sim(link)
+  network_test(link)
 
 #####
 # EOF
