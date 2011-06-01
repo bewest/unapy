@@ -10,6 +10,7 @@ from ge865.commands import at
 
 EXAMPLE_IP_REPLY='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n\r\nOK\r\n'
 EXAMPLE_IP_to_python='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n'
+
 def to_python(msg):
   """
     >>> len(to_python(EXAMPLE_IP_to_python))
@@ -39,20 +40,20 @@ def check_sim(link):
 def network_test(link):
   print "network test"
   command = link.process(at.CMEE.assign(2))
-  print to_python(command.response.getData())
+  print command.data
   command = link.process(at.CGMR())
-  print to_python(command.response.getData())
+  print command.data
   command = link.process(at.CREG.query())
-  print to_python(command.response.getData())
+  print command.data
   command = link.process(at.CSQ())
-  print to_python(command.response.getData())
+  print command.data
 
   
 def ip_addr(link):
-  print link.process(at.CGPADDR.inspect())
+  print link.process(at.CGPADDR.inspect()).data
   # CGPADDR uses the assign syntax to inspect IPs.
   command = link.process(at.CGPADDR.assign(1))
-  ip = to_python(command.response.getData())
+  ip = command.data
   print "IP address is ", ip
 
 def random(link):

@@ -6,6 +6,41 @@ logger = logging.getLogger(__name__)
 
 EXAMPLE_RESPONSE = "AT\r\r\nOK\r\n"
 
+EXAMPLE_IP_REPLY='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n\r\nOK\r\n'
+EXAMPLE_IP_to_python='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n'
+EXAMPLE_CGPADDR = 'AT+CGPADDR=?\r\r\n+CGPADDR: (1,2,3)\r\n\r\nOK\r\n'
+
+def to_python(msg):
+  """
+    >>> len(to_python(EXAMPLE_IP_to_python))
+    1
+    >>> to_python(EXAMPLE_IP_to_python)
+    [(1, '10.215.15.91')]
+
+    >>> to_python(EXAMPLE_CGPADDR)
+    [(1, 2, 3)]
+
+  """
+  lines  = msg.strip().splitlines()
+  result = [ ]
+  r      = ( )
+  for l in lines:
+    parts = l.split(': ')
+    if len(parts) > 1:
+      text = ''.join(parts[1:]
+               ).replace('"', '').replace("'", "")
+      parts = text.split(',')
+      r = tuple(parts)
+      if len(parts) > 1:
+        try:
+          r = ( int(parts[0]), ) + tuple(parts[1:])
+        except ValueError, e:
+          r = tuple(map(int,
+                text.replace('(', '').replace(')', '').split(',')))
+          
+      result.append(r)
+  return result
+
 class Response(object):
   """
   Basic Response to the AT commands
@@ -76,6 +111,7 @@ class Command(object):
     """Returns a response, sets self.response to a subclass of Response."""
     self.__raw__  = raw
     self.response = self.__Response__(self.__raw__)
+    self.data = to_python(self.response.getData())
     return self.response
 
   def __repr__(self):
