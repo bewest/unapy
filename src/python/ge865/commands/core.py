@@ -322,13 +322,15 @@ class Foo(WellDefinedCommand):
   pass
 
 class PoundSepCom(ATCommand):
+  """
+    >>> str(PoundSepCom().format())
+    'AT#\\r'
+  """
   sep = '#'
 
 #class PoundSeparatedCommand(PoundSepCom):
 class PoundSeparatedCommand(WellDefinedCommand):
   """
-    >>> str(PoundSepCom().format())
-    'AT#\\r'
 
     >>> class MyCom(PoundSeparatedCommand):
     ...   cmd = 'FOO'

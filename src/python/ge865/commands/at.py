@@ -332,7 +332,7 @@ class GSMCONT(PoundSeparatedCommand):
 class GSMCONTCFG(PoundSeparatedCommand):
   """IPEGSM configurations."""
 
-class CGPADDR(PoundSeparatedCommand):
+class CGPADDR(WellDefinedCommand):
   """Inspect/show IP address.
   """
 
