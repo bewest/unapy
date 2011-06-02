@@ -82,6 +82,17 @@ class Response(object):
       comps.append("no data")
     return '\n'.join(comps)
 
+EXAMPLE_CONNECT_RESPONSE = '\r\r\nCONNECT\r\n'
+class ConnectedResponse(Response):
+  """
+    >>> ConnectedResponse(EXAMPLE_CONNECT_RESPONSE).isOK()
+    True
+  """
+  def isOK(self):
+    if self.lines[-1].startswith('CONNECT'):
+      return True
+    return False
+
 class Command(object):
   """
     Your basic AT command.
@@ -136,34 +147,6 @@ class ATCommand(Command):
 
 # XXX:bewest.2011-05: This would be better off in ruby because you can have
 # methods with question marks.
-# XXX:bewest.2011-05: Would probably be better with some kind of metaclass
-# trickery that I've forgotten how to do.
-#
-"""
-Ideally you could define stuff like this:
-class CMEE(FancyCommand):
-  cmd = 'CMEE'
-  class query:
-    def decode(self, mesg):
-      pass
-  class assign:
-    def decode(self, mesg):
-      pass
-
-'''AT+CMEE?
-
-+CMEE: 2
-
-OK
-'''
-
-
-'''AT+CMEE=2
-
-OK
-'''
-
-"""
 
 EXAMPLE_OK     = '''AT\r\r\nOK\r\n'''
 EXAMPLE_ERROR  = '''AT+\r\r\nERROR\r\n'''
@@ -247,6 +230,13 @@ class IdentCommand(Settable):
     tail = self.tail.format(*self.args, **self.kwds)
     cmd  = ''.join([head, tail])
     return bytearray("%s\r" % cmd)
+
+class ConnectedCommand(ATCommand):
+  '''
+    >>> ConnectedCommand().parse(EXAMPLE_CONNECT_RESPONSE).isOK()
+    True
+  '''
+  class __Response__(ConnectedResponse): pass
 
 class NullQueryable(Queryable):
   cmd = None

@@ -66,7 +66,12 @@ def network_test(link):
   # XXX: This reliably gets a CONNECT but leaves the device in a bad state.
   # I suspect we've connected and just need to figure out how to read/write to
   # the new serial line given to us.
-  #command = link.process(at.SD.assign(1, 0, 80, '69.55.75.158\rGET /\n\r\n\n'))
+  command = link.process(at.SD.assign(1, 0, 80, 'www.transactionalweb.com'))
+  print command
+  link.write('GET /ip.htm\n\n')
+  link.setTimeout(60)
+  page = link.readlines()
+  print page
 
 
 def get_apn(link):
@@ -99,7 +104,7 @@ if __name__ == '__main__':
   logging.debug('hello world')
   #ge865.test('/dev/ttyUSB0')
 
-  link = ge865.Link('/dev/ttyUSB1')
+  link = ge865.Link('/dev/ttyUSB0')
   #check_sim(link)
   get_apn(link)
   ip_addr(link)
