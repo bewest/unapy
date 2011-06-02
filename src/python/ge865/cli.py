@@ -14,7 +14,7 @@ parser = OptionParser()
 
 parser.add_option('-d', '--device', 
                   dest='device',
-                  help="Device to use.",
+                  help="Device to use. [default=%s]" % SOCKET,
                   default = SOCKET)
 
 if __name__ == '__main__':

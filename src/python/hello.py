@@ -68,10 +68,13 @@ def network_test(link):
   # the new serial line given to us.
   command = link.process(at.SD.assign(1, 0, 80, 'www.transactionalweb.com'))
   print command
-  link.write('GET /ip.htm\n\n')
-  link.setTimeout(60)
-  page = link.readlines()
-  print page
+  if command.response.isOK():
+    link.write('GET /ip.htm\n\n')
+    link.setTimeout(60)
+    page = link.readlines()
+    print page
+  else:
+    print "Did not connect."
 
 
 def get_apn(link):
@@ -100,11 +103,13 @@ def random(link):
 
 
 if __name__ == '__main__':
+  from ge865 import cli
   logging.info('hello world')
-  logging.debug('hello world')
+  opts, args = cli.parser.parse_args()
+
   #ge865.test('/dev/ttyUSB0')
 
-  link = ge865.Link('/dev/ttyUSB0')
+  link = ge865.Link(opts.device)
   #check_sim(link)
   get_apn(link)
   ip_addr(link)
