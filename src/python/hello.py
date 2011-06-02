@@ -37,6 +37,16 @@ def check_sim(link):
   command = link.process(at.QSS.query())
   print command.response.getData()
 
+def set_apn(link, name='webtrial.globalm2m.net', ctx=1, pdp="IP"):
+  oldapn = get_apn(link)
+  if oldapn != name:
+    name = '"%s"' % name
+    pdp  = '"%s"' % pdp
+    command = link.process(at.CGDCONT.assign(ctx, pdp, name))
+    newapn = get_apn(link)
+  return newapn
+
+  
 def network_test(link):
   print "network test"
   command = link.process(at.CMEE.assign(2))
@@ -47,10 +57,13 @@ def network_test(link):
   print command.data
   command = link.process(at.CSQ())
   print command.data
+  print "SETTING APN"
+  set_apn(link, name='webtrial.globalm2m.net')
   attached = link.process(at.CGATT.query()).data
   if int(attached[0][0]) == 0:
     print "GPRS PDP context not attached: %s" % attached
-    attached = link.process(at.CGATT.assign(1)).data
+    attached = link.process(at.CGATT.assign(1))
+    attached = link.process(at.CGATT.query()).data
   activated = link.process(at.SGACT.query()).data
   print "GPRS PDP context attached: %s" % attached
   print "GPRS PDP context activated: %s" % activated
@@ -77,9 +90,15 @@ def network_test(link):
     print "Did not connect."
 
 
-def get_apn(link):
-  ctx = link.process(at.CGDCONT.query())
-  print ctx.data
+def get_apn(link, ctx=1):
+  command = link.process(at.CGDCONT.query())
+  apn = None
+  if command.response.isOK():
+    try:
+      apn = command.data[ctx-1][2]
+    except IndexError: pass
+  print apn
+  return apn
 
 
 def ip_addr(link):
@@ -92,8 +111,14 @@ def ip_addr(link):
   # we only want the first one
   command = link.process(at.CGPADDR.assign(1))
   # result is in command.data, which is a list of tuples
-  ip = command.data
-  print "IP address is ", ip[0][1]
+  ip = None
+  if command.response.isOK():
+    try:
+      ip = command.data[0][1]
+    except IndexError: pass
+  
+  print "IP address is ", ip
+  return ip
 
 def random(link):
   command = link.process(at.CMEE.assign(2))
