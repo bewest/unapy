@@ -161,6 +161,7 @@ if __name__ == '__main__':
   #check_sim(link)
   print "APN: ", get_apn(link)
   device = models.Device(link)
+  print "device: %s" % device
   print "device manufacturer: %s" % device.manufacturer()
   #ip_addr(link)
   #network_test(link)

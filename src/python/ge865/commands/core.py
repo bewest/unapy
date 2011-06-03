@@ -188,13 +188,19 @@ class SimpleCommand(ATCommand):
 
     >>> Foo().parse("OK").isOK()
     True
+
+    >>> class Bar(SimpleCommand): pass
+
+    >>> str(Bar().format( ))
+    'AT+Bar\\r'
+      
   """
   sep = '+'
   cmd = None
 
   def getData(self):
     lines = self.response.lines
-    return '\n'.join(lines[1:len(lines)]).strip()
+    return '\n'.join(lines[1:len(lines)-1]).strip()
 
 
 # XXX:bewest.2011-05: This would be better off in ruby because you can have

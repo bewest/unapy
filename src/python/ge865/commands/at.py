@@ -90,15 +90,16 @@ class GMI(SimpleCommand):
 
 class GMM(SimpleCommand):
   """Model identification."""
-  cmd = 'GMM'
 
 class GMR(SimpleCommand):
   """Revision identification."""
-  cmd = 'GMR'
 
 class GCAP(SimpleCommand):
   """List device capabilities."""
-  cmd = 'GCAP'
+
+class V(SimpleCommand):
+  """List device capabilities."""
+  sep = '&'
 
 class CMEE(WellDefinedCommand):
   """Set/read extended error reporting."""
