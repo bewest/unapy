@@ -5,10 +5,16 @@ from pprint import pprint
 logger = logging.getLogger(__name__)
 
 EXAMPLE_RESPONSE = "AT\r\r\nOK\r\n"
+EXAMPLE_CONNECT_RESPONSE = '\r\r\nCONNECT\r\n'
+EXAMPLE_SD='AT#SD=1, 0, 80, www.transactionalweb.com\r\r\nCONNECT\r\n'
 
 EXAMPLE_IP_REPLY='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n\r\nOK\r\n'
 EXAMPLE_IP_to_python='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n'
 EXAMPLE_CGPADDR = 'AT+CGPADDR=?\r\r\n+CGPADDR: (1,2,3)\r\n\r\nOK\r\n'
+EXAMPLE_OK     = '''AT\r\r\nOK\r\n'''
+EXAMPLE_ERROR  = '''AT+\r\r\nERROR\r\n'''
+EXAMPLE_ERROR_CARRIER  = '''AT+\r\r\nNO CARRIER\r\n'''
+EXAMPLE_ASSIGN = '''AT+CMEE=2\r\r\nOK\r\n'''
 
 def to_python(msg):
   """
@@ -56,7 +62,8 @@ class Response(object):
     self.lines = raw.splitlines()
 
   def isOK(self):
-    if 'OK' == self.lines[-1]:
+    last = self.lines[-1]
+    if last in ['OK', 'CONNECT']:
       return True
     return False
 
@@ -82,7 +89,6 @@ class Response(object):
       comps.append("no data")
     return '\n'.join(comps)
 
-EXAMPLE_CONNECT_RESPONSE = '\r\r\nCONNECT\r\n'
 class ConnectedResponse(Response):
   """
     >>> ConnectedResponse(EXAMPLE_CONNECT_RESPONSE).isOK()
@@ -132,11 +138,25 @@ class Command(object):
              '  response: %r' % self.response ]
     return '\n'.join(comp)
 
+
 class ATCommand(Command):
   """
   Example of an error
   ~~~~~~~~~~~~~~~~~~~
   AT+
+
+  >>> ATCommand().parse(EXAMPLE_OK).isOK()
+  True
+
+  >>> ATCommand().parse(EXAMPLE_CONNECT_RESPONSE).isOK()
+  True
+
+  >>> not ATCommand().parse(EXAMPLE_ERROR).isOK()
+  True
+
+  >>> not ATCommand().parse(EXAMPLE_ERROR_CARRIER).isOK()
+  True
+
   """
   sep = '+'
   pre = 'AT'
@@ -147,10 +167,6 @@ class ATCommand(Command):
 
 # XXX:bewest.2011-05: This would be better off in ruby because you can have
 # methods with question marks.
-
-EXAMPLE_OK     = '''AT\r\r\nOK\r\n'''
-EXAMPLE_ERROR  = '''AT+\r\r\nERROR\r\n'''
-EXAMPLE_ASSIGN = '''AT+CMEE=2\r\r\nOK\r\n'''
 
 class Queryable(ATCommand):
   """

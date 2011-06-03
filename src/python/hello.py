@@ -3,6 +3,7 @@
 import logging
 import sys
 import ge865
+import time
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 ge865.logger.setLevel(logging.DEBUG)
@@ -39,6 +40,7 @@ def check_sim(link):
 
 def set_apn(link, name='webtrial.globalm2m.net', ctx=1, pdp="IP"):
   oldapn = get_apn(link)
+  newapn = '"%s"' % oldapn
   if oldapn != name:
     name = '"%s"' % name
     pdp  = '"%s"' % pdp
@@ -69,7 +71,7 @@ def network_test(link):
   print "GPRS PDP context activated: %s" % activated
   if int(attached[0][0]):
     print "context attached"
-    if activated[0][1] != 1:
+    if int(activated[0][1]) != 1:
       print "attempt sgact"
       link.process(at.SGACT.assign(1,1))
 
@@ -79,16 +81,34 @@ def network_test(link):
   # XXX: This reliably gets a CONNECT but leaves the device in a bad state.
   # I suspect we've connected and just need to figure out how to read/write to
   # the new serial line given to us.
-  command = link.process(at.SD.assign(1, 0, 80, 'www.transactionalweb.com'))
+  link.setTimeout(3)
+  command = link.process(at.SD.assign(1, 0, 80, 'www.tonycode.com'))
   print command
   if command.response.isOK():
-    link.write('GET /ip.htm\n\n')
-    link.setTimeout(60)
-    page = link.readlines()
+    link.write('''GET /tools/showHTTPHeaders.php HTTP/1.1
+User-Agent: Foo/Bar
+Host: www.tonycode.com
+Accept: */*
+
+
+    ''')
+    page = long_read(link)
     print page
   else:
     print "Did not connect."
 
+def long_read(link, timeout=5, repeats=18):
+  B = [ ]
+  oldTimeout = link.getTimeout()
+  link.setTimeout(timeout)
+  for i in xrange(repeats):
+    print "retry: %s" % i
+    B += link.readlines( )
+    if len(B) > 0 and B[-1].strip() == 'NO CARRIER':
+      break
+    time.sleep(1)
+  link.setTimeout(oldTimeout)
+  return B
 
 def get_apn(link, ctx=1):
   command = link.process(at.CGDCONT.query())
@@ -136,7 +156,7 @@ if __name__ == '__main__':
 
   link = ge865.Link(opts.device)
   #check_sim(link)
-  get_apn(link)
+  print "APN: ", get_apn(link)
   ip_addr(link)
   network_test(link)
 
