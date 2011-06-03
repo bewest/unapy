@@ -75,7 +75,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 from core import Command, ATCommand, Response, NullSettable, NullQueryable
-from core import IdentCommand, WellDefinedCommand, PoundSeparatedCommand, MetaCommand
+from core import IdentCommand, SimpleCommand
+from core import WellDefinedCommand, PoundSeparatedCommand, MetaCommand
 
 
 
@@ -83,14 +84,24 @@ from core import IdentCommand, WellDefinedCommand, PoundSeparatedCommand, MetaCo
 Generic Modem Control
 ~~~~~~~~~~~~~~~~~~~~~
 """
-class GCAP(ATCommand):
+
+class GMI(SimpleCommand):
+  """Manufacturer identification."""
+
+class GMM(SimpleCommand):
+  """Model identification."""
+  cmd = 'GMM'
+
+class GMR(SimpleCommand):
+  """Revision identification."""
+  cmd = 'GMR'
+
+class GCAP(SimpleCommand):
   """List device capabilities."""
   cmd = 'GCAP'
 
-
 class CMEE(WellDefinedCommand):
   """Set/read extended error reporting."""
-
 
 class X(ATCommand):
   """Extended result codes. pg 53"""

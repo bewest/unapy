@@ -9,6 +9,8 @@ logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 ge865.logger.setLevel(logging.DEBUG)
 from ge865.commands import at
 
+from ge865 import models
+
 EXAMPLE_IP_REPLY='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n\r\nOK\r\n'
 EXAMPLE_IP_to_python='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n'
 
@@ -75,8 +77,9 @@ def network_test(link):
       print "attempt sgact"
       link.process(at.SGACT.assign(1,1))
 
-  ip_addr(link)
+  print "ip address: ", ip_addr(link)
 
+def use_network(link):
   print "attempt to use the network"
   # XXX: This reliably gets a CONNECT but leaves the device in a bad state.
   # I suspect we've connected and just need to figure out how to read/write to
@@ -157,8 +160,10 @@ if __name__ == '__main__':
   link = ge865.Link(opts.device)
   #check_sim(link)
   print "APN: ", get_apn(link)
-  ip_addr(link)
-  network_test(link)
+  device = models.Device(link)
+  print "device manufacturer: %s" % device.manufacturer()
+  #ip_addr(link)
+  #network_test(link)
 
 #####
 # EOF

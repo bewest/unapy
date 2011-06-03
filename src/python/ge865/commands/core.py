@@ -69,7 +69,7 @@ class Response(object):
 
   def getError(self):
     if not self.isOK():
-      return self.lines[-1]
+      return self.lines[-1].strip( )
 
   def getData(self):
     if self.isOK():
@@ -79,14 +79,13 @@ class Response(object):
     return None
 
   def __repr__(self):
-    comps = [ str(type(self)),
-              "   str: %s" % self.raw,
-              "  isOK: %s" % self.isOK(),
-              "  data: %s" % self.getData(), ]
-    if self.isOK():
-      comps.append("length: %s" % len(self.getData()))
-    else:
-      comps.append("no data")
+    comps = [ '### %s'        % str(type(self)),
+              " -- len: %s"   % len(self.raw),
+              " -- isOK: %s"  % self.isOK( ),
+              " -- data: %s"  % self.getData( ),
+              " -- error: %s" % self.getError( ) ]
+    if not self.isOK():
+      comps.append(" -- no data")
     return '\n'.join(comps)
 
 class ConnectedResponse(Response):
@@ -122,7 +121,10 @@ class Command(object):
     self.response = None
 
   def format(self):
-    """Returns formatted command."""
+    """Returns formatted command.
+      >>> str(Command().format())
+      'AT\\r'
+    """
     return bytearray("AT\r")
 
   def parse(self, raw):
@@ -130,14 +132,19 @@ class Command(object):
     self.__raw__  = raw
     self.response = self.__Response__(self.__raw__)
     if self.response.isOK():
-      self.data = to_python(self.response.getData())
+      self.data = self.getData()
     return self.response
 
   def __repr__(self):
-    comp = [ str(type(self)), '  msg: %s' % self.format(),
-             '  response: %r' % self.response ]
+    comp = [ '### %s'           % str(type(self)),
+             ' -- CMD: %s'      % self.format( ),
+             ' -- response: %r' % self.response ]
     return '\n'.join(comp)
 
+  def getData(self):
+    if self.response.isOK():
+      return to_python(self.response.getData())
+    return None
 
 class ATCommand(Command):
   """
@@ -164,6 +171,31 @@ class ATCommand(Command):
 
   def format(self):
     return bytearray("%s\r" % ( ''.join([ self.pre, self.sep, self.cmd ]) ))
+
+class SimpleCommand(ATCommand):
+  """
+    >>> str(SimpleCommand().format( ))
+    'AT+SimpleCommand\\r'
+
+    >>> class Foo(SimpleCommand): pass
+    
+    >>> str(Foo().format( ))
+    'AT+Foo\\r'
+
+    >>> Foo().parse("OK").isOK()
+    True
+  """
+  sep = '+'
+  cmd = None
+  def __init__(self):
+    if self.cmd is None:
+      self.cmd = self.__class__.__name__
+    super(ATCommand, self).__init__( )
+
+  def getData(self):
+    lines = self.response.lines
+    return '\n'.join(lines[1:len(lines)]).strip()
+
 
 # XXX:bewest.2011-05: This would be better off in ruby because you can have
 # methods with question marks.

@@ -5,10 +5,9 @@ import os
 
 import scan
 
-_candidates = filter(scan.link_usable, scan.scan())
 
 
-SOCKET = os.getenv('TELIT', _candidates[0])
+SOCKET = os.getenv('TELIT', scan.best_guess())
 
 parser = OptionParser()
 
