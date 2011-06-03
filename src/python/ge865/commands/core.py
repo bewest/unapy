@@ -168,6 +168,10 @@ class ATCommand(Command):
   sep = '+'
   pre = 'AT'
   cmd = ''
+  def __init__(self):
+    if self.cmd is None:
+      self.cmd = self.__class__.__name__
+    super(ATCommand, self).__init__( )
 
   def format(self):
     return bytearray("%s\r" % ( ''.join([ self.pre, self.sep, self.cmd ]) ))
@@ -187,10 +191,6 @@ class SimpleCommand(ATCommand):
   """
   sep = '+'
   cmd = None
-  def __init__(self):
-    if self.cmd is None:
-      self.cmd = self.__class__.__name__
-    super(ATCommand, self).__init__( )
 
   def getData(self):
     lines = self.response.lines
