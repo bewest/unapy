@@ -41,10 +41,15 @@ def to_python(msg):
         try:
           r = ( int(parts[0]), ) + tuple(parts[1:])
         except ValueError, e:
-          r = tuple(map(int,
-                text.replace('(', '').replace(')', '').split(',')))
+          parts = text.replace('(', '').replace(')', '').split(',')
+          try:
+            r = tuple(map(int, parts))
+          except ValueError, e:
+            r = tuple(map(str, parts))
           
       result.append(r)
+  if len(result) == 1:
+    return result.pop()
   return result
 
 class Response(object):
@@ -80,9 +85,9 @@ class Response(object):
 
   def __repr__(self):
     comps = [ '### %s'        % str(type(self)),
-              " -- len: %s"   % len(self.raw),
-              " -- isOK: %s"  % self.isOK( ),
-              " -- data: %s"  % self.getData( ),
+              " -- len  : %s"   % len(self.raw),
+              " -- isOK : %s"  % self.isOK( ),
+              " -- data : %s"  % self.getData( ),
               " -- error: %s" % self.getError( ) ]
     if not self.isOK():
       comps.append(" -- no data")
@@ -137,7 +142,7 @@ class Command(object):
 
   def __repr__(self):
     comp = [ '### %s'           % str(type(self)),
-             ' -- CMD: %s'      % self.format( ),
+             ' -- CMD     : %s' % self.format( ),
              ' -- response: %r' % self.response ]
     return '\n'.join(comp)
 
@@ -176,7 +181,10 @@ class ATCommand(Command):
   def format(self):
     return bytearray("%s\r" % ( ''.join([ self.pre, self.sep, self.cmd ]) ))
 
-class SimpleCommand(ATCommand):
+class NoneCommand(ATCommand):
+  cmd = None
+
+class SimpleCommand(NoneCommand):
   """
     >>> str(SimpleCommand().format( ))
     'AT+SimpleCommand\\r'
@@ -195,8 +203,6 @@ class SimpleCommand(ATCommand):
     'AT+Bar\\r'
       
   """
-  sep = '+'
-  cmd = None
 
   def getData(self):
     lines = self.response.lines

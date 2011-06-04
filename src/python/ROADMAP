@@ -1,0 +1,51 @@
+-*- restructuredtext -*-
+
+################
+SOFTWARE ROADMAP
+################
+
+Debug a Device
+~~~~~~~~~~~~~~
+  * manipulate/inspect settings
+    * network adapter
+      * PDP Context
+        * defined, attached, activated, authorized
+      * Socket
+      * IP
+      * TCPATRUN
+        * defined, attached, activated, authorized
+      * SMS
+        * defined, attached, activated, authorized
+      * SIM Toolkit
+        * defined, attached, activated, authorized
+  * back up settings/configure/restore
+  * initialize device
+  * generate dummy meter data?
+  * python
+
+On board scripts required?
+
+Serverside Daemon
+~~~~~~~~~~~~~~~~~
+  * Listen on port
+  * PUBLIC IP
+  * Record device
+  * store in persistent backing store
+
+Dispatcher
+~~~~~~~~~~
+  * Need a UI to create transparence
+    * ruby (rails)
+  * need forward dispatching protocol? ATOMPUB?
+
+Meter
+~~~~~
+  * connect wire to GE865
+  * write/read from port?
+  * configure server to use LL protocol
+
+  * persistent models
+    * indivo?
+  * UI
+    * ruby (rails)
+

@@ -37,8 +37,6 @@ or
   * sms a special message
   * ftp a file
 
-I believe the network has to be configured after the test result has already
-been written to the device's port?
 
 Port forward the meter
 ======================

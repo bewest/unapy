@@ -75,7 +75,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 from core import Command, ATCommand, Response, NullSettable, NullQueryable
-from core import IdentCommand, SimpleCommand
+from core import IdentCommand, SimpleCommand, NoneCommand
 from core import WellDefinedCommand, PoundSeparatedCommand, MetaCommand
 
 
@@ -94,7 +94,10 @@ class GMM(SimpleCommand):
 class GMR(SimpleCommand):
   """Revision identification."""
 
-class GCAP(SimpleCommand):
+class GSN(SimpleCommand):
+  """Revision identification."""
+
+class GCAP(NoneCommand):
   """List device capabilities."""
 
 class V(SimpleCommand):
@@ -127,7 +130,6 @@ class D(IdentCommand):
 
 class H(ATCommand):
   """Hangup."""
-  cmd = 'D'
   sep = ''
 
 class CGMI(PoundSeparatedCommand):
