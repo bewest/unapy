@@ -96,7 +96,8 @@ Accept: */*
 
     ''')
     page = long_read(link)
-    print page
+    print "### HTTP Request"
+    print "\n".join(page)
   else:
     print "Did not connect."
 
