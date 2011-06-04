@@ -137,7 +137,7 @@ def ip_addr(link):
   ip = None
   if command.response.isOK():
     try:
-      ip = command.data[0][1]
+      ip = command.getData()
     except IndexError: pass
   
   print "IP address is ", ip
@@ -158,13 +158,14 @@ if __name__ == '__main__':
   #ge865.test('/dev/ttyUSB0')
 
   link = ge865.Link(opts.device)
-  #check_sim(link)
-  print "APN: ", get_apn(link)
+  check_sim(link)
+  #print "APN: ", get_apn(link)
   device = models.Device(link)
   print "device: %s" % device
   print "device manufacturer: %s" % device.manufacturer()
   #ip_addr(link)
-  #network_test(link)
+  network_test(link)
+  use_network(link)
 
 #####
 # EOF

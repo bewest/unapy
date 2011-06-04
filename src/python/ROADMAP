@@ -37,7 +37,31 @@ SMS commands
   * select SMS message
   * 
 
-On board scripts required?
+Send SMS and eval SMSATRUN
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+pg 377 pre = #
+
+SMSATRUN
+SMSATRUNCFG
+  set SMSATRUN parameters
+SMSATWL - whitelist
+  * crud
+
+  * print stored flag from SMSATRUN
+    * phone book/at storage/python script
+
+
+TCPATRUN Hello World
+~~~~~~~~~~~~~~~~~~~~
+Script to tell the device to connect a port.
+
+  * dump GMI
+TCPATRUN
+  * auth, firewall, enable
+  * multiplexing?
+
+  pg 386
+
 
 Serverside Daemon
 ~~~~~~~~~~~~~~~~~
@@ -46,8 +70,8 @@ Serverside Daemon
   * Record device
   * store in persistent backing store
 
-Dispatcher
-~~~~~~~~~~
+Dispatcher/Dashboard
+~~~~~~~~~~~~~~~~~~~~
   * Need a UI to create transparence
     * ruby (rails)
   * need forward dispatching protocol? ATOMPUB?
