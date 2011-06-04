@@ -1,0 +1,245 @@
+INFO:ge865.scan:attempting to open /dev/ttyUSB1
+DEBUG:ge865.scan:['AT\r\r\n', 'OK\r\n']
+DEBUG:ge865.scan:/dev/ttyUSB1 looks usable.
+INFO:root:hello world
+DEBUG:ge865.util.Link:created device: Settings: /dev/ttyUSB1  9600,8,N,1
+ -- software flow control inactive
+ -- hardware flow control inactive
+ -- CTS: active  DSR: inactive  RI: inactive  CD: inactive
+INFO:ge865.util.Link:process.write: bytearray(b'AT#QSS?\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT#QSS?\r\r\n#QSS: 0,1\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 27
+ -- isOK : True
+ -- data : AT#QSS?
+
+#QSS: 0,1
+
+ -- error: None
+AT#QSS?
+
+#QSS: 0,1
+
+INFO:ge865.util.Link:process.write: bytearray(b'AT+GMM\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+GMM\r\r\nGE865\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 22
+ -- isOK : True
+ -- data : AT+GMM
+
+GE865
+
+ -- error: None
+INFO:ge865.util.Link:process.write: bytearray(b'AT+GMR\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+GMR\r\r\n10.00.002\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 26
+ -- isOK : True
+ -- data : AT+GMR
+
+10.00.002
+
+ -- error: None
+INFO:ge865.util.Link:process.write: bytearray(b'AT+GSN\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+GSN\r\r\n0000614558\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 27
+ -- isOK : True
+ -- data : AT+GSN
+
+0000614558
+
+ -- error: None
+INFO:ge865.util.Link:process.write: bytearray(b'AT+GCAP\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+GCAP\r\r\n+GCAP: +CGSM,+DS,+FCLASS,+MS\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 46
+ -- isOK : True
+ -- data : AT+GCAP
+
++GCAP: +CGSM,+DS,+FCLASS,+MS
+
+ -- error: None
+device: ### <class 'ge865.models.Device'>
+ --                model                                              GE865
+ --               serial                                         0000614558
+ --         capabilities                 ('+CGSM', '+DS', '+FCLASS', '+MS')
+ --             revision                                          10.00.002
+INFO:ge865.util.Link:process.write: bytearray(b'AT+GMI\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+GMI\r\r\nTelit\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 22
+ -- isOK : True
+ -- data : AT+GMI
+
+Telit
+
+ -- error: None
+device manufacturer: Telit
+network test
+INFO:ge865.util.Link:process.write: bytearray(b'AT+CMEE=2\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+CMEE=2\r\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 16
+ -- isOK : True
+ -- data : AT+CMEE=2
+
+ -- error: None
+[]
+INFO:ge865.util.Link:process.write: bytearray(b'AT#CGMR\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT#CGMR\r\r\n#CGMR: 10.00.002\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 34
+ -- isOK : True
+ -- data : AT#CGMR
+
+#CGMR: 10.00.002
+
+ -- error: None
+('10.00.002',)
+INFO:ge865.util.Link:process.write: bytearray(b'AT+CREG?\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+CREG?\r\r\n+CREG: 0,5\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 29
+ -- isOK : True
+ -- data : AT+CREG?
+
++CREG: 0,5
+
+ -- error: None
+(0, '5')
+INFO:ge865.util.Link:process.write: bytearray(b'AT+CSQ\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+CSQ\r\r\n+CSQ: 14,0\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 27
+ -- isOK : True
+ -- data : AT+CSQ
+
++CSQ: 14,0
+
+ -- error: None
+(14, '0')
+SETTING APN
+INFO:ge865.util.Link:process.write: bytearray(b'AT+CGDCONT?\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+CGDCONT?\r\r\n+CGDCONT: 1,"IP","webtrial.globalm2m.net","",0,0\r\n+CGDCONT: 2,"IP","m2m.com.attz","",0,0\r\n+CGDCONT: 3,"IP","webtrial.globalm2m.net","",0,0\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 160
+ -- isOK : True
+ -- data : AT+CGDCONT?
+
++CGDCONT: 1,"IP","webtrial.globalm2m.net","",0,0
++CGDCONT: 2,"IP","m2m.com.attz","",0,0
++CGDCONT: 3,"IP","webtrial.globalm2m.net","",0,0
+
+ -- error: None
+webtrial.globalm2m.net
+INFO:ge865.util.Link:process.write: bytearray(b'AT+CGATT?\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+CGATT?\r\r\n+CGATT: 1\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 29
+ -- isOK : True
+ -- data : AT+CGATT?
+
++CGATT: 1
+
+ -- error: None
+INFO:ge865.util.Link:process.write: bytearray(b'AT#SGACT?\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT#SGACT?\r\r\n#SGACT: 1,1\r\n#SGACT: 2,0\r\n#SGACT: 3,0\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 57
+ -- isOK : True
+ -- data : AT#SGACT?
+
+#SGACT: 1,1
+#SGACT: 2,0
+#SGACT: 3,0
+
+ -- error: None
+GPRS PDP context attached: 1
+GPRS PDP context activated: [(1, '1'), (2, '0'), (3, '0')]
+context attached
+ip address: INFO:ge865.util.Link:process.write: bytearray(b'AT+CGPADDR=?\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+CGPADDR=?\r\r\n+CGPADDR: (1,2,3)\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 40
+ -- isOK : True
+ -- data : AT+CGPADDR=?
+
++CGPADDR: (1,2,3)
+
+ -- error: None
+(1, 2, 3)
+INFO:ge865.util.Link:process.write: bytearray(b'AT+CGPADDR=1\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.241.218"\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 51
+ -- isOK : True
+ -- data : AT+CGPADDR=1
+
++CGPADDR: 1,"10.215.241.218"
+
+ -- error: None
+IP address is  (1, '10.215.241.218')
+(1, '10.215.241.218')
+attempt to use the network
+INFO:ge865.util.Link:process.write: bytearray(b'AT#SD=1, 0, 80, www.tonycode.com\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:process.response: 'AT#SD=1, 0, 80, www.tonycode.com\r\r\nCONNECT\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 44
+ -- isOK : True
+ -- data : AT#SD=1, 0, 80, www.tonycode.com
+
+ -- error: None
+### <class 'ge865.commands.core.SD.assign'>
+ -- CMD     : AT#SD=1, 0, 80, www.tonycode.com
+ -- response: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 44
+ -- isOK : True
+ -- data : AT#SD=1, 0, 80, www.tonycode.com
+
+ -- error: None
+retry: 0
+retry: 1
+### HTTP Request
+HTTP/1.1 200 OK
+
+Date: Sat, 04 Jun 2011 19:40:55 GMT
+
+Server: Apache
+
+Vary: Accept-Encoding
+
+Content-Length: 137
+
+Content-Type: text/html
+
+
+
+<li>HTTP_USER_AGENT = Foo/Bar </li>
+
+<li>HTTP_HOST = www.tonycode.com </li>
+
+<li>HTTP_ACCEPT = */* </li>
+
+<li>HTTP_CONNECTION = close </li>
+
+
+
+NO CARRIER
+
