@@ -10,6 +10,7 @@ Debug a Device
     * network adapter
       * PDP Context
         * defined, attached, activated, authorized
+        * QOS???
       * Socket
       * IP
       * TCPATRUN
@@ -22,6 +23,19 @@ Debug a Device
   * initialize device
   * generate dummy meter data?
   * python
+
+SMS
+~~~
+
+Print a received SMS
+--------------------
+SMS commands
+  * + pg206 config CSCA, CSMP, CSDH, CSCB, CSAS, CRES
+  * + pg 218 receiving / reading
+    * +CNMI, +CMGL, @CMGL, +CMGR, @CMGR
+  * list SMS messages
+  * select SMS message
+  * 
 
 On board scripts required?
 
