@@ -56,6 +56,7 @@ class Device(object):
       self.__cache__['manufacturer'] = r
     return r
 
+# class DeviceData
 
 class Socket(Device):
   pass
