@@ -19,6 +19,7 @@ class Device(object):
   TODO: make testable
   """
   __cache__ = { }
+  __features__ = { }
   link = None
   __attrs__ = { 'manufacturer': at.GMI,
                 'model': at.GMM,
@@ -58,16 +59,46 @@ class Device(object):
       self.__cache__['manufacturer'] = r
     return r
 
+  def inspect(self, Feature):
+    feature = Feature( )
+    self.__features__[feature.__class__.__name__] = feature
+    feature.setDevice(self)
+    return feature
 
 # class DeviceData
 
 
 class Feature(object):
-  pass
+  device = None
+  name   = 'Feature'
+  def setDevice(self, device):
+    self.device = device
+  def getDevice(self):
+    return self.device
+
 
 class EnablerDisabler(Feature):
+  name = 'EnableDisableControl'
   def __init__(self):
     pass
+  __query__ = at.WellDefinedCommand
+  __enabled__ = False
+  def query(self):
+    q = self.device.link.process(self.__query__.query( ))
+    self.__enabled__ = q.getDevice( ) == 1
+  def isEnabled(self):
+    return self.__enabled__
+  def enable(self):
+    q = self.device.link.process(self.__query__.assign(1))
+    if q.isOK( ):
+      self.__enabled__ = True
+  def disable(self):
+    q = self.device.link.process(self.__query__.assign(0))
+    if q.isOK( ):
+      self.__enabled__ = True
+    
+class ElementList(Feature):
+  name = "ElementListControl"
 
 class Socket(Device):
   pass
