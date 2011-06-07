@@ -61,8 +61,13 @@ class Device(object):
 
 # class DeviceData
 
+
 class Feature(object):
   pass
+
+class EnablerDisabler(Feature):
+  def __init__(self):
+    pass
 
 class Socket(Device):
   pass
@@ -103,7 +108,7 @@ class SMSATRUN(object):
       urcmode  - 0/1 disable/enable[default] feature
       timeout  - in minutes.  module reboots if timeout expires before
                  commands finish.  default 5. 1..60
-      AT instance refers to :mod:`EvMoni service`.
+      AT instance refers to :mod:`EvMoni` service.
       See ENAEVMONICFG
       
     SMSATWL
