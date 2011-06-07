@@ -61,6 +61,38 @@ SMSATWL - whitelist
   * print stored flag from SMSATRUN
     * phone book/at storage/python script
 
+Some notes:
+http://www.twilio.com/docs/api/rest/sms
+
+https://github.com/pmarti/python-messaging - chosen
+http://minimoesfuerzo.org/2010/04/18/python-messaging-sms-encoderdecoder-masses/
+  This is the best found so far.  Available as third-party easy_installable
+  library.
+
+http://code.google.com/p/python-sms/source/browse/trunk/pducodec.py
+  - tried, incomplete?
+http://pypi.python.org/pypi/sms#downloads
+  - not available?
+http://www.monkeysandrobots.com/archives/207
+   - close, but missing how to format PDU :$
+http://www.dreamfabric.com/sms/deliver_fo.html
+http://www.gsm-modem.de/sms-pdu-mode.html
+
+http://www.dreamfabric.com/sms/
+http://www.dreamfabric.com/sms/
+http://www.koders.com/python/fid40706E080EBF22307940E7CA7ED3C2BE9F73B211.aspx?s=sms#L24
+http://pypi.python.org/pypi/smpp.pdu/0.1
+https://github.com/mozes/smpp.pdu/tree/master/smpp/pdu
+  - redefines constants as dynamically produced classes.  Too much python
+    magic machinery.
+http://code.google.com/p/python-sms/source/browse/trunk/pdu-decode.py?spec=svn2&r=2
+http://twit88.com/home/utility/sms-pdu-encode-decode
+http://www.diafaan.com/sms-tutorials/gsm-modem-tutorial/online-sms-status-report-pdu-decoder/
+http://pymobile.cvs.sourceforge.net/viewvc/pymobile/pyMobile/Mobile/GSM/
+http://www.koders.com/python/fid40706E080EBF22307940E7CA7ED3C2BE9F73B211.aspx?s=sms#L24
+http://gsmmanager.cvs.sourceforge.net/viewvc/gsmmanager/gsm_manager/
+http://code.google.com/p/smslib/wiki/GSM_Errors
+
 
 TCPATRUN Hello World
 ~~~~~~~~~~~~~~~~~~~~
@@ -73,6 +105,8 @@ TCPATRUN
 
   pg 386
 
+http://docs.python.org/library/asynchat.html
+http://docs.python.org/library/collections.html
 
 Serverside Daemon
 ~~~~~~~~~~~~~~~~~
@@ -97,4 +131,8 @@ Meter
     * indivo?
   * UI
     * ruby (rails)
+
+Distribution
+,,,,,,,,,,,,
+http://reinout.vanrees.org/weblog/2009/12/17/managing-dependencies.html
 
