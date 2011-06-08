@@ -135,15 +135,35 @@ class FakeListLink(FakeLink):
 
   Eg  it iterates over `comms` for each invoctation of `process`, regardless
   of the command given.
+
+  >>> class SimpleFake(FakeListLink):
+  ...   comms = [ 1, 2, 3, 'hello', 'world', 'OK' ] 
+  >>> link = SimpleFake( )
+
+  >>> link.read( )
+  1
+
+  >>> link.read( )
+  2
+
+  >>> link.read( )
+  3
+  >>> link.read( )
+  'hello'
+  >>> link.process(FakeCommand( )).raw
+  'ERROR'
+  >>> link.process(FakeCommand( )).raw
+  'OK'
+
   """
   comms = [ ]
   def __init__(self):
     self.index = 0
 
   def read(self):
-    result = comms[self.index]
+    result = self.comms[self.index]
     self.incr( )
-    return
+    return result
 
   def incr(self, step=1):
     for i in xrange(step):
