@@ -1,6 +1,7 @@
 import logging
 import re
 from pprint import pprint
+from collections import namedtuple
 
 logger = logging.getLogger(__name__)
 
@@ -48,8 +49,6 @@ def to_python(msg):
             r = tuple(map(str, parts))
           
       result.append(r)
-  if len(result) == 1:
-    return result.pop()
   return result
 
 class Response(object):
@@ -64,7 +63,11 @@ class Response(object):
   """
   def __init__(self, raw):
     self.raw = raw
-    self.lines = raw.splitlines()
+    self.lines = [ l.strip( ) for l in raw.splitlines() ]
+    if self.isOK( ):
+      self.head = self.lines[0]
+      self.body = self.lines[1:-1]
+      self.tail = self.lines[-1]
 
   def isOK(self):
     last = self.lines[-1]
@@ -78,9 +81,7 @@ class Response(object):
 
   def getData(self):
     if self.isOK():
-      lines = list(self.lines)
-      lines.pop()
-      return "\n".join(lines)
+      return "\n".join(self.body)
     return None
 
   def __repr__(self):
@@ -206,7 +207,7 @@ class SimpleCommand(NoneCommand):
 
   def getData(self):
     lines = self.response.lines
-    return '\n'.join(lines[1:len(lines)-1]).strip()
+    return '\n'.join(lines[1:-1]).strip()
 
 
 # XXX:bewest.2011-05: This would be better off in ruby because you can have
@@ -309,73 +310,31 @@ class NullInspectable(Inspectable):
 
 class MetaCommand(type):
   def __new__(meta, name, bases, dct):
+    """Called when initializing the type object that creates a class type.
+    None of python's inheritence is available.  `meta` is an unbound
+    MetaCommand.
+      * name - name of to be type/class
+      * bases
+      * dct
+    Returns a class.
+    """
     cmd = name.upper()
     if dct.get('cmd', None) is not None:
       cmd = dct['cmd']
     newdict = dct.copy()
     newdict['cmd']    = cmd
-    """
-    newdict['query']  = meta.glom(meta.getQuery(cmd, dct),
-                        dct, ['sep', 'pre'])
-    newdict['assign'] = meta.glom(meta.getAssign(cmd, dct),
-                        dct, ['sep', 'pre'])
-    newdict['inspect'] = meta.glom(meta.getInspect(cmd, dct),
-                        dct, ['sep', 'pre'])
-
-    """
     t = type.__new__(meta, name, bases, newdict)
-
-    """
-    print "__new__"
-    pprint(['t', t, 'meta', meta, 'name', name,
-            'bases', bases, 'newdict', newdict])
-    """
-
     return t
 
   def __init__(clss, name, bases, dct):
+    """clss is a class (an instance of a type).
+    Returns initialized class (a type object).
+    """
     newdict = dct.copy()
     #print "__init__"
     #pprint(['before', clss])
     super(MetaCommand, clss).__init__(name, bases, newdict)
     clss.__fix__()
-    """
-    pprint(['clss', clss, 'name', name,
-            'bases', bases, 'newdict', newdict])
-    """
-
-  @staticmethod
-  def glom(target, src, props):
-    for f in props:
-      if src.get(f, None) is not None:
-        setattr(target, f, src.get(f))
-    return target
-      
-
-
-  @staticmethod
-  def getQuery(name, dct):
-    class query(dct.get('query', NullQueryable)):
-      cmd = name
-    if '__query__' in dct:
-      query.__Response__ = dct['__query__']
-    return query
-
-  @staticmethod
-  def getAssign(name, dct):
-    class assign(dct.get('assign', NullSettable)):
-      cmd = name
-    if '__assign__' in dct:
-      assign.__Response__ = dct['__assign__']
-    return assign
-
-  @staticmethod
-  def getInspect(name, dct):
-    class inspect(dct.get('inspect', NullInspectable)):
-      cmd = name
-    if '__inspect__' in dct:
-      inspect.__Response__ = dct['__inspect__']
-    return inspect
 
 
 class WellDefinedCommand(ATCommand):

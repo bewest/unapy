@@ -5,6 +5,7 @@ from pprint import pprint, pformat
 
 logger = logging.getLogger(__name__)
 import util
+import lib
 
 class Link(serial.Serial, util.Loggable):
   __port__ = None
@@ -44,6 +45,29 @@ class Link(serial.Serial, util.Loggable):
   def __repr__(self):
     return self.dump_port_settings()
 
+  def write( self, string ):
+    r = super(type(self), self).write( string )
+    io.info( 'link.write: %s\n%s' % ( len( string ),
+                                         lib.hexdump( bytearray( string ) ) ) )
+    return r
+
+  def read( self, c ):
+    r = super(type(self), self).read( c )
+    io.info( 'link.read: %s\n%s' % ( len( r ),
+                                        lib.hexdump( bytearray( r ) ) ) )
+    return r
+    
+  def readline( self ):
+    r = super(type(self), self).readline( )
+    io.info( 'link.read: %s\n%s' % ( len( r ),
+                                        lib.hexdump( bytearray( r ) ) ) )
+    return r
+      
+  def readlines( self ):
+    r = super(type(self), self).readlines( )
+    io.info( 'link.read: %s\n%s' % ( len( r ),
+                                        lib.hexdump( bytearray( ''.join( r ) ) ) ) )
+    return r
 
   def process(self, command):
     """
@@ -64,6 +88,75 @@ class Link(serial.Serial, util.Loggable):
     # store response in the command
     result = command.parse(response)
     self.log.info('process.parse.result: %r' % result)
+    return command
+
+class FakeCommand(object):
+  __examples__ = [ ("FOO", "OK") ]
+  __example__ = ("FOO", "BAR")
+  raw = 'ERROR'
+  """Simulates a command and a response."""
+  def format(self):
+    return 'FOO'
+  def parse(self, raw):
+    if raw == "OK":
+      self.raw = raw
+    return self
+
+class FakeLink(Link):
+  def __init__(self): pass
+  def process(self, command):
+    """
+      Fake process that can read from a script.
+      Useful for testing.
+      >>> link = FakeLink( )
+
+      >>> link.process(FakeCommand( )).raw
+      'OK'
+      
+    """
+    k = command.format( )
+    D = dict(command.__examples__)
+    result = command.parse(D[k])
+    return command
+
+class FakeKeyedLink(FakeLink):
+  comm = { }
+
+  def process(self, command):
+    key = command.format( )
+    raw = self.comm.get(key)
+    res = command.parse(raw)
+    return command
+    
+class FakeListLink(FakeLink):
+  """A fake link useful for testing.
+  This one follows a script in the sense that it ignores formatting and
+  writing commands, and always reads the next message in a list of messages.
+
+  Eg  it iterates over `comms` for each invoctation of `process`, regardless
+  of the command given.
+  """
+  comms = [ ]
+  def __init__(self):
+    self.index = 0
+
+  def read(self):
+    result = comms[self.index]
+    self.incr( )
+    return
+
+  def incr(self, step=1):
+    for i in xrange(step):
+      self.index += 1
+
+  def decr(self, step=1):
+    for i in xrange(step):
+      self.index -= 1
+
+  def process(self, command):
+    """We ignore formatting the command completely, and just parse the next
+    available message using whatever command you gave us."""
+    response = command.parse(self.read( ))
     return command
 
 if __name__ == '__main__':

@@ -66,6 +66,8 @@ class Device(object):
     return feature
 
 # class DeviceData
+class FakeDevice(Device):
+  """For testing."""
 
 
 class Feature(object):
@@ -75,30 +77,84 @@ class Feature(object):
     self.device = device
   def getDevice(self):
     return self.device
+  def process(self, command):
+    return self.device.link.process(command)
+
+class FakeFeature(Feature):
+  """ """
 
 
 class EnablerDisabler(Feature):
   name = 'EnableDisableControl'
-  def __init__(self):
-    pass
   __query__ = at.WellDefinedCommand
   __enabled__ = False
   def query(self):
-    q = self.device.link.process(self.__query__.query( ))
-    self.__enabled__ = q.getDevice( ) == 1
+    """
+    """
+    q = self.process(self.__query__.query( ))
+    self.__enabled__ = q.getData( ) == 1
+    return self.isEnabled( )
   def isEnabled(self):
+    """
+    """
     return self.__enabled__
   def enable(self):
-    q = self.device.link.process(self.__query__.assign(1))
+    """
+    """
+    q = self.process(self.__query__.assign(1))
     if q.isOK( ):
       self.__enabled__ = True
+
   def disable(self):
-    q = self.device.link.process(self.__query__.assign(0))
+    """
+    """
+    q = self.process(self.__query__.assign(0))
     if q.isOK( ):
       self.__enabled__ = True
-    
+
 class ElementList(Feature):
   name = "ElementListControl"
+  __query__    = at.WellDefinedCommand
+  __elements__ = None
+
+  def clear(self):
+    self.__elements__ = None
+
+  def query(self, clear=False):
+    """
+      >>> el = ElementList( )
+      >>> el.__elements__ = [ ]
+      >>> el.query( )
+      [ ]
+    """
+    if clear:
+      self.clear( )
+    q = self.process(self.__query__.query( ))
+    if self.__elements__ is None:
+      self.__elements__ = q.getData( )
+    return self.__elements__
+
+  def elements(self, elements=None):
+    """
+    """
+    if elements is not None:
+      self.clear( )
+      # XXX: This is inefficient but straightforward.
+      for el in elements:
+        self.setElement(el)
+    return self.query( )
+
+  def setElement(self, el):
+    """
+    XXX: This will throw exceptions.
+    """
+    q   = self.process(self.__query__.assign(*el)
+    _el = q.getData( )
+    assert _el == el, "In theory these should be equal."
+    # update cache
+    self.__elements__[_el[0]] = _el:
+    return _el
+
 
 class Socket(Device):
   pass
