@@ -12,6 +12,9 @@ import at
 if __name__ == '__main__':
   import doctest
   doctest.testmod()
+  import core
+  doctest.testmod(core)
+  doctest.testmod(at)
 
 #####
 # EOF

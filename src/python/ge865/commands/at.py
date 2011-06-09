@@ -90,6 +90,7 @@ class GMI(SimpleCommand):
 
 class GMM(SimpleCommand):
   """Model identification."""
+  __ex_ok = 'AT+GMM\r\r\nGE865\r\n\r\nOK\r\n'
 
 class GMR(SimpleCommand):
   """Revision identification."""
@@ -99,6 +100,8 @@ class GSN(SimpleCommand):
 
 class GCAP(NoneCommand):
   """List device capabilities."""
+  __ex_ok = 'AT+GCAP\r\r\n+GCAP: +CGSM,+DS,+FCLASS,+MS\r\n\r\nOK\r\n'
+
 
 class V(SimpleCommand):
   """List device capabilities."""
@@ -140,6 +143,7 @@ class CGMM(PoundSeparatedCommand):
 
 class CGMR(PoundSeparatedCommand):
   """Manufacturer Revision ID."""
+  __ex_ok = 'AT#CGMR\r\r\n#CGMR: 10.00.002\r\n\r\nOK\r\n'
 
 class CGSN(PoundSeparatedCommand):
   """Product Serial No."""
@@ -252,7 +256,7 @@ class COPSMODE(PoundSeparatedCommand):
 class QSS(PoundSeparatedCommand):
   """Query SIM status.
   """
-
+  __ex_ok = 'AT#QSS?\r\r\n#QSS: 0,1\r\n\r\nOK\r\n'
 class DIALMODE(PoundSeparatedCommand):
   """ATD Dialing Mode."""
 
@@ -597,9 +601,11 @@ class CLCC(WellDefinedCommand):
   """list current calls."""
 
 class CSSN(WellDefinedCommand):
-  """ss notification.
+  """ ss notification.
+
     >>> str(CSSN.assign(1,2).format())
     'AT+CSSN=1, 2\\r'
+
   """
   class assign(NullSettable):
     tail = '{0}, {1}'
@@ -643,6 +649,11 @@ class CGDCONT(WellDefinedCommand):
     * d_comp - data compressions
     * h_comp - PDP heaer compression
   """
+  __ex_ok = ''.join([ 'AT+CGDCONT?\r\r\n+CGDCONT:'
+  , '1,"IP","webtrial.globalm2m.net","",0,0\r\n+CGDCONT:'
+  , '2,"IP","m2m.com.attz","",0,0\r\n+CGDCONT:'
+  , '3,"IP","webtrial.globalm2m.net","",0,0\r\n\r\nOK\r\n' ])
+
 
 class CGQMIN(WellDefinedCommand):
   """Miminum quality of service.
@@ -763,6 +774,7 @@ class CGACT(WellDefinedCommand):
 
 class CGATT(WellDefinedCommand):
   """Attach GPRS"""
+  __ex_ok = 'AT+CGATT?\r\r\n+CGATT: 1\r\n\r\nOK\r\n'
 
 class SCFG(WellDefinedCommand):
   """Configure TCP/IP stack with packet size and timeouts
@@ -815,6 +827,7 @@ class SD(PoundSeparatedCommand):
     * Remote port
     * IP address
   """
+  __ex_ok = 'AT#SD=1, 0, 80, www.tonycode.com\r\r\nCONNECT\r\n'
 
 class PADFWD(PoundSeparatedCommand):
   """Choose a flush character"""

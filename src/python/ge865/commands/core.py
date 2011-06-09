@@ -96,8 +96,10 @@ class Response(object):
 
 class ConnectedResponse(Response):
   """
+    XXX: not used
     >>> ConnectedResponse(EXAMPLE_CONNECT_RESPONSE).isOK()
     True
+
   """
   def isOK(self):
     if self.lines[-1].startswith('CONNECT'):
@@ -114,6 +116,7 @@ class Command(object):
     >>> c = Command()
     ... c.parse("AT\\r\\r\\nOK\\r\\n")
     ... assert(c.response != None)
+
   """
 
   __raw__      = None
@@ -130,6 +133,7 @@ class Command(object):
     """Returns formatted command.
       >>> str(Command().format())
       'AT\\r'
+
     """
     return bytearray("AT\r")
 
@@ -175,6 +179,12 @@ class ATCommand(Command):
   pre = 'AT'
   cmd = ''
   def __init__(self):
+    """
+    If cmd is None rename it using the class's name.
+    This class is configured not to do this by default, making it a poor
+    choice for this logic.
+    cmd to None in order for this to work.
+    """
     if self.cmd is None:
       self.cmd = self.__class__.__name__
     super(ATCommand, self).__init__( )
@@ -182,11 +192,15 @@ class ATCommand(Command):
   def format(self):
     return bytearray("%s\r" % ( ''.join([ self.pre, self.sep, self.cmd ]) ))
 
+# XXX: unused
 class NoneCommand(ATCommand):
   cmd = None
 
 class SimpleCommand(NoneCommand):
   """
+    XXX: unused.
+    A subclassable command configured to rename itself according to class
+    name.
     >>> str(SimpleCommand().format( ))
     'AT+SimpleCommand\\r'
 
@@ -260,6 +274,7 @@ class Settable(ATCommand):
     """
       >>> str(Settable(1).format())
       'AT+=1\\r'
+
     """
     head = ''.join([ self.pre, self.sep, self.cmd ])
     tail = ', '.join(self.args)
@@ -273,6 +288,7 @@ class Inspectable(Settable):
       'AT+=?1\\r'
       >>> str(Inspectable().format())
       'AT+=?\\r'
+
     """
     head = ''.join([ self.pre, self.sep, self.cmd ])
     tail = ', '.join(self.args)
@@ -286,6 +302,7 @@ class IdentCommand(Settable):
     """
       >>> str(IdentCommand(1).format())
       'ATI1\\r'
+
     """
     head = ''.join([ self.pre, self.sep, self.cmd ])
     tail = self.tail.format(*self.args, **self.kwds)
@@ -294,8 +311,10 @@ class IdentCommand(Settable):
 
 class ConnectedCommand(ATCommand):
   '''
+  XXX: not used
     >>> ConnectedCommand().parse(EXAMPLE_CONNECT_RESPONSE).isOK()
     True
+
   '''
   class __Response__(ConnectedResponse): pass
 
@@ -328,6 +347,11 @@ class MetaCommand(type):
 
   def __init__(clss, name, bases, dct):
     """clss is a class (an instance of a type).
+    It is the object representing the class that we are initializing and all
+    of python's inheritence is available.
+
+    We use this trick to call clss.__fix__, which gives the class an
+    opportunity to juggle some things around.
     Returns initialized class (a type object).
     """
     newdict = dct.copy()
@@ -347,6 +371,11 @@ class WellDefinedCommand(ATCommand):
 
   @classmethod
   def __fix__(klass):
+    """ Called during the creation of the class.  (During the class'
+    __init__.)
+
+    Allows us to rename our variant commands appropriately.
+    """
     for i in klass.__variants__:
       clname = '%s.%s' % (klass.cmd, i)
       setattr(klass, i,
@@ -372,6 +401,7 @@ class PoundSepCom(ATCommand):
   """
     >>> str(PoundSepCom().format())
     'AT#\\r'
+
   """
   sep = '#'
 
@@ -393,6 +423,7 @@ class PoundSeparatedCommand(WellDefinedCommand):
 
     >>> str(MyCom.inspect().format())
     'AT#FOO=?\\r'
+
   """
   sep = '#'
   class query(NullQueryable):
@@ -409,46 +440,11 @@ class FooPound(PoundSeparatedCommand):
   """
     >>> str(FooPound.query().format())
     'AT#FOOPOUND?\\r'
+
   """
 
 EXAMPLE_CGDCONT = """AT+CGDCONT?\r\r\n+CGDCONT: 1,"IP","webtrial.globalm2m.net","",0,0\r\n+CGDCONT: 2,"IP","wap.cingular","",0,0\r\nOK\r\n"""
 
-class CGDCONT(WellDefinedCommand):
-  """
-    XXX: Broken.
-
-    This was experimental.
-    Example of how to replace the query parsing logic.
-    WellDefinedCommand's copy __query__ and __assign__ to the query and
-    assign's __Response__ field's respectively.
-    >>> # type(CGDCONT.query().parse(EXAMPLE_CGDCONT).getData())
-    <type 'list'>
-
-    >>> # CGDCONT.query().parse(EXAMPLE_CGDCONT).getData()[0]
-    [1, 'IP', 'webtrial.globalm2m.net', '', 0, 0, ['0']]
-
-  """
-  class __query__(Response):
-    def getData(self):
-      results = [ ]
-      if self.isOK():
-        for line in self.lines:
-          if line.startswith('+CGDCONT: '):
-            parts = line.replace('"', '').split('+CGDCONT: ')
-            parts = parts[-1].split(',')
-            cid      = int(parts[0])
-            pdp_t    = parts[1]
-            apn      = parts[2]
-            pdp_addr = parts[3]
-            d_comp   = int(parts[4])
-            h_comp   = int(parts[5])
-            params   = parts[5:]
-            
-            results.append([ cid, pdp_t, apn, pdp_addr, d_comp, h_comp,
-                             params ])
-      return results
-
-      
 class BadNamed(WellDefinedCommand):
   """
   XXXX: Don't use.  Just here to test things.
@@ -460,6 +456,7 @@ class BadNamed(WellDefinedCommand):
 
   >>> str(BadNamed.query().format())
   'AT+Foo?\\r'
+
   """
   cmd = 'Foo'
 
@@ -470,6 +467,7 @@ class CMEE(WellDefinedCommand):
 
   >>> str(CMEE.assign(2).format())
   'AT+CMEE=2\\r'
+
   """
   cmd = 'CMEE'
 

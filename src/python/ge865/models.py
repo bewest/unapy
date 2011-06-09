@@ -124,8 +124,6 @@ class ElementList(Feature):
     """
       >>> el = ElementList( )
       >>> el.__elements__ = [ ]
-      >>> el.query( )
-      [ ]
     """
     if clear:
       self.clear( )
@@ -148,11 +146,11 @@ class ElementList(Feature):
     """
     XXX: This will throw exceptions.
     """
-    q   = self.process(self.__query__.assign(*el)
+    q   = self.process(self.__query__.assign(*el))
     _el = q.getData( )
     assert _el == el, "In theory these should be equal."
     # update cache
-    self.__elements__[_el[0]] = _el:
+    self.__elements__[_el[0]] = _el
     return _el
 
 
