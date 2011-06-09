@@ -1,18 +1,21 @@
 
 import unittest
 import doctest
-#from ge865 import command, link
+import sys
 
 import link, commands, models
 
 
 if __name__ == '__main__':
-  MODS = [ link, commands, models ]
+  MODS = [ link, commands.core, commands.at, models ]
   suite  = unittest.TestSuite( )
   for mod in MODS:
-    suite.addTest(doctest.DocTestSuite(mod))
-  runner = unittest.TextTestRunner( )
-  runner.run(suite)
+    doctest.testmod(mod)
+    #suite.addTest(doctest.DocTestSuite(mod))
+  # runner = unittest.TextTestRunner( )
+  #runner.run(suite)
+  #unittest.defaultTestLoader.loadTestsFromTestCase(suite)
+  #unittest.main(argv=sys.argv, )
 
 #####
 # EOF
