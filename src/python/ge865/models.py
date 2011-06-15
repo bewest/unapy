@@ -9,31 +9,59 @@ class _dumbLink(object):
     command.parse('')
     return command
 
-class Device(object):
-  """A device contains manufacturer, serial info, etc...
+
+class Feature(object):
+  device = None
+  name   = 'Feature'
+  __attrs__ = {'hello': at.ATCommand }
+  __cache__ = { }
+  def __init__(self, device):
+    self.setDevice(device)
+    self.flow( )
+  def setDevice(self, device):
+    self.device = device
+  def getDevice(self):
+    return self.device
+  def process(self, command):
+    return self.device.link.process(command)
+
+  def flow(self):
+    keys = self.__attrs__.keys( )
+    keys.sort( )
+    for k in keys:
+      command = self.__cache__.get(k,
+                  self.process(self.__attrs__[k]( )))
+      self.__cache__[k] = command
+
+class FakeFeature(Feature):
+  """ """
+  def process(self, command):
+    """Assume we have a FakeListLink and add our command's __ex_ok to the
+    comms list just before reading it.
+    """
+    self.device.link.comms.append(command.__ex_ok)
+    return self.device.link.process(command)
+
+class ModelInfo(Feature):
+  """Groups a bunch of attributes as a feature against a device.
+
+  A device contains manufacturer, serial info, etc...
 
   It's a safe base class for any high level feature set.  Obtaining
   information about a device is always a safe set of operations, and a
   particularly easy one to group.
 
-  TODO: make testable
   """
-  __cache__ = { }
-  __features__ = { }
-  link = None
   __attrs__ = { 'manufacturer': at.GMI,
                 'model': at.GMM,
                 'serial': at.GSN,
                 'capabilities': at.GCAP,
                 'revision': at.GMR, }
-  def __init__(self, link):
-    self.link = link
-    self.__fetch__()
-
+  __cache__ = { }
   def __repr__(self):
     # Only show instantiated attributes.
     l = ['### %r' % self.__class__ ]
-    for k, v in self.__cache__.iteritems():
+    for k, v in self.__fetch__().iteritems( ):
       l.append(' -- %20s %50s' % (k, v))
     return '\n'.join(l)
 
@@ -45,49 +73,58 @@ class Device(object):
     
   def __getattr__(self, name):
     if name in self.__attrs__:
-      data = self.__cache__.get(name,
-               self.link.process(self.__attrs__[name]( )).getData( ))
+      command = self.__cache__.get(name,
+                  self.process(self.__attrs__[name]( )))
       if name not in self.__cache__:
-        self.__cache__[name] = data
-      return data
+        self.__cache__[name] = command
+      return command.getData( )
     raise AttributeError("%s has no attribute: %s" % (self, name))
    
-  def manufacturer(self):
-    r = self.__cache__.get( 'manufacturer',
-        self.link.process(at.GMI()).getData())
-    if 'manufacturer' not in self.__cache__:
-      self.__cache__['manufacturer'] = r
-    return r
+
+class Device(object):
+  __features__ = { 'model': ModelInfo }
+  __cache__ = { }
+  link = None
+  def __init__(self, link):
+    self.link = link
+
+  def __repr__(self): 
+    l = ['### %r' % self.__class__ ]
+    for k, v in self.__features__.iteritems():
+      l.append(' -- %20s %50s' % (k, v))
+    return '\n'.join(l)
+    
+  def __getattr__(self, name):
+    if name in self.__features__:
+      feature = self.__cache__.get(name,
+               self.inspect(self.__features__[name]))
+      if name not in self.__cache__:
+        self.__cache__[name] = feature
+      return feature
+    raise AttributeError("%s has no attribute: %r" % (self, name))
 
   def inspect(self, Feature):
-    feature = Feature( )
+    feature = Feature(self)
     self.__features__[feature.__class__.__name__] = feature
-    feature.setDevice(self)
+    #feature.setDevice(self)
     return feature
 
 # class DeviceData
 class FakeDevice(Device):
   """For testing."""
+  def __init__(self):
+    from link import OKExampleLink
+    self.link = OKExampleLink( )
 
-
-class Feature(object):
-  device = None
-  name   = 'Feature'
-  def setDevice(self, device):
-    self.device = device
-  def getDevice(self):
-    return self.device
-  def process(self, command):
-    return self.device.link.process(command)
-
-class FakeFeature(Feature):
-  """ """
 
 
 class EnablerDisabler(Feature):
   name = 'EnableDisableControl'
   __query__ = at.WellDefinedCommand
   __enabled__ = False
+  def __init__(self, device):
+    super(EnablerDisabler, self).__init__(device)
+    self.query()
   def query(self):
     """
     """
@@ -112,6 +149,13 @@ class EnablerDisabler(Feature):
     if q.isOK( ):
       self.__enabled__ = True
 
+  def __repr__(self):
+    # Only show instantiated attributes.
+    l = ['### %r' % self.__class__]
+    l.append(' -- %20s %50s' % ('enabled:', self.__enabled__))
+    return '\n'.join(l)
+
+
 class ElementList(Feature):
   name = "ElementListControl"
   __query__    = at.WellDefinedCommand
@@ -122,8 +166,8 @@ class ElementList(Feature):
 
   def query(self, clear=False):
     """
-      >>> el = ElementList( )
-      >>> el.__elements__ = [ ]
+      >>> el = ElementList( FakeDevice() )
+      ... el.__elements__ = [ ]
     """
     if clear:
       self.clear( )
@@ -152,19 +196,31 @@ class ElementList(Feature):
     # update cache
     self.__elements__[_el[0]] = _el
     return _el
+  
+
+class NetworkContext(ElementList):
+  __query__ = at.CGDCONT
 
 
 class Socket(Device):
   pass
 
-class SIM(Device):
+class SIM(Feature):
   """
   QSS
   CSIM pg 380
     read/write to SIM
 
   """
-  pass
+  name = 'Query SIM Status'
+  __attrs__ = { 'status': at.QSS, }
+  def status(self):
+    status = self.__cache__['status']
+    return status
+
+  def isEnabled(self):
+    return self.status( ).getData( ).status
+
 
 class TCPATRUN(object):
   """

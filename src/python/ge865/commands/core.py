@@ -17,7 +17,7 @@ EXAMPLE_ERROR  = '''AT+\r\r\nERROR\r\n'''
 EXAMPLE_ERROR_CARRIER  = '''AT+\r\r\nNO CARRIER\r\n'''
 EXAMPLE_ASSIGN = '''AT+CMEE=2\r\r\nOK\r\n'''
 
-def to_python(msg):
+def to_python(msg, Tuple=tuple):
   """
     >>> len(to_python(EXAMPLE_IP_to_python))
     1
@@ -123,11 +123,17 @@ class Command(object):
   __timeout__  = None
   response     = None
   data         = None
+  __fields__   = None
+  Tuple        = tuple
+  _ex_ok = '''AT\r\r\nOK\r\n'''
 
   class __Response__(Response): pass
   
   def __init__(self):
     self.response = None
+    if self.__fields__ is not None:
+      name = 'ATResponse%s' % self.cmd
+      self.Tuple = namedtuple(name, self.__fields__)
 
   def format(self):
     """Returns formatted command.
@@ -153,7 +159,7 @@ class Command(object):
 
   def getData(self):
     if self.response.isOK():
-      return to_python(self.response.getData())
+      return to_python(self.response.getData(), Tuple=self.Tuple)
     return None
 
 class ATCommand(Command):
@@ -178,6 +184,7 @@ class ATCommand(Command):
   sep = '+'
   pre = 'AT'
   cmd = ''
+  _ex_ok = '''AT\r\r\nOK\r\n'''
   def __init__(self):
     """
     If cmd is None rename it using the class's name.

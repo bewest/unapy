@@ -47,25 +47,25 @@ class Link(serial.Serial, util.Loggable):
 
   def write( self, string ):
     r = super(type(self), self).write( string )
-    io.info( 'link.write: %s\n%s' % ( len( string ),
-                                         lib.hexdump( bytearray( string ) ) ) )
+    #self.log.info( 'write: %s\n%s' % ( len( string ),
+    #                                     lib.hexdump( bytearray( string ) ) ) )
     return r
 
   def read( self, c ):
     r = super(type(self), self).read( c )
-    io.info( 'link.read: %s\n%s' % ( len( r ),
-                                        lib.hexdump( bytearray( r ) ) ) )
+    #self.log.info( 'read: %s\n%s' % ( len( r ),
+    #                                    lib.hexdump( bytearray( r ) ) ) )
     return r
     
   def readline( self ):
     r = super(type(self), self).readline( )
-    io.info( 'link.read: %s\n%s' % ( len( r ),
-                                        lib.hexdump( bytearray( r ) ) ) )
+    #self.log.info( 'read: %s\n%s' % ( len( r ),
+    #                                    lib.hexdump( bytearray( r ) ) ) )
     return r
       
   def readlines( self ):
     r = super(type(self), self).readlines( )
-    io.info( 'link.read: %s\n%s' % ( len( r ),
+    self.log.info( 'read: %s\n%s' % ( len( r ),
                                         lib.hexdump( bytearray( ''.join( r ) ) ) ) )
     return r
 
@@ -75,7 +75,7 @@ class Link(serial.Serial, util.Loggable):
     """
     # format the command
     message = command.format()
-    self.log.info('process.write: %r' % message)
+    self.log.info('process: %r' % message)
 
     # write it into the port
     self.write(message)
@@ -128,12 +128,25 @@ class FakeKeyedLink(FakeLink):
     res = command.parse(raw)
     return command
     
+
+class OKExampleLink(FakeLink):
+  """OKExampleLink
+
+  This one just feeds the command's __ex_ok into it's parse method.
+  """
+  def process(self, command):
+    """We ignore formatting the command completely, and just parse the
+    _ex_ok.
+    """
+    response = command.parse(command._ex_ok)
+    return command
+
 class FakeListLink(FakeLink):
   """A fake link useful for testing.
   This one follows a script in the sense that it ignores formatting and
   writing commands, and always reads the next message in a list of messages.
 
-  Eg  it iterates over `comms` for each invoctation of `process`, regardless
+  Eg it iterates over `comms` for each invoctation of `process`, regardless
   of the command given.
 
   >>> class SimpleFake(FakeListLink):

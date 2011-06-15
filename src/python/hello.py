@@ -14,27 +14,6 @@ from ge865 import models
 EXAMPLE_IP_REPLY='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n\r\nOK\r\n'
 EXAMPLE_IP_to_python='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n'
 
-def to_python(msg):
-  """
-    >>> len(to_python(EXAMPLE_IP_to_python))
-    1
-    >>> to_python(EXAMPLE_IP_to_python)
-    [(1, '10.215.91')]
-
-  """
-  lines  = msg.strip().splitlines()
-  result = [ ]
-  r      = ( )
-  for l in lines:
-    parts = l.split(': ')
-    if len(parts) > 1:
-      parts = ''.join(parts[1:]
-               ).replace('"', '').replace("'", "").split(',')
-      r = tuple(parts)
-      if len(parts) > 1:
-        r = ( int(parts[0]), ) + tuple(parts[1:])
-      result.append(r)
-  return result
 
 def check_sim(link):
   command = link.process(at.QSS.query())

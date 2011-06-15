@@ -15,6 +15,8 @@ def hexdump( src, length=8 ):
     hexa = ' '.join( [ '%#04x' %  x for x in list( s ) ] )
     text = ''.join( [ chr(x) if 0x20 <= x < 0x7F else '.' \
                     for x in s ] )
+    if len(hexa) < length * (digits + 1):
+      hexa = '%-39s' % hexa
     result.append( "%04X   %-*s   %s" % \
                  ( i, length * ( digits + 1 )
                  , hexa, text ) )
