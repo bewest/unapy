@@ -75,7 +75,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 from core import Command, ATCommand, Response, NullSettable, NullQueryable
-from core import IdentCommand, SimpleCommand, NoneCommand
+from core import IdentCommand, SoleItemCommand, SimpleCommand, NoneCommand
 from core import WellDefinedCommand, PoundSeparatedCommand, MetaCommand
 
 
@@ -253,9 +253,15 @@ class SERVINFO(PoundSeparatedCommand):
 class COPSMODE(PoundSeparatedCommand):
   """+COPS mode."""
 
-class QSS(PoundSeparatedCommand):
+class QSS(PoundSeparatedCommand, SoleItemCommand):
   """Query SIM status.
+  >>> c = QSS( )
+  >>> r = c.parse(QSS._ex_ok)
+  >>> print c.getData( )
+  >>> c.getData( ).status
+  1
   """
+  __fields__ = [ 'mode', 'status' ]
   _ex_ok = 'AT#QSS?\r\r\n#QSS: 0,1\r\n\r\nOK\r\n'
 class DIALMODE(PoundSeparatedCommand):
   """ATD Dialing Mode."""
@@ -827,6 +833,7 @@ class SD(PoundSeparatedCommand):
     * Remote port
     * IP address
   """
+  # CONNECT
   _ex_ok = 'AT#SD=1, 0, 80, www.tonycode.com\r\r\nCONNECT\r\n'
 
 class PADFWD(PoundSeparatedCommand):

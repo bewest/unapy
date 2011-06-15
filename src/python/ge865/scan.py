@@ -47,8 +47,7 @@ def best_guess():
   try:
     return filter(link_usable, scan( ))[0]
   except IndexError, e:
-    raise ScanAttachedDevicesError("""couldn't find a device that works.
-    See -h --help on using -d --device.""")
+    raise ScanAttachedDevicesError("""couldn't find a device that works.""")
 
 if __name__=='__main__':
     print "Found ports:"

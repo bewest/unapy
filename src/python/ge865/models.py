@@ -17,7 +17,7 @@ class Feature(object):
   __cache__ = { }
   def __init__(self, device):
     self.setDevice(device)
-    self.flow( )
+    self.refresh( )
   def setDevice(self, device):
     self.device = device
   def getDevice(self):
@@ -25,7 +25,7 @@ class Feature(object):
   def process(self, command):
     return self.device.link.process(command)
 
-  def flow(self):
+  def refresh(self):
     keys = self.__attrs__.keys( )
     keys.sort( )
     for k in keys:

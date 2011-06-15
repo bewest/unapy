@@ -132,6 +132,7 @@ class Command(object):
   def __init__(self):
     self.response = None
     if self.__fields__ is not None:
+      print "hello"
       name = 'ATResponse%s' % self.cmd
       self.Tuple = namedtuple(name, self.__fields__)
 
@@ -205,7 +206,6 @@ class NoneCommand(ATCommand):
 
 class SimpleCommand(NoneCommand):
   """
-    XXX: unused.
     A subclassable command configured to rename itself according to class
     name.
     >>> str(SimpleCommand().format( ))
@@ -403,6 +403,15 @@ class Foo(WellDefinedCommand):
   'AT+FOO=?\\r'
   """
   pass
+
+class SoleItemCommand(ATCommand):
+  """
+  Our getData returns a single named tuple.
+  """
+  def getData(self):
+    data = super(ATCommand, self).getData( )
+    if len(data) == 1:
+      return data.pop( )
 
 class PoundSepCom(ATCommand):
   """
