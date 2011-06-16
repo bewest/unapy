@@ -48,7 +48,11 @@ def to_python(msg, Tuple=tuple):
           except ValueError, e:
             r = tuple(map(str, parts))
           
-      result.append(r)
+      try:
+        result.append(Tuple(*r))
+      except TypeError, e:
+        result.append(Tuple(r))
+
   return result
 
 class Response(object):
@@ -123,19 +127,21 @@ class Command(object):
   __timeout__  = None
   response     = None
   data         = None
-  __fields__   = None
-  Tuple        = tuple
+  _fields   = None
+  _Tuple        = tuple
   _ex_ok = '''AT\r\r\nOK\r\n'''
 
   class __Response__(Response): pass
   
   def __init__(self):
     self.response = None
-    if self.__fields__ is not None:
-      print "hello"
+    if self._fields is not None:
       name = 'ATResponse%s' % self.cmd
-      self.Tuple = namedtuple(name, self.__fields__)
+      self._Tuple = namedtuple(name, self._fields)
 
+  def Tuple(self, *args):
+    return  self._Tuple(*args)
+    
   def format(self):
     """Returns formatted command.
       >>> str(Command().format())
@@ -410,8 +416,9 @@ class SoleItemCommand(ATCommand):
   """
   def getData(self):
     data = super(ATCommand, self).getData( )
-    if len(data) == 1:
+    if data is not None and len(data) == 1:
       return data.pop( )
+    return None
 
 class PoundSepCom(ATCommand):
   """
