@@ -1,0 +1,186 @@
+INFO:ge865.scan:attempting to open /dev/ttyUSB1
+DEBUG:ge865.scan:['AT\r\r\n', 'OK\r\n']
+DEBUG:ge865.scan:/dev/ttyUSB1 looks usable.
+INFO:root:hello world
+DEBUG:ge865.util.Link:created device: Settings: /dev/ttyUSB1  9600,8,N,1
+ -- software flow control inactive
+ -- hardware flow control inactive
+ -- CTS: active  DSR: inactive  RI: inactive  CD: inactive
+Settings: /dev/ttyUSB1  9600,8,N,1
+ -- software flow control inactive
+ -- hardware flow control inactive
+ -- CTS: active  DSR: inactive  RI: inactive  CD: inactive
+INFO:ge865.util.Link:process: bytearray(b'AT+GCAP\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 4
+0000   0x41 0x54 0x2b 0x47 0x43 0x41 0x50 0x0d   AT+GCAP.
+0008   0x0d 0x0a 0x2b 0x47 0x43 0x41 0x50 0x3a   ..+GCAP:
+0010   0x20 0x2b 0x43 0x47 0x53 0x4d 0x2c 0x2b    +CGSM,+
+0018   0x44 0x53 0x2c 0x2b 0x46 0x43 0x4c 0x41   DS,+FCLA
+0020   0x53 0x53 0x2c 0x2b 0x4d 0x53 0x0d 0x0a   SS,+MS..
+0028   0x0d 0x0a 0x4f 0x4b 0x0d 0x0a   ..OK..
+INFO:ge865.util.Link:process.response: 'AT+GCAP\r\r\n+GCAP: +CGSM,+DS,+FCLASS,+MS\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 46
+ -- isOK : True
+ -- data : 
++GCAP: +CGSM,+DS,+FCLASS,+MS
+
+ -- error: None
+INFO:ge865.util.Link:process: bytearray(b'AT+GMI\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 4
+0000   0x41 0x54 0x2b 0x47 0x4d 0x49 0x0d 0x0d   AT+GMI..
+0008   0x0a 0x54 0x65 0x6c 0x69 0x74 0x0d 0x0a   .Telit..
+0010   0x0d 0x0a 0x4f 0x4b 0x0d 0x0a   ..OK..
+INFO:ge865.util.Link:process.response: 'AT+GMI\r\r\nTelit\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 22
+ -- isOK : True
+ -- data : 
+Telit
+
+ -- error: None
+INFO:ge865.util.Link:process: bytearray(b'AT+GMM\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 4
+0000   0x41 0x54 0x2b 0x47 0x4d 0x4d 0x0d 0x0d   AT+GMM..
+0008   0x0a 0x47 0x45 0x38 0x36 0x35 0x0d 0x0a   .GE865..
+0010   0x0d 0x0a 0x4f 0x4b 0x0d 0x0a   ..OK..
+INFO:ge865.util.Link:process.response: 'AT+GMM\r\r\nGE865\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 22
+ -- isOK : True
+ -- data : 
+GE865
+
+ -- error: None
+INFO:ge865.util.Link:process: bytearray(b'AT+GMR\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 4
+0000   0x41 0x54 0x2b 0x47 0x4d 0x52 0x0d 0x0d   AT+GMR..
+0008   0x0a 0x31 0x30 0x2e 0x30 0x30 0x2e 0x30   .10.00.0
+0010   0x30 0x32 0x0d 0x0a 0x0d 0x0a 0x4f 0x4b   02....OK
+0018   0x0d 0x0a                                 ..
+INFO:ge865.util.Link:process.response: 'AT+GMR\r\r\n10.00.002\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 26
+ -- isOK : True
+ -- data : 
+10.00.002
+
+ -- error: None
+INFO:ge865.util.Link:process: bytearray(b'AT+GSN\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 4
+0000   0x41 0x54 0x2b 0x47 0x53 0x4e 0x0d 0x0d   AT+GSN..
+0008   0x0a 0x30 0x30 0x30 0x30 0x36 0x31 0x34   .0000614
+0010   0x35 0x35 0x38 0x0d 0x0a 0x0d 0x0a 0x4f   558....O
+0018   0x4b 0x0d 0x0a                            K..
+INFO:ge865.util.Link:process.response: 'AT+GSN\r\r\n0000614558\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 27
+ -- isOK : True
+ -- data : 
+0000614558
+
+ -- error: None
+INFO:ge865.util.Link:process: bytearray(b'AT+GMM\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 4
+0000   0x41 0x54 0x2b 0x47 0x4d 0x4d 0x0d 0x0d   AT+GMM..
+0008   0x0a 0x47 0x45 0x38 0x36 0x35 0x0d 0x0a   .GE865..
+0010   0x0d 0x0a 0x4f 0x4b 0x0d 0x0a   ..OK..
+INFO:ge865.util.Link:process.response: 'AT+GMM\r\r\nGE865\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 22
+ -- isOK : True
+ -- data : 
+GE865
+
+ -- error: None
+INFO:ge865.util.Link:process: bytearray(b'AT+GMR\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 4
+0000   0x41 0x54 0x2b 0x47 0x4d 0x52 0x0d 0x0d   AT+GMR..
+0008   0x0a 0x31 0x30 0x2e 0x30 0x30 0x2e 0x30   .10.00.0
+0010   0x30 0x32 0x0d 0x0a 0x0d 0x0a 0x4f 0x4b   02....OK
+0018   0x0d 0x0a                                 ..
+INFO:ge865.util.Link:process.response: 'AT+GMR\r\r\n10.00.002\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 26
+ -- isOK : True
+ -- data : 
+10.00.002
+
+ -- error: None
+INFO:ge865.util.Link:process: bytearray(b'AT+GSN\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 4
+0000   0x41 0x54 0x2b 0x47 0x53 0x4e 0x0d 0x0d   AT+GSN..
+0008   0x0a 0x30 0x30 0x30 0x30 0x36 0x31 0x34   .0000614
+0010   0x35 0x35 0x38 0x0d 0x0a 0x0d 0x0a 0x4f   558....O
+0018   0x4b 0x0d 0x0a                            K..
+INFO:ge865.util.Link:process.response: 'AT+GSN\r\r\n0000614558\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 27
+ -- isOK : True
+ -- data : 
+0000614558
+
+ -- error: None
+INFO:ge865.util.Link:process: bytearray(b'AT+GCAP\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 4
+0000   0x41 0x54 0x2b 0x47 0x43 0x41 0x50 0x0d   AT+GCAP.
+0008   0x0d 0x0a 0x2b 0x47 0x43 0x41 0x50 0x3a   ..+GCAP:
+0010   0x20 0x2b 0x43 0x47 0x53 0x4d 0x2c 0x2b    +CGSM,+
+0018   0x44 0x53 0x2c 0x2b 0x46 0x43 0x4c 0x41   DS,+FCLA
+0020   0x53 0x53 0x2c 0x2b 0x4d 0x53 0x0d 0x0a   SS,+MS..
+0028   0x0d 0x0a 0x4f 0x4b 0x0d 0x0a   ..OK..
+INFO:ge865.util.Link:process.response: 'AT+GCAP\r\r\n+GCAP: +CGSM,+DS,+FCLASS,+MS\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 46
+ -- isOK : True
+ -- data : 
++GCAP: +CGSM,+DS,+FCLASS,+MS
+
+ -- error: None
+INFO:ge865.util.Link:process: bytearray(b'AT+GMI\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 4
+0000   0x41 0x54 0x2b 0x47 0x4d 0x49 0x0d 0x0d   AT+GMI..
+0008   0x0a 0x54 0x65 0x6c 0x69 0x74 0x0d 0x0a   .Telit..
+0010   0x0d 0x0a 0x4f 0x4b 0x0d 0x0a   ..OK..
+INFO:ge865.util.Link:process.response: 'AT+GMI\r\r\nTelit\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 22
+ -- isOK : True
+ -- data : 
+Telit
+
+ -- error: None
+device: ### <class 'ge865.models.Device'>
+ --                model                   <class 'ge865.models.ModelInfo'>
+ --            ModelInfo ### <class 'ge865.models.ModelInfo'>
+ --                model                                              GE865
+ --         manufacturer                                              Telit
+ --               serial                                         0000614558
+ --         capabilities               [('+CGSM', '+DS', '+FCLASS', '+MS')]
+ --             revision                                          10.00.002
+INFO:ge865.util.Link:process: bytearray(b'AT#QSS?\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 4
+0000   0x41 0x54 0x23 0x51 0x53 0x53 0x3f 0x0d   AT#QSS?.
+0008   0x0d 0x0a 0x23 0x51 0x53 0x53 0x3a 0x20   ..#QSS: 
+0010   0x30 0x2c 0x31 0x0d 0x0a 0x0d 0x0a 0x4f   0,1....O
+0018   0x4b 0x0d 0x0a                            K..
+INFO:ge865.util.Link:process.response: 'AT#QSS?\r\r\n#QSS: 0,1\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 27
+ -- isOK : True
+ -- data : 
+#QSS: 0,1
+
+ -- error: None
+<ge865.models.SIM object at 0x9d6be4c>  enabled?  1

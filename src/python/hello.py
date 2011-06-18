@@ -140,10 +140,10 @@ if __name__ == '__main__':
   link = ge865.Link(opts.device)
   check_sim(link)
   #print "APN: ", get_apn(link)
-  device = models.Device(link)
-  print "device: %s" % device
-  print "device manufacturer: %s" % device.manufacturer()
-  #ip_addr(link)
+  #device = models.Device(link)
+  #print "device: %s" % device
+  #print "device manufacturer: %s" % device.manufacturer()
+  ip_addr(link)
   network_test(link)
   use_network(link)
 
