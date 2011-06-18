@@ -2,6 +2,7 @@ import logging
 import re
 from pprint import pprint
 from collections import namedtuple
+import types
 
 logger = logging.getLogger(__name__)
 
@@ -16,9 +17,21 @@ EXAMPLE_OK     = '''AT\r\r\nOK\r\n'''
 EXAMPLE_ERROR  = '''AT+\r\r\nERROR\r\n'''
 EXAMPLE_ERROR_CARRIER  = '''AT+\r\r\nNO CARRIER\r\n'''
 EXAMPLE_ASSIGN = '''AT+CMEE=2\r\r\nOK\r\n'''
+EX_GCAP='''AT+GCAP\r\r\n+GCAP: +CGSM,+DS,+FCLASS,+MS\r\n\r\nOK\r\n'''
 
 def to_python(msg, Tuple=tuple):
   """
+
+  I've seen a lot of code and commentary out there saying you need regexp to
+  handle all this.
+
+      Some people, when confronted with a problem, think
+      "I know, I'll use regular expressions." Now they
+      have two problems.
+      
+      - JWZ maybe? http://regex.info/blog/2006-09-15/247
+
+
     >>> len(to_python(EXAMPLE_IP_to_python))
     1
     >>> to_python(EXAMPLE_IP_to_python)
@@ -26,6 +39,10 @@ def to_python(msg, Tuple=tuple):
 
     >>> to_python(EXAMPLE_CGPADDR)
     [(1, 2, 3)]
+
+    >>> to_python(EX_GCAP)
+    [('+CGSM', '+DS', '+FCLASS', '+MS')]
+
 
   """
   lines  = msg.strip().splitlines()
@@ -48,10 +65,7 @@ def to_python(msg, Tuple=tuple):
           except ValueError, e:
             r = tuple(map(str, parts))
           
-      try:
-        result.append(Tuple(*r))
-      except TypeError, e:
-        result.append(Tuple(r))
+      result.append(Tuple(r))
 
   return result
 
@@ -139,8 +153,8 @@ class Command(object):
       name = 'ATResponse%s' % self.cmd
       self._Tuple = namedtuple(name, self._fields)
 
-  def Tuple(self, *args):
-    return  self._Tuple(*args)
+  def Tuple(self, args):
+    return  self._Tuple(list(args))
     
   def format(self):
     """Returns formatted command.
@@ -206,7 +220,6 @@ class ATCommand(Command):
   def format(self):
     return bytearray("%s\r" % ( ''.join([ self.pre, self.sep, self.cmd ]) ))
 
-# XXX: unused
 class NoneCommand(ATCommand):
   cmd = None
 
@@ -389,11 +402,17 @@ class WellDefinedCommand(ATCommand):
 
     Allows us to rename our variant commands appropriately.
     """
+    # Make a new type called cmd.variant
     for i in klass.__variants__:
       clname = '%s.%s' % (klass.cmd, i)
       setattr(klass, i,
               type(clname, (getattr(klass, i), ),
-                  {'cmd':klass.cmd}))
+                  { 'cmd'    : klass.cmd
+                  , 'sep'    : klass.sep
+                  , '_Tuple' : klass._Tuple
+                  , 'Tuple'  : klass.Tuple.im_func
+                  , '_fields': klass._fields
+                  }))
 
 class Foo(WellDefinedCommand):
   """
@@ -419,6 +438,11 @@ class SoleItemCommand(ATCommand):
     if data is not None and len(data) == 1:
       return data.pop( )
     return None
+
+class WellDefinedSoleCommand(WellDefinedCommand, SoleItemCommand):
+  class query(NullQueryable, SoleItemCommand): pass
+  class assign(NullSettable, SoleItemCommand): pass
+  class inspect(NullInspectable, SoleItemCommand): pass
 
 class PoundSepCom(ATCommand):
   """

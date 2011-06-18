@@ -76,7 +76,7 @@ logger = logging.getLogger(__name__)
 
 from core import Command, ATCommand, Response, NullSettable, NullQueryable
 from core import IdentCommand, SoleItemCommand, SimpleCommand, NoneCommand
-from core import WellDefinedCommand, PoundSeparatedCommand, MetaCommand
+from core import WellDefinedCommand, WellDefinedSoleCommand, PoundSeparatedCommand
 
 
 
@@ -89,7 +89,13 @@ class GMI(SimpleCommand):
   """Manufacturer identification."""
 
 class GMM(SimpleCommand):
-  """Model identification."""
+  """Model identification.
+
+  >>> c = GMM()
+  >>> r = c.parse(GMM._ex_ok)
+  >>> c.getData( )
+  'GE865'
+  """
   _ex_ok = 'AT+GMM\r\r\nGE865\r\n\r\nOK\r\n'
 
 class GMR(SimpleCommand):
@@ -99,7 +105,14 @@ class GSN(SimpleCommand):
   """Revision identification."""
 
 class GCAP(NoneCommand):
-  """List device capabilities."""
+  """List device capabilities.
+
+  >>> c = GCAP()
+  >>> r = c.parse(GCAP._ex_ok)
+  >>> c.getData( )
+  [('+CGSM', '+DS', '+FCLASS', '+MS')]
+  
+  """
   _ex_ok = 'AT+GCAP\r\r\n+GCAP: +CGSM,+DS,+FCLASS,+MS\r\n\r\nOK\r\n'
 
 
@@ -253,18 +266,28 @@ class SERVINFO(PoundSeparatedCommand):
 class COPSMODE(PoundSeparatedCommand):
   """+COPS mode."""
 
-class QSS(PoundSeparatedCommand, SoleItemCommand):
+class QSS(WellDefinedSoleCommand):
   """Query SIM status.
   >>> c = QSS( )
   >>> r = c.parse(QSS._ex_ok)
   >>> c.getData( ).status
   1
+
+  >>> c = QSS.query( )
+  >>> r = c.parse(QSS._ex_ok)
+  >>> c.getData( ).status
+  1
+
   """
+  sep = '#'
   _fields = [ 'mode', 'status' ]
   _ex_ok = 'AT#QSS?\r\r\n#QSS: 0,1\r\n\r\nOK\r\n'
 
-  def Tuple(self, *args):
-    return  self._Tuple(*map(int, args))
+  def Tuple(self, args):
+    #print args
+    #print self._Tuple(args)
+    
+    return self._Tuple(*map(int, args))
 
 class DIALMODE(PoundSeparatedCommand):
   """ATD Dialing Mode."""

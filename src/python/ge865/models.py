@@ -213,7 +213,7 @@ class SIM(Feature):
 
   """
   name = 'Query SIM Status'
-  __attrs__ = { 'status': at.QSS, }
+  __attrs__ = { 'status': at.QSS.query, }
   def status(self):
     status = self.__cache__['status']
     return status
