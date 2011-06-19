@@ -912,6 +912,14 @@ Enable SIM Application Toolkit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 
+class CMGL(WellDefinedCommand):
+  """Read SMS Messages."""
+
+  @classmethod
+  def all(klass):
+    return klass.assign(4)
+    
+
 class STIA(WellDefinedCommand):
   sep = '#'
 

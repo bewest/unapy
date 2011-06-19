@@ -164,18 +164,21 @@ class ElementList(Feature):
   def clear(self):
     self.__elements__ = None
 
-  def query(self, clear=False):
+  def query(self):
     """
       >>> el = ElementList( FakeDevice() )
       ... el.__elements__ = [ ]
     """
+    q = self.process(self.__query__.query( ))
+    return q.getData( )
+
+  def _query(self, clear=False):
     if clear:
       self.clear( )
-    q = self.process(self.__query__.query( ))
     if self.__elements__ is None:
-      self.__elements__ = q.getData( )
+      self.__elements__ = self.query( )
     return self.__elements__
-
+    
   def elements(self, elements=None):
     """
     """
@@ -184,7 +187,7 @@ class ElementList(Feature):
       # XXX: This is inefficient but straightforward.
       for el in elements:
         self.setElement(el)
-    return self.query( )
+    return self._query( )
 
   def setElement(self, el):
     """
@@ -201,6 +204,16 @@ class ElementList(Feature):
 class NetworkContext(ElementList):
   __query__ = at.CGDCONT
 
+
+class SMSMessagesList(ElementList):
+  __query__ = at.CMGL.all
+
+  def query(self):
+    q = self.process(at.CMGL.all( ))
+    return q.getData( )
+
+  def readMessage(self, msg_id):
+    message = self.process(at.CMGR).getData( )
 
 class Socket(Device):
   pass

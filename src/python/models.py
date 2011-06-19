@@ -18,6 +18,12 @@ def sim(device):
   print sim, ' enabled? ', sim.isEnabled( )
 
 
+def sms(device):
+  sms = device.inspect(models.SMSMessagesList)
+  print sms
+  print "sms elements:"
+  print sms.elements( )
+
 if __name__ == '__main__':
   try:
     from ge865 import cli
@@ -36,7 +42,7 @@ if __name__ == '__main__':
   print link
   device = models.Device(link)
 
-  for func in [ model, sim ]:
+  for func in [ model, sim, sms ]:
     M = func(device)
 
 

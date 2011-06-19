@@ -1,12 +1,12 @@
-INFO:ge865.scan:attempting to open /dev/ttyUSB1
+INFO:ge865.scan:attempting to open /dev/ttyUSB0
 DEBUG:ge865.scan:['AT\r\r\n', 'OK\r\n']
-DEBUG:ge865.scan:/dev/ttyUSB1 looks usable.
+DEBUG:ge865.scan:/dev/ttyUSB0 looks usable.
 INFO:root:hello world
-DEBUG:ge865.util.Link:created device: Settings: /dev/ttyUSB1  9600,8,N,1
+DEBUG:ge865.util.Link:created device: Settings: /dev/ttyUSB0  9600,8,N,1
  -- software flow control inactive
  -- hardware flow control inactive
  -- CTS: active  DSR: inactive  RI: inactive  CD: inactive
-Settings: /dev/ttyUSB1  9600,8,N,1
+Settings: /dev/ttyUSB0  9600,8,N,1
  -- software flow control inactive
  -- hardware flow control inactive
  -- CTS: active  DSR: inactive  RI: inactive  CD: inactive
@@ -183,4 +183,45 @@ INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Res
 #QSS: 0,1
 
  -- error: None
-<ge865.models.SIM object at 0x9d6be4c>  enabled?  1
+<ge865.models.SIM object at 0xb7664e4c>  enabled?  1
+INFO:ge865.util.Link:process: bytearray(b'AT+\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 2
+0000   0x41 0x54 0x2b 0x0d 0x0d 0x0a 0x45 0x52   AT+...ER
+0008   0x52 0x4f 0x52 0x0d 0x0a   ROR..
+INFO:ge865.util.Link:process.response: 'AT+\r\r\nERROR\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 13
+ -- isOK : False
+ -- data : None
+ -- error: ERROR
+ -- no data
+<ge865.models.SMSMessagesList object at 0x8968f0c>
+sms elements:
+INFO:ge865.util.Link:process: bytearray(b'AT+CMGL=4\r')
+INFO:ge865.util.Link:reading...
+INFO:ge865.util.Link:read: 5
+0000   0x41 0x54 0x2b 0x43 0x4d 0x47 0x4c 0x3d   AT+CMGL=
+0008   0x34 0x0d 0x0d 0x0a 0x2b 0x43 0x4d 0x47   4...+CMG
+0010   0x4c 0x3a 0x20 0x31 0x2c 0x31 0x2c 0x22   L: 1,1,"
+0018   0x22 0x2c 0x32 0x35 0x0d 0x0a 0x30 0x39   ",25..09
+0020   0x39 0x31 0x38 0x38 0x33 0x32 0x30 0x35   91883205
+0028   0x38 0x30 0x32 0x30 0x30 0x30 0x30 0x30   80200000
+0030   0x46 0x30 0x32 0x34 0x30 0x34 0x39 0x30   F0240490
+0038   0x32 0x35 0x37 0x37 0x30 0x30 0x30 0x30   25770000
+0040   0x31 0x31 0x35 0x30 0x39 0x32 0x31 0x32   11509212
+0048   0x36 0x35 0x31 0x32 0x32 0x42 0x30 0x42   65122B0B
+0050   0x45 0x38 0x33 0x32 0x39 0x42 0x46 0x44   E8329BFD
+0058   0x30 0x36 0x44 0x44 0x44 0x46 0x37 0x32   06DDDF72
+0060   0x33 0x36 0x31 0x39 0x0d 0x0a 0x0d 0x0a   3619....
+0068   0x4f 0x4b 0x0d 0x0a                       OK..
+INFO:ge865.util.Link:process.response: 'AT+CMGL=4\r\r\n+CMGL: 1,1,"",25\r\n099188320580200000F0240490257700001150921265122B0BE8329BFD06DDDF723619\r\n\r\nOK\r\n'
+INFO:ge865.util.Link:process.parse.result: ### <class 'ge865.commands.core.__Response__'>
+ -- len  : 108
+ -- isOK : True
+ -- data : 
++CMGL: 1,1,"",25
+099188320580200000F0240490257700001150921265122B0BE8329BFD06DDDF723619
+
+ -- error: None
+[(1, '1', '', '25')]
