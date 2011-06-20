@@ -7,7 +7,30 @@ logger = logging.getLogger(__name__)
 import util
 import lib
 
-class Link(serial.Serial, util.Loggable):
+class AtProcessor(util.Loggable):
+
+  def process(self, command):
+    """
+      Synchronously process a single command.
+    """
+    # format the command
+    message = command.format()
+    self.log.info('process: %r' % message)
+
+    # write it into the port
+    self.write(message)
+    self.log.info('reading...')
+
+    # read response
+    response = ''.join(self.readlines())
+    self.log.info('process.response: %r' % response)
+
+    # store response in the command
+    result = command.parse(response)
+    self.log.info('process.parse.result: %r' % result)
+    return command
+
+class Link(serial.Serial, AtProcessor):
   __port__ = None
   __name__ = None
   def __init__(self, name = None):
@@ -68,27 +91,6 @@ class Link(serial.Serial, util.Loggable):
     self.log.info( 'read: %s\n%s' % ( len( r ),
                                         lib.hexdump( bytearray( ''.join( r ) ) ) ) )
     return r
-
-  def process(self, command):
-    """
-      Synchronously process a single command.
-    """
-    # format the command
-    message = command.format()
-    self.log.info('process: %r' % message)
-
-    # write it into the port
-    self.write(message)
-    self.log.info('reading...')
-
-    # read response
-    response = ''.join(self.readlines())
-    self.log.info('process.response: %r' % response)
-
-    # store response in the command
-    result = command.parse(response)
-    self.log.info('process.parse.result: %r' % result)
-    return command
 
 class FakeCommand(object):
   __examples__ = [ ("FOO", "OK") ]
