@@ -8,9 +8,14 @@ import string
 import asyncore
 
 # http://parijatmishra.wordpress.com/2008/01/04/writing-a-server-with-pythons-asyncore-module/#HelpedImmensely.
-logging.basicConfig((level=logging.DEBUG, format="%(created)-15s %(msecs)d
-%(levelname)8s %(thread)d %(name)s %(message)s")
-log                     = logging.getLogger(__name__)
+logging.basicConfig(level=logging.DEBUG, format=' '.join(
+                   ["%(created)-15s"
+                   ,  "%(msecs)d%(levelname)8s"
+                   ,  "%(thread)d"
+                   ,  "%(name)s"
+                   ,  "%(message)s"]))
+
+log                = logging.getLogger(__name__)
 log.setLevel(logging.DEBUG)
 
 
@@ -19,19 +24,41 @@ from asynchat import async_chat
 PORT = 9339
 SIZE = 1024
 
+class Flow(object):
+  def __call__(self):
+    pass
+
 class CommandChannel(async_chat):
   data = [ ]
+  allow_reuse_address = True
+
+  def __init__(self, server, sock, addr):
+    async_chat.__init__(self, sock)
+    self.request = None
+    self.server  = server
+    self.addr = addr
+    self.data = [ ]
+
+    self.push( "ARE YOU HUMAN?" )
+    self.set_terminator('\r\n')
+    self.shutdown = 0
+
   def collect_incoming_data(self, data):
     self.data.append(data)
 
 
   def found_terminator(self):
-    pass
+    # search self.data to see if it's parseable.
+    #
+    # 
+    if self.data[-1].strip( ) == "OK":
+      log.debug("THIS IS A MACHINE")
 
 
 class EchoHandler(asyncore.dispatcher_with_send):
 
     def __init__(self, sock, client_addr, server):
+      # We just connected.
       self.server      = server
       self.client_addr = client_addr
       self.buffer      = ""
@@ -44,7 +71,7 @@ class EchoHandler(asyncore.dispatcher_with_send):
       log.debug("created handler; waiting for loop. TODO: send message.")
 
     def readable(self):
-      return True: # always happy to read
+      return True # always happy to read
 
     def writable(self):
       return self.is_writable # maybe
@@ -56,10 +83,11 @@ class EchoHandler(asyncore.dispatcher_with_send):
 
 class EchoServer(asyncore.dispatcher):
 
+  allow_reuse_address = True
     def __init__(self, host, port):
         asyncore.dispatcher.__init__(self)
         self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.set_reuse_addr()
+        #self.set_reuse_addr()
         self.bind((host, port))
         self.listen(5)
 
@@ -68,10 +96,11 @@ class EchoServer(asyncore.dispatcher):
         if pair is None:
             pass
         else:
-            sock, addr = pair
+            conn, addr = pair
             print 'Incoming connection from %s' % repr(addr)
             log.debug("scheduling: creating handler")
-            handler = EchoHandler(sock)
+            #handler = EchoHandler(conn, addr, self)
+            handler = CommandChannel(self, conn, addr)
 
 
 
@@ -88,7 +117,7 @@ class Application(object):
     self.log.setLevel(logging.INFO)
     
   def run(self):
-    server = EchoServer('localhost', PORT)
+    server = EchoServer('0.0.0.0', PORT)
     asyncore.loop()
 
 if __name__ == '__main__':

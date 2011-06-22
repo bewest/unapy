@@ -154,7 +154,11 @@ class Command(object):
       self._Tuple = namedtuple(name, self._fields)
 
   def Tuple(self, args):
-    return  self._Tuple(list(args))
+    try:
+      return  self._Tuple(list(args))
+    except TypeError, e:
+      return  self._Tuple(*list(args))
+
     
   def format(self):
     """Returns formatted command.
@@ -295,6 +299,7 @@ class Settable(ATCommand):
   def __init__(self, *args, **kwds):
     self.args = map(str, args)
     self.kwds = kwds
+    super(ATCommand, self).__init__()
 
   def format(self):
     """

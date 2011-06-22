@@ -913,12 +913,59 @@ Enable SIM Application Toolkit
 """
 
 class CMGL(WellDefinedCommand):
-  """Read SMS Messages."""
+  """Read SMS Messages.
+  
+  >>> CMGL.all().format()
+  bytearray(b'AT+CMGL=4\\r')
+
+  >>> c = CMGL.all()
+  >>> c._Tuple
+  >>> r = c.parse(CMGL._ex_ok)
+  >>> c.getData( )
+  [(1, '1', '', '25', '099188320580200000F0240490257700001150921265122B0BE8329BFD06DDDF723619')]
+  >>> c.getData( )[0].length
+  25
+
+  """
+  #_fields = [ 'index', 'stat', 'oada', 'toatoda', 'length', 'data' ]
+  #_fields = [ 'index', 'stat', 'oada', 'toatoda', 'length' ]
+  _fields = [ 'index', 'stat', 'oada', 'length' ]
 
   @classmethod
   def all(klass):
     return klass.assign(4)
-    
+
+  _ex_ok = 'AT+CMGL=4\r\r\n+CMGL: 1,1,"",25\r\n099188320580200000F0240490257700001150921265122B0BE8329BFD06DDDF723619\r\n\r\nOK\r\n'
+
+  def Tuple(self, args):
+    return self._Tuple(*list(args))
+
+class TCPATRUNCFG(WellDefinedCommand):
+  """TCPATRUNCFG
+  
+  
+  * connID
+  * instance
+  * portListen
+  * portHost
+  * HostName
+  pg 383
+  """
+  sep = '#'
+
+class TCPATRUNFRWL(WellDefinedCommand):
+  """
+  TCPATRUNFRWL pg 384
+  
+  """
+  sep = '#'
+
+class TCPATRUND(WellDefinedCommand):
+  """
+  TCPATRUNFRWL pg 384
+  
+  """
+  sep = '#'
 
 class STIA(WellDefinedCommand):
   sep = '#'

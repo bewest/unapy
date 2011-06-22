@@ -205,6 +205,8 @@ class NetworkContext(ElementList):
   __query__ = at.CGDCONT
 
 
+
+
 class SMSMessagesList(ElementList):
   __query__ = at.CMGL.all
 
@@ -213,7 +215,9 @@ class SMSMessagesList(ElementList):
     return q.getData( )
 
   def readMessage(self, msg_id):
-    message = self.process(at.CMGR).getData( )
+    message = self.process(at.CMGR.assign(msg_id)).getData( )
+    # XXX: decode using python-messaging
+    return message
 
 class Socket(Device):
   pass
