@@ -83,7 +83,7 @@ class EchoHandler(asyncore.dispatcher_with_send):
 
 class EchoServer(asyncore.dispatcher):
 
-  allow_reuse_address = True
+    allow_reuse_address = True
     def __init__(self, host, port):
         asyncore.dispatcher.__init__(self)
         self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
