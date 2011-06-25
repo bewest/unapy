@@ -136,9 +136,16 @@ class Flow(object):
     io = req.io
     req.is_machine = False
     try:
-      io.setTimeout(8)
+      io.setTimeout(26)
       # first command
       log.debug( "writing command")
+      io.write('AT\r\n')
+      msg = ''.join(io.readlines( ))
+      log.debug('raw response: %r' % msg)
+      if "OK" in msg:
+        req.is_machine = True
+        log.debug("skip rest of sniffing")
+        return
       io.write('HELLO WORLD\n')
       log.debug( "reading response")
       #msg = self.rfile.readline( )
