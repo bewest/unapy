@@ -69,6 +69,9 @@ def to_python(msg, Tuple=tuple):
 
   return result
 
+class InvalidResponse(IndexError):
+  pass
+
 class Response(object):
   """
   Basic Response to the AT commands
@@ -88,7 +91,11 @@ class Response(object):
       self.tail = self.lines[-1]
 
   def isOK(self):
-    last = self.lines[-1]
+    last = None
+    try:
+      last = self.lines[-1]
+    except IndexError, e:
+      raise InvalidResponse("%r seems invalid" % self.raw)
     if last in ['OK', 'CONNECT']:
       return True
     return False
@@ -160,6 +167,9 @@ class Command(object):
       return  self._Tuple(*list(args))
 
     
+  def isOK(self):
+    return bool(self.response)
+
   def format(self):
     """Returns formatted command.
       >>> str(Command().format())

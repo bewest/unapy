@@ -33,7 +33,7 @@ if __name__ == '__main__':
   config = link.process(at.TCPATRUNCFG.query( ))
   print config.getData( )
 
-  config = link.process(at.TCPATRUNCFG.assign(1, 2, 1024, 9339, '"24.130.113.66"'))
+  config = link.process(at.TCPATRUNCFG.assign(1, 2, 1024, opts.port, '"%s"' % opts.host))
   print config.getData( )
   print "Trying to connect..."
   link.process(at.TCPATRUND.assign(1))
