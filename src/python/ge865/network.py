@@ -4,15 +4,22 @@ import logging
 
 from commands.core import InvalidResponse
 from flow import BaseFlow, ATFlow, Session
+#from gevent import timeout
 
 from util import Loggable
 
 # kind of looks more like a serial port
 class Input(Loggable):
   length = 1024
-  def __init__(self, rfile, socket, length = None):
+  writeTimeout = None
+  readTimeout  = None
+  def __init__(self, rfile, socket, length = None, readTimeout=10, writeTimeout=5):
     self.getLog( )
     self.rfile  = rfile
+    if readTimeout:
+      self.readTimeout = readTimeout
+    if writeTimeout:
+      self.writeTimeout = writeTimeout
     self.socket = socket
     self.log.debug(self.rfile)
     if length is not None:
@@ -31,7 +38,16 @@ class Input(Loggable):
     return self.rfile.read()
 
   def readline(self):
-    return self.rfile.readline( )
+    prev = self.getTimeout()
+    r    = ''
+    if self.readTimeout:
+      self.setTimeout(self.readTimeout)
+    try:
+      r = self.rfile.readline( )
+    except timeout, e: pass
+    if prev:
+      self.setTimeout(prev)
+    return r
 
   def readlines(self):
     return list(self)
@@ -40,8 +56,13 @@ class Input(Loggable):
     return self
 
   def write(self, msg):
+    prev = self.getTimeout()
+    if self.writeTimeout:
+      self.setTimeout(self.writeTimeout)
     self.rfile.write(msg)
     self.rfile.flush( )
+    if prev:
+      self.setTimeout(prev)
 
   def next(self):
     try:
@@ -85,7 +106,7 @@ class SessionHandler(Loggable):
       for flow in flows( ):
         flow(session)
     except InvalidResponse, e:
-      log.info("XXX: invalid response!: closing flow%r" % e)
+      self.log.info("XXX: invalid response!: closing flow%r" % e)
     self.log.debug("done with flow")
     self.close( )
 
