@@ -38,23 +38,36 @@ ___
 
 TODO
 ____
+My SGACT starts in the offstate.  We can configure TCPATRUN to run in an
+SMSATRUN message that goes like this:
 
-    * load a list of new flows from a module given as an option
-      -m --module - load a dict of flows from module.getFlows( )
-      Flows should implement a help( ), getOptions, and setOptions( ), and
-      they will be added to the list of available flows.
 
-      * tcpatrun:
+  * SGACT=1,1 // activate previously configured PDP context this will run a
+              // previously configured TCPATRUN session (ready/idle)
+              // the TCPATRUN log will be returned to the originating caller
+              // id
+Depends on working CGDCONT/SGACT with TCPATRUN configured and enabled.
+Assumes SGACT is off (since mine boots from an off state).
+TCPATRUN enabling/disabling is persistent across boots, but SGACT is not?
 
-        * list configurations
-        * list open sessions
-        * list activated sessions
 
-        * close a session?
-          not sure how to do this over TCPATRUN
-          may need to eventually trigger another SMS message to turn things
-          off
-          
+  * load a list of new flows from a python module given as an option
+    -m --module - load a dict of flows from module.getFlows( ) Flows should
+    implement a help( ), getOptions, and setOptions( ), and they will be
+    added to the list of available flows.
+
+    * tcpatrun:
+
+      * list configurations
+      * list open sessions
+      * list activated sessions
+
+      * close a session?
+        not sure how to do this over TCPATRUN
+        may need to eventually trigger another SMS message to turn things
+        off
+
+        
 
     * logging is instrumented, but needs to be tuned a bit more effectively
       which channels should be set to which levels?  how expressive should
