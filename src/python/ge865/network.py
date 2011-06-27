@@ -13,7 +13,7 @@ class Input(Loggable):
   length = 1024
   writeTimeout = None
   readTimeout  = None
-  def __init__(self, rfile, socket, length = None, readTimeout=10, writeTimeout=5):
+  def __init__(self, rfile, socket, length = None, readTimeout=8, writeTimeout=3):
     self.getLog( )
     self.rfile  = rfile
     if readTimeout:
