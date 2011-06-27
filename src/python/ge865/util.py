@@ -6,7 +6,8 @@ class Loggable(object):
     self.getLog( )
   def getLog(self):
     name     = self.__class__.__name__
-    logger   = '.'.join([ __name__, name ])
+    module   = self.__class__.__module__
+    logger   = '.'.join([ module, name ])
     self.log = logging.getLogger(logger)
 
 

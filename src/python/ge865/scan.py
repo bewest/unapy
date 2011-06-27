@@ -14,9 +14,15 @@ import logging
 import glob
 logger = logging.getLogger(__name__)
 
+GLOB_PATTERNS = [ '/dev/tty.usb*', '/dev/ttyUSB*' ]
+
 def scan():
     """scan for available ports. return a list of device names."""
-    return glob.glob('/dev/tty.usb*') + glob.glob('/dev/ttyUSB*')
+    r = [ ]
+    for pat in GLOB_PATTERNS:
+      r.extend(glob.glob(pat))
+    return r
+    #return glob.glob('/dev/tty.usb*') + glob.glob('/dev/ttyUSB*')
 
 def usable_response(lines):
   logger.debug(lines)
@@ -47,7 +53,8 @@ def best_guess():
   try:
     return filter(link_usable, scan( ))[0]
   except IndexError, e:
-    raise ScanAttachedDevicesError("""couldn't find a device that works.""")
+    raise ScanAttachedDevicesError("""couldn't find a device that works.
+    scanned: {globs}""".format(globs=GLOB_PATTERNS))
 
 if __name__=='__main__':
     print "Found ports:"

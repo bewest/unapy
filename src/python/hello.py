@@ -7,6 +7,7 @@ import time
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 ge865.logger.setLevel(logging.DEBUG)
+from ge865 import cli
 from ge865.commands import at
 
 from ge865 import models
@@ -129,23 +130,28 @@ def random(link):
   command = link.process(at.SS())
 
 
+class Application(cli.CLIApp):
+  def run(self):
+    """
+    Do everything interesting here.
+    """
+    check_sim(self.link)
+    #print "APN: ", get_apn(self.link)
+    #device = models.Device(self.link)
+    #print "device: %s" % device
+    #print "device manufacturer: %s" % device.manufacturer()
+    ip_addr(self.link)
+    network_test(self.link)
+    use_network(self.link)
+
 
 if __name__ == '__main__':
-  from ge865 import cli
   logging.info('hello world')
-  opts, args = cli.parser.parse_args()
+
+  app = Application( )
+  app.run( )
 
   #ge865.test('/dev/ttyUSB0')
-
-  link = ge865.Link(opts.device)
-  check_sim(link)
-  #print "APN: ", get_apn(link)
-  #device = models.Device(link)
-  #print "device: %s" % device
-  #print "device manufacturer: %s" % device.manufacturer()
-  ip_addr(link)
-  network_test(link)
-  use_network(link)
 
 #####
 # EOF

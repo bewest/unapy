@@ -96,8 +96,10 @@ class Session(IoProcessor):
   def __init__(self, io, handler):
     self.io      = io
     self.handler = handler
-    #super(Session, self).__init__()
     self.process = IoProcessor(io)
+class ATSession(Session):
+  def __init__(self, io, handler):
+    super(ATSession, self).__init__(io, handler)
 
 
 class SniffIsMachineQuery(at.Command):
@@ -107,20 +109,67 @@ XXX: Replace with some kind of MOTD.
 If you are not an AT machine, you should go away.
 AT\r\nAT\r\n"""
 
-# Eventually load flows that can defer to other flows...
-class Flow(object):
+class BaseFlow(object):
+  """A Flow is a function which returns a list of flows to run.
+  
+  The original function and every called flow recieves a session object, which
+  is useful for passing state between flows.
+  """
   def __init__(self, session):
     self.session = session
+  def __call__(self):
+    yield self.flow
+    raise StopIteration
+
+  def flow(self, req):
+    """
+    Example flow: send a message, read input.
+    You should write your own.
+    """
+    io = req.io
+    io.throwError( )
+    io.setTimeout(2)
+    # first command
+    log.debug( "writing command")
+    io.write('XXXXHELLO WORLD\n')
+    log.debug( "reading response")
+    #msg = self.rfile.readline( )
+    msg = io.readline( )
+    #msg = io.readlines()
+    io.write( "OK: %s" % msg )
+    log.debug("got message: %s" % msg )
+
+    # second command
+    io.write('second command\n')
+    msg = io.readline( )
+    log.debug("got message 2: %s" % msg )
+    io.write( "OK: %s" % msg )
+
+    # third command
+    io.write('third command:\n')
+    msg = io.readlines( )
+    io.write( "OK: %s" % msg )
+
+
+    io.write("bye")
+    log.debug("done with flow")
+
+    return msg
+  
+class ATFlow(BaseFlow):
+
+  def process(self, command):
+    log.debug("%r.process" % (self))
+    return self.session.process(command)
+
+# Eventually load flows that can defer to other flows...
+class Flow(ATFlow):
 
   def __call__(self):
     yield self.sniff
     if self.session.is_machine:
       yield self.identify
     raise StopIteration
-
-  def process(self, command):
-    log.debug("%r.process" % (self))
-    return self.session.process(command)
 
   def identify(self, req):
     from ge865 import models
@@ -206,6 +255,7 @@ class SessionHandler(object):
     flow.
     Close the connection, when done.
     """
+    # XXX: Move this to session or to __init__?
     io      = Input(self.rfile, self.socket)
     # A Session is a combination of input/output and handler
     # Useful for attaching stuff as it goes through various flows.
@@ -213,55 +263,26 @@ class SessionHandler(object):
     log.debug( "handling connection, starting flow")
     #self.session = session
     # a Flow is a list of callables recieving a session.
-    flows = self.flows(session)
+    flows = self.getFlow(session)
     log.debug('first flow: %s' % flows)
     try:
       for flow in flows( ):
         flow(session)
     except ge865.commands.core.InvalidResponse, e:
-      log.info("XXX: invalid response!: %r" % e)
+      log.info("XXX: invalid response!: closing flow%r" % e)
     log.debug("done with flow")
     self.close( )
 
-  def flows(self, session):
+  def getFlow(self, session):
     return Flow(session)
-
-  def getFlow(self):
     return [ self.flow ]
 
-  def flow(self, req):
-    """
-    Example flow: send a message, read input.
-    """
-    io = req.io
-    io.setTimeout(2)
-    # first command
-    log.debug( "writing command")
-    io.write('XXXXHELLO WORLD\n')
-    log.debug( "reading response")
-    #msg = self.rfile.readline( )
-    msg = io.readline( )
-    #msg = io.readlines()
-    io.write( "OK: %s" % msg )
-    log.debug("got message: %s" % msg )
-
-    # second command
-    io.write('second command\n')
-    msg = io.readline( )
-    log.debug("got message 2: %s" % msg )
-    io.write( "OK: %s" % msg )
-
-    # third command
-    io.write('third command:\n')
-    msg = io.readlines( )
-    io.write( "OK: %s" % msg )
 
 
-    io.write("bye")
-    log.debug("done with flow")
-
-    return msg
-
+class SessionServer(StreamServer):
+  def handle(self, socket, address):
+    handler = SessionHandler(socket, address)
+    handler.handle()
     
 
 # this handler will be run for each incoming connection in a dedicated greenlet
@@ -292,11 +313,6 @@ def echo(socket, address):
         fileobj.write(line)
         fileobj.flush()
         print ("echoed %r" % line)
-
-class SessionServer(StreamServer):
-  def handle(self, socket, address):
-    handler = SessionHandler(socket, address)
-    handler.handle()
 
 class Application(object):
   def __init__(self):
