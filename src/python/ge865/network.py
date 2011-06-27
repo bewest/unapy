@@ -89,19 +89,13 @@ class SessionHandler(Loggable):
     self.log.debug("done with flow")
     self.close( )
 
-  def getFlow(self, session):
-    return self.flow(session)
-    return Flow(session)
-    return [ self.flow ]
-
-
-
 class SessionServer(StreamServer, Loggable):
   def __init__(self, listener, application=None, backlog=None,
                      spawn='default', flow=BaseFlow, **ssl_args):
     StreamServer.__init__(self, listener, backlog=backlog, spawn=spawn, **ssl_args)
     self.flow = flow
     self.getLog( )
+
   def handle(self, socket, address):
     handler = SessionHandler(socket, address)
     handler.handle(self.flow)
