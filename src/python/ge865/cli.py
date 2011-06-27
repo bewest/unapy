@@ -54,6 +54,9 @@ def parse_args( ):
 
 
 class Application(Loggable):
+  """
+  Interprets argv, logging, and friends.
+  """
   def __init__(self):
     self.getLog( )
     self.loglevel = logging.FATAL
@@ -78,7 +81,7 @@ class Application(Loggable):
                       default=logging.INFO,
                       action='store_const',
                       const=logging.INFO,
-                      help="Info logging. %default" )
+                      help="Info logging. (Default: %default)" )
     self.parser.add_option('-v', '--verbosity', dest='verbose',
                       action='store_const',
                       const=logging.DEBUG,
@@ -143,8 +146,10 @@ class NetworkApp(Application):
       self.server.close( )
       print 'Exiting!'
       sys.exit(0)
+
   def run(self):
-    print "Binding to {host}:{port} ...".format(host=self.options.host, port=self.options.port)
+    print "Binding to {host}:{port} ...".format(host=self.options.host,
+                                                port=self.options.port)
   
 class CLIApp(Application):
   def set_custom_options(self):
@@ -175,13 +180,13 @@ GUESSES   : %r
         print "See -h --help on using -d --device."
         sys.exit(1)
       
-    self.log("creating device: %s\n" % opts.device)
+    self.log.info("creating device: %s\n" % opts.device)
     import link
     self.link = link.Link(opts.device)
 
   def get_device(self):
     from models import Device
-    self.device = models.Device(self.link)
+    self.device = Device(self.link)
   def run(self):
     print "Sending AT:"
     self.link.write("AT\r")
