@@ -1,5 +1,37 @@
 
 from util import Loggable
+import link
+
+class IoProcessor(link.AtProcessor):
+  io = None
+  def __init__(self, io):
+    self.io      = io
+    super(IoProcessor, self).__init__()
+
+  def read(self):
+    return self.io.read()
+
+  def readline(self):
+    return self.io.readline( )
+
+  def readlines(self):
+    return self.io.readlines( )
+
+  def write(self, msg):
+    return self.io.write(msg)
+
+  def __call__(self, command):
+    return self.process(command)
+
+class Session(IoProcessor):
+  io      = None
+  handler = None
+
+  def __init__(self, io, handler):
+    self.io      = io
+    self.handler = handler
+    self.process = IoProcessor(io)
+
 
 class BaseFlow(Loggable):
   """A Flow is a class implementing a callable.  The class is initialized

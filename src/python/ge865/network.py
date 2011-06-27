@@ -3,11 +3,11 @@ from gevent.socket import timeout
 import logging
 
 from commands.core import InvalidResponse
-from flow import BaseFlow, ATFlow
+from flow import BaseFlow, ATFlow, Session
 
 from util import Loggable
-import link
 
+# kind of looks more like a serial port
 class Input(Loggable):
   length = 1024
   def __init__(self, rfile, socket, length = None):
@@ -51,36 +51,6 @@ class Input(Loggable):
     if not line:
       raise StopIteration
     return line
-
-class IoProcessor(link.AtProcessor):
-  io = None
-  def __init__(self, io):
-    self.io      = io
-    super(IoProcessor, self).__init__()
-
-  def read(self):
-    return self.io.read()
-
-  def readline(self):
-    return self.io.readline( )
-
-  def readlines(self):
-    return self.io.readlines( )
-
-  def write(self, msg):
-    return self.io.write(msg)
-
-  def __call__(self, command):
-    return self.process(command)
-
-class Session(IoProcessor):
-  io      = None
-  handler = None
-
-  def __init__(self, io, handler):
-    self.io      = io
-    self.handler = handler
-    self.process = IoProcessor(io)
 
 class SessionHandler(Loggable):
   def __init__(self, socket, addr):
