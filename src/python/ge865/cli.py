@@ -92,6 +92,7 @@ class Application(Loggable):
                       help="Less verbose logging." )
 
   def set_logger_level(self, log):
+    logging.getLogger('ge865').setLevel(self.loglevel)
     log.setLevel(self.loglevel)
 
   def set_custom_options(self):

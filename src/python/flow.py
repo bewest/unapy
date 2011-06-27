@@ -22,6 +22,7 @@ class Flow(flow.ATFlow):
     self.log.info("do stuff with request here. %r" % req )
     req.io.setTimeout( 3 )
     req.sim_status = self.check_sim(req)
+    print "SIM ENABLED: %s" % req.sim_status.status
 
 def find_flows( ):
   return [ Flow ]
@@ -54,6 +55,7 @@ class Application(cli.CLIApp):
     super(type(self), self).custom_pre_run()
     logging.basicConfig( )
     self.set_logger_level(logging.getLogger(__name__))
+    logging.getLogger('tool').setLevel(logging.INFO)
     #self.set_logger_level()
     self.tool = FlowTool(self.link, getFlows( ))
     #self.tool.selectFlow('qss')

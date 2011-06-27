@@ -4,6 +4,11 @@
 SOFTWARE ROADMAP
 ################
 
+The network daemon server and the flow scripts know how to execute flows.
+What we need are functions and classes implementing series of flows, so that
+the server and flow commandline tools can take a configuration for which ones
+to execute in which order.
+
 Debug a Device
 ~~~~~~~~~~~~~~
   * manipulate/inspect settings
