@@ -129,6 +129,8 @@ def random(link):
   command = link.process(at.GCAP())
   command = link.process(at.SS())
 
+class Flow(object):
+  pass
 
 class Application(cli.CLIApp):
   def run(self):

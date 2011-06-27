@@ -3,6 +3,7 @@ from gevent.socket import timeout
 import logging
 
 from commands.core import InvalidResponse
+from flow import BaseFlow, ATFlow
 
 from util import Loggable
 import link
@@ -81,79 +82,18 @@ class Session(IoProcessor):
     self.handler = handler
     self.process = IoProcessor(io)
 
-
-class BaseFlow(Loggable):
-  """A Flow is a function which returns a list of flows to run.
-  
-  The original function and every called flow recieves a session object, which
-  is useful for passing state between flows.
-  """
-  def __init__(self, session):
-    self.session = session
-    self.getLog( )
-  def __call__(self):
-    yield self.flow
-    raise StopIteration
-
-  def flow(self, req):
-    """
-    Example flow: send a message, read input.
-    You should write your own.
-    """
-    io = req.io
-    #io.throwError( )
-    #io.setTimeout(2)
-    # first command
-    self.log.debug( "writing command")
-    io.write('XXXXHELLO WORLD\n')
-    self.log.debug( "reading response")
-    #msg = self.rfile.readline( )
-    msg = io.readline( )
-    #msg = io.readlines()
-    io.write( "OK: %s" % msg )
-    self.log.debug("got message: %s" % msg )
-
-    # second command
-    io.write('second command\n')
-    msg = io.readline( )
-    self.log.debug("got message 2: %s" % msg )
-    io.write( "OK: %s" % msg )
-
-    # third command
-    io.write('third command:\n')
-    msg = io.readlines( )
-    io.write( "OK: %s" % msg )
-
-
-    io.write("bye")
-    self.log.debug("done with flow")
-
-    return msg
-  
-class ATFlow(BaseFlow):
-
-  def process(self, command):
-    self.log.debug("%r.process" % (self))
-    return self.session.process(command)
-
 class SessionHandler(Loggable):
   def __init__(self, socket, addr):
     self.getLog( )
     self.socket, self.addr = socket, addr
     self.rfile = socket.makefile()
 
-  def write(self, msg):
-    self.rfile.write(msg)
-    self.rfile.flush( )
-
-  def read(self):
-    msg = self.rfile.readline( )
-    return msg
-
   def close(self):
     # do not rely on garbage collection
     self.socket._sock.close()
-    #self.rfile._sock.close()
+    self.rfile._sock.close()
+    self.__dict__.pop('socket')
+    self.__dict__.pop('rfile')
     
   def handle(self, Flow):
     """

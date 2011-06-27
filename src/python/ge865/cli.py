@@ -6,6 +6,7 @@ import sys
 import signal
 import scan
 import logging
+from util import Loggable
 
 GUESSES = scan.scan( )
 
@@ -52,8 +53,9 @@ def parse_args( ):
   opts, args = parser.parse_args( )
 
 
-class Application(object):
+class Application(Loggable):
   def __init__(self):
+    self.getLog( )
     self.loglevel = logging.FATAL
     self._get_default_parser( )
     self.set_custom_options( )
@@ -103,8 +105,6 @@ class Application(object):
     self.loglevel = self.options.verbose
 
   def setup_post_options(self):
-    from pprint import pprint
-    pprint(self.options)
     pass
 
   def set_logging(self):
@@ -162,8 +162,6 @@ GUESSES   : %r
 
   def setup_post_options(self):
     # get a device and a link
-    from pprint import pprint
-    pprint(self.options)
     self.get_link( )
     self.get_device( )
 
