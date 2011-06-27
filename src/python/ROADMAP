@@ -9,8 +9,62 @@ What we need are functions and classes implementing series of flows, so that
 the server and flow commandline tools can take a configuration for which ones
 to execute in which order.
 
+
 Debug a Device
 ~~~~~~~~~~~~~~
+
+flow.py
+-------
+
+  See flow.py for the beginnings of a generic tool that can be used to:
+    * get a list of commands that
+    * set or read stateful parameters on the modules
+    * use a default set up flows for a default command set
+    
+
+
+python flow.py [options] command
+python flow.py help
+  
+  help
+  qss
+
+Why
+___
+
+  This makes the device debuggable from the commandline (simplest possible
+  thing).  In addition, it allows the code to be tested using examples
+  collected from previous runs.
+
+TODO
+____
+
+    * load a list of new flows from a module given as an option
+      -m --module - load a dict of flows from module.getFlows( )
+      Flows should implement a help( ), getOptions, and setOptions( ), and
+      they will be added to the list of available flows.
+
+      * tcpatrun:
+
+        * list configurations
+        * list open sessions
+        * list activated sessions
+
+        * close a session?
+          not sure how to do this over TCPATRUN
+          may need to eventually trigger another SMS message to turn things
+          off
+          
+
+    * logging is instrumented, but needs to be tuned a bit more effectively
+      which channels should be set to which levels?  how expressive should
+      command line log verbosity be?  maybe some stuff should just go to
+      syslog?  Perhaps the library should go to syslog unless very verbose
+      logging is requested, which case it goes to stdout.  The application's
+      log should go to syslog when quiet is requested, INFO to stdout by
+      default and debug for verbose?
+
+  hello.py, tcpatrun.py do most of this.
   * manipulate/inspect settings
     * network adapter
       * PDP Context
@@ -31,6 +85,9 @@ Debug a Device
 
 SMS
 ~~~
+Still need a tool for this.
+See flow.py for the beginnings of a tool that takes commandline parameters
+for setting and reading settings from the commandline.
 
 Print a received SMS
 --------------------
@@ -115,10 +172,28 @@ http://docs.python.org/library/collections.html
 
 Serverside Daemon
 ~~~~~~~~~~~~~~~~~
+DONE
+____
+
+  * gevent/server.py is proof of concept
+  * server.py is a use of the library's server
+
   * Listen on port
   * PUBLIC IP
-  * Record device
-  * store in persistent backing store
+
+TODO
+____
+
+    * more flows.  eventually, we'll have a simple tool that can list
+      available flows, and then allow a configuration for how to find, specify
+      which flows should be used.  It'll re-use the same code as flow.py and
+      everything else, so more flows are needed.
+
+    * Record device
+    * store in persistent backing store
+      pending persistent backing store
+      TWILIO/indivo style interface would be *very* nice and would make
+      everything fit together nicely.
 
 Dispatcher/Dashboard
 ~~~~~~~~~~~~~~~~~~~~

@@ -13,7 +13,7 @@ class Input(Loggable):
   length = 1024
   writeTimeout = None
   readTimeout  = None
-  def __init__(self, rfile, socket, length = None, readTimeout=8, writeTimeout=3):
+  def __init__(self, rfile, socket, length = None, readTimeout=7, writeTimeout=3):
     self.getLog( )
     self.rfile  = rfile
     if readTimeout:
@@ -81,6 +81,7 @@ class SessionHandler(Loggable):
 
   def close(self):
     # do not rely on garbage collection
+    self.rfile.write('+++\r')
     self.socket._sock.close()
     self.rfile._sock.close()
     self.__dict__.pop('socket')

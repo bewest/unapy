@@ -21,6 +21,14 @@ class Flow(flow.ATFlow):
     link.is_machine = link.process(at.Command( )).isOK( )
     return link.is_machine
 
+  def check_tcpatrun(self, link):
+    atruns = link.process(at.TCPATRUND.query( ))
+    self.log.info('tcpatrun :' )
+    self.log.info(atruns.getData( ))
+
+  def turn_off_tcpatrun(self, link):
+    link.process(at.TCPATRUND.assign(0))
+
   def check_sim(self, link):
     command = link.process(at.QSS.query())
     qss = command.getData( )
@@ -44,6 +52,9 @@ class Flow(flow.ATFlow):
 
     self.is_machine(req)
     self.log.info("is a machine? %r" % req.is_machine)
+
+    self.check_tcpatrun(req)
+    self.turn_off_tcpatrun(req)
 
 
 class Application(cli.NetworkApp):
