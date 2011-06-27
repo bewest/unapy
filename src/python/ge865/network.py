@@ -97,8 +97,8 @@ class SessionHandler(Loggable):
 
 
 class SessionServer(StreamServer, Loggable):
-  def __init__(self, listener, application=None, backlog=None, spawn='default',
-                     flow=BaseFlow, **ssl_args):
+  def __init__(self, listener, application=None, backlog=None,
+                     spawn='default', flow=BaseFlow, **ssl_args):
     StreamServer.__init__(self, listener, backlog=backlog, spawn=spawn, **ssl_args)
     self.flow = flow
     self.getLog( )
