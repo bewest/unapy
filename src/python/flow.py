@@ -8,7 +8,6 @@ log = logging.getLogger('tool')
 from ge865 import cli
 from ge865 import flow
 from ge865.commands import at
-from ge865 import network
 
 class Flow(flow.ATFlow):
   """Doesn't do much except check SIM status."""
