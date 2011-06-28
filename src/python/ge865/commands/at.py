@@ -284,9 +284,6 @@ class QSS(WellDefinedSoleCommand):
   _ex_ok = 'AT#QSS?\r\r\n#QSS: 0,1\r\n\r\nOK\r\n'
 
   def Tuple(self, args):
-    #print args
-    #print self._Tuple(args)
-    
     return self._Tuple(*map(int, args))
 
 class DIALMODE(PoundSeparatedCommand):
@@ -920,16 +917,20 @@ class CMGL(WellDefinedCommand):
 
   >>> c = CMGL.all()
   >>> c._Tuple
+  <class 'commands.core.CMGLData'>
   >>> r = c.parse(CMGL._ex_ok)
   >>> c.getData( )
-  [(1, '1', '', '25', '099188320580200000F0240490257700001150921265122B0BE8329BFD06DDDF723619')]
+  [CMGLData(index=1, stat=1, oada='', length=25, message='099188320580200000F0240490257700001150921265122B0BE8329BFD06DDDF723619')]
   >>> c.getData( )[0].length
   25
 
   """
-  #_fields = [ 'index', 'stat', 'oada', 'toatoda', 'length', 'data' ]
-  #_fields = [ 'index', 'stat', 'oada', 'toatoda', 'length' ]
-  _fields = [ 'index', 'stat', 'oada', 'length' ]
+  #_fields = [ 'index', 'stat', 'oada', 'length' ]
+  _fields = [ 'index', 'stat', 'oada', 'length', 'message' ]
+  eatsLine = True
+
+  class assign(NullSettable):
+    eatsLine = True
 
   @classmethod
   def all(klass):
@@ -938,7 +939,9 @@ class CMGL(WellDefinedCommand):
   _ex_ok = 'AT+CMGL=4\r\r\n+CMGL: 1,1,"",25\r\n099188320580200000F0240490257700001150921265122B0BE8329BFD06DDDF723619\r\n\r\nOK\r\n'
 
   def Tuple(self, args):
-    return self._Tuple(*list(args))
+    index, stat, oada, length, message = args
+    return self._Tuple(int(index), int(stat), str(oada),
+                       int(length), str(message))
 
 class TCPATRUNCFG(WellDefinedCommand):
   """TCPATRUNCFG

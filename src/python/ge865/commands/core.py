@@ -19,7 +19,7 @@ EXAMPLE_ERROR_CARRIER  = '''AT+\r\r\nNO CARRIER\r\n'''
 EXAMPLE_ASSIGN = '''AT+CMEE=2\r\r\nOK\r\n'''
 EX_GCAP='''AT+GCAP\r\r\n+GCAP: +CGSM,+DS,+FCLASS,+MS\r\n\r\nOK\r\n'''
 
-def to_python(msg, Tuple=tuple):
+def to_python(msg, eatNewline=False, Tuple=tuple):
   """
 
   I've seen a lot of code and commentary out there saying you need regexp to
@@ -45,10 +45,12 @@ def to_python(msg, Tuple=tuple):
 
 
   """
+  edibleLine = None
   lines  = msg.strip().splitlines()
   result = [ ]
   r      = ( )
-  for l in lines:
+  each   = iter(lines)
+  for l in each:
     parts = l.split(': ')
     if len(parts) > 1:
       text = ''.join(parts[1:]
@@ -65,6 +67,8 @@ def to_python(msg, Tuple=tuple):
           except ValueError, e:
             r = tuple(map(str, parts))
           
+      if eatNewline is True:
+        r = r + (next(each), )
       result.append(Tuple(r))
 
   return result
@@ -151,13 +155,14 @@ class Command(object):
   _fields   = None
   _Tuple        = tuple
   _ex_ok = '''AT\r\r\nOK\r\n'''
+  eatsLine  = False
 
   class __Response__(Response): pass
   
   def __init__(self):
     self.response = None
     if self._fields is not None:
-      name = 'ATResponse%s' % self.cmd
+      name = '%sData' % self.cmd
       self._Tuple = namedtuple(name, self._fields)
 
   def Tuple(self, args):
@@ -194,7 +199,7 @@ class Command(object):
 
   def getData(self):
     if self.response.isOK():
-      return to_python(self.response.getData(), Tuple=self.Tuple)
+      return to_python(self.response.getData(), eatNewline=self.eatsLine, Tuple=self.Tuple)
     return None
 
 class ATCommand(Command):

@@ -3,6 +3,7 @@ import sys
 import ge865
 import time
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+from pprint import pprint
 
 ge865.logger.setLevel(logging.DEBUG)
 from ge865.commands import at
@@ -23,6 +24,9 @@ def sms(device):
   print sms
   print "sms elements:"
   print sms.elements( )
+  for el in sms.elements( ):
+    print el
+    pprint(sms.decode_pdu(el.message).data)
 
 if __name__ == '__main__':
   try:

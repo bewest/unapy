@@ -61,16 +61,10 @@ class ModelInfo(Feature):
   def __repr__(self):
     # Only show instantiated attributes.
     l = ['### %r' % self.__class__ ]
-    for k, v in self.__fetch__().iteritems( ):
+    for k, v in self.__cache__.iteritems( ):
       l.append(' -- %20s %50s' % (k, v))
     return '\n'.join(l)
 
-  def __fetch__(self):
-    d = { }
-    for k, v in self.__attrs__.iteritems():
-      d[k] = getattr(self, k)
-    return d
-    
   def __getattr__(self, name):
     if name in self.__attrs__:
       command = self.__cache__.get(name,
@@ -213,10 +207,16 @@ class SMSMessagesList(ElementList):
     q = self.process(at.CMGL.all( ))
     return q.getData( )
 
+  def decode_pdu(self, pdu):
+    from messaging import sms
+    sms = sms.SmsDeliver(pdu)
+    return sms
+    
+    
   def readMessage(self, msg_id):
     message = self.process(at.CMGR.assign(msg_id)).getData( )
     # XXX: decode using python-messaging
-    return message
+    return message, self.decode_pdu(message.message)
 
 class Socket(Device):
   pass
