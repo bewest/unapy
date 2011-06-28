@@ -109,7 +109,6 @@ class Device(object):
     #feature.setDevice(self)
     return feature
 
-# class DeviceData
 class FakeDevice(Device):
   """For testing."""
   def __init__(self):
