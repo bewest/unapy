@@ -1,6 +1,4 @@
 
-from ge865 import cli
-
 import sys
 import logging
 log = logging.getLogger('tool')

@@ -157,10 +157,11 @@ class CLIApp(Application):
     self.parser.add_option('-d', '--device', 
                       dest='device',
                       help="""\
-Device to use. We'll use the /dev/usb/ttyUSB* or similar if 
-we can. We'll also use the environment variable PBMODEM if  
-you have a weird setup we're not scanning and you don't want
-to specify the device parameter every time.                 
+Device to use. We'll use the /dev/usb/ttyUSB* or
+similar if we can. We'll also use the environment
+variable PBMODEM if  you have a weird setup we're not scanning and
+you don't want to specify the device parameter every time.
+                                      
 BEST GUESS: %s                                              
 GUESSES   : %r                                              
                   """ % (SOCKET, GUESSES ),
@@ -188,6 +189,7 @@ GUESSES   : %r
   def get_device(self):
     from models import Device
     self.device = Device(self.link)
+
   def run(self):
     print "Sending AT:"
     self.link.write("AT\r")
