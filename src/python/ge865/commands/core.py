@@ -1,7 +1,7 @@
 import logging
 import re
-from pprint import pprint
 from collections import namedtuple
+import string
 import types
 
 logger = logging.getLogger(__name__)
@@ -45,13 +45,12 @@ def to_python(msg, eatNewline=False, Tuple=tuple):
 
 
   """
-  edibleLine = None
   lines  = msg.strip().splitlines()
   result = [ ]
   r      = ( )
   each   = iter(lines)
   for l in each:
-    parts = l.split(': ')
+    parts = map(string.strip, l.split(':'))
     if len(parts) > 1:
       text = ''.join(parts[1:]
                ).replace('"', '').replace("'", "")
@@ -402,7 +401,6 @@ class MetaCommand(type):
     """
     newdict = dct.copy()
     #print "__init__"
-    #pprint(['before', clss])
     super(MetaCommand, clss).__init__(name, bases, newdict)
     clss.__fix__()
 
@@ -422,16 +420,23 @@ class WellDefinedCommand(ATCommand):
 
     Allows us to rename our variant commands appropriately.
     """
+    def getNotNone(src, key, default):
+      attr = getattr(src, key, default)
+      if attr is None:
+        return default
+      return attr
     # Make a new type called cmd.variant
+    Variant = None
     for i in klass.__variants__:
       clname = '%s.%s' % (klass.cmd, i)
+      Variant = getattr(klass, i)
       setattr(klass, i,
-              type(clname, (getattr(klass, i), ),
+              type(clname, (Variant, ),
                   { 'cmd'    : klass.cmd
                   , 'sep'    : klass.sep
-                  , '_Tuple' : klass._Tuple
+                  , '_Tuple' : getNotNone(Variant, '_Tuple', klass._Tuple)
                   , 'Tuple'  : klass.Tuple.im_func
-                  , '_fields': klass._fields
+                  , '_fields': getNotNone(Variant, '_fields', klass._fields)
                   }))
 
 class Foo(WellDefinedCommand):

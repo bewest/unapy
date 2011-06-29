@@ -13,7 +13,7 @@ class _dumbLink(object):
 class Feature(object):
   device = None
   name   = 'Feature'
-  __attrs__ = {'hello': at.ATCommand }
+  __attrs__ = { }
   __cache__ = { }
   def __init__(self, device):
     self.setDevice(device)
@@ -32,6 +32,9 @@ class Feature(object):
       command = self.__cache__.get(k,
                   self.process(self.__attrs__[k]( )))
       self.__cache__[k] = command
+
+class TestHelloFeature(Feature):
+  __attrs__ = {'hello': at.ATCommand }
 
 class FakeFeature(Feature):
   """ """

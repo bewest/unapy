@@ -43,7 +43,7 @@ def network_test(link):
   print command.data
   print "SETTING APN"
   set_apn(link, name='webtrial.globalm2m.net')
-  attached = link.process(at.CGATT.query()).data
+  attached = link.process(at.CGATT.query()).getData( )
   if int(attached[0][0]) == 0:
     print "GPRS PDP context not attached: %s" % attached
     attached = link.process(at.CGATT.assign(1))

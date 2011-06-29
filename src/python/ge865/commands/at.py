@@ -677,11 +677,22 @@ class CGDCONT(WellDefinedCommand):
     * PDP_addr - requested IP
     * d_comp - data compressions
     * h_comp - PDP heaer compression
+  >>> c = CGDCONT.query( )
+  >>> c._Tuple
+  <class 'commands.core.CGDCONTData'>
+  >>> r = c.parse(CGDCONT._ex_ok)
+  >>> c.isOK( )
+  True
+  >>> c.getData( )[0].name
+  'webtrial.globalm2m.net'
   """
   _ex_ok = ''.join([ 'AT+CGDCONT?\r\r\n+CGDCONT:'
   , '1,"IP","webtrial.globalm2m.net","",0,0\r\n+CGDCONT:'
   , '2,"IP","m2m.com.attz","",0,0\r\n+CGDCONT:'
   , '3,"IP","webtrial.globalm2m.net","",0,0\r\n\r\nOK\r\n' ])
+
+  class query(NullQueryable):
+    _fields = [ 'ctx', 'pdp', 'name', 'addr', 'd_comp', 'h_comp' ]
 
 
 class CGQMIN(WellDefinedCommand):
@@ -801,8 +812,9 @@ class CGACT(WellDefinedCommand):
   """
 
 
-class CGATT(WellDefinedCommand):
+class CGATT(WellDefinedSoleCommand):
   """Attach GPRS"""
+  _fields = [ 'attached' ]
   _ex_ok = 'AT+CGATT?\r\r\n+CGATT: 1\r\n\r\nOK\r\n'
 
 class SCFG(WellDefinedCommand):
@@ -827,7 +839,9 @@ class PACSP(WellDefinedCommand):
 
 class SGACT(PoundSeparatedCommand):
   """ Activate/Deactivate context for TCP/IP
+  pg 416
   """
+  _fields = [ 'cid', 'status' ]
 
 class SGACTAUTH(PoundSeparatedCommand):
   """ Set authentication

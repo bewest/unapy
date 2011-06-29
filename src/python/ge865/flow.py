@@ -3,6 +3,14 @@ from util import Loggable
 import link
 
 class IoProcessor(link.AtProcessor):
+  """
+  A file like object implementing a callable that callable that calls
+  self.process.
+
+  :term:`io` should be an :class:`AtProcessor` (an object with a process method that expects to
+  process :term:`core`
+  """
+  """An object with a process method. (an AtProcessor)"""
   io = None
   def __init__(self, io):
     self.io      = io
@@ -43,7 +51,12 @@ class BaseFlow(Loggable):
   This implementation simply executes the flow method once before exiting the
   session.
   """
+  "Set during __init__."
+  session = None
   def __init__(self, session):
+    """
+    sets self.session
+    """
     self.session = session
     self.getLog( )
   def __call__(self):

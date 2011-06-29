@@ -6,6 +6,104 @@ log = logging.getLogger('tool')
 from ge865 import cli
 from ge865 import flow
 from ge865.commands import at
+from pprint import pformat
+
+class TCPATRUN(flow.ATFlow):
+  def get_config(self):
+    self.tcpatruncfg = self.session.process(at.TCPATRUNCFG.query( ))
+    log.info(' '.join( map( pformat, [
+                  self.tcpatruncfg,
+                  self.tcpatruncfg.getData( ) ]) ))
+
+  def get_active_instances(self):
+    self.active_instances = self.session.process(at.TCPATRUND.query( ))
+
+  def flow(self, req):
+    self.get_config()
+    self.get_active_instances( )
+
+class PDPContext(flow.ATFlow):
+  apns = None
+  def _get_config(self):
+    return {
+      'apn': [
+        { 'cid': 1, 'name': 'webtrial.globalm2m.net' },
+        ],
+      'attach': True,
+    }
+
+  def get_ip_addr(self):
+    self.ip_addr_info = self.session.process(at.CGPADDR.assign(1))
+    return self.ip_addr_info
+
+  def get_apns(self):
+    command = self.session.process(at.CGDCONT.query( ))
+    self.apns = command.getData( )
+    return self.apns
+
+  def flow(self, req):
+    config = self._get_config()
+    self.set_module_verbose_error()
+    self.get_apns( )
+    D = self._get_config( )
+    for apn in D['apn']:
+      self.set_apn(**apn)
+    if not self.is_attached( ):
+      self.attach_grps( )
+
+  def get_apn(self, ctx=1):
+    r = ''
+    if self.apns is None:
+      self.get_apns( )
+    try:
+      r = self.apns[ctx].name
+    except IndexError, e: pass # no apn
+    return r
+    
+
+  def set_apn(self, name='webtrial.globalm2m.net', cid=1, pdp="IP"):
+    oldapn = self.get_apn(cid)
+    newapn = '"%s"' % oldapn
+    if oldapn != name:
+      name = '"%s"' % name
+      pdp  = '"%s"' % pdp
+      command = self.session.process(at.CGDCONT.assign(cid, pdp, name))
+      self.get_apns( )
+      newapn = self.get_apn(cid)
+    return newapn
+
+
+  def set_module_verbose_error(self):
+    command = self.session.process(at.CMEE.assign(2))
+    log.info(command.getData( ))
+
+  def is_registered(self):
+    command = self.session.process(at.CREG.query())
+    result  = command.getData( )
+    return result[1]
+
+  def attach_grps(self):
+    self.session.process(at.CGATT.assign(1))
+    
+  def is_attached(self):
+    attached = self.session.process(at.CGATT.query()).getData( )
+    return attached
+
+  def hello(self):
+    attached = link.process(at.CGATT.query()).data
+    if int(attached[0][0]) == 0:
+      print "GPRS PDP context not attached: %s" % attached
+      attached = link.process(at.CGATT.assign(1))
+    activated = link.process(at.SGACT.query()).data
+    print "GPRS PDP context attached: %s" % attached
+    print "GPRS PDP context activated: %s" % activated
+    if int(attached[0][0]):
+      print "context attached"
+      if int(activated[0][1]) != 1:
+        print "attempt sgact"
+        link.process(at.SGACT.assign(1,1))
+
+    print "ip address: ", ip_addr(link)
 
 class Flow(flow.ATFlow):
   """Doesn't do much except check SIM status."""
@@ -21,30 +119,31 @@ class Flow(flow.ATFlow):
     req.sim_status = self.check_sim(req)
     print "SIM ENABLED: %s" % req.sim_status.status
 
-def find_flows( ):
-  return [ Flow ]
-
-
-
 class FlowTool(object):
-  def __init__(self, link, flows):
+  Flow = None
+  def __init__(self, link, flows, opts):
     self.flows   = flows
     self.session = flow.Session(link, self)
-
-  def listFlows(self):
-    return self.flows
+    #self.args, self.options = 
 
   def selectFlow(self, name, options={}):
-    self.select = self.flows[name]
+    self.Flow = self.flows[name]
 
   def runSelected(self):
-    flows = self.select(self.session)
+    flows = self.Flow(self.session)
     log.info("starting to run flows")
     for flow in flows( ):
       flow(self.session)
 
-def getFlows( ):
-  return { 'qss' : Flow }
+  @classmethod
+  def getFlows(klass):
+    """Should return a dict of flows. The keys are the names of the commands, and the values are Flow objects.
+    The flow objects are inspected by the tool to generate help and options
+    automatically.
+    """
+    return { 'qss' : Flow, 'tcpatrun': TCPATRUN,
+             'gsm' : PDPContext,
+    }
 
 
 class Application(cli.CLIApp):
@@ -54,7 +153,7 @@ class Application(cli.CLIApp):
     self.set_logger_level(logging.getLogger(__name__))
     logging.getLogger('tool').setLevel(logging.INFO)
     #self.set_logger_level()
-    self.tool = FlowTool(self.link, getFlows( ))
+    self.tool = FlowTool(self.link, self.flows, (self.args, self.options))
     #self.tool.selectFlow('qss')
     self.interpret_args( )
 
@@ -62,12 +161,14 @@ class Application(cli.CLIApp):
     usage = """%prog [options] command options
 
     commands:
-      help
-      qss
+{commands}
     """
-    self.flows = getFlows( )
+    cmd_help = [ ]
+    self.flows = FlowTool.getFlows( )
+    for cmd in self.flows:
+      cmd_help.append("       %s" % cmd)
     super(type(self), self).set_custom_options()
-    self.parser.set_usage(usage)
+    self.parser.set_usage(usage.format(commands="\n".join(cmd_help)))
     pass
 
   def interpret_args(self):
