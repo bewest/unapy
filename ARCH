@@ -45,5 +45,51 @@ An SMSATRUN configuration can tell the module to configure a socket to the
 meter.  IP Guide has a nice write up on this kind of thing.  I'm not sure
 TCPATRUN is needed, althought SMSATRUN is in the same guide.
 
+DONE.
+
+BACKEND
+#######
+
+
+
+
+NoSQL
+~~~~~
+
+MongoDB:  http://www.mongodb.org/display/DOCS/SQL+to+Mongo+Mapping+Chart
+JSONa/javascript implementation binary , custom BSJON backend
+Highly recommended by some Steve Cohen (friend).
+python, 
+Used by craigslist, foursquare, et al.
+
+
+Redis:
+http://redis.io/documentation
+Supports pub/sub natively.
+Cliff (boss) tried this and likes it.
+Robust mature and recommended libraries for python and ruby.
+I like this because subscriptions can be used to handle things asynchronously.
+http://blog.grayproductions.net/articles/where_redis_is_a_good_fit
+Also used by github, craigslist, digg, ...
+Perhaps agents check into these while workers subscribe to incoming data stream
+and store it persistently.
+This is really only good for a consistent view of shared memory, and supports
+event driven handling via pub/sub but without a good backend data store.
+Sponsored by VMWARE.
+
+
+
+Riak:
+http://wiki.basho.com/How-Things-Work.html
+Supports multiple backends: several erlang, and innodb (mysql)
+Used by Mozilla, AOL, and lots of others.
+
+SQL
+~~~
+
+  * Postgresql
+  * sqlite3
+  * mysql
+
 
 

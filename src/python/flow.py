@@ -25,12 +25,35 @@ class TCPATRUN(flow.ATFlow):
 class PDPContext(flow.ATFlow):
   apns = None
   def _get_config(self):
+    # TODO: make this return something from a config file or database or cli
+    # options
+    default = {
+      'apn': [ ]
+    }
     return {
       'apn': [
         { 'cid': 1, 'name': 'webtrial.globalm2m.net' },
         ],
+      'auth': [
+
+      ],
       'attach': True,
     }
+
+  def flow(self, req):
+    config = self._get_config()
+    self.set_module_verbose_error()
+    self.get_apns( )
+
+    for apn in config.get('apn', [ ]):
+      if apn['name'] != self.get_apns
+      self.set_apn(**apn)
+    if config.get('attach', False):
+      if not self.is_attached( ):
+        self.attach_grps( )
+
+  def get_active_cids(self):
+    self.cids = self.session.process(at.SGACT.query( ))
 
   def get_ip_addr(self):
     self.ip_addr_info = self.session.process(at.CGPADDR.assign(1))
@@ -40,16 +63,6 @@ class PDPContext(flow.ATFlow):
     command = self.session.process(at.CGDCONT.query( ))
     self.apns = command.getData( )
     return self.apns
-
-  def flow(self, req):
-    config = self._get_config()
-    self.set_module_verbose_error()
-    self.get_apns( )
-    D = self._get_config( )
-    for apn in D['apn']:
-      self.set_apn(**apn)
-    if not self.is_attached( ):
-      self.attach_grps( )
 
   def get_apn(self, ctx=1):
     r = ''
