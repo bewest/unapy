@@ -46,11 +46,11 @@ class PDPContext(flow.ATFlow):
     self.get_apns( )
 
     for apn in config.get('apn', [ ]):
-      if apn['name'] != self.get_apns
-      self.set_apn(**apn)
-    if config.get('attach', False):
-      if not self.is_attached( ):
-        self.attach_grps( )
+      if apn['name'] != self.get_apns:
+        self.set_apn(**apn)
+      if config.get('attach', False):
+        if not self.is_attached( ):
+          self.attach_grps( )
 
   def get_active_cids(self):
     self.cids = self.session.process(at.SGACT.query( ))
