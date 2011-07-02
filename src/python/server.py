@@ -26,6 +26,15 @@ class Flow(flow.ATFlow):
     self.log.info('tcpatrun :' )
     self.log.info(atruns.getData( ))
 
+
+  def transparent_mode_on(self):
+    self.log.info( "turning on transparent mode")
+    self.tcpatrunconser = self.session.process(at.TCPATRUNCONSER.assign(1, 9600))
+
+  def transparent_mode_off(self):
+    self.log.info( "turning off transparent mode")
+    self.tcpatrunconser = self.session.write('+++')
+
   def turn_off_tcpatrun(self, link):
     link.process(at.TCPATRUND.assign(0))
 
@@ -54,6 +63,8 @@ class Flow(flow.ATFlow):
     self.log.info("is a machine? %r" % req.is_machine)
 
     self.check_tcpatrun(req)
+    self.transparent_mode_on()
+    self.transparent_mode_off()
     self.turn_off_tcpatrun(req)
 
 

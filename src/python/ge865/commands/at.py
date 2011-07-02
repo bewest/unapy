@@ -840,8 +840,18 @@ class PACSP(WellDefinedCommand):
 class SGACT(PoundSeparatedCommand):
   """ Activate/Deactivate context for TCP/IP
   pg 416
+
+
+    >> c = SGACT.query( )
+    >> r = c.parse(SGACT.query._ex_ok)
+    >> c.getData( )
+
   """
-  _fields = [ 'cid', 'status' ]
+  #_fields = [ 'cid', 'status', 'ip' ]
+  #class query(NullQueryable):
+  #  _ex_ok = 'AT#SGACT=1, 1\r\r\n#SGACT: 10.208.135.119\r\n\r\nOK\r\n'
+  #  eatsLine = True
+
 
 class SGACTAUTH(PoundSeparatedCommand):
   """ Set authentication
