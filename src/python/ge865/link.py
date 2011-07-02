@@ -7,7 +7,23 @@ logger = logging.getLogger(__name__)
 import util
 import lib
 
+AT_TERMINATORS = [ 'NO CARRIER', 'ERROR', 'OK', 'CONNECT' ]
+
 class AtProcessor(util.Loggable):
+  def long_read(self, timeout=2, repeats=18):
+    B = [ ]
+    oldTimeout = self.getTimeout()
+    self.setTimeout(timeout)
+    for i in xrange(repeats):
+      self.log.debug("retry: %s" % i)
+      B += self.readlines( )
+      if len(B) > 0:
+        lastline = B[-1].strip( )
+        if (lastline in AT_TERMINATORS or "ERROR" in lastline):
+          break
+      time.sleep(.5)
+    self.setTimeout(oldTimeout)
+    return B
 
   def process(self, command):
     """
@@ -22,7 +38,7 @@ class AtProcessor(util.Loggable):
     self.log.info('reading...')
 
     # read response
-    response = ''.join(self.readlines())
+    response = ''.join(self.long_read())
     self.log.info('process.response: %r' % response)
 
     # store response in the command

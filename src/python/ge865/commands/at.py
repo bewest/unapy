@@ -994,6 +994,21 @@ class TCPATRUND(WellDefinedCommand):
   """
   sep = '#'
 
+class TCPATRUNCONSER(WellDefinedCommand):
+  """
+  TCPATRUNCONSER pg 388
+  
+  """
+  sep = '#'
+
+class TCPATRUNCLOSE(WellDefinedCommand):
+  """
+  TCPATRUNCLOSE pg 388
+  
+  """
+  sep = '#'
+
+
 class STIA(WellDefinedCommand):
   sep = '#'
 

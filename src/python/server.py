@@ -26,6 +26,10 @@ class Flow(flow.ATFlow):
     self.log.info('tcpatrun :' )
     self.log.info(atruns.getData( ))
 
+  def verbose_error(self):
+    self.log.info( "turning on transparent mode")
+    self.session.process(at.CMEE.assign(2))
+
 
   def transparent_mode_on(self):
     self.log.info( "turning on transparent mode")
@@ -33,10 +37,10 @@ class Flow(flow.ATFlow):
 
   def transparent_mode_off(self):
     self.log.info( "turning off transparent mode")
-    self.tcpatrunconser = self.session.write('+++')
+    self.tcpatrunconser = self.session.io.write('+++')
 
   def turn_off_tcpatrun(self, link):
-    link.process(at.TCPATRUND.assign(0))
+    link.process(at.TCPATRUNCLOSE( ))
 
   def check_sim(self, link):
     command = link.process(at.QSS.query())
@@ -48,21 +52,24 @@ class Flow(flow.ATFlow):
     # replace a la flow.py, and hello.py
     self.log.info("do stuff with request here. %r" % req )
     req.io.setTimeout( 3 )
-    req.write("hi there! what's your name?\r\n>>> ")
-    name = req.readline( ).strip( )
+    req.io.write("hi there! what's your name?\r\n>>> ")
+    name = req.io.readline( ).strip( )
 
-    req.write("thanks, %s, I'm going now...\n" % name )
+    req.io.write("thanks, %s, I'm going now...\n" % name )
 
     if not name:
       self.log.info("%r probably not a human?" % name)
 
+    self.verbose_error( )
     status = self.check_sim(req)
     self.log.info("at machine has a sim: %r" % (status,))
 
     self.is_machine(req)
     self.log.info("is a machine? %r" % req.is_machine)
+    #req.io.setTimeout( 3 )
 
     self.check_tcpatrun(req)
+    #req.io.setTimeout( 10 )
     self.transparent_mode_on()
     self.transparent_mode_off()
     self.turn_off_tcpatrun(req)

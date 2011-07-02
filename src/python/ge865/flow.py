@@ -28,17 +28,112 @@ class IoProcessor(link.AtProcessor):
   def write(self, msg):
     return self.io.write(msg)
 
+  def getTimeout(self):
+    return self.io.getTimeout()
+
+  def setTimeout(self, timeout):
+    self.io.setTimeout(timeout)
+
   def __call__(self, command):
     return self.process(command)
 
-class Session(IoProcessor):
+class IoSocketProcessor(IoProcessor):
+  length = 1024
+  writeTimeout = None
+  readTimeout  = None
+  def __init__(self, socket, length = None, readTimeout=5, writeTimeout=3):
+    self.getLog( )
+    self.socket = socket
+    self.rfile  = socket.makefile()
+    if readTimeout:
+      self.readTimeout = readTimeout
+    if writeTimeout:
+      self.writeTimeout = writeTimeout
+    self.socket = socket
+    self.log.debug(self.rfile)
+    if length is not None:
+      self.length = length
+
+  def close(self):
+    # do not rely on garbage collection
+    self.rfile.write('+++\r')
+    self.socket._sock.close()
+    self.rfile._sock.close()
+    self.__dict__.pop('socket')
+    self.__dict__.pop('rfile')
+
+  def getTimeout(self):
+    return self.rfile._sock.gettimeout()
+
+  def setTimeout(self, timeout):
+    self.socket.settimeout(timeout)
+    self.rfile._sock.settimeout(timeout)
+
+  def read(self, length=None):
+    if length is None:
+      length = self.length
+    return self.rfile.read()
+
+
+  def readline(self):
+    from gevent.socket import timeout
+    prev = self.getTimeout()
+    r    = ''
+    if self.readTimeout:
+      self.setTimeout(self.readTimeout)
+
+    try:
+      r = self.rfile.readline( )
+    except timeout, e: pass
+    if prev:
+      self.setTimeout(prev)
+    return r
+
+  def readlines(self):
+    return list(self)
+
+  def __iter__(self):
+    return self
+
+  def write(self, msg):
+    prev = self.getTimeout()
+    if self.writeTimeout:
+      self.setTimeout(self.writeTimeout)
+    self.rfile.write(msg)
+    self.rfile.flush( )
+    if prev:
+      self.setTimeout(prev)
+
+  def next(self):
+    try:
+      line = self.readline( )
+    except timeout, e:
+      raise StopIteration
+    if not line:
+      raise StopIteration
+    return line
+
+class Session(Loggable):
   io      = None
   handler = None
-
   def __init__(self, io, handler):
     self.io      = io
     self.handler = handler
+    self.getLog()
     self.process = IoProcessor(io)
+
+
+class NetworkSession(Loggable):
+
+  def __init__(self, io, handler):
+    self.io      = IoSocketProcessor(io)
+    self.handler = handler
+    self.getLog()
+
+  def process(self, command):
+    return self.io.process(command)
+
+  
 
 
 class BaseFlow(Loggable):

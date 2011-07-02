@@ -3,75 +3,10 @@ from gevent.socket import timeout
 import logging
 
 from commands.core import InvalidResponse
-from flow import BaseFlow, ATFlow, Session
+from flow import BaseFlow, ATFlow, Session, NetworkSession
 #from gevent import timeout
 
 from util import Loggable
-
-# kind of looks more like a serial port
-class Input(Loggable):
-  length = 1024
-  writeTimeout = None
-  readTimeout  = None
-  def __init__(self, rfile, socket, length = None, readTimeout=7, writeTimeout=3):
-    self.getLog( )
-    self.rfile  = rfile
-    if readTimeout:
-      self.readTimeout = readTimeout
-    if writeTimeout:
-      self.writeTimeout = writeTimeout
-    self.socket = socket
-    self.log.debug(self.rfile)
-    if length is not None:
-      self.length = length
-
-  def getTimeout(self):
-    return self.rfile._sock.gettimeout()
-
-  def setTimeout(self, timeout):
-    self.socket.settimeout(timeout)
-    self.rfile._sock.settimeout(timeout)
-
-  def read(self, length=None):
-    if length is None:
-      length = self.length
-    return self.rfile.read()
-
-  def readline(self):
-    prev = self.getTimeout()
-    r    = ''
-    if self.readTimeout:
-      self.setTimeout(self.readTimeout)
-    try:
-      r = self.rfile.readline( )
-    except timeout, e: pass
-    if prev:
-      self.setTimeout(prev)
-    return r
-
-  def readlines(self):
-    return list(self)
-
-  def __iter__(self):
-    return self
-
-  def write(self, msg):
-    prev = self.getTimeout()
-    if self.writeTimeout:
-      self.setTimeout(self.writeTimeout)
-    self.rfile.write(msg)
-    self.rfile.flush( )
-    if prev:
-      self.setTimeout(prev)
-
-  def next(self):
-    try:
-      line = self.readline( )
-    except timeout, e:
-      raise StopIteration
-    if not line:
-      raise StopIteration
-    return line
 
 class SessionHandler(Loggable):
   def __init__(self, socket, addr):
@@ -81,7 +16,7 @@ class SessionHandler(Loggable):
 
   def close(self):
     # do not rely on garbage collection
-    self.rfile.write('+++\r')
+    self.rfile.write('+++\r\n')
     self.socket._sock.close()
     self.rfile._sock.close()
     self.__dict__.pop('socket')
@@ -89,15 +24,17 @@ class SessionHandler(Loggable):
     
   def handle(self, Flow):
     """
-    Package up a client connection, socket, usable file object, and execute a
-    flow.
+    Package up a client connection, socket, usable file object into a Session,
+    and execute a flow against the session.  A Session is a combination of
+    input/output and handler Flows should implement the iterable protocol so
+    that we can dynamically iterate over flows.  Implementing __call__ as a
+    generator, provides an easy way to create state machines.  The default
+    implementation provided just calls Flow#flow once.
+
     Close the connection, when done.
     """
-    # XXX: Move this to session or to __init__?
-    io      = Input(self.rfile, self.socket)
-    # A Session is a combination of input/output and handler
     # Useful for attaching stuff as it goes through various flows.
-    session = Session(io, self)
+    session = NetworkSession(self.socket, self)
     self.log.debug( "handling connection, starting flow")
     #self.session = session
     # a Flow is a list of callables recieving a session.
