@@ -13,15 +13,14 @@ import logging
 from ge865 import cli
 from ge865 import flow
 from ge865 import network
+from ge865.commands.core import InvalidResponse
 from ge865.commands import at
 from gevent import timeout
 
 class Flow(flow.ATFlow):
   def __call__(self):
-    try:
-      yield self.flow
-    except Exception:
-      yield self.turn_off_tcpatrun
+    yield self.flow
+    yield self.turn_off_tcpatrun
     raise StopIteration
 
   def is_machine(self, link):
@@ -78,8 +77,14 @@ class Flow(flow.ATFlow):
 
     self.check_tcpatrun(req)
     #req.io.setTimeout( 10 )
-    self.transparent_mode_on()
-    self.transparent_mode_off()
+    try:
+      self.transparent_mode_on()
+      req.io.write("DM@\r\n")
+      response = req.io.long_read( )
+      self.log.info("response: %r" % response)
+      self.transparent_mode_off()
+    except InvalidResponse:
+      pass
     self.turn_off_tcpatrun(req)
 
 

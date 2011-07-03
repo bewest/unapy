@@ -10,7 +10,7 @@ import lib
 AT_TERMINATORS = [ 'NO CARRIER', 'ERROR', 'OK', 'CONNECT' ]
 
 class AtProcessor(util.Loggable):
-  def long_read(self, timeout=2.5, repeats=15):
+  def long_read(self, timeout=2.5, repeats=33):
     B = [ ]
     oldTimeout = self.getTimeout()
     self.setTimeout(timeout)
@@ -39,6 +39,11 @@ class AtProcessor(util.Loggable):
     time.sleep(.020)
 
     # read response
+    kwds = { }
+    if getattr(command, 'readTimeout', None) is not None:
+      kwds = dict(timeout= command.readTimeout,
+                  repeats= command.readRepeats)
+      
     response = ''.join(self.long_read())
     self.log.info('process.response: %r' % response)
 
