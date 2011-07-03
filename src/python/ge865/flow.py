@@ -158,6 +158,9 @@ class BaseFlow(Loggable):
     yield self.flow
     raise StopIteration
 
+  def error(self, e):
+    pass
+
   def flow(self, req):
     """
     Example flow: send a message, read input.

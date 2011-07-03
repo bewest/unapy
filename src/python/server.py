@@ -17,6 +17,13 @@ from ge865.commands import at
 from gevent import timeout
 
 class Flow(flow.ATFlow):
+  def __call__(self):
+    try:
+      yield self.flow
+    except Exception:
+      yield self.turn_off_tcpatrun
+    raise StopIteration
+
   def is_machine(self, link):
     link.is_machine = link.process(at.Command( )).isOK( )
     return link.is_machine
@@ -33,6 +40,7 @@ class Flow(flow.ATFlow):
 
   def transparent_mode_on(self):
     self.log.info( "turning on transparent mode")
+    self.session.process(at.SII.assign(1))
     self.tcpatrunconser = self.session.process(at.TCPATRUNCONSER.assign(1, 9600))
 
   def transparent_mode_off(self):

@@ -10,7 +10,7 @@ import lib
 AT_TERMINATORS = [ 'NO CARRIER', 'ERROR', 'OK', 'CONNECT' ]
 
 class AtProcessor(util.Loggable):
-  def long_read(self, timeout=2, repeats=18):
+  def long_read(self, timeout=2.5, repeats=15):
     B = [ ]
     oldTimeout = self.getTimeout()
     self.setTimeout(timeout)
@@ -21,7 +21,7 @@ class AtProcessor(util.Loggable):
         lastline = B[-1].strip( )
         if (lastline in AT_TERMINATORS or "ERROR" in lastline):
           break
-      time.sleep(.5)
+      time.sleep(.01)
     self.setTimeout(oldTimeout)
     return B
 
@@ -36,6 +36,7 @@ class AtProcessor(util.Loggable):
     # write it into the port
     self.write(message)
     self.log.info('reading...')
+    time.sleep(.020)
 
     # read response
     response = ''.join(self.long_read())

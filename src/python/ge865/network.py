@@ -44,6 +44,7 @@ class SessionHandler(Loggable):
       for flow in flows( ):
         flow(session)
     except InvalidResponse, e:
+      flows.error(e)
       self.log.info("XXX: invalid response!: closing flow%r" % e)
     self.log.debug("done with flow")
     self.close( )
