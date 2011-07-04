@@ -932,6 +932,25 @@ class SA(PoundSeparatedCommand):
 Enable SIM Application Toolkit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
+class SMSATRUN(PoundSeparatedCommand):
+  """SMSATRUN
+  .
+  """
+
+class SMSATWL(PoundSeparatedCommand):
+  """SMSATRUN Whitelist
+  .
+  """
+
+class ATRUNDELAY(PoundSeparatedCommand):
+  """ATRUNDELAY
+  .
+  """
+
+class SMSATCFG(PoundSeparatedCommand):
+  """SMSATRUN CFG
+  .
+  """
 
 class CMGL(WellDefinedCommand):
   """Read SMS Messages.
