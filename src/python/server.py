@@ -10,11 +10,11 @@ assemble the correct list of flows, or even defer processing to other sockets or
 
 import logging
 
-from ge865 import cli
-from ge865 import flow
-from ge865 import network
-from ge865.commands.core import InvalidResponse
-from ge865.commands import at
+from pbmodem import cli
+from pbmodem import flow
+from pbmodem import network
+from pbmodem.commands.core import InvalidResponse
+from pbmodem.commands import at
 from gevent import timeout
 
 class Flow(flow.ATFlow):

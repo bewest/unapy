@@ -1,18 +1,18 @@
 import logging
 import sys
-import ge865
+import pbmodem
 import time
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
-ge865.logger.setLevel(logging.DEBUG)
-from ge865.commands import at
+pbmodem.logger.setLevel(logging.DEBUG)
+from pbmodem.commands import at
 
-from ge865 import models
+from pbmodem import models
 
 if __name__ == '__main__':
   try:
-    from ge865 import cli
-  except ge865.scan.ScanAttachedDevicesError, e:
+    from pbmodem import cli
+  except pbmodem.scan.ScanAttachedDevicesError, e:
     print "%s" % e
     raise
     #sys.exit(1)
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
   opts, args = cli.parser.parse_args()
 
-  #link = ge865.Link(opts.device)
+  #link = pbmodem.Link(opts.device)
   link = cli.get_link( )
   device = models.Device(link)
   print device.model

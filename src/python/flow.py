@@ -3,9 +3,9 @@ import sys
 import logging
 log = logging.getLogger('tool')
 
-from ge865 import cli
-from ge865 import flow
-from ge865.commands import at
+from pbmodem import cli
+from pbmodem import flow
+from pbmodem.commands import at
 from pprint import pformat
 
 class TCPATRUN(flow.ATFlow):

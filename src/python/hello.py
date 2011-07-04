@@ -2,15 +2,15 @@
 
 import logging
 import sys
-import ge865
+import pbmodem
 import time
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
-ge865.logger.setLevel(logging.DEBUG)
-from ge865 import cli
-from ge865.commands import at
+pbmodem.logger.setLevel(logging.DEBUG)
+from pbmodem import cli
+from pbmodem.commands import at
 
-from ge865 import models
+from pbmodem import models
 
 EXAMPLE_IP_REPLY='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n\r\nOK\r\n'
 EXAMPLE_IP_to_python='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n'
@@ -153,7 +153,7 @@ if __name__ == '__main__':
   app = Application( )
   app.run( )
 
-  #ge865.test('/dev/ttyUSB0')
+  #pbmodem.test('/dev/ttyUSB0')
 
 #####
 # EOF

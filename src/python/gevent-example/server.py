@@ -1,10 +1,15 @@
 #!/usr/bin/env python
-"""Simple server that listens on port 6000 and echos back every input to the client.
+"""Simple server that listens on port ??? and echos back every input to the client.
 
 Connect to it with:
-  telnet localhost 6000
+  telnet localhost ???
 
 Terminate the connection by terminating telnet (typically Ctrl-] and then 'quit').
+
+XXX: Requires having pbmodem on PYTHONPATH somehow (I use a .pth file in
+     conjunction with my user module. [~/.pythonrc.py]
+XXX: Has not been tried in awhile, despite some light renaming/re-organizing.
+     May have sustained some misedits while factoring into the library.
 """
 from gevent.server import StreamServer
 from gevent.socket import timeout
@@ -15,15 +20,15 @@ logging.basicConfig(level=logging.DEBUG, format=' '.join(
                    ,  "%(thread)d"
                    ,  "%(name)s"
                    ,  "%(message)s"]))
-
 log                = logging.getLogger(__name__)
+
 import sys
 import signal
 
 # hack to mangle PYTHONPATH
 import user
-import ge865
-from ge865.commands import at
+import pbmodem
+from pbmodem.commands import at
 
 class Input(object):
   length = 1024
@@ -68,7 +73,7 @@ class Input(object):
       raise StopIteration
     return line
 
-class IoProcessor(ge865.link.AtProcessor):
+class IoProcessor(pbmodem.link.AtProcessor):
   io = None
   def __init__(self, io):
     self.io      = io
@@ -172,7 +177,7 @@ class Flow(ATFlow):
     raise StopIteration
 
   def identify(self, req):
-    from ge865 import models
+    from pbmodem import models
     device = models.Device(req)
     #command = req.process(models.M
     model = device.model
@@ -268,7 +273,7 @@ class SessionHandler(object):
     try:
       for flow in flows( ):
         flow(session)
-    except ge865.commands.core.InvalidResponse, e:
+    except pbmodem.commands.core.InvalidResponse, e:
       log.info("XXX: invalid response!: closing flow%r" % e)
     log.debug("done with flow")
     self.close( )
