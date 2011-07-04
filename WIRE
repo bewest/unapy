@@ -1,0 +1,22 @@
+
+
+
+3 Rings
+
+Four wires
+right
+left
+
+Tip ring:
+  tx_aux
+  yellow
+
+Middle:
+  rx_aux
+  red
+
+
+Shank:
+  gnd
+  white
+

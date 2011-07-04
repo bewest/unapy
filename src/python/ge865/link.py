@@ -10,7 +10,7 @@ import lib
 AT_TERMINATORS = [ 'NO CARRIER', 'ERROR', 'OK', 'CONNECT' ]
 
 class AtProcessor(util.Loggable):
-  def long_read(self, timeout=2.5, repeats=33):
+  def long_read(self, timeout=2.5, repeats=15):
     B = [ ]
     oldTimeout = self.getTimeout()
     self.setTimeout(timeout)

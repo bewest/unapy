@@ -41,7 +41,7 @@ class Flow(flow.ATFlow):
     self.log.info( "turning on transparent mode")
     self.log.info("what's SII?")
     self.log.info(self.session.process(at.SII.query( )))
-    self.session.process(at.SII.assign(1))
+    #self.session.process(at.SII.assign(1))
     self.tcpatrunconser = self.session.process(at.TCPATRUNCONSER.assign(1, 9600))
 
   def transparent_mode_off(self):
