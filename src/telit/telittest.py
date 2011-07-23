@@ -1,0 +1,426 @@
+# #################################################################
+#     Terminal Connect Python application                         #
+#     Configurations                                              #
+#     Last modification:    24.05.2011                            #
+#     Copyright 2010,2011                       Triptec Service   #
+#                                                                 #
+# #################################################################
+
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+#
+# Redistributions of source code must retain the above copyright notice,
+# this list of conditions and the following disclaimer.
+#
+# Redistributions in binary form must reproduce the above copyright
+# notice, this list of conditions and the following disclaimer in
+# the documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS``AS
+# IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+# TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+# PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+import MDM2
+import MOD
+
+# create dict
+config = {}
+
+# GPIO of your status LED
+statLED = 19
+
+
+def initConfig():
+    global config
+
+    config['PIN_SIM']=''
+    config['POST']='mconnect.php'
+    config['HOST']='transactionalweb.com'
+    config['APN']='webtrial.globalm2m.net'
+    config['GPRS_USER']=''
+    config['GPRS_PASS']=''
+    config['GPRS_PASS']=''
+    config['COM']='9600'
+    config['GMT']='+5'
+    config['PREF']='TWIdata'
+    config['VER']='07-19'
+    config['CON']='close'
+
+    return 1
+
+
+# read configuration ------------------------------------------
+def readConfig():
+    o = ''
+    ck = config.keys()
+    for x in ck:
+        o = o + '|' + str(x) + '=' + str(config[x])
+    return o
+
+# write configuration -----------------------------------------
+def writeConfig():
+    rr = readConfig()
+    f = open('konfig.dat','wb')
+    f.write(rr)
+    f.close()
+    return
+
+# update configuration ----------------------------------------
+def updateConfig():
+    rr = readConfig()
+    f = open('konfig.dat','wb')
+    f.write(rr)
+    f.close()
+    listTel()
+    return
+
+# #################################################################
+#     Terminal Connect Python application                         #
+#     Functions                                                   #
+#     Last modification:    24.05.2011                            #
+#     Copyright 2010,2011                       Triptec Service   #
+#                                                                 #
+# #################################################################
+
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+#
+# Redistributions of source code must retain the above copyright notice,
+# this list of conditions and the following disclaimer.
+#
+# Redistributions in binary form must reproduce the above copyright
+# notice, this list of conditions and the following disclaimer in
+# the documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS``AS
+# IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+# TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+# PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+
+import MDM2
+import MOD
+import SER
+import GPIO
+
+# set PIN and check login -------------------------------------
+def checkCon(pin):
+    a = SER.send('DEBUG: Now in checkCon...\r\n')
+    #print '\r\ncheckCon PIN:',pin
+    res = MDM2.send('AT+CREG?\r',0)
+    res = MDM2.receive(30)
+    b = SER.send('DEBUG: following is result from AT+CREG?\r\n')
+    c = SER.send(res);
+    if ( (res.find('0,1') > -1)  or (res.find('0,5')  > -1 ) ):
+        return 1
+
+    ret = ''
+    ret = setPin(pin)
+    if ( ret != 1 ):
+        GPIO.setIOdir(19,1,1)
+        return -1 
+
+    timer = MOD.secCounter() + 120
+    while ( (res.find('0,1') == -1)  and  (res.find('0,5')  == -1 ) ):
+        res = MDM2.send('AT+CREG?\r',0)
+        res = MDM2.receive(20)
+        b = SER.send('DEBUG: following is result from AT+CREG?\r\n')
+        c = SER.send(res);
+        if ( MOD.secCounter() > timer ):
+            return -1
+        MOD.sleep(50)
+    MOD.sleep(20)
+    return 1 
+
+def setPin(pin):
+    rr = ''
+    tt = MOD.secCounter() + 30
+    while ( rr.find('READY') == -1):
+        rr = MDM2.send('AT+CPIN?\r',0)                   # CPIN Status
+        rr = MDM2.receive(5)
+        if ( rr.find('SIM PIN') != -1 ):
+            bb = MDM2.send('AT+CPIN=' + pin + '\r',0)    # set PIN
+            MOD.sleep(10)                                # wait 1sec
+        if ( MOD.secCounter() > tt ):
+            return -1 
+        MOD.sleep(10)
+    return 1
+
+# read GPIO ---------------------------------------------
+def setGPIO(id,d):
+    a = GPIO.setIOdir(id,1,d)
+    return a
+
+# toggle GPIO -------------------------------------------
+def toggleGPIO(id,z_on,z_off,anz):
+    ra = ''
+    while anz > 0:
+        ra = GPIO.setIOdir(id,1,1)
+        MOD.sleep(z_on)
+        ra = GPIO.setIOdir(id,0,1)
+        MOD.sleep(z_off)
+        # flash continusly
+        if ( anz != 99 ):
+            anz = anz - 1
+    return ra
+
+
+# POST ------------------------------------------------------
+def sendData(PIN,PO,HO,A,GU,GP,data,ll):
+    b = SER.send('\r\nIn sendData...sending\r\n' + data + '\r\n')
+    b = SER.send('\r\nHO=\r\n')
+    b = SER.send(HO)
+    b = SER.send('\r\npO=\r\n')
+    b = SER.send(PO)
+    b = SER.send('\r\n')
+    a = openGPRS(PIN,A,GU,GP)
+    a = openSD(HO)
+    res = MDM2.send('POST /' + PO + ' HTTP/1.1 Connection: close\r\n', 0)
+    res = MDM2.send('HOST: ' + HO + '\r\n', 0)
+    res = MDM2.send('User-Agent: Terminal Connect\r\n', 0)
+    res = MDM2.send('Content-Type: application/x-www-form-urlencoded\r\n', 0)
+    res = MDM2.send('Content-Length: '+ str(ll) +'\r\n\r\n', 0)
+    res = MDM2.send(data, 0)
+    res = MDM2.send('\r\n\r\n', 0)
+    cnt = 20
+    res = MDM2.receive(20)
+    a = SER.send('\r\nResponse from server ------------------------\r\n')
+    while ( (res.find('EOT') == -1) and (cnt > 0) ):
+        a = SER.send(res)
+        res = MDM2.receive(20)
+        cnt = cnt - 1
+    a = SER.send(res)
+    res = closeCon()
+    a = SER.send('\r\nend -----------------------------------------\r\n')
+    return res
+
+def openGPRS(P,A,GU,GP): #PIN = CONFIG.config['PIN_SIM'],H = CONFIG.config['HOST'],A = CONFIG.config['APN']
+    a = SER.send('\r\nDEBUG: Now in openGPRS.\r\n')
+    ret = checkCon(P)
+    a = SER.send('\r\nDEBUG: Back in openGPRS after doing checkCon.\r\n')
+    if ( ret != 1 ):
+        return -1
+    a = SER.send('\r\nDEBUG: Back in openGPRS about to do AT#SGACT?.\r\n')
+    res = MDM2.send('AT#SGACT?\r', 2)
+    timer = MOD.secCounter() + 20
+    while (MOD.secCounter() < timer):
+        res = MDM2.receive(10)
+        a = SER.send('DEBUG: Back in openGPRS just did AT#SGACT?.\r\n')
+        a = SER.send(res)
+        if ((res.find(',0') >= 0) ):
+            timer = timer - 100
+        if ((res.find(',1') >= 0) ):
+            timer = timer - 100
+            #print 'GPRS stil active\r'
+            return 1
+        MOD.sleep(10)
+
+    res = MDM2.send('AT+CGDCONT=1,"IP","' + A + '","0.0.0.0",1,1\r', 0)
+    timer = MOD.secCounter() + 30
+    # check answer CGDCONT
+    while (MOD.secCounter() < timer):
+        res = MDM2.receive(10)
+        a = SER.send('\r\nDEBUG: Back in openGPRS just did AT#CGDCONT?.\r\n')
+        a = SER.send(res)
+        if ((res.find('OK') >= 0) ):
+            timer = timer - 100
+        MOD.sleep(10)
+
+    if (GU != ''):
+        print 'set GPRS username\r'
+        res = MDM2.send('AT#USERID="'+ GU + '"\r', 2)
+        res = MDM2.receive(20)
+        res = res.find ('OK')
+        if (res == -1):
+            a = SER.send('\r\nerror setting GPRS username\r\n')    
+
+    if (GP != ''):
+        print 'set GPRS password\r'
+        res = MDM2.send('AT#PASSW="'+ GP + '"\r', 2)
+        res = MDM2.receive(20)
+        res = res.find ('OK')
+        if (res == -1):
+            a = SER.send('\r\nerror setting GPRS password\r\n') 
+
+
+    res = MDM2.send('AT#SGACT=1,1\r', 1)
+    timer = MOD.secCounter() + 50
+
+    while (MOD.secCounter() < timer):
+        res = MDM2.receive(10)
+        a = SER.send('\r\nDEBUG: Back in openGPRS just did AT#SGACT=1.\r\n')
+        a = SER.send(res)
+        if (res.find('#SGACT:') >= 0):
+            timer = timer - 100
+            res = cleanCRLF(res)
+            res = res.replace('#SGACT:','')
+            res = res.replace('OK','')
+            a = SER.send('\r\nConnected with IP:' + str(res))
+            return 1
+        MOD.sleep(10)
+    return -1
+
+def openSD(H):
+    res = MDM2.send('AT#SD=1,0,80,' + H +',0\r', 0)
+    timer = MOD.secCounter() + 30
+    while (MOD.secCounter() < timer):
+        res = MDM2.receive(10)
+        a = SER.send('\r\nDEBUG: Back in openGPRS just did AT#SD=1,0,80....\r\n')
+        a = SER.send(H)
+        a = SER.send(res)
+        if ((res.find('CONNECT') >= 0) ):
+            timer = timer - 100
+	    b = SER.send('\r\nsuccessfull connect, returning from openSD\r\n')
+            return 1
+        MOD.sleep(10)
+    return -1
+
+def closeCon():
+    res = MDM2.send('+++\r', 10)
+    timer = MOD.secCounter() + 30
+    # Antwort +++ auswerten
+    while (MOD.secCounter() < timer):
+        res = MDM2.receive(10)
+        if ((res.find('OK') >= 0) ):
+            timer = timer - 100
+        MOD.sleep(10)
+
+    res = MDM2.send('AT#SH=1\r', 0)
+    timer = MOD.secCounter() + 30
+    # answere AT#SD
+    while (MOD.secCounter() < timer):
+        res = MDM2.receive(10)
+        if ((res.find('OK') >= 0) ):
+            timer = timer - 100
+        MOD.sleep(10)
+    # print '\r\ncloseCon =',res
+    return res
+
+def cleanCRLF(s):
+	s = s.replace('\r','')
+	s = s.replace('\n','')
+	return s
+
+
+These scripts are known to work on the Telit GE-875-QUAD
+on the sparkfun pcboard.
+
+To execute these, one first loads them into the
+Telit module through the serial interface,
+naming them on the telit the same name provided here.
+Case matters.
+
+Load each file using 
+AT#WSCRIPT="mytest.py",....
+
+Do an ls -lt on a linux machine to know how many bytes
+are to be sent using WSCRIPT
+
+
+Once these are loaded, one must activate the
+starting script and then execute it.
+The activate script is "main.py"
+
+
+import mytest.py
+# #################################################################
+#     Terminal Connect Python application                         #
+#     main                                                        #
+#     Last modification:    24.05.2011                            #
+#     Copyright 2010,2011                       Triptec Service  #
+#                                                                 #
+# #################################################################
+
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+#
+# Redistributions of source code must retain the above copyright notice,
+# this list of conditions and the following disclaimer.
+#
+# Redistributions in binary form must reproduce the above copyright
+# notice, this list of conditions and the following disclaimer in
+# the documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS``AS
+# IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+# TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+# PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+# ################## Modules ##################
+import MDM      # Use AT command interface
+import MOD      # Use build in module
+import SER      # Use serial
+import CONFIG   # Configurations
+import FUNC     # Functions
+
+conf = CONFIG.config
+
+# settings ---------------------------------
+# 0 flow control OFF
+res = MDM.send('AT&K0\r', 0) 
+res = MDM.receive(10)
+
+# Konfiguration laden ---------------------------------------------------
+res = CONFIG.initConfig()
+
+SER.set_speed(conf['COM'],'8N1')
+a = SER.send('\r\n***************************************************************************')
+a = SER.send('\r\n*        Start Terminal Connection -  Triptec Service                    *')
+a = SER.send('\r\n***************************************************************************\r\n')
+a = SER.send('\r\n- wait for connection to network ----------------\r\n')
+r = FUNC.openGPRS(conf['PIN_SIM'],conf['APN'],conf['GPRS_USER'],conf['GPRS_PASS']) #openGPRS(P,A,GU,GP)
+a = FUNC.setGPIO(CONFIG.statLED,1)
+a = SER.send('\r\n\r\n- wait for data input ----------------\r\n')
+
+# start Schleife --------------------------------------------------------
+while 1:
+    a = FUNC.setGPIO(CONFIG.statLED,0)
+    MOD.sleep(10)
+    a = FUNC.setGPIO(CONFIG.statLED,1)
+    MOD.sleep(10)
+    b = SER.send('\r\nYou have 10 seconds to put something in.\r\n')
+    MOD.sleep(10)
+
+    res = SER.receive(100)
+    MOD.sleep(10)
+
+    if ( res != '' ):
+        data = conf['PREF'] + '=' + str(res)
+        MOD.sleep(10)
+        lang = len(data)
+        r = FUNC.sendData(conf['PIN_SIM'],conf['POST'],conf['HOST'],conf['APN'],conf['GPRS_USER'],conf['GPRS_PASS'],data,lang)
+        
+
+
+a = SER.send('\r\n\r\n***************************************************************************')
+a = SER.send('\r\n*                             END of script                                   *')
+a = SER.send('\r\n***************************************************************************\r\n')
+
+
