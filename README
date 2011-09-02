@@ -1,31 +1,10 @@
 -*- restructuredtext -*-
 
-###################
-Summer Project 2011
-###################
-
-pb: lead, project bonified
-An application of wireless communication and cloud
-computing.
-
-Objective
-~~~~~~~~~
-Demonstrate a prototype of hardware and software
-communicating data from a device to a cloud application.
-
-Theory
-~~~~~~
-A custom built adapter will connect a glucose meter via
-it's serial port to a wireless communication module.  This
-will allow software to remotely audit the meter.
+############################################
+Unapy - universal network adapter in python
+############################################
 
 
-People
-~~~~~~
-  * Nathan - CTO
-  * Ben - software engineer
-  * Earle - officially laissez-faire. adviser
-
-
+The ge865 provides cellular internet connectivity to any serial device.
 
 
