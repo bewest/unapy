@@ -7,4 +7,25 @@ Unapy - universal network adapter in python
 
 The ge865 provides cellular internet connectivity to any serial device.
 
+unapy:
+  init - deal with unapy.cfg in local directory
+  checkPort/scan [port]
+  list - list files loaded onto the ge865
+  list <file> - checks a file
+  cat <file> - dump a file from the module to stdout
+  download <dest> - download all files to destination
+  delete <file> - delete specified file
+  purge - delete all files
+  upload <file> - load a file onto the module
+  profile - record a complete profile of the device
+  configure:
+    * startmode
+    * APN
+    * CGDCONT
+    * 
+    * SGACT
+
+  help - list commands
+  
+  flow <flow> - Run a flow.
 
