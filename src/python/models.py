@@ -1,14 +1,14 @@
 import logging
 import sys
-import pbmodem
+import unapy
 import time
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 from pprint import pprint
 
-pbmodem.logger.setLevel(logging.DEBUG)
-from pbmodem.commands import at
+unapy.logger.setLevel(logging.DEBUG)
+from unapy.commands import at
 
-from pbmodem import models
+from unapy import models
 
 def model(device):
   model = device.model
@@ -30,8 +30,8 @@ def sms(device):
 
 if __name__ == '__main__':
   try:
-    from pbmodem import cli
-  except pbmodem.scan.ScanAttachedDevicesError, e:
+    from unapy import cli
+  except unapy.scan.ScanAttachedDevicesError, e:
     print "%s" % e
     raise
     #sys.exit(1)
@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
   opts, args = cli.parser.parse_args()
 
-  #link = pbmodem.Link(opts.device)
+  #link = unapy.Link(opts.device)
   link = cli.get_link( )
   print link
   device = models.Device(link)

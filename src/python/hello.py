@@ -2,15 +2,15 @@
 
 import logging
 import sys
-import pbmodem
+import unapy
 import time
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
-pbmodem.logger.setLevel(logging.DEBUG)
-from pbmodem import cli
-from pbmodem.commands import at
+unapy.logger.setLevel(logging.DEBUG)
+from unapy import cli
+from unapy.commands import at
 
-from pbmodem import models
+from unapy import models
 
 EXAMPLE_IP_REPLY='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n\r\nOK\r\n'
 EXAMPLE_IP_to_python='AT+CGPADDR=1\r\r\n+CGPADDR: 1,"10.215.15.91"\r\n'
@@ -153,7 +153,7 @@ if __name__ == '__main__':
   app = Application( )
   app.run( )
 
-  #pbmodem.test('/dev/ttyUSB0')
+  #unapy.test('/dev/ttyUSB0')
 
 #####
 # EOF

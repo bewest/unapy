@@ -1,18 +1,18 @@
 import logging
 import sys
-import pbmodem
+import unapy
 import time
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
-pbmodem.logger.setLevel(logging.DEBUG)
-from pbmodem.commands import at
+unapy.logger.setLevel(logging.DEBUG)
+from unapy.commands import at
 
-from pbmodem import models
+from unapy import models
 
 if __name__ == '__main__':
   try:
-    from pbmodem import cli
-  except pbmodem.scan.ScanAttachedDevicesError, e:
+    from unapy import cli
+  except unapy.scan.ScanAttachedDevicesError, e:
     print "%s" % e
     raise
     #sys.exit(1)
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
   opts, args = cli.parser.parse_args()
 
-  #link = pbmodem.Link(opts.device)
+  #link = unapy.Link(opts.device)
   link = cli.get_link( )
   device = models.Device(link)
   print device.model

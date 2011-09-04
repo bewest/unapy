@@ -6,7 +6,7 @@ Connect to it with:
 
 Terminate the connection by terminating telnet (typically Ctrl-] and then 'quit').
 
-XXX: Requires having pbmodem on PYTHONPATH somehow (I use a .pth file in
+XXX: Requires having unapy on PYTHONPATH somehow (I use a .pth file in
      conjunction with my user module. [~/.pythonrc.py]
 XXX: Has not been tried in awhile, despite some light renaming/re-organizing.
      May have sustained some misedits while factoring into the library.
@@ -27,8 +27,8 @@ import signal
 
 # hack to mangle PYTHONPATH
 import user
-import pbmodem
-from pbmodem.commands import at
+import unapy
+from unapy.commands import at
 
 class Input(object):
   length = 1024
@@ -73,7 +73,7 @@ class Input(object):
       raise StopIteration
     return line
 
-class IoProcessor(pbmodem.link.AtProcessor):
+class IoProcessor(unapy.link.AtProcessor):
   io = None
   def __init__(self, io):
     self.io      = io
@@ -177,7 +177,7 @@ class Flow(ATFlow):
     raise StopIteration
 
   def identify(self, req):
-    from pbmodem import models
+    from unapy import models
     device = models.Device(req)
     #command = req.process(models.M
     model = device.model
@@ -273,7 +273,7 @@ class SessionHandler(object):
     try:
       for flow in flows( ):
         flow(session)
-    except pbmodem.commands.core.InvalidResponse, e:
+    except unapy.commands.core.InvalidResponse, e:
       log.info("XXX: invalid response!: closing flow%r" % e)
     log.debug("done with flow")
     self.close( )

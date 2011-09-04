@@ -10,11 +10,11 @@ assemble the correct list of flows, or even defer processing to other sockets or
 
 import logging
 
-from pbmodem import cli
-from pbmodem import flow
-from pbmodem import network
-from pbmodem.commands.core import InvalidResponse
-from pbmodem.commands import at
+from unapy import cli
+from unapy import flow
+from unapy import network
+from unapy.commands.core import InvalidResponse
+from unapy.commands import at
 from gevent import timeout
 
 class Flow(flow.ATFlow):
