@@ -22,10 +22,9 @@ unapy:
     * startmode
     * APN
     * CGDCONT
-    * 
     * SGACT
 
   help - list commands
-  
+
   flow <flow> - Run a flow.
 
