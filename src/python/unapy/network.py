@@ -2,6 +2,9 @@ from gevent.server import StreamServer
 from gevent.socket import timeout
 import logging
 
+import sys
+from gevent import socket
+from gevent.socket import EWOULDBLOCK
 from commands.core import InvalidResponse
 from flow import BaseFlow, ATFlow, Session, NetworkSession
 #from gevent import timeout
@@ -48,6 +51,42 @@ class SessionHandler(Loggable):
       self.log.info("XXX: invalid response!: closing flow%r" % e)
     self.log.debug("done with flow")
     self.close( )
+
+class WeirdServer(StreamServer, Loggable):
+  def _do_accept(self):
+    for _ in xrange(self.max_accept):
+      address = None
+      try:
+        if self.full( ):
+          self.stop_accepting()
+          return
+        try:
+          client_socket, address = self.socket.accept( )
+        except socket.error, err:
+          if err[0] == EWOULDBLOCK:
+            return
+          raise
+        self.delay = self.min_delay
+        client_socket = socket.socket(_sock=client_socket)
+        spawn = self._spawn
+        if spawn is None:
+          self._handle(client_socket, address)
+        else:
+          spawn(self._handle, client_socket, address)
+      except:
+        self.loop.handle_error((address, self), *sys.exc_info( ))
+        ex = sys.exc_info( )[1]
+        if self.is_fatal_error(ex):
+          self.kill( )
+          sys.stderr.write('ERROR: %s failed with %s\n' % (self,
+                           str(ex) or repr(ex))
+          return
+        if self.delay >= 0:
+          self.stop_accepting( )
+          self._start_accepting_timer = self.loop.timer(self.delay)
+          self._start_accepting_timer.start(self._start_accepting_if_started)
+          self.delay = min(self.max_delay, self.delay * 2)
+        break
 
 class SessionServer(StreamServer, Loggable):
   def __init__(self, listener, application=None, backlog=None,
