@@ -195,7 +195,7 @@ GUESSES   : %r
     self.link.write("AT\r")
     print "Response: ", self.link.readlines( )
     self.link.close( )
-    
+ 
 
 if __name__ == '__main__':
   opts, args = parser.parse_args()

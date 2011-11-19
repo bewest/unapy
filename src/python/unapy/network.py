@@ -79,7 +79,7 @@ class WeirdServer(StreamServer, Loggable):
         if self.is_fatal_error(ex):
           self.kill( )
           sys.stderr.write('ERROR: %s failed with %s\n' % (self,
-                           str(ex) or repr(ex))
+                           str(ex) or repr(ex)))
           return
         if self.delay >= 0:
           self.stop_accepting( )
