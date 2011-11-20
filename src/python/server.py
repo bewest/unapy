@@ -42,9 +42,18 @@ class Flow(flow.ATFlow):
     self.log.info(self.session.process(at.SII.query( )))
     #self.session.process(at.SII.assign(1))
     self.log.info( "turning on transparent mode")
-    self.tcpatrunconser = self.session.process(at.TCPATRUNCONSER.assign(0, 9600))
+    rates = [ 300, 1200, 2400, 4800, 9600, 19200,
+              38400, 57600, 115200 ]
+    connected = False
+    ports = [ 0, 1 ]
+    for port in ports:
+      for rate in rates:
+        self.tcpatrunconser = self.session.process(at.TCPATRUNCONSER.assign(port, rate))
+        if self.tcpatrunconser.isOK( ):
+          break
+      if self.tcpatrunconser.isOK( ):
+        break
     self.log.info(self.tcpatrunconser)
-    self.log.info(self.tcpatrunconser.isOK( ))
     if self.tcpatrunconser.isOK( ):
       self.log.info("tcpatrunconser is OK")
     else:
