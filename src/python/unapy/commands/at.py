@@ -85,6 +85,10 @@ Generic Modem Control
 ~~~~~~~~~~~~~~~~~~~~~
 """
 
+class AT(SimpleCommand):
+  sep = ''
+  cmd = ''
+
 class GMI(SimpleCommand):
   """Manufacturer identification."""
 

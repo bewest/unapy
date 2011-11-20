@@ -30,19 +30,26 @@ class Flow(flow.ATFlow):
   def check_tcpatrun(self, link):
     atruns = link.process(at.TCPATRUND.query( ))
     self.log.info('tcpatrun :' )
+    self.log.info(atruns)
     self.log.info(atruns.getData( ))
 
   def verbose_error(self):
-    self.log.info( "turning on transparent mode")
     self.session.process(at.CMEE.assign(2))
 
 
   def transparent_mode_on(self):
-    self.log.info( "turning on transparent mode")
     self.log.info("what's SII?")
     self.log.info(self.session.process(at.SII.query( )))
     #self.session.process(at.SII.assign(1))
-    self.tcpatrunconser = self.session.process(at.TCPATRUNCONSER.assign(1, 9600))
+    self.log.info( "turning on transparent mode")
+    self.tcpatrunconser = self.session.process(at.TCPATRUNCONSER.assign(0, 9600))
+    self.log.info(self.tcpatrunconser)
+    self.log.info(self.tcpatrunconser.isOK( ))
+    if self.tcpatrunconser.isOK( ):
+      self.log.info("tcpatrunconser is OK")
+    else:
+      self.log.info("tcpatrunconser is NOT OK")
+    return self.tcpatrunconser.isOK( )
 
   def transparent_mode_off(self):
     self.log.info( "turning off transparent mode")
@@ -57,11 +64,17 @@ class Flow(flow.ATFlow):
     self.log.info("sim status %r" % (qss, ))
     return qss
 
+  def at_check(self, link):
+    self.log.info(link.process(at.AT()))
+
   def flow(self, req):
     # replace a la flow.py, and hello.py
     self.log.info("do stuff with request here. %r" % req )
+    junk = ''.join(req.io.long_read(repeats=2)).strip( )
+    if junk != '':
+      self.log.info("found this junk: %s" % junk)
     req.io.setTimeout( 3 )
-    req.io.write("hi there! what's your name?\r\n>>> ")
+    req.io.write("hi there! your name?\r\n>>> ")
     name = req.io.readline( ).strip( )
 
     req.io.write("thanks, %s, I'm going now...\n" % name )
@@ -69,6 +82,7 @@ class Flow(flow.ATFlow):
     if not name:
       self.log.info("%r probably not a human?" % name)
 
+    self.at_check(req)
     self.verbose_error( )
     status = self.check_sim(req)
     self.log.info("at machine has a sim: %r" % (status,))
@@ -80,13 +94,22 @@ class Flow(flow.ATFlow):
     self.check_tcpatrun(req)
     #req.io.setTimeout( 10 )
     try:
-      self.transparent_mode_on()
-      req.io.write("DM@\r\n")
-      response = req.io.long_read( )
-      self.log.info("response: %r" % response)
-      self.transparent_mode_off()
-    except InvalidResponse:
+      if self.transparent_mode_on( ) and self.tcpatrunconser.isOK( ):
+        #response = req.io.long_read( )
+        import meter
+        response = meter.get_mini(req)
+        #req.io.write("DM@\r\n")
+        #response = req.io.long_read( )
+        self.log.info("response: %r" % response)
+        self.log.info('turn off transparent mode.')
+        self.transparent_mode_off()
+      else:
+        self.log.info("couldn't turn on transparent mode.")
+    except InvalidResponse, e:
+      self.log.info('caught invalid response')
+      self.log.error(e)
       pass
+    self.log.info('turn off tcpatrun for next run.')
     self.turn_off_tcpatrun(req)
 
 
@@ -97,6 +120,7 @@ class Application(cli.NetworkApp):
   def custom_pre_run(self):
     logging.basicConfig( )
     self.set_logger_level(logging.getLogger(__name__))
+    self.set_logger_level(logging.getLogger('unapy'))
 
   def run(self):
     addr_info   = (self.options.host, self.options.port)

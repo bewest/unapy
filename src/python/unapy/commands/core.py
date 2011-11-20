@@ -172,7 +172,7 @@ class Command(object):
 
     
   def isOK(self):
-    return bool(self.response)
+    return bool(self.response.isOK( ))
 
   def format(self):
     """Returns formatted command.

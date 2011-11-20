@@ -1,6 +1,7 @@
 
 from util import Loggable
 import link
+from gevent.socket import timeout
 
 class IoProcessor(link.AtProcessor):
   """
@@ -72,7 +73,10 @@ class IoSocketProcessor(IoProcessor):
   def read(self, length=None):
     if length is None:
       length = self.length
-    return self.rfile.read()
+    try:
+      return self.rfile.read(length)
+    except timeout, e: pass
+    return ''
 
 
   def readline(self):
