@@ -87,7 +87,10 @@ void read_non_colon_into_buffer(byte read_byte)
   Serial.write(read_byte);
   buffer[buffer_position] = read_byte;
   buffer_position++;
-  if (buffer_position == 5) interpret_buffered_command();
+  if (buffer_position == 4){
+    interpret_buffered_command();
+    buffer_position = 0; //Not sure if this belongs here...
+  }
   
   
 }
@@ -95,7 +98,7 @@ void read_non_colon_into_buffer(byte read_byte)
 void interpret_buffered_command()
 {
          Serial.print("Interpret Command: ");
-         Serial.print(buffer[1]);
+         Serial.write(buffer[1]);
          
 
   if(buffer[0]==':' && buffer[2]==';' && buffer[3]==0x0D)
@@ -111,39 +114,41 @@ void interpret_buffered_command()
      pending_command = 0x00;
      Serial.println("Repeating command out!");
     }
-    
-    switch(buffer[1]){
-     case '0': //0-8 set common baudrates
-     case '1':
-     case '2':
-     case '3':
-     case '4':
-     case '5':
-     case '6':
-     case '7':     
-     case '8':
-     case '#': //reset arduino
-     case '?': //request current baudrate
-       //valid command entered, so set pending_command and ask for confirmation
-       pending_command = buffer[1];
-       buffer_position = 0; //do not flush_buffer(), as this will result in echoing command to myserial! set position to 0 instead.
-       send_confirm_command_request();
-       break;
-     case '!':
-        //only execute command if confirmed in response to request, otherwise assume confirmation command is meant for myserial
-       if (request_confirmation_sent == 1) {
-         confirm_command();
-         Serial.println("Confirm Command!");
-         request_confirmation_sent = 0;
-       }
-       else {
-        flush_buffer(); 
-       }
-       break;
-     default:
-       //invalid command entered, so flush buffer and carry on
-       flush_buffer(); //send invalid command to serial port
-    } 
+    else{
+      Serial.print("About to switch!");
+      switch(buffer[1]){
+       case '0': //0-8 set common baudrates
+       case '1':
+       case '2':
+       case '3':
+       case '4':
+       case '5':
+       case '6':
+       case '7':     
+       case '8':
+       case '#': //reset arduino
+       case '?': //request current baudrate
+         //valid command entered, so set pending_command and ask for confirmation
+         pending_command = buffer[1];
+         buffer_position = 0; //do not flush_buffer(), as this will result in echoing command to myserial! set position to 0 instead.
+         send_confirm_command_request();
+         break;
+       case '!':
+          //only execute command if confirmed in response to request, otherwise assume confirmation command is meant for myserial
+         if (request_confirmation_sent == 1) {
+           confirm_command();
+           Serial.println("Confirm Command!");
+           request_confirmation_sent = 0;
+         }
+         else {
+          flush_buffer(); 
+         }
+         break;
+       default:
+         //invalid command entered, so flush buffer and carry on
+         flush_buffer(); //send invalid command to serial port
+      } 
+    }
   }
   else {
    //What happens if buffer is not even in the right syntax?
