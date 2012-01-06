@@ -14,15 +14,19 @@ byte buffer[4]; //current command buffer
 unsigned short int buffer_position; //current state of buffer position
 byte pending_command; //interpreted and executed on confirmCommand()
 byte request_confirmation_sent; //did the arduino request confirmation of a pending command?
+byte myserial_is_initialized;
+unsigned int myserial_baudrate;
 
 void setup()
 {
   //Initialize variables
   
-  byte buffer[4] = {0x00, 0x00, 0x00, 0x00}; //current command buffer
-  unsigned short int buffer_position = 0; //current state of buffer position
-  byte pending_command = 0x00; //interpreted and executed on confirmCommand()
-  byte request_confirmation_sent = 0; //did the arduino request confirmation of a pending command?
+  byte buffer[] = {0x00, 0x00, 0x00, 0x00}; //current command buffer
+  buffer_position = 0; //current state of buffer position
+  pending_command = 0x00; //interpreted and executed on confirmCommand()
+  request_confirmation_sent = 0; //did the arduino request confirmation of a pending command?
+  myserial_is_initialized = 0;
+  myserial_baudrate = 0;
 
   //Init arduino built-in serial
     Serial.begin(9600);
@@ -40,7 +44,8 @@ void setup()
 
 void setSoftwareSerialBaudrate(unsigned int baudrate)
 {
-    mySerial.begin(baudrate); 
+    mySerial.begin(baudrate);
+    myserial_is_initialized = 1;
 }
 
 void loop()
@@ -61,7 +66,7 @@ void loop()
     if (read_byte == ':') read_colon_into_buffer();
     else if (buffer_position != 0) read_non_colon_into_buffer(read_byte);
     else {
-      mySerial.write(read_byte);
+      if(myserial_is_initialized) mySerial.write(read_byte);
     }
   }
 }
@@ -90,7 +95,7 @@ void interpret_buffered_command()
 {
   if(buffer[0]==':' && buffer[2]==';' && buffer[3]==0x0D)
   {
-    if(pending_command != 0x00 && buffer[1] != '!')
+    if(myserial_is_initialized && pending_command != 0x00 && buffer[1] != '!')
     {
      //What happens if two commands get sent without a confirmation in between? Assume pending command was meant for myserial and write it out.
      mySerial.write(':');
@@ -150,34 +155,45 @@ void confirm_command()
      switch(pending_command){
      case '0':
        setSoftwareSerialBaudrate(1200);
+       myserial_baudrate = 1200;
        break;
      case '1':
        setSoftwareSerialBaudrate(2400);
+       myserial_baudrate = 2400;
        break;
      case '2':
        setSoftwareSerialBaudrate(4800);
+       myserial_baudrate = 4800;
        break;
      case '3':
        setSoftwareSerialBaudrate(9600);
+       myserial_baudrate = 9600;
        break;
      case '4':
        setSoftwareSerialBaudrate(14400);
+       myserial_baudrate = 14400;
        break;
      case '5':
        setSoftwareSerialBaudrate(19200);   
+       myserial_baudrate = 19200;
        break;
      case '6':
        setSoftwareSerialBaudrate(38400);
+       myserial_baudrate = 38400;
        break;
      case '7':
        setSoftwareSerialBaudrate(57600);
+       myserial_baudrate = 57600;
        break;
      case '8':
        setSoftwareSerialBaudrate(115200);
+       myserial_baudrate = 115200;
        break;
      case '#':
        reset_arduino();
        break;
+     case '?':
+       Serial.print(myserial_baudrate);
      }
      
      pending_command = 0x00;
@@ -194,7 +210,7 @@ void flush_buffer()
 {
   //Write out everything in the buffer to mySerial
   for(int i = 0; i < buffer_position; i++){
-    mySerial.write(buffer[i]);
+    if(myserial_is_initialized) mySerial.write(buffer[i]);
   }
   
   //Set the buffer position back to 0
