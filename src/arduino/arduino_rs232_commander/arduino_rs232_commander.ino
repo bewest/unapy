@@ -84,7 +84,7 @@ void read_non_colon_into_buffer(byte read_byte)
   Serial.print("bp = ");
   Serial.print(buffer_position);
   Serial.print(" ; byte = ");
-  Serial.print(read_byte);
+  Serial.write(read_byte);
   buffer[buffer_position] = read_byte;
   buffer_position++;
   if (buffer_position == 5) interpret_buffered_command();
