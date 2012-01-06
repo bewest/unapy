@@ -73,6 +73,7 @@ void loop()
 
 void read_colon_into_buffer()
 {
+  Serial.println("Read COLON!");//DEBUG
   if (buffer_position != 0) flush_buffer();
 
   // Note: buffer_postion = 0 b/c set by flush_buffer if not 0
@@ -84,6 +85,10 @@ void read_colon_into_buffer()
 
 void read_non_colon_into_buffer(byte read_byte)
 {
+  Serial.print("bp = ");
+  Serial.print(buffer_position);
+  Serial.print(" ; byte = ");
+  Serial.print(read_byte);
   buffer[buffer_position] = read_byte;
   buffer_position++;
   if (buffer_position == 5) interpret_buffered_command();
@@ -93,8 +98,13 @@ void read_non_colon_into_buffer(byte read_byte)
 
 void interpret_buffered_command()
 {
+         Serial.print("Interpret Command: ");
+         Serial.print(buffer[1]);
+         
+
   if(buffer[0]==':' && buffer[2]==';' && buffer[3]==0x0D)
   {
+      Serial.println("Valid Syntax!");
     if(myserial_is_initialized && pending_command != 0x00 && buffer[1] != '!')
     {
      //What happens if two commands get sent without a confirmation in between? Assume pending command was meant for myserial and write it out.
@@ -103,6 +113,7 @@ void interpret_buffered_command()
      mySerial.write(';');
      mySerial.write(0x0D);
      pending_command = 0x00;
+     Serial.println("Repeating command out!");
     }
     
     switch(buffer[1]){
@@ -126,6 +137,7 @@ void interpret_buffered_command()
         //only execute command if confirmed in response to request, otherwise assume confirmation command is meant for myserial
        if (request_confirmation_sent == 1) {
          confirm_command();
+         Serial.println("Confirm Command!");
          request_confirmation_sent = 0;
        }
        else {
