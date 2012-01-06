@@ -36,10 +36,6 @@ void setup()
     //Init software serial - actually, only do this when told the bitrate by the incoming port
     //setSoftwareSerialBaudrate(38400);
   
-    //Debug LED
-    const int ledPin = 13;
-    pinMode(ledPin,OUTPUT);
-    digitalWrite(ledPin, HIGH);  
 }
 
 void setSoftwareSerialBaudrate(unsigned int baudrate)
